@@ -58,7 +58,7 @@
   call dein#add('jreybert/vimagit')
   call dein#add('mhinz/vim-signify')
   call dein#add('Xuyuanp/nerdtree-git-plugin')
-  call dein#add('https://github.com/jaxbot/github-issues.vim')
+  "call dein#add('https://github.com/jaxbot/github-issues.vim')
 
   call dein#add('tpope/vim-repeat')
   call dein#add('benekastah/neomake')
@@ -108,6 +108,7 @@
   call dein#add('vim-scripts/utl.vim') 
   call dein#add('tpope/vim-speeddating') 
   call dein#add('chrisbra/NrrwRgn') 
+  call dein#add('Numkil/ag.nvim') 
 "-------------------------------------------------------------------------
 
   if dein#check_install()
@@ -157,7 +158,12 @@
   let g:deoplete#enable_at_startup = 1
   let g:unite_source_codesearch_command = '$HOME/bin/csearch'
   let g:table_mode_corner="|"
-
+  "test
+  :set cursorline!
+  :set lazyredraw
+  set synmaxcol=128
+  syntax sync minlines=256
+  set noshowcmd
 " }}}
 "
 " System mappings  ----------------------------------------------------------{{{
@@ -217,6 +223,11 @@ nmap <F8> :Tagbar<CR>
 nmap <leader>F :NERDTreeFind<CR>
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
+" for close automatically (), [], {}
+:imap ( ()<left>
+:imap { {}<left> 
+:imap [ []<left>
+
 "-------------------------------------------------------------------------
 "end elsuizo adds
 "-------------------------------------------------------------------------
@@ -254,16 +265,16 @@ map <silent> <leader><cr> :noh<cr>
 " nnoremap : ;
 " give it a try and you will like it
   nnoremap ; :
-  inoremap <c-f> <c-x><c-f>
+"complete files
+  inoremap <c-f> <c-x><c-f> 
 " Copy to osx clipboard
-  vnoremap <C-c> "*y<CR>
+  "vnoremap <C-c> "+y<CR>
   vnoremap y "*y<CR>
   nnoremap Y "*Y<CR>
   let g:multi_cursor_next_key='<C-n>'
   let g:multi_cursor_prev_key='<C-p>'
   let g:multi_cursor_skip_key='<C-x>'
   let g:multi_cursor_quit_key='<Esc>'
-
 " Align blocks of text and keep them selected
   vmap < <gv
   vmap > >gv
@@ -297,13 +308,13 @@ colorscheme PaperColor
 set background=dark
 " set background=light
 " no need to fold things in markdown all the time
-let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_folding_disabled = 0
 " turn on spelling for markdown files
 autocmd BufRead,BufNewFile *.md setlocal spell complete+=kspell
 " highlight bad words in red
 autocmd BufRead,BufNewFile *.md hi SpellBad guibg=#ff2929 guifg=#ffffff" ctermbg=224
 " disable markdown auto-preview. Gets annoying
-let g:instant_markdown_autostart = 0
+let g:instant_markdown_autostart = 1
 "}}}
 
 " Fold, gets it's own section  ----------------------------------------------{{{
@@ -554,7 +565,7 @@ let g:airline_powerline_fonts = 1
 "let g:airline_theme='oceanicnext'
 "let g:airline_theme='papercolor'
 let g:airline_theme='bubblegum'
-cnoreabbrev <expr> x getcmdtype() == ":" && getcmdline() == 'x' ? 'Sayonara' : 'x'
+cnoreabbrev <expr> x getcmdtype() == ":" && getcmdline() == 'x' ? 'nos vemos guacho' : 'x'
 nmap <leader>t :term<cr>
 nmap <leader>, :bnext<CR>
 nmap <leader>. :bprevious<CR>
@@ -568,7 +579,7 @@ nmap <leader>6 <Plug>AirlineSelectTab6
 nmap <leader>7 <Plug>AirlineSelectTab7
 nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
-set guifont=Sauce\ Code\ Pro\ Nerd\ Font\ Complete:h13
+"set guifont=Sauce\ Code\ Pro\ Nerd\ Font\ Complete:h11
 "}}}
 
 " Linting -------------------------------------------------------------------{{{
