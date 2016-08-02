@@ -579,7 +579,7 @@ nmap <leader>6 <Plug>AirlineSelectTab6
 nmap <leader>7 <Plug>AirlineSelectTab7
 nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
-"set guifont=Sauce\ Code\ Pro\ Nerd\ Font\ Complete:h11
+"set guifont=Sauce\ Code\ Pro\ Nerd\ Font\ Complete:h18
 "}}}
 
 " Linting -------------------------------------------------------------------{{{
@@ -599,4 +599,43 @@ nmap <leader>9 <Plug>AirlineSelectTab9
   endfunction
   command JscsFix :call JscsFix()
   noremap <leader>j :JscsFix<CR>
+"}}}
+
+" Insert headers -------------------------------------------------------------------{{{
+
+
+"Reads the template file replacing the tags by the actual
+" information and insert the result at the beginning of the buffer. At
+" the end, creates two blank lines at the end of the file and
+" position the cursor at the first one.
+function! s:insert_description()
+    let template = $HOME . "/.vim/template/cpp.template"
+    let file_name = expand("%:t") " Get file name without path
+    let date = strftime("%D %T") " Get the current year in format YYYY
+    let i = 0
+    for line in readfile(template)
+        let line = substitute(line, "<file_name>", file_name, "ge")
+        let line = substitute(line, "<date>", date, "ge")
+        call append(i, line)
+        let i += 1
+    endfor
+    execute "normal! Go\<Esc>k"
+endfunction
+autocmd BufNewFile *.{c++,cpp,cc,c,h,hpp} call <SID>insert_description()
+
+" Headers for Julia and Python
+function! s:insert_description_julia()
+    let template = $HOME . "/.vim/template/julia-python.template"
+    let file_name = expand("%:t") " Get file name without path
+    let date = strftime("%D %T") " Get the current year in format YYYY
+    let i = 0
+    for line in readfile(template)
+        let line = substitute(line, "<file_name>", file_name, "ge")
+        let line = substitute(line, "<date>", date, "ge")
+        call append(i, line)
+        let i += 1
+    endfor
+    execute "normal! Go\<Esc>k"
+endfunction
+autocmd BufNewFile *.{jl,py} call <SID>insert_description_julia()
 "}}}
