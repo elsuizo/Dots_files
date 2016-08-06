@@ -109,6 +109,9 @@
   call dein#add('tpope/vim-speeddating') 
   call dein#add('chrisbra/NrrwRgn') 
   call dein#add('Numkil/ag.nvim') 
+  call dein#add('matze/vim-move') 
+  call dein#add('AlessandroYorba/Alduin') " Alduin colorscheme
+  "call dein#add('octol/vim-cpp-enhanced-highlight') " C++14 colorscheme
 "-------------------------------------------------------------------------
 
   if dein#check_install()
@@ -126,8 +129,29 @@
   set noswapfile
   filetype on
   set relativenumber number
-  set tabstop=2 shiftwidth=2 expandtab
-  set conceallevel=0
+  " set tabstop=2 shiftwidth=2 expandtab
+  " set conceallevel=0
+
+  """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  " => Text, tab and indent related
+  """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  " Use spaces instead of tabs
+  set expandtab
+
+  " Be smart when using tabs ;)
+  set smarttab
+
+  " 1 tab == 3 spaces
+  set shiftwidth=3
+  set tabstop=3
+
+  " Linebreak on 500 characters
+  set lbr
+  set tw=500
+
+  set ai "Auto indent
+  set si "Smart indent
+  set wrap "Wrap lines
 " block select not limited by shortest line
   set virtualedit=
   set wildmenu
@@ -138,7 +162,14 @@
 " leader is ,
   let mapleader = ','
   set undofile
-  set undodir="$HOME/.VIM_UNDO_FILES"
+
+" Save temporary/backup files not in the local directory, but in your ~/.vim
+" directory, to keep them out of git repos. 
+" Pretty sure you need to mkdir backup, swap, and undo first to make this work
+   set backupdir=~/.vim/backup//
+   set directory=~/.vim/swap//
+   set undodir=~/.vim/undo//
+  "set undodir="$HOME/.VIM_UNDO_FILES"
 " Remember cursor position between vim sessions
   autocmd BufReadPost *
               \ if line("'\"") > 0 && line ("'\"") <= line("$") |
@@ -159,24 +190,29 @@
   let g:unite_source_codesearch_command = '$HOME/bin/csearch'
   let g:table_mode_corner="|"
   "test
-  :set cursorline!
-  :set lazyredraw
+  ":set cursorline!
+  set lazyredraw
   set synmaxcol=128
   syntax sync minlines=256
   set noshowcmd
+  " elsuizo adds
+  let g:cpp_experimental_template_highlight = 1
+  let g:cpp_class_scope_highlight = 1
 " }}}
 "
 " System mappings  ----------------------------------------------------------{{{
 "-------------------------------------------------------------------------
 "elsuizo adds
 "-------------------------------------------------------------------------
+set history=700
 " Fast saving
 nmap <leader>w :w!<cr>
+let g:move_key_modifier = 'C'
 " Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+" nmap <a-j> mz:m+<cr>`z
+" nmap <a-k> mz:m-2<cr>`z
+" vmap <a-j> :m'>+<cr>`<my`>mzgv`yo`z
+" vmap <a-k> :m'<-2<cr>`>my`<mzgv`yo`z
 " Visual mode pressing * or # searches for the current selection
 
 " Super useful! From an idea by Michael Naumann
@@ -223,17 +259,16 @@ nmap <F8> :Tagbar<CR>
 nmap <leader>F :NERDTreeFind<CR>
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
-" for close automatically (), [], {}
-:imap ( ()<left>
-:imap { {}<left> 
-:imap [ []<left>
+" " for close automatically (), [], {}
+imap ( ()<left>
+imap { {}<left> 
+imap [ []<left>
+" inoremap ( ()<Esc>i
+" inoremap { {}<Esc>i
 
-"-------------------------------------------------------------------------
-"end elsuizo adds
-"-------------------------------------------------------------------------
 " No need for ex mode
-  nnoremap Q <nop>
-  "map q <Nop>
+" nnoremap Q <nop>
+"map q <Nop>
 " exit insert, dd line, enter insert
   inoremap <c-d> <esc>ddi
 " Navigate between display lines
@@ -249,7 +284,7 @@ map <silent> <leader><cr> :noh<cr>
   nmap cp :let @+ = expand("%") <cr>
 
 " ,f to format code, requires formatters: read the docs
-  noremap <leader>f :Autoformat<CR>
+ " noremap <leader>f :Autoformat<CR>
   noremap <leader>TM :TableModeToggle<CR>
 " exit insert, dd line, enter insert
   inoremap <c-d> <esc>ddi
@@ -268,7 +303,7 @@ map <silent> <leader><cr> :noh<cr>
 "complete files
   inoremap <c-f> <c-x><c-f> 
 " Copy to osx clipboard
-  "vnoremap <C-c> "+y<CR>
+  vnoremap <C-c> "+y<CR>
   vnoremap y "*y<CR>
   nnoremap Y "*Y<CR>
   let g:multi_cursor_next_key='<C-n>'
@@ -281,6 +316,12 @@ map <silent> <leader><cr> :noh<cr>
   nnoremap <leader>d "_d
   vnoremap <leader>d "_d
   vnoremap <c-/> :TComment<cr>
+  " ino " ""<left>
+  " ino ' ''<left>
+  " ino ( ()<left>
+  " ino [ []<left>
+  " ino { {}<left>
+  " ino {<CR> {<CR>}<ESC>O
   " map <esc> :noh<cr>
 autocmd FileType typescript nmap <buffer> <Leader>T : <C-u>echo tsuquyomi#hint()<CR>
 
@@ -299,7 +340,7 @@ function! s:PlaceholderImgTag(size)
   endfunction
 command! -nargs=1 PlaceholderImgTag call s:PlaceholderImgTag(<f-args>)
 
-"}}}
+" }}}
 
 " Themes, Commands, etc  ----------------------------------------------------{{{
 " Theme
@@ -343,15 +384,15 @@ function! JavaScriptFold() "{{{
   syn region foldBraces start=/{/ skip=/\(\/\/.*\)\|\(\/.*\/\)/ end=/}/ transparent fold keepend extend
 endfunction "}}}
 
-" function! HTMLFold() "{{{
-"   " syn sync fromstart
-"   set foldmethod=syntax
-"   syn region HTMLFold start=+^<\([^/?!><]*[^/]>\)\&.*\(<\1\|[[:alnum:]]\)$+ end=+^</.*[^-?]>$+ fold transparent keepend extend
-"   syn match HTMLCData "<!\[CDATA\[\_.\{-}\]\]>" fold transparent extend
-"   syn match HTMLCommentFold "<!--\_.\{-}-->" fold transparent extend
-" endfunction "}}}
+function! HTMLFold() "{{{
+  " syn sync fromstart
+  set foldmethod=syntax
+  syn region HTMLFold start=+^<\([^/?!><]*[^/]>\)\&.*\(<\1\|[[:alnum:]]\)$+ end=+^</.*[^-?]>$+ fold transparent keepend extend
+  syn match HTMLCData "<!\[CDATA\[\_.\{-}\]\]>" fold transparent extend
+  syn match HTMLCommentFold "<!--\_.\{-}-->" fold transparent extend
+endfunction "}}}
 
-"set foldtext=MyFoldText()
+set foldtext=MyFoldText()
 
 autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
 autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
@@ -373,7 +414,7 @@ autocmd FileType javascript,html,css,scss,typescript setlocal foldlevel=99
 autocmd FileType javascript,typescript,css,scss,json setlocal foldmethod=marker
 autocmd FileType javascript,typescript,css,scss,json setlocal foldmarker={,}
 autocmd FileType coffee setl foldmethod=indent
-" au FileType html nnoremap <buffer> <leader>F zfat
+au FileType html nnoremap <buffer> <leader>F zfat
 " }}}
 
 " NERDTree ------------------------------------------------------------------{{{
@@ -448,45 +489,45 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 
 "}}}
 
-" Typescript & Javscript omni complete --------------------------------------{{{
-  let g:vimjs#casesensistive = 1
-  let g:vimjs#smartcomplete = 1
-  let g:tsuquyomi_disable_quickfix = 1
-  let g:vim_json_syntax_conceal = 0
-  autocmd FileType setlocal completeopt+=noselect,menu,preview
-  set completeopt+=noselect,menu,preview
-  " if !exists('g:neocomplete#force_omni_input_patterns')
-  "   let g:neocomplete#force_omni_input_patterns = {}
-  " endif
-  " let g:neocomplete#force_omni_input_patterns.typescript = '[^. *\t]\.\w*\|\h\w*::'
-
-"}}}
-
-" Emmet customization -------------------------------------------------------{{{
-" Enable Emmet in all modes
-" Remapping <C-y>, just doesn't cut it.
-  function! s:expand_html_tab()
-" try to determine if we're within quotes or tags.
-" if so, assume we're in an emmet fill area.
-   let line = getline('.')
-   if col('.') < len(line)
-     let line = matchstr(line, '[">][^<"]*\%'.col('.').'c[^>"]*[<"]')
-     if len(line) >= 2
-        return "\<C-n>"
-     endif
-   endif
-" expand anything emmet thinks is expandable.
-  if emmet#isExpandable()
-    return "\<C-y>,"
-  endif
-" return a regular tab character
-  return "\<tab>"
-  endfunction
-  autocmd FileType html,markdown imap <buffer><expr><tab> <sid>expand_html_tab()
-  let g:user_emmet_mode='a'
-  let g:user_emmet_complete_tag = 1
-  let g:user_emmet_install_global = 0
-  autocmd FileType html,css EmmetInstall
+" " Typescript & Javscript omni complete --------------------------------------{{{
+"   let g:vimjs#casesensistive = 1
+"   let g:vimjs#smartcomplete = 1
+"   let g:tsuquyomi_disable_quickfix = 1
+"   let g:vim_json_syntax_conceal = 0
+"   autocmd FileType setlocal completeopt+=noselect,menu,preview
+"   set completeopt+=noselect,menu,preview
+"   " if !exists('g:neocomplete#force_omni_input_patterns')
+"   "   let g:neocomplete#force_omni_input_patterns = {}
+"   " endif
+"   " let g:neocomplete#force_omni_input_patterns.typescript = '[^. *\t]\.\w*\|\h\w*::'
+"
+" "}}}
+"
+" " Emmet customization -------------------------------------------------------{{{
+" " Enable Emmet in all modes
+" " Remapping <C-y>, just doesn't cut it.
+"   function! s:expand_html_tab()
+" " try to determine if we're within quotes or tags.
+" " if so, assume we're in an emmet fill area.
+"    let line = getline('.')
+"    if col('.') < len(line)
+"      let line = matchstr(line, '[">][^<"]*\%'.col('.').'c[^>"]*[<"]')
+"      if len(line) >= 2
+"         return "\<C-n>"
+"      endif
+"    endif
+" " expand anything emmet thinks is expandable.
+"   if emmet#isExpandable()
+"     return "\<C-y>,"
+"   endif
+" " return a regular tab character
+"   return "\<tab>"
+"   endfunction
+"   autocmd FileType html,markdown imap <buffer><expr><tab> <sid>expand_html_tab()
+"   let g:user_emmet_mode='a'
+"   let g:user_emmet_complete_tag = 1
+"   let g:user_emmet_install_global = 0
+"   autocmd FileType html,css EmmetInstall
 "}}}
 
 " unite ---------------------------------------------------------------------{{{
@@ -495,55 +536,55 @@ let g:unite_data_directory='~/.nvim/.cache/unite'
 let g:unite_source_history_yank_enable=1
 let g:unite_prompt='» '
 let g:unite_source_rec_async_command =['ag', '--follow', '--nocolor', '--nogroup','--hidden', '-g', '', '--ignore', '.git', '--ignore', '*.png', '--ignore', 'lib']
-
-nnoremap <silent> <c-p> :Unite -auto-resize -start-insert -direction=botright file_rec/async<CR>
-nnoremap <silent> <leader>i :Unite -auto-resize -start-insert -direction=botright colorscheme<CR>
-nnoremap <silent> <leader>u :Unite neobundle/update<CR>
-
-" Custom mappings for the unite buffer
-autocmd FileType unite call s:unite_settings()
-
-function! s:unite_settings() "{{{
-  " Enable navigation with control-j and control-k in insert mode
-  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
-  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
-endfunction "}}}
-
-" Git from unite...ERMERGERD ------------------------------------------------{{{
-let g:unite_source_menu_menus = {} " Useful when building interfaces at appropriate places
-let g:unite_source_menu_menus.git = {
-  \ 'description' : 'Fugitive interface',
-  \}
-let g:unite_source_menu_menus.git.command_candidates = [
-  \[' git status', 'Gstatus'],
-  \[' git diff', 'Gvdiff'],
-  \[' git commit', 'Gcommit'],
-  \[' git stage/add', 'Gwrite'],
-  \[' git checkout', 'Gread'],
-  \[' git rm', 'Gremove'],
-  \[' git cd', 'Gcd'],
-  \[' git push', 'exe "Git! push " input("remote/branch: ")'],
-  \[' git pull', 'exe "Git! pull " input("remote/branch: ")'],
-  \[' git pull rebase', 'exe "Git! pull --rebase " input("branch: ")'],
-  \[' git checkout branch', 'exe "Git! checkout " input("branch: ")'],
-  \[' git fetch', 'Gfetch'],
-  \[' git merge', 'Gmerge'],
-  \[' git browse', 'Gbrowse'],
-  \[' git head', 'Gedit HEAD^'],
-  \[' git parent', 'edit %:h'],
-  \[' git log commit buffers', 'Glog --'],
-  \[' git log current file', 'Glog -- %'],
-  \[' git log last n commits', 'exe "Glog -" input("num: ")'],
-  \[' git log first n commits', 'exe "Glog --reverse -" input("num: ")'],
-  \[' git log until date', 'exe "Glog --until=" input("day: ")'],
-  \[' git log grep commits',  'exe "Glog --grep= " input("string: ")'],
-  \[' git log pickaxe',  'exe "Glog -S" input("string: ")'],
-  \[' git index', 'exe "Gedit " input("branchname\:filename: ")'],
-  \[' git mv', 'exe "Gmove " input("destination: ")'],
-  \[' git grep',  'exe "Ggrep " input("string: ")'],
-  \[' git prompt', 'exe "Git! " input("command: ")'],
-  \] " Append ' --' after log to get commit info commit buffers
-nnoremap <silent> <Leader>g :Unite -direction=botright -silent -buffer-name=git -start-insert menu:git<CR>
+"
+" nnoremap <silent> <c-p> :Unite -auto-resize -start-insert -direction=botright file_rec/async<CR>
+" nnoremap <silent> <leader>i :Unite -auto-resize -start-insert -direction=botright colorscheme<CR>
+" nnoremap <silent> <leader>u :Unite neobundle/update<CR>
+"
+" " Custom mappings for the unite buffer
+" autocmd FileType unite call s:unite_settings()
+"
+" function! s:unite_settings() "{{{
+"   " Enable navigation with control-j and control-k in insert mode
+"   imap <buffer> <C-j>   <Plug>(unite_select_next_line)
+"   imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+" endfunction "}}}
+"
+" " Git from unite...ERMERGERD ------------------------------------------------{{{
+" let g:unite_source_menu_menus = {} " Useful when building interfaces at appropriate places
+" let g:unite_source_menu_menus.git = {
+"   \ 'description' : 'Fugitive interface',
+"   \}
+" let g:unite_source_menu_menus.git.command_candidates = [
+"   \[' git status', 'Gstatus'],
+"   \[' git diff', 'Gvdiff'],
+"   \[' git commit', 'Gcommit'],
+"   \[' git stage/add', 'Gwrite'],
+"   \[' git checkout', 'Gread'],
+"   \[' git rm', 'Gremove'],
+"   \[' git cd', 'Gcd'],
+"   \[' git push', 'exe "Git! push " input("remote/branch: ")'],
+"   \[' git pull', 'exe "Git! pull " input("remote/branch: ")'],
+"   \[' git pull rebase', 'exe "Git! pull --rebase " input("branch: ")'],
+"   \[' git checkout branch', 'exe "Git! checkout " input("branch: ")'],
+"   \[' git fetch', 'Gfetch'],
+"   \[' git merge', 'Gmerge'],
+"   \[' git browse', 'Gbrowse'],
+"   \[' git head', 'Gedit HEAD^'],
+"   \[' git parent', 'edit %:h'],
+"   \[' git log commit buffers', 'Glog --'],
+"   \[' git log current file', 'Glog -- %'],
+"   \[' git log last n commits', 'exe "Glog -" input("num: ")'],
+"   \[' git log first n commits', 'exe "Glog --reverse -" input("num: ")'],
+"   \[' git log until date', 'exe "Glog --until=" input("day: ")'],
+"   \[' git log grep commits',  'exe "Glog --grep= " input("string: ")'],
+"   \[' git log pickaxe',  'exe "Glog -S" input("string: ")'],
+"   \[' git index', 'exe "Gedit " input("branchname\:filename: ")'],
+"   \[' git mv', 'exe "Gmove " input("destination: ")'],
+"   \[' git grep',  'exe "Ggrep " input("string: ")'],
+"   \[' git prompt', 'exe "Git! " input("command: ")'],
+"   \] " Append ' --' after log to get commit info commit buffers
+" nnoremap <silent> <Leader>g :Unite -direction=botright -silent -buffer-name=git -start-insert menu:git<CR>
 "}}}
 "}}}
 
@@ -599,6 +640,9 @@ nmap <leader>9 <Plug>AirlineSelectTab9
   endfunction
   command JscsFix :call JscsFix()
   noremap <leader>j :JscsFix<CR>
+
+  let g:neomake_cpp_enable_markers=['g++']
+  let g:neomake_cpp_gcc_args = ["-std=c++14", "-Wextra", "-Wall", "-fsanitize=undefined","-g"]
 "}}}
 
 " Insert headers -------------------------------------------------------------------{{{
