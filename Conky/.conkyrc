@@ -60,8 +60,9 @@ Swap usage:$alignr$swap/$swapmax
 Disk usage:$alignr${fs_used /}/${fs_size /}
 CPU usage:$alignr${cpu cpu0}%
 ${hr}
-CPU1:${alignr}${cpubar cpu0 8,60}
-CPU2:${alignr}${cpubar cpu1 8,60}
+#CPU1:${alignr}${cpubar cpu0 8,60}
+
+#CPU2:${alignr}${cpubar cpu1 8,60}
 Temp:${alignr}${execi 10 sensors | grep ^temp1 | tail -n 1 |awk '{print $2}'}
 RAM: $memperc% ${alignr}${membar 8,60}
 Disk usage:$alignr${fs_bar 8,60}
@@ -69,7 +70,8 @@ ${if_up wlan0}
 802.11 quality:$alignr${wireless_link_bar 8,60 wlan0}
 802.11 bitrate:$alignr${wireless_bitrate wlan0}
 ${endif}${if_up tun0} VPN is active. ${endif}
-${hr}
+CPU $color3${alignr}${cpugraph cpu0 8,90}
+#${hr}
 #Temp:${execi sensors | cut -c 15-16}°C
 #CH1:${color #73AEB4} ${coretemp.0}r${color #7D8C93}
 #S H O R T C U T    K E Y S
