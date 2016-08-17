@@ -53,12 +53,12 @@ plugins=(git)
 
 # User configuration
 
-export PATH="/home/elsuizo/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"
+  export PATH="/home/elsuizo/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # CIAA
 
-export PATH=$PATH:$HOME/Programacion/CIAA/gcc-arm-none-eabi-5_3-2016q1/bin/:/home/elsuizo/Programacion/CIAA/openocd-0.9.0/src
+ export PATH=$PATH:$HOME/Programacion/CIAA/gcc-arm-none-eabi-5_2-2015q4/bin/:/home/elsuizo/Programacion/CIAA/openocd-0.9.0/src
 
 source $ZSH/oh-my-zsh.sh
 
@@ -94,6 +94,11 @@ alias drop="dropbox start"
 alias supermake="make clean && make generate && make && make download"
 # alias para compilar la educiaa baremetal 
 alias makes="make && make download"
+#clang alias
+alias clang++-3.6="clang++"
+
+#Rust paths
+export PATH="/home/elsuizo/.cargo/bin:$PATH"
 
 # .bash_aliases
 export PATH="/home/elsuizo/.pyenv/bin:$PATH"
