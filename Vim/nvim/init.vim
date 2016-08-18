@@ -111,6 +111,9 @@
   call dein#add('Numkil/ag.nvim') 
   call dein#add('matze/vim-move') 
   call dein#add('AlessandroYorba/Alduin') " Alduin colorscheme
+  call dein#add('Raimondi/delimitMate') " autopairs
+  call dein#add('Konfekt/FastFold') " fold
+  
   "call dein#add('octol/vim-cpp-enhanced-highlight') " C++14 colorscheme
 "-------------------------------------------------------------------------
 
@@ -204,6 +207,7 @@
 "-------------------------------------------------------------------------
 "elsuizo adds
 "-------------------------------------------------------------------------
+autocmd FileType python setlocal completeopt-=preview " for jedi popup doc disable
 set history=700
 " Fast saving
 nmap <leader>w :w!<cr>
@@ -260,9 +264,9 @@ nmap <leader>F :NERDTreeFind<CR>
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
 " " for close automatically (), [], {}
-imap ( ()<left>
-imap { {}<left> 
-imap [ []<left>
+" imap ( ()<left>
+" imap { {}<left> 
+" imap [ []<left>
 " inoremap ( ()<Esc>i
 " inoremap { {}<Esc>i
 
