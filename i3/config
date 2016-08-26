@@ -101,7 +101,7 @@ bindsym $mod+a focus parent
 set $workspace1 "1:Internet "
 set $workspace2 "2:Programming "
 set $workspace3 "3:Files "
-set $workspace4 "4:Consoles "
+set $workspace4 "4:Lectures "
 set $workspace7 "7:Music "
 #-------------------------------------------------------------------------
 # switch to workspace
@@ -179,8 +179,8 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #d
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+# bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+# bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
 # Touchpad controls
 #bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
@@ -195,11 +195,15 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym $mod+f exec pcmanfm
 assign [class="Pcmanfm"] $workspace3
 
+# pdfs
+assign [class="Zathura"] $workspace4
 # browser
 bindsym $mod+b exec firefox
 
 # music
-bindsym $mod+m exec i3-sensible-terminal -e cmus 
+bindsym $mod+m exec i3-sensible-terminal -e cmus
+# power off gui
+bindsym $mod+x exec cbpp-exit
 
 # screenshot
 bindsym XF86ScreenSaver exec xfce4-screenshooter
