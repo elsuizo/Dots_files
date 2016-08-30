@@ -30,10 +30,11 @@ font pango: DejaVu Sans Mono 8
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-#smart_borders on # que estara en otra version
+smart_borders on # que estara en otra version
+#smart_gaps on
 # start a terminal
-smart_gaps on
 bindsym $mod+Return exec i3-sensible-terminal
+#bindsym $mod+Return exec xfce4-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -207,3 +208,8 @@ bindsym $mod+x exec cbpp-exit
 
 # screenshot
 bindsym XF86ScreenSaver exec xfce4-screenshooter
+
+# alsamixer
+bindsym $mod+o exec i3-sensible-terminal -e alsamixer
+# no borders
+for_window [class="^.*"] border pixel 3
