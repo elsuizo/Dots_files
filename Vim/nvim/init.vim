@@ -114,6 +114,7 @@
   call dein#add('Raimondi/delimitMate') " autopairs
   call dein#add('Konfekt/FastFold') " fold
   call dein#add('alaric/neovim-visor') " open the terminal split
+  call dein#add('wincent/scalpel') " search and replace
   "call dein#add('SirVer/ultisnips') " Ultisnip (no anda por ahora)
   "call dein#add('derekwyatt/vim-fswitch') " Switch between .c and .h
   "call dein#add('octol/vim-cpp-enhanced-highlight') " C++14 colorscheme
@@ -362,20 +363,20 @@ vnoremap <c-/> :TComment<cr>
 :nnoremap <A-l> <C-w>l
 autocmd FileType typescript nmap <buffer> <Leader>T : <C-u>echo tsuquyomi#hint()<CR>
 
-nnoremap <leader>e :call <SID>SynStack()<CR>
-function! <SID>SynStack()
-   if !exists("*synstack")
-      return
-   endif
-   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc
-
-function! s:PlaceholderImgTag(size)
-   let url = 'http://dummyimage.com/' . a:size . '/000000/555555'
-   let [width,height] = split(a:size, 'x')
-   execute "normal a<img src=\"".url."\" width=\"".width."\" height=\"".height."\" />"
-endfunction
-command! -nargs=1 PlaceholderImgTag call s:PlaceholderImgTag(<f-args>)
+" nnoremap <leader>e :call <SID>SynStack()<CR>
+" function! <SID>SynStack()
+"    if !exists("*synstack")
+"       return
+"    endif
+"    echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+" endfunc
+"
+" function! s:PlaceholderImgTag(size)
+"    let url = 'http://dummyimage.com/' . a:size . '/000000/555555'
+"    let [width,height] = split(a:size, 'x')
+"    execute "normal a<img src=\"".url."\" width=\"".width."\" height=\"".height."\" />"
+" endfunction
+" command! -nargs=1 PlaceholderImgTag call s:PlaceholderImgTag(<f-args>)
 
 " }}}
 
