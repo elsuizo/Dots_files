@@ -13,8 +13,8 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-#font pango:monospace 8
-font pango: DejaVu Sans Mono 8
+font pango:monospace 8
+#font pango: DejaVu Sans Mono 8
 #font pango: Source Sans Pro Regular 8
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -31,10 +31,11 @@ font pango: DejaVu Sans Mono 8
 floating_modifier $mod
 
 smart_borders on # que estara en otra version
-#smart_gaps on
+smart_gaps on
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
-#bindsym $mod+Return exec xfce4-terminal
+#bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec xfce4-terminal
+#bindsym $mod+Return exec gnome-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -140,11 +141,11 @@ bar {
 	#status_command conky -q /home/elsuizo/.conkyrc
 #	tray_output none
 #	position top
-#	mode hide 
-	mode dock
+	mode hide 
+#	mode dock
 
   colors {
-	statusline	#76c2d6
+	statusline	#5486C0
 	background	#191919
 	
 # class                 	                 border 		backgrd 	text
@@ -221,7 +222,7 @@ assign [class="Zathura"] $workspace4
 bindsym $mod+b exec firefox
 
 # music
-bindsym $mod+m exec i3-sensible-terminal -e cmus
+bindsym $mod+m exec xfce4-terminal -e cmus
 # power off gui
 bindsym $mod+x exec cbpp-exit
 
@@ -231,4 +232,12 @@ bindsym XF86ScreenSaver exec xfce4-screenshooter
 # alsamixer
 bindsym $mod+o exec i3-sensible-terminal -e alsamixer
 # no borders
-for_window [class="^.*"] border pixel 3
+for_window [class="^.*"] border pixel 2
+#CHANGING BORDER STYLE
+bindsym $mod+t border normal
+bindsym $mod+y border 1pixel
+bindsym $mod+u border none
+
+#new_window 1pixel
+
+exec --no-startup-id conky
