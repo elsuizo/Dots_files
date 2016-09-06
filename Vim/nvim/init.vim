@@ -113,7 +113,9 @@
   call dein#add('AlessandroYorba/Alduin') " Alduin colorscheme
   call dein#add('Raimondi/delimitMate') " autopairs
   call dein#add('Konfekt/FastFold') " fold
-  
+  call dein#add('alaric/neovim-visor') " open the terminal split
+  "call dein#add('SirVer/ultisnips') " Ultisnip (no anda por ahora)
+  "call dein#add('derekwyatt/vim-fswitch') " Switch between .c and .h
   "call dein#add('octol/vim-cpp-enhanced-highlight') " C++14 colorscheme
 "-------------------------------------------------------------------------
 
@@ -132,9 +134,14 @@
   set noswapfile
   filetype on
   set relativenumber number
+  "map cc <Nop>
   " set tabstop=2 shiftwidth=2 expandtab
   " set conceallevel=0
-
+   "map <F4> :vs %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
+   "map <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
+  " Height of the command bar
+  set cmdheight=1
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
   """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   " => Text, tab and indent related
   """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -207,6 +214,10 @@
 "-------------------------------------------------------------------------
 "elsuizo adds
 "-------------------------------------------------------------------------
+
+" When you press <leader>r you can search and replace the selected text
+vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
+
 autocmd FileType python setlocal completeopt-=preview " for jedi popup doc disable
 set history=700
 " Fast saving
@@ -235,6 +246,19 @@ map <leader>sn ]s
 map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => White spaces and tabs
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Tell Vim which characters to show for expanded TABs,
+" trailing whitespace, and end-of-lines. VERY useful!
+if &listchars ==# 'eol:$'
+   set listchars=trail:-,nbsp:+
+endif
+set list                " Show problematic characters.
+
+" Also highlight all tabs and trailing whitespace characters.
+highlight ExtraWhitespace ctermbg=red guibg=darkgreen
+match ExtraWhitespace /\s\+$\|\t/
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Fast editing and reloading of vimrc configs TODO(hacer que ande)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -274,28 +298,28 @@ map <silent> <leader><cr> :noh<cr>
 " nnoremap Q <nop>
 "map q <Nop>
 " exit insert, dd line, enter insert
-  inoremap <c-d> <esc>ddi
+inoremap <c-d> <esc>ddi
 " Navigate between display lines
-  noremap  <silent> <Up>   gk
-  noremap  <silent> <Down> gj
-  noremap  <silent> k gk
-  noremap  <silent> j gj
-  noremap  <silent> <Home> g<Home>
-  noremap  <silent> <End>  g<End>
-  inoremap <silent> <Home> <C-o>g<Home>
-  inoremap <silent> <End>  <C-o>g<End>
+noremap  <silent> <Up>   gk
+noremap  <silent> <Down> gj
+noremap  <silent> k gk
+noremap  <silent> j gj
+noremap  <silent> <Home> g<Home>
+noremap  <silent> <End>  g<End>
+inoremap <silent> <Home> <C-o>g<Home>
+inoremap <silent> <End>  <C-o>g<End>
 " copy current files path to clipboard
-  nmap cp :let @+ = expand("%") <cr>
+nmap cp :let @+ = expand("%") <cr>
 
 " ,f to format code, requires formatters: read the docs
- " noremap <leader>f :Autoformat<CR>
-  noremap <leader>TM :TableModeToggle<CR>
+" noremap <leader>f :Autoformat<CR>
+noremap <leader>TM :TableModeToggle<CR>
 " exit insert, dd line, enter insert
-  inoremap <c-d> <esc>ddi
-  noremap H ^
-  noremap L g_
-  noremap J 5j
-  noremap K 5k
+inoremap <c-d> <esc>ddi
+noremap H ^
+noremap L g_
+noremap J 5j
+noremap K 5k
 " this is the best, let me tell you why
 " how annoying is that everytime you want to do something in vim
 " you have to do shift-; to get :, can't we just do ;?
@@ -303,45 +327,54 @@ map <silent> <leader><cr> :noh<cr>
 " if you do have a plugin that needs ;, you can just wap the mapping
 " nnoremap : ;
 " give it a try and you will like it
-  nnoremap ; :
+nnoremap ; :
 "complete files
-  inoremap <c-f> <c-x><c-f> 
+inoremap <c-f> <c-x><c-f> 
 " Copy to osx clipboard
-  vnoremap <C-c> "+y<CR>
-  vnoremap y "*y<CR>
-  nnoremap Y "*Y<CR>
-  let g:multi_cursor_next_key='<C-n>'
-  let g:multi_cursor_prev_key='<C-p>'
-  let g:multi_cursor_skip_key='<C-x>'
-  let g:multi_cursor_quit_key='<Esc>'
+vnoremap <C-c> "+y<CR>
+vnoremap y "*y<CR>
+nnoremap Y "*Y<CR>
+let g:multi_cursor_next_key='<C-n>'
+let g:multi_cursor_prev_key='<C-p>'
+let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<Esc>'
 " Align blocks of text and keep them selected
-  vmap < <gv
-  vmap > >gv
-  nnoremap <leader>d "_d
-  vnoremap <leader>d "_d
-  vnoremap <c-/> :TComment<cr>
-  " ino " ""<left>
-  " ino ' ''<left>
-  " ino ( ()<left>
-  " ino [ []<left>
-  " ino { {}<left>
-  " ino {<CR> {<CR>}<ESC>O
-  " map <esc> :noh<cr>
+vmap < <gv
+vmap > >gv
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
+vnoremap <c-/> :TComment<cr>
+" ino " ""<left>
+" ino ' ''<left>
+" ino ( ()<left>
+" ino [ []<left>
+" ino { {}<left>
+" ino {<CR> {<CR>}<ESC>O
+" map <esc> :noh<cr>
+" terminal mappings
+:tnoremap <A-h> <C-\><C-n><C-w>h
+:tnoremap <A-j> <C-\><C-n><C-w>j
+:tnoremap <A-k> <C-\><C-n><C-w>k
+:tnoremap <A-l> <C-\><C-n><C-w>l
+:nnoremap <A-h> <C-w>h
+:nnoremap <A-j> <C-w>j
+:nnoremap <A-k> <C-w>k
+:nnoremap <A-l> <C-w>l
 autocmd FileType typescript nmap <buffer> <Leader>T : <C-u>echo tsuquyomi#hint()<CR>
 
 nnoremap <leader>e :call <SID>SynStack()<CR>
 function! <SID>SynStack()
-  if !exists("*synstack")
-    return
-  endif
-  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+   if !exists("*synstack")
+      return
+   endif
+   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
 
 function! s:PlaceholderImgTag(size)
-  let url = 'http://dummyimage.com/' . a:size . '/000000/555555'
-  let [width,height] = split(a:size, 'x')
-  execute "normal a<img src=\"".url."\" width=\"".width."\" height=\"".height."\" />"
-  endfunction
+   let url = 'http://dummyimage.com/' . a:size . '/000000/555555'
+   let [width,height] = split(a:size, 'x')
+   execute "normal a<img src=\"".url."\" width=\"".width."\" height=\"".height."\" />"
+endfunction
 command! -nargs=1 PlaceholderImgTag call s:PlaceholderImgTag(<f-args>)
 
 " }}}
@@ -475,7 +508,7 @@ call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', '#141e23')
 
 " Snipppets -----------------------------------------------------------------{{{
 
-" Enable snipMate compatibility feature.
+"Enable snipMate compatibility feature.
 let g:neosnippet#enable_snipmate_compatibility = 1
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -491,6 +524,13 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)"
 \: "\<TAB>"
 
+" " deoplete + neosnippet + autopairs
+" let g:AutoPairsMapCR=0
+" let g:deoplete#enable_at_startup = 1
+" let g:deoplete#enable_smart_case = 1
+" imap <expr><TAB> pumvisible() ? "\<C-n>" : neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+" imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+" inoremap <expr><CR> pumvisible() ? deoplete#mappings#close_popup() : "\<CR>"
 "}}}
 
 " " Typescript & Javscript omni complete --------------------------------------{{{
@@ -614,6 +654,7 @@ cnoreabbrev <expr> x getcmdtype() == ":" && getcmdline() == 'x' ? 'nos vemos gua
 nmap <leader>t :term<cr>
 nmap <leader>, :bnext<CR>
 nmap <leader>. :bprevious<CR>
+nmap <leader>b :b#<CR>
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 nmap <leader>1 <Plug>AirlineSelectTab1
 nmap <leader>2 <Plug>AirlineSelectTab2
@@ -652,6 +693,32 @@ nmap <leader>9 <Plug>AirlineSelectTab9
 " Insert headers -------------------------------------------------------------------{{{
 
 
+function! VisualSelection(direction, extra_filter) range
+    let l:saved_reg = @"
+    execute "normal! vgvy"
+
+    let l:pattern = escape(@", '\\/.*$^~[]')
+    let l:pattern = substitute(l:pattern, "\n$", "", "")
+
+    if a:direction == 'b'
+        execute "normal ?" . l:pattern . "^M"
+    elseif a:direction == 'gv'
+        call CmdLine("Ack \"" . l:pattern . "\" " )
+    elseif a:direction == 'replace'
+        call CmdLine("%s" . '/'. l:pattern . '/')
+    elseif a:direction == 'f'
+        execute "normal /" . l:pattern . "^M"
+    endif
+
+    let @/ = l:pattern
+    let @" = l:saved_reg
+endfunction
+
+function! CmdLine(str)
+    exe "menu Foo.Bar :" . a:str
+    emenu Foo.Bar
+    unmenu Foo
+endfunction 
 "Reads the template file replacing the tags by the actual
 " information and insert the result at the beginning of the buffer. At
 " the end, creates two blank lines at the end of the file and
@@ -671,6 +738,7 @@ function! s:insert_description()
 endfunction
 autocmd BufNewFile *.{c++,cpp,cc,c,h,hpp} call <SID>insert_description()
 
+" TODO(elsuizo): hacer una sola puta funcion
 " Headers for Julia and Python
 function! s:insert_description_julia()
     let template = $HOME . "/.vim/template/julia-python.template"
@@ -686,4 +754,19 @@ function! s:insert_description_julia()
     execute "normal! Go\<Esc>k"
 endfunction
 autocmd BufNewFile *.{jl,py} call <SID>insert_description_julia()
+
+function! s:insert_description_tex()
+    let template = $HOME . "/.vim/template/tex.template"
+    let file_name = expand("%:t") " Get file name without path
+    let date = strftime("%D %T") " Get the current year in format YYYY
+    let i = 0
+    for line in readfile(template)
+        let line = substitute(line, "<file_name>", file_name, "ge")
+        let line = substitute(line, "<date>", date, "ge")
+        call append(i, line)
+        let i += 1
+    endfor
+    execute "normal! Go\<Esc>k"
+endfunction
+autocmd BufNewFile *.{tex} call <SID>insert_description_tex()
 "}}}
