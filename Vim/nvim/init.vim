@@ -115,6 +115,7 @@
   call dein#add('Konfekt/FastFold') " fold
   call dein#add('alaric/neovim-visor') " open the terminal split
   call dein#add('wincent/scalpel') " search and replace
+  call dein#add('lervag/vimtex') " search and replace
   "call dein#add('SirVer/ultisnips') " Ultisnip (no anda por ahora)
   "call dein#add('derekwyatt/vim-fswitch') " Switch between .c and .h
   "call dein#add('octol/vim-cpp-enhanced-highlight') " C++14 colorscheme
@@ -582,18 +583,18 @@ let g:unite_source_history_yank_enable=1
 let g:unite_prompt='» '
 let g:unite_source_rec_async_command =['ag', '--follow', '--nocolor', '--nogroup','--hidden', '-g', '', '--ignore', '.git', '--ignore', '*.png', '--ignore', 'lib']
 "
-" nnoremap <silent> <c-p> :Unite -auto-resize -start-insert -direction=botright file_rec/async<CR>
-" nnoremap <silent> <leader>i :Unite -auto-resize -start-insert -direction=botright colorscheme<CR>
-" nnoremap <silent> <leader>u :Unite neobundle/update<CR>
+nnoremap <silent> <c-p> :Unite -auto-resize -start-insert -direction=botright file_rec/async<CR>
+nnoremap <silent> <leader>i :Unite -auto-resize -start-insert -direction=botright colorscheme<CR>
+nnoremap <silent> <leader>u :Unite neobundle/update<CR>
 "
 " " Custom mappings for the unite buffer
-" autocmd FileType unite call s:unite_settings()
+autocmd FileType unite call s:unite_settings()
 "
-" function! s:unite_settings() "{{{
-"   " Enable navigation with control-j and control-k in insert mode
-"   imap <buffer> <C-j>   <Plug>(unite_select_next_line)
-"   imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
-" endfunction "}}}
+function! s:unite_settings() "{{{
+  " Enable navigation with control-j and control-k in insert mode
+  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
+  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+endfunction "}}}
 "
 " " Git from unite...ERMERGERD ------------------------------------------------{{{
 " let g:unite_source_menu_menus = {} " Useful when building interfaces at appropriate places
