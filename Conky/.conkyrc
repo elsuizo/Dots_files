@@ -20,13 +20,17 @@ color3 F80E27 # Red
 background yes
 use_xft yes
 xftfont Liberation Sans:size=13
-
+own_window false
+background true
 xftalpha 1
 update_interval 1.0
 total_run_times 0
 own_window yes
 own_window_transparent yes
-own_window_type desktop
+# i3
+own_window_type override
+#openbox
+#own_window_type desktop
 #own_window_argb_visual yes
 own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
 double_buffer yes
@@ -37,7 +41,7 @@ draw_outline no
 draw_borders no
 draw_graph_borders no
 # original 656670
-default_color 656670
+default_color 000000
 default_shade_color 000000
 default_outline_color 828282
 alignment top_right
@@ -60,9 +64,8 @@ Swap usage:$alignr$swap/$swapmax
 Disk usage:$alignr${fs_used /}/${fs_size /}
 CPU usage:$alignr${cpu cpu0}%
 ${hr}
-#CPU1:${alignr}${cpubar cpu0 8,60}
-
-#CPU2:${alignr}${cpubar cpu1 8,60}
+CPU1:${alignr}${cpubar cpu0 8,60}
+CPU2:${alignr}${cpubar cpu1 8,60}
 Temp:${alignr}${execi 10 sensors | grep ^temp1 | tail -n 1 |awk '{print $2}'}
 RAM: $memperc% ${alignr}${membar 8,60}
 Disk usage:$alignr${fs_bar 8,60}
