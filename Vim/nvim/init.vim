@@ -1,10 +1,10 @@
 "
-"        .__               .__                     .__                       
-"   ____ |  |   ________ __|__|___________   ___  _|__| ____________   ____  
-" _/ __ \|  |  /  ___/  |  \  \___   /  _ \  \  \/ /  |/     \_  __ \_/ ___\ 
-" \  ___/|  |__\___ \|  |  /  |/    (  <_> )  \   /|  |  Y Y  \  | \/\  \___ 
+"        .__               .__                     ._
+"   ____ |  |   ________ __|__|___________   ___  _|__| ____________   ____
+" _/ __ \|  |  /  ___/  |  \  \___   /  _ \  \  \/ /  |/     \_  __ \_/ ___\
+" \  ___/|  |__\___ \|  |  /  |/    (  <_> )  \   /|  |  Y Y  \  | \/\  \___
 "  \___  >____/____  >____/|__/_____ \____/    \_/ |__|__|_|  /__|    \___  >
-"      \/          \/               \/                      \/            \/ 
+"      \/          \/               \/                      \/            \/
 "
 " Based in the config of: Mike Hartington
 " repo: https://github.com/mhartington/dotfiles/
@@ -116,6 +116,10 @@
   call dein#add('alaric/neovim-visor') " open the terminal split
   call dein#add('wincent/scalpel') " search and replace
   call dein#add('lervag/vimtex') " search and replace
+  call dein#add('JuliaEditorSupport/deoplete-julia') " search and replace
+  call dein#add('rust-lang/rust.vim') " Rust
+  call dein#add('vim-scripts/DoxygenToolkit.vim') " Doxygen
+  call dein#add('frankier/neovim-colors-solarized-truecolor-only') " solarized
   "call dein#add('SirVer/ultisnips') " Ultisnip (no anda por ahora)
   "call dein#add('derekwyatt/vim-fswitch') " Switch between .c and .h
   "call dein#add('octol/vim-cpp-enhanced-highlight') " C++14 colorscheme
@@ -210,13 +214,14 @@
   " elsuizo adds
   let g:cpp_experimental_template_highlight = 1
   let g:cpp_class_scope_highlight = 1
+
 " }}}
 "
 " System mappings  ----------------------------------------------------------{{{
 "-------------------------------------------------------------------------
 "elsuizo adds
 "-------------------------------------------------------------------------
-
+nnoremap Q !!$SHELL <CR>
 " When you press <leader>r you can search and replace the selected text
 vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 
@@ -287,6 +292,8 @@ inoremap $t <><esc>i
 " Tagbar for los pibes
 nmap <F8> :Tagbar<CR>
 nmap <leader>F :NERDTreeFind<CR>
+" Doxygen generate
+nmap <leader>D :Dox<cr>
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
 " " for close automatically (), [], {}
@@ -364,6 +371,10 @@ vnoremap <c-/> :TComment<cr>
 :nnoremap <A-l> <C-w>l
 autocmd FileType typescript nmap <buffer> <Leader>T : <C-u>echo tsuquyomi#hint()<CR>
 
+let g:tagbar_type_julia = {
+    \ 'ctagstype' : 'julia',
+    \ 'kinds'     : ['a:abstract', 'i:immutable', 't:type', 'f:function', 'm:macro']
+    \ }
 " nnoremap <leader>e :call <SID>SynStack()<CR>
 " function! <SID>SynStack()
 "    if !exists("*synstack")
