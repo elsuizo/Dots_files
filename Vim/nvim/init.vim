@@ -120,7 +120,12 @@
   call dein#add('rust-lang/rust.vim') " Rust
   call dein#add('vim-scripts/DoxygenToolkit.vim') " Doxygen
   call dein#add('frankier/neovim-colors-solarized-truecolor-only') " solarized
+  call dein#add('junegunn/vim-easy-align') " align
+  call dein#add('derekwyatt/vim-fswitch') " Switch between .c and .h
+  call dein#add('morhetz/gruvbox') " Gruvbox colorscheme
+  call dein#add('chrisbra/csv.vim') " CSV data files
   "call dein#add('SirVer/ultisnips') " Ultisnip (no anda por ahora)
+  "call dein#add('ervandew/supertab') "
   "call dein#add('derekwyatt/vim-fswitch') " Switch between .c and .h
   "call dein#add('octol/vim-cpp-enhanced-highlight') " C++14 colorscheme
 "-------------------------------------------------------------------------
@@ -221,6 +226,14 @@
 "-------------------------------------------------------------------------
 "elsuizo adds
 "-------------------------------------------------------------------------
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+nnoremap <Leader>oc :e %<.c<CR>
+nnoremap <Leader>oC :e %<.cpp<CR>
+nnoremap <Leader>oh :e %<.h<CR>
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+" ejecute shell commands in nvim line text
 nnoremap Q !!$SHELL <CR>
 " When you press <leader>r you can search and replace the selected text
 vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
@@ -527,7 +540,7 @@ imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
 " Tell Neosnippet about the other snippets
-let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet-snippets/neosnippets, ~/Github/ionic-snippets, ~/.vim/bundle/angular-vim-snippets/snippets'
+let g:neosnippet#snippets_directory='~/.vim/.cache/init.vim/.dein/snippets, ~/.vim/bundle/angular-vim-snippets/snippets'
 
 " SuperTab like snippets behavior.
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
@@ -537,13 +550,13 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)"
 \: "\<TAB>"
 
-" " deoplete + neosnippet + autopairs
-" let g:AutoPairsMapCR=0
-" let g:deoplete#enable_at_startup = 1
-" let g:deoplete#enable_smart_case = 1
-" imap <expr><TAB> pumvisible() ? "\<C-n>" : neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-" imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
-" inoremap <expr><CR> pumvisible() ? deoplete#mappings#close_popup() : "\<CR>"
+" deoplete + neosnippet + autopairs
+let g:AutoPairsMapCR=0
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_smart_case = 1
+imap <expr><TAB> pumvisible() ? "\<C-n>" : neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+inoremap <expr><CR> pumvisible() ? deoplete#mappings#close_popup() : "\<CR>"
 "}}}
 
 " " Typescript & Javscript omni complete --------------------------------------{{{
@@ -656,7 +669,7 @@ nnoremap <silent> <C-;> :TmuxNavigatePrevious<cr>
 
 " vim-airline ---------------------------------------------------------------{{{
 let g:airline#extensions#tabline#enabled = 1
-set hidden
+"set hidden
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline_powerline_fonts = 1
@@ -678,7 +691,6 @@ nmap <leader>6 <Plug>AirlineSelectTab6
 nmap <leader>7 <Plug>AirlineSelectTab7
 nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
-"set guifont=Sauce\ Code\ Pro\ Nerd\ Font\ Complete:h18
 "}}}
 
 " Linting -------------------------------------------------------------------{{{
