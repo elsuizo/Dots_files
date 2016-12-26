@@ -25,7 +25,10 @@ set $base0C #97e0ff
 set $base0D #97bbf7
 set $base0E #c0b7f9
 set $base0F #fcc09e
-
+set $orange_color #ffa31a
+set $debian_red #ff1a1a
+set $blue_piola #1a1aff
+set $green_piola #00b33c
 
 set $mod Mod4
 
@@ -268,8 +271,8 @@ exec --no-startup-id conky
 
 # Widow Colours
 #                         border  background text    indicator
-  client.focused          $base03 $base01    $base07 $base0F
-  client.focused_inactive $base07 $base02    $base03 $base0F
+  client.focused          $base04 $base00    $base07 $base0F
+  client.focused_inactive $base06 $base02    $base03 $base0F
   client.unfocused        $base02 $base02    $base03 $base0F
   client.urgent           $base02 $base08    $base00 $base0F
 
