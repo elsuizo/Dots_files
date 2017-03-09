@@ -8,6 +8,28 @@
 # i3 config file (v4)
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
+# colors
+set $base00 #101218
+set $base01 #1f222d
+set $base02 #252936
+set $base03 #7780a1
+set $base04 #C0C5CE
+set $base05 #d1d4e0
+set $base06 #C9CCDB
+set $base07 #ffffff
+set $base08 #ee829f
+set $base09 #f99170
+set $base0A #ffefcc
+set $base0B #a5ffe1
+set $base0C #97e0ff
+set $base0D #97bbf7
+set $base0E #c0b7f9
+set $base0F #fcc09e
+set $orange_color #ffa31a
+set $debian_red #ff1a1a
+set $blue_piola #1a1aff
+set $green_piola #00b33c
+set $gris_piola #808080
 
 set $mod Mod4
 
@@ -30,8 +52,8 @@ font pango:monospace 8
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-smart_borders on # que estara en otra version
-smart_gaps on
+#smart_borders on # que estara en otra version
+#smart_gaps on
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
 #bindsym $mod+Return exec xfce4-terminal
@@ -47,7 +69,8 @@ bindsym $mod+Shift+q kill
 # installed.
 #bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 # fast alternative to i3-dmenu
-bindsym $mod+d exec --no-startup-id j4-dmenu-desktop
+#bindsym $mod+d exec --no-startup-id j4-dmenu-desktop
+bindsym $mod+d exec gmrun
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
@@ -101,11 +124,11 @@ bindsym $mod+a focus parent
 #-------------------------------------------------------------------------
 # variables
 #-------------------------------------------------------------------------
-set $workspace1 "1:Internet "
-set $workspace2 "2:Programming "
-set $workspace3 "3:Files "
-set $workspace4 "4:Lectures "
-set $workspace7 "7:Music "
+set $workspace1 "1:Internet"
+set $workspace2 "2:Programming"
+set $workspace3 "3:Files"
+set $workspace4 "4:Lectures"
+set $workspace7 "7:Music"
 #-------------------------------------------------------------------------
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -142,7 +165,7 @@ bar {
 	#status_command conky -q /home/elsuizo/.conkyrc
 #	tray_output none
 #	position top
-	mode hide 
+	mode hide
 #	mode dock
 
   colors {
@@ -194,7 +217,7 @@ bindsym $mod+r mode "resize"
 #-------------------------------------------------------------------------
 # wallpaper
 #exec_always feh --bg-scale /home/elsuizo/images/wallpapers/wallup-332153.jpg
-exec_always --no-startup-id feh --no-fehbg --bg-scale /home/elsuizo/Pictures/Wallpapers/debian_black.jpg
+exec_always --no-startup-id feh --no-fehbg --bg-scale /home/elsuizo/Images/Wallpapers/debian_black.jpg
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
@@ -216,8 +239,8 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym $mod+F12 exec xfce4-screenshooter
 
 # file mannager
-bindsym $mod+f exec pcmanfm
-assign [class="Pcmanfm"] $workspace3
+bindsym $mod+f exec thunar
+assign [class="Thunar"] $workspace3
 
 # pdfs
 assign [class="Zathura"] $workspace4
@@ -225,6 +248,7 @@ assign [class="Zathura"] $workspace4
 bindsym $mod+b exec firefox
 
 # music
+#bindsym $mod+m exec xfce4-terminal -e cmus
 bindsym $mod+m exec gnome-terminal -e cmus
 # power off gui
 #bindsym $mod+x exec cbpp-exit
@@ -235,16 +259,24 @@ bindsym XF86ScreenSaver exec xfce4-screenshooter
 # alsamixer
 bindsym $mod+o exec i3-sensible-terminal -e alsamixer
 # no borders
-for_window [class="^.*"] border pixel 2
+for_window [class="Thunar"] border pixel 3
+for_window [class="Zathura"] border pixel 3
+#for_window [class="Gnome-terminal"] border pixel 3
 #CHANGING BORDER STYLE
 bindsym $mod+t border normal
 bindsym $mod+y border 1pixel
 bindsym $mod+u border none
 
-#new_window 1pixel
+new_window none
 
 exec --no-startup-id conky
 
+# Widow Colours
+#                         border  background text    indicator
+  client.focused          $base01 $base01    $base07 $base0F
+  client.focused_inactive $base06 $gris_piola    $base03 $base0F
+  client.unfocused        $base02 $base02    $base03 $base0F
+  client.urgent           $base02 $base08    $base00 $base0F
 
 
 # Create Log out, Reboot, Poweroff bindings
