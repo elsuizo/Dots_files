@@ -291,3 +291,8 @@ mode "Exit (L)ogout, (R)eboot, (P)oweroff" {
 }
 
 bindsym $mod+x mode "Exit (L)ogout, (R)eboot, (P)oweroff"
+#-------------------------------------------------------------------------
+# ONLY for notebook
+#-------------------------------------------------------------------------
+# for the fucking network mannager
+exec --no-startup-id nm-applet
