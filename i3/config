@@ -128,6 +128,7 @@ set $workspace1 "1:Internet"
 set $workspace2 "2:Programming"
 set $workspace3 "3:Files"
 set $workspace4 "4:Lectures"
+set $workspace5 "5:Telegram"
 set $workspace7 "7:Music"
 #-------------------------------------------------------------------------
 # switch to workspace
@@ -135,7 +136,7 @@ bindsym $mod+1 workspace $workspace1
 bindsym $mod+2 workspace $workspace2
 bindsym $mod+3 workspace $workspace3
 bindsym $mod+4 workspace $workspace4
-bindsym $mod+5 workspace 5
+bindsym $mod+5 workspace $workspace5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace $workspace7
 bindsym $mod+8 workspace 8
@@ -241,6 +242,9 @@ bindsym $mod+F12 exec xfce4-screenshooter
 # file mannager
 bindsym $mod+f exec thunar
 assign [class="Thunar"] $workspace3
+# Telegram
+bindsym $mod+t exec Telegram
+assign [class="Telegram"] $workspace5
 
 # pdfs
 assign [class="Zathura"] $workspace4
@@ -263,7 +267,7 @@ for_window [class="Thunar"] border pixel 3
 for_window [class="Zathura"] border pixel 3
 #for_window [class="Gnome-terminal"] border pixel 3
 #CHANGING BORDER STYLE
-bindsym $mod+t border normal
+bindsym $mod+i border normal
 bindsym $mod+y border 1pixel
 bindsym $mod+u border none
 
