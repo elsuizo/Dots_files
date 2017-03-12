@@ -148,7 +148,7 @@ bindsym $mod+Shift+1 move container to workspace $workspace1
 bindsym $mod+Shift+2 move container to workspace $workspace2
 bindsym $mod+Shift+3 move container to workspace $workspace3
 bindsym $mod+Shift+4 move container to workspace $workspace4
-bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+5 move container to workspace $workspace5
 bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace $workspace7
 bindsym $mod+Shift+8 move container to workspace 8
@@ -246,9 +246,10 @@ assign [class="Thunar"] $workspace3
 bindsym $mod+t exec Telegram
 assign [class="Telegram"] $workspace5
 
-# pdfs
+# open pdfs in workspace4
 assign [class="Zathura"] $workspace4
-# browser
+
+# browser Firefox shortcut
 bindsym $mod+b exec firefox
 
 # music
@@ -277,8 +278,8 @@ exec --no-startup-id conky
 
 # Widow Colours
 #                         border  background text    indicator
-  client.focused          $base01 $base01    $base07 $base0F
-  client.focused_inactive $base06 $gris_piola    $base03 $base0F
+  client.focused          $base01 $gris_piola    $base07 $base0F
+  client.focused_inactive $base06 $orange_color    $base03 $base0F
   client.unfocused        $base02 $base02    $base03 $base0F
   client.urgent           $base02 $base08    $base00 $base0F
 
@@ -295,8 +296,3 @@ mode "Exit (L)ogout, (R)eboot, (P)oweroff" {
 }
 
 bindsym $mod+x mode "Exit (L)ogout, (R)eboot, (P)oweroff"
-#-------------------------------------------------------------------------
-# ONLY for notebook
-#-------------------------------------------------------------------------
-# for the fucking network mannager
-exec --no-startup-id nm-applet
