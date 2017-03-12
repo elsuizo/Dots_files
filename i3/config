@@ -278,10 +278,10 @@ exec --no-startup-id conky
 
 # Widow Colours
 #                         border  background text    indicator
-  client.focused          $base01 $gris_piola    $base07 $base0F
+  client.focused          $base01 $gris_piola    $base03 $base0F
   client.focused_inactive $base06 $orange_color    $base03 $base0F
   client.unfocused        $base02 $base02    $base03 $base0F
-  client.urgent           $base02 $base08    $base00 $base0F
+  client.urgent           $base02 $debian_red    $base00 $base0F
 
 
 # Create Log out, Reboot, Poweroff bindings
