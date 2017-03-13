@@ -267,6 +267,7 @@ bindsym $mod+o exec i3-sensible-terminal -e alsamixer
 for_window [class="Thunar"] border pixel 3
 for_window [class="Zathura"] border pixel 3
 #for_window [class="Gnome-terminal"] border pixel 3
+
 #CHANGING BORDER STYLE
 bindsym $mod+i border normal
 bindsym $mod+y border 1pixel
@@ -274,7 +275,16 @@ bindsym $mod+u border none
 
 new_window none
 
+#-------------------------------------------------------------------------
+# Execute Conky
+#-------------------------------------------------------------------------
 exec --no-startup-id conky
+
+#-------------------------------------------------------------------------
+# ONLY for the notebook
+#-------------------------------------------------------------------------
+# start the networ mannager
+exec --no-startup-id nm-applet
 
 # Widow Colours
 #                         border  background text    indicator
