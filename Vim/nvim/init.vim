@@ -102,7 +102,7 @@
 "-------------------------------------------------------------------------
 "elsuizo adds
 "-------------------------------------------------------------------------
-  call dein#add('JuliaLang/julia-vim') " julia language support
+  call dein#add('JuliaEditorSupport/julia-vim') " julia language support
   call dein#add('majutsushi/tagbar') " TODO no se si anda bien
   call dein#add('jceb/vim-orgmode') 
   call dein#add('vim-scripts/utl.vim') 
@@ -114,9 +114,9 @@
   call dein#add('Raimondi/delimitMate') " autopairs
   call dein#add('Konfekt/FastFold') " fold
   call dein#add('alaric/neovim-visor') " open the terminal split
-  call dein#add('wincent/scalpel') " search and replace
-  call dein#add('lervag/vimtex') " search and replace
-  call dein#add('JuliaEditorSupport/deoplete-julia') " search and replace
+  call dein#add('wincent/scalpel') " nose
+  call dein#add('lervag/vimtex')
+  " call dein#add('JuliaEditorSupport/deoplete-julia') " search and replace
   call dein#add('rust-lang/rust.vim') " Rust
   call dein#add('vim-scripts/DoxygenToolkit.vim') " Doxygen
   call dein#add('frankier/neovim-colors-solarized-truecolor-only') " solarized
@@ -124,8 +124,12 @@
   call dein#add('derekwyatt/vim-fswitch') " Switch between .c and .h
   call dein#add('morhetz/gruvbox') " Gruvbox colorscheme
   call dein#add('chrisbra/csv.vim') " CSV data files
+  call dein#add('vim-scripts/OIL.vim') " OIL syntax highlight
+  call dein#add('4Evergreen4/vim-hardy') " Arduino IDE integration
+  call dein#add('jplaut/vim-arduino-ino') "
   "call dein#add('SirVer/ultisnips') " Ultisnip (no anda por ahora)
-  "call dein#add('ervandew/supertab') "
+  " call dein#add('ervandew/supertab') "
+  " call dein#add('nders/snipmate.vim')
   "call dein#add('derekwyatt/vim-fswitch') " Switch between .c and .h
   "call dein#add('octol/vim-cpp-enhanced-highlight') " C++14 colorscheme
 "-------------------------------------------------------------------------
@@ -220,12 +224,16 @@
   let g:cpp_experimental_template_highlight = 1
   let g:cpp_class_scope_highlight = 1
 
+  " python3 path
+  let g:python3_host_prog = '/home/elsuizo/.pyenv/versions/neovim/bin/python3'
+
 " }}}
 "
 " System mappings  ----------------------------------------------------------{{{
 "-------------------------------------------------------------------------
 "elsuizo adds
 "-------------------------------------------------------------------------
+au BufEnter,BufRead,BufNewFile *.oil setfiletype oil
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
 nnoremap <Leader>oc :e %<.c<CR>
