@@ -102,7 +102,7 @@
 "-------------------------------------------------------------------------
 "elsuizo adds
 "-------------------------------------------------------------------------
-  call dein#add('JuliaEditorSupport/julia-vim') " julia language support
+  " call dein#add('JuliaEditorSupport/julia-vim') " julia language support
   call dein#add('majutsushi/tagbar') " TODO no se si anda bien
   call dein#add('jceb/vim-orgmode') 
   call dein#add('vim-scripts/utl.vim') 
@@ -116,7 +116,7 @@
   call dein#add('alaric/neovim-visor') " open the terminal split
   call dein#add('wincent/scalpel') " nose
   call dein#add('lervag/vimtex')
-  " call dein#add('JuliaEditorSupport/deoplete-julia') " search and replace
+  call dein#add('JuliaEditorSupport/deoplete-julia') " search and replace
   call dein#add('rust-lang/rust.vim') " Rust
   call dein#add('vim-scripts/DoxygenToolkit.vim') " Doxygen
   call dein#add('frankier/neovim-colors-solarized-truecolor-only') " solarized
@@ -127,6 +127,8 @@
   call dein#add('vim-scripts/OIL.vim') " OIL syntax highlight
   call dein#add('4Evergreen4/vim-hardy') " Arduino IDE integration
   call dein#add('jplaut/vim-arduino-ino') "
+  call dein#add('sickill/vim-monokai') " Molokai colorscheme
+  call dein#add('dermusikman/sonicpi.vim') " Sonic pi plugging
   "call dein#add('SirVer/ultisnips') " Ultisnip (no anda por ahora)
   " call dein#add('ervandew/supertab') "
   " call dein#add('nders/snipmate.vim')
@@ -769,7 +771,7 @@ function! s:insert_description()
     endfor
     execute "normal! Go\<Esc>k"
 endfunction
-autocmd BufNewFile *.{c++,cpp,cc,c,h,hpp} call <SID>insert_description()
+autocmd BufNewFile *.{c++,cpp,cc,c,h,hpp,ino} call <SID>insert_description()
 
 " TODO(elsuizo): hacer una sola puta funcion
 " Headers for Julia and Python
