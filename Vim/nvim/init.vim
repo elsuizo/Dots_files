@@ -13,136 +13,142 @@
 
 " Setup NeoBundle  ----------------------------------------------------------{{{
 " If vundle is not installed, do it first
-  if (!isdirectory(expand("$HOME/.vim/repos/github.com/Shougo/dein.vim")))
-    call system(expand("mkdir -p $HOME/.vim/repos/github.com"))
-    call system(expand("git clone https://github.com/Shougo/dein.vim $HOME/.vim/repos/github.com/Shougo/dein.vim"))
-  endif
+if (!isdirectory(expand("$HOME/.vim/repos/github.com/Shougo/dein.vim")))
+   call system(expand("mkdir -p $HOME/.vim/repos/github.com"))
+   call system(expand("git clone https://github.com/Shougo/dein.vim $HOME/.vim/repos/github.com/Shougo/dein.vim"))
+endif
 
 
-  set nocompatible
-
-" Required:
-    set runtimepath+=~/.vim/repos/github.com/Shougo/dein.vim/
-    " set runtimepath+=~/Github/deoplete-angular/
+set nocompatible
 
 " Required:
-  call dein#begin(expand('~/.vim'))
-  let pluginsExist = 0
+set runtimepath+=~/.vim/repos/github.com/Shougo/dein.vim/
+" set runtimepath+=~/Github/deoplete-angular/
+
+" Required:
+call dein#begin(expand('~/.vim'))
+let pluginsExist = 0
 " Let NeoBundle manage NeoBundle
 " Required:
-  " colorschemes
-  call dein#add('flazz/vim-colorschemes.git')
-  call dein#add('Shougo/dein.vim')
-  " syntax
-  call dein#add('othree/yajs.vim', {'on_ft': 'javascript'})
-  call dein#add('othree/jsdoc-syntax.vim', {'on_ft':['javascript', 'typescript']})
-  call dein#add('othree/es.next.syntax.vim', {'on_ft': 'javascript'})
-  call dein#add('1995eaton/vim-better-javascript-completion', {'on_ft': ['javascript']})
-  call dein#add('othree/javascript-libraries-syntax.vim')
-  call dein#add('kchmck/vim-coffee-script', {'on_ft': 'coffee'})
-  call dein#add('hail2u/vim-css3-syntax', {'on_ft':['css','scss']})
-  call dein#add('elzr/vim-json', {'on_ft': 'json'})
-  call dein#add('tpope/vim-markdown', {'on_ft': 'markdown'})
-  call dein#add('dhruvasagar/vim-table-mode')
-  call dein#add('suan/vim-instant-markdown', {'on_ft': 'markdown'})
-  call dein#add('tmhedberg/SimpylFold', {'on_ft': 'python'})
-  call dein#add('HerringtonDarkholme/yats.vim', {'on_ft': 'typescript'})
-  call dein#add('Quramy/tsuquyomi', {'on_ft': 'typescript'})
+" colorschemes
+call dein#add('flazz/vim-colorschemes.git')
+call dein#add('Shougo/dein.vim')
+" syntax
+call dein#add('othree/yajs.vim', {'on_ft': 'javascript'})
+call dein#add('othree/jsdoc-syntax.vim', {'on_ft':['javascript', 'typescript']})
+call dein#add('othree/es.next.syntax.vim', {'on_ft': 'javascript'})
+call dein#add('1995eaton/vim-better-javascript-completion', {'on_ft': ['javascript']})
+call dein#add('othree/javascript-libraries-syntax.vim')
+call dein#add('kchmck/vim-coffee-script', {'on_ft': 'coffee'})
+call dein#add('hail2u/vim-css3-syntax', {'on_ft':['css','scss']})
+call dein#add('elzr/vim-json', {'on_ft': 'json'})
+call dein#add('tpope/vim-markdown', {'on_ft': 'markdown'})
+call dein#add('dhruvasagar/vim-table-mode')
+call dein#add('suan/vim-instant-markdown', {'on_ft': 'markdown'})
+call dein#add('tmhedberg/SimpylFold', {'on_ft': 'python'})
+call dein#add('HerringtonDarkholme/yats.vim', {'on_ft': 'typescript'})
+call dein#add('Quramy/tsuquyomi', {'on_ft': 'typescript'})
 
-  call dein#add('mhartington/oceanic-next')
-  "call dein#add('Yggdroot/indentLine')
-  call dein#add('Raimondi/delimitMate', {'on_ft': ['javascript', 'typescript', 'css', 'scss']})
-  call dein#add('valloric/MatchTagAlways', {'on_ft': 'html'})
+call dein#add('mhartington/oceanic-next')
+"call dein#add('Yggdroot/indentLine')
+call dein#add('Raimondi/delimitMate', {'on_ft': ['javascript', 'typescript', 'css', 'scss']})
+call dein#add('valloric/MatchTagAlways', {'on_ft': 'html'})
 
-  call dein#add('tpope/vim-fugitive')
-  call dein#add('jreybert/vimagit')
-  call dein#add('mhinz/vim-signify')
-  call dein#add('Xuyuanp/nerdtree-git-plugin')
-  "call dein#add('https://github.com/jaxbot/github-issues.vim')
+call dein#add('tpope/vim-fugitive')
+call dein#add('jreybert/vimagit')
+call dein#add('mhinz/vim-signify')
+call dein#add('Xuyuanp/nerdtree-git-plugin')
+"call dein#add('https://github.com/jaxbot/github-issues.vim')
 
-  call dein#add('tpope/vim-repeat')
-  call dein#add('benekastah/neomake')
-  call dein#add('editorconfig/editorconfig-vim')
-  call dein#add('scrooloose/nerdtree')
-  call dein#add('AndrewRadev/switch.vim')
-  call dein#add('christoomey/vim-tmux-navigator')
-  call dein#add('tmux-plugins/vim-tmux')
-  call dein#add('tmux-plugins/vim-tmux-focus-events')
-  call dein#add('vim-airline/vim-airline')
-  call dein#add('vim-airline/vim-airline-themes')
-  call dein#add('tpope/vim-surround')
-  call dein#add('tomtom/tcomment_vim')
-  call dein#add('mattn/emmet-vim', {'on_ft': 'html'})
-  call dein#add('Chiel92/vim-autoformat')
-  call dein#add('ap/vim-css-color')
-  call dein#add('Shougo/unite.vim')
-  call dein#add('Shougo/unite-outline')
-  call dein#add('ujihisa/unite-colorscheme')
-  call dein#add('junkblocker/unite-codesearch')
-  call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
-  call dein#add('Shougo/deoplete.nvim')
-  call dein#add('Shougo/neco-vim', {'on_ft': 'vim'})
-  call dein#add('Shougo/neoinclude.vim')
-  call dein#add('ujihisa/neco-look')
-  call dein#add('zchee/deoplete-jedi')
-  call dein#add('Shougo/neosnippet.vim')
-  call dein#add('Shougo/neosnippet-snippets')
-  call dein#add('honza/vim-snippets')
-  call dein#add('matthewsimo/angular-vim-snippets')
-  call dein#add('mhinz/vim-sayonara')
-  call dein#add('mattn/webapi-vim')
-  call dein#add('mattn/gist-vim')
-  call dein#add('terryma/vim-multiple-cursors')
-  call dein#add('rhysd/github-complete.vim')
-  call dein#add('junegunn/goyo.vim')
-  call dein#add('vim-scripts/SyntaxRange')
-  call dein#add('zchee/deoplete-go', {'build': 'make'},{'on_ft': 'go'})
-  call dein#add('rhysd/nyaovim-popup-tooltip')
-  call dein#add('ryanoasis/vim-devicons')
+call dein#add('tpope/vim-repeat')
+call dein#add('benekastah/neomake')
+call dein#add('editorconfig/editorconfig-vim')
+call dein#add('scrooloose/nerdtree')
+call dein#add('AndrewRadev/switch.vim')
+call dein#add('christoomey/vim-tmux-navigator')
+call dein#add('tmux-plugins/vim-tmux')
+call dein#add('tmux-plugins/vim-tmux-focus-events')
+call dein#add('vim-airline/vim-airline')
+call dein#add('vim-airline/vim-airline-themes')
+call dein#add('tpope/vim-surround')
+call dein#add('tomtom/tcomment_vim')
+call dein#add('mattn/emmet-vim', {'on_ft': 'html'})
+call dein#add('Chiel92/vim-autoformat')
+call dein#add('ap/vim-css-color')
+call dein#add('Shougo/unite.vim')
+call dein#add('Shougo/unite-outline')
+call dein#add('ujihisa/unite-colorscheme')
+call dein#add('junkblocker/unite-codesearch')
+call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
+call dein#add('Shougo/deoplete.nvim')
+call dein#add('Shougo/neco-vim', {'on_ft': 'vim'})
+call dein#add('Shougo/neoinclude.vim')
+call dein#add('ujihisa/neco-look')
+call dein#add('zchee/deoplete-jedi')
+call dein#add('Shougo/neosnippet.vim')
+call dein#add('Shougo/neosnippet-snippets')
+call dein#add('honza/vim-snippets')
+call dein#add('matthewsimo/angular-vim-snippets')
+call dein#add('mhinz/vim-sayonara')
+call dein#add('mattn/webapi-vim')
+call dein#add('mattn/gist-vim')
+call dein#add('terryma/vim-multiple-cursors')
+call dein#add('rhysd/github-complete.vim')
+call dein#add('junegunn/goyo.vim')
+call dein#add('vim-scripts/SyntaxRange')
+call dein#add('zchee/deoplete-go', {'build': 'make'},{'on_ft': 'go'})
+call dein#add('rhysd/nyaovim-popup-tooltip')
+call dein#add('ryanoasis/vim-devicons')
 "-------------------------------------------------------------------------
 "elsuizo adds
 "-------------------------------------------------------------------------
-  " call dein#add('JuliaEditorSupport/julia-vim') " julia language support
-  call dein#add('majutsushi/tagbar') " TODO no se si anda bien
-  call dein#add('jceb/vim-orgmode') 
-  call dein#add('vim-scripts/utl.vim') 
-  call dein#add('tpope/vim-speeddating') 
-  call dein#add('chrisbra/NrrwRgn') 
-  call dein#add('Numkil/ag.nvim') 
-  call dein#add('matze/vim-move') 
-  call dein#add('AlessandroYorba/Alduin') " Alduin colorscheme
-  call dein#add('Raimondi/delimitMate') " autopairs
-  call dein#add('Konfekt/FastFold') " fold
-  call dein#add('alaric/neovim-visor') " open the terminal split
-  call dein#add('wincent/scalpel') " nose
-  call dein#add('lervag/vimtex')
-  call dein#add('JuliaEditorSupport/deoplete-julia') " search and replace
-  call dein#add('rust-lang/rust.vim') " Rust
-  call dein#add('vim-scripts/DoxygenToolkit.vim') " Doxygen
-  call dein#add('frankier/neovim-colors-solarized-truecolor-only') " solarized
-  call dein#add('junegunn/vim-easy-align') " align
-  call dein#add('derekwyatt/vim-fswitch') " Switch between .c and .h
-  call dein#add('morhetz/gruvbox') " Gruvbox colorscheme
-  call dein#add('chrisbra/csv.vim') " CSV data files
-  call dein#add('vim-scripts/OIL.vim') " OIL syntax highlight
-  call dein#add('4Evergreen4/vim-hardy') " Arduino IDE integration
-  call dein#add('jplaut/vim-arduino-ino') "
-  call dein#add('sickill/vim-monokai') " Molokai colorscheme
-  call dein#add('dermusikman/sonicpi.vim') " Sonic pi plugging
-  "call dein#add('SirVer/ultisnips') " Ultisnip (no anda por ahora)
-  " call dein#add('ervandew/supertab') "
-  " call dein#add('nders/snipmate.vim')
-  "call dein#add('derekwyatt/vim-fswitch') " Switch between .c and .h
-  "call dein#add('octol/vim-cpp-enhanced-highlight') " C++14 colorscheme
+" call dein#add('JuliaEditorSupport/julia-vim') " julia language support
+call dein#add('ajpaulson/julia-syntax.vim') " julia language old
+call dein#add('majutsushi/tagbar') " TODO no se si anda bien
+call dein#add('jceb/vim-orgmode')
+call dein#add('vim-scripts/utl.vim')
+call dein#add('tpope/vim-speeddating')
+call dein#add('chrisbra/NrrwRgn')
+call dein#add('Numkil/ag.nvim')
+call dein#add('matze/vim-move')
+call dein#add('AlessandroYorba/Alduin') " Alduin colorscheme
+call dein#add('Raimondi/delimitMate') " autopairs
+call dein#add('Konfekt/FastFold') " fold
+call dein#add('alaric/neovim-visor') " open the terminal split
+call dein#add('wincent/scalpel') " nose
+call dein#add('lervag/vimtex')
+call dein#add('JuliaEditorSupport/deoplete-julia') " search and replace
+call dein#add('rust-lang/rust.vim') " Rust
+call dein#add('vim-scripts/DoxygenToolkit.vim') " Doxygen
+"call dein#add('frankier/neovim-colors-solarized-truecolor-only') " solarized
+call dein#add('altercation/vim-colors-solarized') " Solarized original
+call dein#add('junegunn/vim-easy-align') " align
+call dein#add('derekwyatt/vim-fswitch') " Switch between .c and .h
+call dein#add('morhetz/gruvbox') " Gruvbox colorscheme
+call dein#add('chrisbra/csv.vim') " CSV data files
+call dein#add('vim-scripts/OIL.vim') " OIL syntax highlight
+call dein#add('4Evergreen4/vim-hardy') " Arduino IDE integration
+call dein#add('jplaut/vim-arduino-ino') "
+call dein#add('sickill/vim-monokai') " Molokai colorscheme
+call dein#add('dermusikman/sonicpi.vim') " Sonic pi plugging
+call dein#add('vim-scripts/DrawIt') " Draw ASCII art with neovim
+call dein#add('robertmeta/nofrils') " minimalistic colorscheme(gray and black)
+"call dein#add('SirVer/ultisnips') " Ultisnip (no anda por ahora)
+" call dein#add('ervandew/supertab') "
+" call dein#add('nders/snipmate.vim')
+"call dein#add('derekwyatt/vim-fswitch') " Switch between .c and .h
+call dein#add('octol/vim-cpp-enhanced-highlight') " C++14 colorscheme
+call dein#add('clinstid/eink.vim') " eink colorscheme(gray and black only)
+
+" call dein#add('bronson/vim-visual-star-search') no sirve para un carajo
+
 "-------------------------------------------------------------------------
 
-  if dein#check_install()
-    call dein#install()
-  endif
-  call dein#end()
+if dein#check_install()
+   call dein#install()
+endif
+call dein#end()
 
-" Required:
-  filetype plugin indent on
 " }}}
 
 " System Settings  ----------------------------------------------------------{{{
@@ -151,6 +157,8 @@
   set noswapfile
   filetype on
   set relativenumber number
+
+  filetype plugin indent on
   "map cc <Nop>
   " set tabstop=2 shiftwidth=2 expandtab
   " set conceallevel=0
@@ -166,7 +174,7 @@
   set expandtab
 
   " Be smart when using tabs ;)
-  set smarttab
+  " set smarttab
 
   " 1 tab == 3 spaces
   set shiftwidth=3
@@ -178,6 +186,7 @@
 
   set ai "Auto indent
   set si "Smart indent
+  " set cindent
   set wrap "Wrap lines
 " block select not limited by shortest line
   set virtualedit=
@@ -191,7 +200,7 @@
   set undofile
 
 " Save temporary/backup files not in the local directory, but in your ~/.vim
-" directory, to keep them out of git repos. 
+" directory, to keep them out of git repos.
 " Pretty sure you need to mkdir backup, swap, and undo first to make this work
    set backupdir=~/.vim/backup//
    set directory=~/.vim/swap//
@@ -213,9 +222,6 @@
   let g:indentLine_char='│'
   " enable deoplete
 
-  let g:deoplete#enable_at_startup = 1
-  let g:unite_source_codesearch_command = '$HOME/bin/csearch'
-  let g:table_mode_corner="|"
   "test
   ":set cursorline!
   set lazyredraw
@@ -228,22 +234,26 @@
 
   " python3 path
   let g:python3_host_prog = '/home/elsuizo/.pyenv/versions/neovim/bin/python3'
-
+  " magic for seach the current word in cursor wirh AG(silversearchear)
+ nnoremap S :Ag <cword><CR>:cw<CR>
 " }}}
 "
 " System mappings  ----------------------------------------------------------{{{
 "-------------------------------------------------------------------------
 "elsuizo adds
 "-------------------------------------------------------------------------
+" open all .c and .h files
+nmap <leader>a :argadd **/*.c **/*.h<cr>
+nmap <leader>k :bd<cr>
+"open oil files
 au BufEnter,BufRead,BufNewFile *.oil setfiletype oil
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
-nnoremap <Leader>oc :e %<.c<CR>
-nnoremap <Leader>oC :e %<.cpp<CR>
-nnoremap <Leader>oh :e %<.h<CR>
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
-" ejecute shell commands in nvim line text
+" Center the buffer in a search
+:nnoremap n nzz
+:nnoremap N Nzz
+:nnoremap * *zz
+:nnoremap # #zz
+:nnoremap g* g*zz
+:nnoremap g# g#zz
 nnoremap Q !!$SHELL <CR>
 " When you press <leader>r you can search and replace the selected text
 vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
@@ -321,7 +331,7 @@ nmap <leader>D :Dox<cr>
 map <silent> <leader><cr> :noh<cr>
 " " for close automatically (), [], {}
 " imap ( ()<left>
-" imap { {}<left> 
+" imap { {}<left>
 " imap [ []<left>
 " inoremap ( ()<Esc>i
 " inoremap { {}<Esc>i
@@ -361,11 +371,15 @@ noremap K 5k
 " give it a try and you will like it
 nnoremap ; :
 "complete files
-inoremap <c-f> <c-x><c-f> 
+inoremap <c-f> <c-x><c-f>
 " Copy to osx clipboard
-vnoremap <C-c> "+y<CR>
-vnoremap y "*y<CR>
-nnoremap Y "*Y<CR>
+" vnoremap <C-c> "+y<CR>
+" vnoremap y "*y<CR>
+" nnoremap Y "*Y<CR>
+" copy and paste
+vnoremap <silent> <C-c> "+y
+nnoremap <silent> <C-v> "+p
+inoremap <silent> <C-v>  <C-o>"+p
 let g:multi_cursor_next_key='<C-n>'
 let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
@@ -419,6 +433,7 @@ let g:tagbar_type_julia = {
 " Theme
 syntax enable
 colorscheme PaperColor
+" colorscheme gruvbox
 set background=dark
 " set background=light
 " no need to fold things in markdown all the time
@@ -550,23 +565,37 @@ imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
 " Tell Neosnippet about the other snippets
-let g:neosnippet#snippets_directory='~/.vim/.cache/init.vim/.dein/snippets, ~/.vim/bundle/angular-vim-snippets/snippets'
+let g:neosnippet#snippets_directory='~/.vim/.cache/init.vim/.dein/snippets, ~/.vim/My_snippets'
+" Snippets
+  let g:deoplete#enable_at_startup = 1
+  " let g:neosnippet#enable_snipmate_compatibility = 1
+  " let g:neosnippet#expand_word_boundary = 1
+  " imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+  " smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+  " xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 " SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: "\<TAB>"
+" imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+" \ "\<Plug>(neosnippet_expand_or_jump)"
+" \: pumvisible() ? "\<C-n>" : "\<TAB>"
+" smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+" \ "\<Plug>(neosnippet_expand_or_jump)"
+" \: "\<TAB>"
 
-" deoplete + neosnippet + autopairs
+" " deoplete + neosnippet + autopairs
 let g:AutoPairsMapCR=0
-let g:deoplete#enable_at_startup = 1
+" " let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
 imap <expr><TAB> pumvisible() ? "\<C-n>" : neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 inoremap <expr><CR> pumvisible() ? deoplete#mappings#close_popup() : "\<CR>"
+"
+" enable disable latex2unicode
+noremap <expr> <F7> LaTeXtoUnicode#Toggle()
+inoremap <expr> <F7> LaTeXtoUnicode#Toggle()
+
+let g:latex_to_unicode_suggestions = 1
+
 "}}}
 
 " " Typescript & Javscript omni complete --------------------------------------{{{
@@ -683,9 +712,11 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline_powerline_fonts = 1
-"let g:airline_theme='oceanicnext'
-"let g:airline_theme='papercolor'
-let g:airline_theme='bubblegum'
+let g:airline_theme='oceanicnext'
+" let g:airline_theme='papercolor'
+" let g:airline_theme='gruvbox'
+" let g:airline_theme='bubblegum'
+let g:airline#extensions#tabline#tab_nr_type = 1
 cnoreabbrev <expr> x getcmdtype() == ":" && getcmdline() == 'x' ? 'nos vemos guacho' : 'x'
 nmap <leader>t :term<cr>
 nmap <leader>, :bnext<CR>
@@ -753,7 +784,7 @@ function! CmdLine(str)
     exe "menu Foo.Bar :" . a:str
     emenu Foo.Bar
     unmenu Foo
-endfunction 
+endfunction
 "Reads the template file replacing the tags by the actual
 " information and insert the result at the beginning of the buffer. At
 " the end, creates two blank lines at the end of the file and
