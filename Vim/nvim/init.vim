@@ -342,14 +342,14 @@ map <silent> <leader><cr> :noh<cr>
 " exit insert, dd line, enter insert
 inoremap <c-d> <esc>ddi
 " Navigate between display lines
-noremap  <silent> <Up>   gk
-noremap  <silent> <Down> gj
-noremap  <silent> k gk
-noremap  <silent> j gj
-noremap  <silent> <Home> g<Home>
-noremap  <silent> <End>  g<End>
-inoremap <silent> <Home> <C-o>g<Home>
-inoremap <silent> <End>  <C-o>g<End>
+" noremap  <silent> <Up>   gk
+" noremap  <silent> <Down> gj
+" noremap  <silent> k gk
+" noremap  <silent> j gj
+" noremap  <silent> <Home> g<Home>
+" noremap  <silent> <End>  g<End>
+" inoremap <silent> <Home> <C-o>g<Home>
+" inoremap <silent> <End>  <C-o>g<End>
 " copy current files path to clipboard
 nmap cp :let @+ = expand("%") <cr>
 
@@ -360,8 +360,8 @@ noremap <leader>TM :TableModeToggle<CR>
 inoremap <c-d> <esc>ddi
 noremap H ^
 noremap L g_
-noremap J 5j
-noremap K 5k
+" noremap J 5j
+" noremap K 5k
 " this is the best, let me tell you why
 " how annoying is that everytime you want to do something in vim
 " you have to do shift-; to get :, can't we just do ;?
