@@ -1,5 +1,7 @@
 # Dots_files
-*Porque si tocas el mouse estas haciendo mal las cosas*
+**Porque si tocas el mouse estas haciendo mal las cosas**
+
+
 Personal dot files, Openbox, zsh, Vim, Conky, Ranger, Neovim
 
 ![Debian testing](https://github.com/elsuizo/Dots_files/blob/master/debian_testing.png "Debian testing suizo")
