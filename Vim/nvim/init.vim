@@ -17,10 +17,7 @@ if (!isdirectory(expand("$HOME/.vim/repos/github.com/Shougo/dein.vim")))
    call system(expand("mkdir -p $HOME/.vim/repos/github.com"))
    call system(expand("git clone https://github.com/Shougo/dein.vim $HOME/.vim/repos/github.com/Shougo/dein.vim"))
 endif
-
-
 set nocompatible
-
 " Required:
 set runtimepath+=~/.vim/repos/github.com/Shougo/dein.vim/
 " set runtimepath+=~/Github/deoplete-angular/
@@ -31,7 +28,7 @@ let pluginsExist = 0
 " Let NeoBundle manage NeoBundle
 " Required:
 " colorschemes
-call dein#add('flazz/vim-colorschemes.git')
+" call dein#add('flazz/vim-colorschemes.git')
 call dein#add('Shougo/dein.vim')
 " syntax
 call dein#add('othree/yajs.vim', {'on_ft': 'javascript'})
@@ -102,6 +99,12 @@ call dein#add('ryanoasis/vim-devicons')
 "-------------------------------------------------------------------------
 "elsuizo adds
 "-------------------------------------------------------------------------
+"orgmode
+"
+call dein#add ('NLKNguyen/papercolor-theme')
+call dein#add('vim-scripts/taglist.vim')
+call dein#add('tpope/vim-pathogen')
+call dein#add('mattn/calendar-vim')
 " call dein#add('JuliaEditorSupport/julia-vim') " julia language support
 call dein#add('ajpaulson/julia-syntax.vim') " julia language old
 call dein#add('majutsushi/tagbar') " TODO no se si anda bien
@@ -120,7 +123,6 @@ call dein#add('lervag/vimtex')
 call dein#add('JuliaEditorSupport/deoplete-julia') " search and replace
 call dein#add('rust-lang/rust.vim') " Rust
 call dein#add('vim-scripts/DoxygenToolkit.vim') " Doxygen
-"call dein#add('frankier/neovim-colors-solarized-truecolor-only') " solarized
 call dein#add('altercation/vim-colors-solarized') " Solarized original
 call dein#add('junegunn/vim-easy-align') " align
 call dein#add('derekwyatt/vim-fswitch') " Switch between .c and .h
@@ -134,13 +136,11 @@ call dein#add('dermusikman/sonicpi.vim') " Sonic pi plugging
 call dein#add('vim-scripts/DrawIt') " Draw ASCII art with neovim
 call dein#add('robertmeta/nofrils') " minimalistic colorscheme(gray and black)
 "call dein#add('SirVer/ultisnips') " Ultisnip (no anda por ahora)
-" call dein#add('ervandew/supertab') "
-" call dein#add('nders/snipmate.vim')
-"call dein#add('derekwyatt/vim-fswitch') " Switch between .c and .h
 call dein#add('octol/vim-cpp-enhanced-highlight') " C++14 colorscheme
 call dein#add('clinstid/eink.vim') " eink colorscheme(gray and black only)
-
-" call dein#add('bronson/vim-visual-star-search') no sirve para un carajo
+call dein#add('ryanpcmcquen/true-monochrome_vim')
+call dein#add('owickstrom/vim-colors-paramount')
+call dein#add('chriskempson/base16-vim')
 
 "-------------------------------------------------------------------------
 
@@ -157,7 +157,6 @@ call dein#end()
   set noswapfile
   filetype on
   set relativenumber number
-
   filetype plugin indent on
   "map cc <Nop>
   " set tabstop=2 shiftwidth=2 expandtab
@@ -183,7 +182,7 @@ call dein#end()
   " Linebreak on 500 characters
   set lbr
   set tw=500
-
+   inoremap { {<CR>}<up><end><CR>
   set ai "Auto indent
   set si "Smart indent
   " set cindent
@@ -193,6 +192,7 @@ call dein#end()
   set wildmenu
   set laststatus=2
   "set colorcolumn=100
+  let &colorcolumn="80"
   set wrap linebreak nolist
   set wildmode=full
 " leader is ,
@@ -231,7 +231,6 @@ call dein#end()
   " elsuizo adds
   let g:cpp_experimental_template_highlight = 1
   let g:cpp_class_scope_highlight = 1
-
   " python3 path
   let g:python3_host_prog = '/home/elsuizo/.pyenv/versions/neovim/bin/python3'
   " magic for seach the current word in cursor wirh AG(silversearchear)
@@ -263,12 +262,6 @@ set history=700
 " Fast saving
 nmap <leader>w :w!<cr>
 let g:move_key_modifier = 'C'
-" Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
-" nmap <a-j> mz:m+<cr>`z
-" nmap <a-k> mz:m-2<cr>`z
-" vmap <a-j> :m'>+<cr>`<my`>mzgv`yo`z
-" vmap <a-k> :m'<-2<cr>`>my`<mzgv`yo`z
-" Visual mode pressing * or # searches for the current selection
 
 " Super useful! From an idea by Michael Naumann
 vnoremap <silent> * :call VisualSelection('f', '')<CR>
@@ -286,34 +279,27 @@ map <leader>sn ]s
 map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => White spaces and tabs
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Tell Vim which characters to show for expanded TABs,
-" trailing whitespace, and end-of-lines. VERY useful!
+"---------------------------------------------------------------
+" show all White spaces and tabs
+"---------------------------------------------------------------
 if &listchars ==# 'eol:$'
    set listchars=trail:-,nbsp:+
 endif
 set list                " Show problematic characters.
-
 " Also highlight all tabs and trailing whitespace characters.
 highlight ExtraWhitespace ctermbg=red guibg=darkgreen
 match ExtraWhitespace /\s\+$\|\t/
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Fast editing and reloading of vimrc configs TODO(hacer que ande)
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" map <leader>e :e! ~/.config/nvim/init.vim<cr>
-" autocmd! bufwritepost vimrc source ~/.vim_runtime/my_configs.vim
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Parenthesis/bracket
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" open the fucking config file
+nnoremap <leader>c :e! ~/.config/nvim/init.vim<cr>
+"--------------------------------------------------------------
+" Parenthesis/bracket
+"----------------------------------------------------------------
 vnoremap $1 <esc>`>a)<esc>`<i(<esc>
 vnoremap $2 <esc>`>a]<esc>`<i[<esc>
 vnoremap $3 <esc>`>a}<esc>`<i{<esc>
 vnoremap $$ <esc>`>a"<esc>`<i"<esc>
 vnoremap $q <esc>`>a'<esc>`<i'<esc>
 vnoremap $e <esc>`>a"<esc>`<i"<esc>
-
 " Map auto complete of (, ", ', [
 inoremap $1 ()<esc>i
 inoremap $2 []<esc>i
@@ -329,17 +315,6 @@ nmap <leader>F :NERDTreeFind<CR>
 nmap <leader>D :Dox<cr>
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
-" " for close automatically (), [], {}
-" imap ( ()<left>
-" imap { {}<left>
-" imap [ []<left>
-" inoremap ( ()<Esc>i
-" inoremap { {}<Esc>i
-
-" No need for ex mode
-" nnoremap Q <nop>
-"map q <Nop>
-" exit insert, dd line, enter insert
 inoremap <c-d> <esc>ddi
 " Navigate between display lines
 " noremap  <silent> <Up>   gk
@@ -351,8 +326,8 @@ inoremap <c-d> <esc>ddi
 " inoremap <silent> <Home> <C-o>g<Home>
 " inoremap <silent> <End>  <C-o>g<End>
 " copy current files path to clipboard
+" TODO(elsuizo): no se para que es esto!!!
 nmap cp :let @+ = expand("%") <cr>
-
 " ,f to format code, requires formatters: read the docs
 " noremap <leader>f :Autoformat<CR>
 noremap <leader>TM :TableModeToggle<CR>
@@ -360,8 +335,8 @@ noremap <leader>TM :TableModeToggle<CR>
 inoremap <c-d> <esc>ddi
 noremap H ^
 noremap L g_
-" noremap J 5j
-" noremap K 5k
+noremap J 5j
+noremap K 5k
 " this is the best, let me tell you why
 " how annoying is that everytime you want to do something in vim
 " you have to do shift-; to get :, can't we just do ;?
@@ -372,14 +347,14 @@ noremap L g_
 nnoremap ; :
 "complete files
 inoremap <c-f> <c-x><c-f>
-" Copy to osx clipboard
-" vnoremap <C-c> "+y<CR>
-" vnoremap y "*y<CR>
-" nnoremap Y "*Y<CR>
 " copy and paste
-vnoremap <silent> <C-c> "+y
-nnoremap <silent> <C-v> "+p
-inoremap <silent> <C-v>  <C-o>"+p
+" TODO: lo que pasa con esto es que te quita el bloque visual!!!
+" vnoremap <silent> <C-c> "+y
+" nnoremap <silent> <C-v> "+p
+" inoremap <silent> <C-v>  <C-o>"+p
+" copy to the end of a line
+noremap Y y$
+" multiple cursor
 let g:multi_cursor_next_key='<C-n>'
 let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
@@ -408,6 +383,7 @@ vnoremap <c-/> :TComment<cr>
 :nnoremap <A-l> <C-w>l
 autocmd FileType typescript nmap <buffer> <Leader>T : <C-u>echo tsuquyomi#hint()<CR>
 
+" tagbar piola para Julia language
 let g:tagbar_type_julia = {
     \ 'ctagstype' : 'julia',
     \ 'kinds'     : ['a:abstract', 'i:immutable', 't:type', 'f:function', 'm:macro']
@@ -431,8 +407,13 @@ let g:tagbar_type_julia = {
 
 " Themes, Commands, etc  ----------------------------------------------------{{{
 " Theme
+"-------------------------------------------------------------------------
+" Colorschemes!!!
+"-------------------------------------------------------------------------
 syntax enable
 colorscheme PaperColor
+" colorscheme paramount " colorscheme minimalistic
+" colorscheme nofrils-dark
 " colorscheme gruvbox
 set background=dark
 " set background=light
@@ -567,7 +548,7 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 " Tell Neosnippet about the other snippets
 let g:neosnippet#snippets_directory='~/.vim/.cache/init.vim/.dein/snippets, ~/.vim/My_snippets'
 " Snippets
-  let g:deoplete#enable_at_startup = 1
+  let g:deoplete#enable_at_startup = 0
   " let g:neosnippet#enable_snipmate_compatibility = 1
   " let g:neosnippet#expand_word_boundary = 1
   " imap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -584,7 +565,7 @@ let g:neosnippet#snippets_directory='~/.vim/.cache/init.vim/.dein/snippets, ~/.v
 
 " " deoplete + neosnippet + autopairs
 let g:AutoPairsMapCR=0
-" " let g:deoplete#enable_at_startup = 1
+" let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
 imap <expr><TAB> pumvisible() ? "\<C-n>" : neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
@@ -595,49 +576,6 @@ noremap <expr> <F7> LaTeXtoUnicode#Toggle()
 inoremap <expr> <F7> LaTeXtoUnicode#Toggle()
 
 let g:latex_to_unicode_suggestions = 1
-
-"}}}
-
-" " Typescript & Javscript omni complete --------------------------------------{{{
-"   let g:vimjs#casesensistive = 1
-"   let g:vimjs#smartcomplete = 1
-"   let g:tsuquyomi_disable_quickfix = 1
-"   let g:vim_json_syntax_conceal = 0
-"   autocmd FileType setlocal completeopt+=noselect,menu,preview
-"   set completeopt+=noselect,menu,preview
-"   " if !exists('g:neocomplete#force_omni_input_patterns')
-"   "   let g:neocomplete#force_omni_input_patterns = {}
-"   " endif
-"   " let g:neocomplete#force_omni_input_patterns.typescript = '[^. *\t]\.\w*\|\h\w*::'
-"
-" "}}}
-"
-" " Emmet customization -------------------------------------------------------{{{
-" " Enable Emmet in all modes
-" " Remapping <C-y>, just doesn't cut it.
-"   function! s:expand_html_tab()
-" " try to determine if we're within quotes or tags.
-" " if so, assume we're in an emmet fill area.
-"    let line = getline('.')
-"    if col('.') < len(line)
-"      let line = matchstr(line, '[">][^<"]*\%'.col('.').'c[^>"]*[<"]')
-"      if len(line) >= 2
-"         return "\<C-n>"
-"      endif
-"    endif
-" " expand anything emmet thinks is expandable.
-"   if emmet#isExpandable()
-"     return "\<C-y>,"
-"   endif
-" " return a regular tab character
-"   return "\<tab>"
-"   endfunction
-"   autocmd FileType html,markdown imap <buffer><expr><tab> <sid>expand_html_tab()
-"   let g:user_emmet_mode='a'
-"   let g:user_emmet_complete_tag = 1
-"   let g:user_emmet_install_global = 0
-"   autocmd FileType html,css EmmetInstall
-"}}}
 
 " unite ---------------------------------------------------------------------{{{
 "
@@ -712,10 +650,10 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='oceanicnext'
+" let g:airline_theme='monochrome'
 " let g:airline_theme='papercolor'
 " let g:airline_theme='gruvbox'
-" let g:airline_theme='bubblegum'
+let g:airline_theme='bubblegum'
 let g:airline#extensions#tabline#tab_nr_type = 1
 cnoreabbrev <expr> x getcmdtype() == ":" && getcmdline() == 'x' ? 'nos vemos guacho' : 'x'
 nmap <leader>t :term<cr>
