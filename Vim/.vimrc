@@ -59,7 +59,13 @@ set showtabline=0
 let mapleader = ','
 " Fast saving
 nmap <leader>w :w!<cr>
-
+" yank all line!!!
+noremap Y y$
+" open all .c and .h files
+nmap <leader>a :argadd **/*.c **/*.h<cr>
+" kill the fucking actual buffer
+nmap <leader>k :bd<cr>
+" navigation in normal mode
 noremap H ^
 noremap L g_
 noremap J 5j
@@ -92,6 +98,16 @@ nmap <leader>D :Dox<cr>
 map <silent> <leader><cr> :noh<cr>
 " magic for seach the current word in cursor wirh AG(silversearchear)
 nnoremap S :Ag <cword><CR>:cw<CR>
+" Remember cursor position between vim sessions
+  autocmd BufReadPost *
+              \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+              \   exe "normal! g'\"" |
+              \ endif
+              " center buffer around cursor when opening files
+  autocmd BufRead * normal zz
+
+let g:ranger_map_keys = 0
+map <leader>f :Ranger<CR>
 "-------------------------------------------------------------------------
 "                          window properties
 "-------------------------------------------------------------------------
@@ -101,7 +117,7 @@ set cmdheight=1 "command bar height
 if &listchars ==# 'eol:$'
    set listchars=trail:-,nbsp:+
 endif
-set list                " Show problematic characters.
+" set list                " Show problematic characters.
 
 " Also highlight all tabs and trailing whitespace characters.
 highlight ExtraWhitespace ctermbg=red guibg=darkgreen
@@ -118,7 +134,8 @@ let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline_powerline_fonts = 1
 " let g:airline_theme='gruvbox'
 " let g:airline_theme='papercolor'
-let g:airline_theme='bubblegum'
+"let g:airline_theme='bubblegum'
+let g:airline_theme='monochrome'
 let g:airline#extensions#tabline#tab_nr_type = 1
 nmap <leader>t :term<cr>
 nmap <leader>, :bnext<CR>
@@ -196,6 +213,7 @@ Plugin 'octol/vim-cpp-enhanced-highlight' " C++14 colorscheme
 Plugin 'tpope/vim-dispatch'
 Plugin 'honza/vim-snippets'
 
+
 "-------------------------------------------------------------------------
 "                          Pluggin themes
 "-------------------------------------------------------------------------
@@ -206,6 +224,14 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'dracula/vim'
 Plugin 'sickill/vim-monokai' " Molokai colorscheme
 Plugin 'robertmeta/nofrils' " minimalistic colorscheme(gray and black)
+Plugin 'clinstid/eink.vim' " minimalistic gray and black
+Plugin 'ryanpcmcquen/true-monochrome_vim' " minimalistic gray and black
+Plugin 'owickstrom/vim-colors-paramount' " minimalistic gray and violet
+Plugin 'RussellBradley/vim-nets-away' " minimalistic emulatin the NETS colors
+
+Plugin 'pbrisbin/vim-colors-off' " minimalistic emulatin the NETS colors
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'francoiscabrol/ranger.vim'
 "-------------------------------------------------------------------------
 "                          Plugin syntaxes
 "-------------------------------------------------------------------------
@@ -219,10 +245,14 @@ filetype plugin indent on
 "-------------------------------------------------------------------------
 "                          Basic
 "-------------------------------------------------------------------------
-colorscheme gruvbox
-set guifont=Monospace\ 10
+"colorscheme gruvbox
+" colorscheme paramount
+colorscheme suizo
+"set guifont=Monospace\ 10
 "set guifont=courier_new:h12:w5:b:cRUSSIAN
-"set guifont=RobotoMono Nerd Font\h10
+" set guifont=RobotoMono\10
+set guifont=Monaco:h12
+" set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 11
 set fillchars+=vert:\$
 syntax enable
 set background=dark
@@ -238,9 +268,10 @@ let &colorcolumn="80"
 :set guioptions-=L  "remove left-hand scroll bar
 :set lines=999 columns=999
 " copy and paste
-vnoremap <silent> <C-c> "+y
-nnoremap <silent> <C-v> "+p
-inoremap <silent> <C-v>  <C-o>"+p
+" TODO esto borra el mapeo re importante de visual block!!!
+" vnoremap <silent> <C-c> "+y
+" nnoremap <silent> <C-v> "+p
+" inoremap <silent> <C-v>  <C-o>"+p
 
 " move blocks of code in visual mode with Control+j, Control+k
 let g:move_key_modifier = 'C'
@@ -287,7 +318,7 @@ map <C-t> :NERDTreeToggle<CR>
 "                          neocomplete
 "-------------------------------------------------------------------------
 " Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
+let g:acp_enableAtStartup = 0 " por ahora no voy a utilizar autocompletado
 " Use neocomplete.
 let g:neocomplete#enable_at_startup = 0
 " Use smartcase.
