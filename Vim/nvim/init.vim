@@ -235,6 +235,10 @@ call dein#end()
   let g:python3_host_prog = '/home/elsuizo/.pyenv/versions/neovim/bin/python3'
   " magic for seach the current word in cursor wirh AG(silversearchear)
  nnoremap S :Ag <cword><CR>:cw<CR>
+ " make
+ nnoremap <F5> :make<CR>
+ " make clean
+ nnoremap <F6> :make clean<CR>
 " }}}
 "
 " System mappings  ----------------------------------------------------------{{{
