@@ -283,6 +283,10 @@ map <leader>sn ]s
 map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
+" if new line show arrow
+if has('linebreak')
+  let &showbreak='⤷ ' " ARROW POINTING DOWNWARDS THEN CURVING RIGHTWARDS (U+2937, UTF-8: E2 A4 B7)
+endif
 "---------------------------------------------------------------
 " show all White spaces and tabs
 "---------------------------------------------------------------
