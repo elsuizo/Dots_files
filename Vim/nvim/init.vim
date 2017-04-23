@@ -141,7 +141,7 @@ call dein#add('clinstid/eink.vim') " eink colorscheme(gray and black only)
 call dein#add('ryanpcmcquen/true-monochrome_vim')
 call dein#add('owickstrom/vim-colors-paramount')
 call dein#add('chriskempson/base16-vim')
-
+call dein#add('drjova/airline-drjova') " cool airline theme
 "-------------------------------------------------------------------------
 
 if dein#check_install()
@@ -285,7 +285,7 @@ map <leader>sa zg
 map <leader>s? z=
 " if new line show arrow
 if has('linebreak')
-  let &showbreak='⤷ ' " ARROW POINTING DOWNWARDS THEN CURVING RIGHTWARDS (U+2937, UTF-8: E2 A4 B7)
+  let &showbreak='⤷ ' " arrow pointing downwards then curving rightwards (U+2937, UTF-8: E2 A4 B7)
 endif
 "---------------------------------------------------------------
 " show all White spaces and tabs
@@ -419,8 +419,8 @@ let g:tagbar_type_julia = {
 " Colorschemes!!!
 "-------------------------------------------------------------------------
 syntax enable
-colorscheme PaperColor
-" colorscheme paramount " colorscheme minimalistic
+" colorscheme PaperColor
+colorscheme paramount " colorscheme minimalistic
 " colorscheme nofrils-dark
 " colorscheme gruvbox
 set background=dark
@@ -659,9 +659,10 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline_powerline_fonts = 1
 " let g:airline_theme='monochrome'
+let g:airline_theme = 'drjova'
 " let g:airline_theme='papercolor'
 " let g:airline_theme='gruvbox'
-let g:airline_theme='bubblegum'
+" let g:airline_theme='bubblegum'
 let g:airline#extensions#tabline#tab_nr_type = 1
 cnoreabbrev <expr> x getcmdtype() == ":" && getcmdline() == 'x' ? 'nos vemos guacho' : 'x'
 nmap <leader>t :term<cr>
