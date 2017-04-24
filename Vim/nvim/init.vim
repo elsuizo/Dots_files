@@ -139,7 +139,8 @@ call dein#add('robertmeta/nofrils') " minimalistic colorscheme(gray and black)
 call dein#add('octol/vim-cpp-enhanced-highlight') " C++14 colorscheme
 call dein#add('clinstid/eink.vim') " eink colorscheme(gray and black only)
 call dein#add('ryanpcmcquen/true-monochrome_vim')
-call dein#add('owickstrom/vim-colors-paramount')
+" call dein#add('owickstrom/vim-colors-paramount')
+call dein#add('elsuizo/vim-colors-paramount-suizo')
 call dein#add('chriskempson/base16-vim')
 call dein#add('drjova/airline-drjova') " cool airline theme
 "-------------------------------------------------------------------------
@@ -420,7 +421,7 @@ let g:tagbar_type_julia = {
 "-------------------------------------------------------------------------
 syntax enable
 " colorscheme PaperColor
-colorscheme paramount " colorscheme minimalistic
+colorscheme paramount-suizo " colorscheme minimalistic
 " colorscheme nofrils-dark
 " colorscheme gruvbox
 set background=dark
