@@ -143,6 +143,8 @@ call dein#add('ryanpcmcquen/true-monochrome_vim')
 call dein#add('elsuizo/vim-colors-paramount-suizo')
 call dein#add('chriskempson/base16-vim')
 call dein#add('drjova/airline-drjova') " cool airline theme
+call dein#add('tpope/vim-commentary')
+
 "-------------------------------------------------------------------------
 
 if dein#check_install()
@@ -362,7 +364,11 @@ inoremap <c-f> <c-x><c-f>
 " nnoremap <silent> <C-v> "+p
 " inoremap <silent> <C-v>  <C-o>"+p
 " copy to the end of a line
-noremap Y y$
+" noremap Y y$
+vnoremap y "*y<CR>
+nnoremap Y "*Y<CR>
+vnoremap y myy`y
+vnoremap Y myY`y
 " multiple cursor
 let g:multi_cursor_next_key='<C-n>'
 let g:multi_cursor_prev_key='<C-p>'
