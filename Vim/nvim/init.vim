@@ -144,6 +144,8 @@ call dein#add('elsuizo/vim-colors-paramount-suizo')
 call dein#add('chriskempson/base16-vim')
 call dein#add('drjova/airline-drjova') " cool airline theme
 call dein#add('tpope/vim-commentary')
+call dein#add('aklt/plantuml-syntax') " Plant UML
+call dein#add('arakashic/chromatica.nvim') " fast syntax c files
 
 "-------------------------------------------------------------------------
 
@@ -195,7 +197,7 @@ call dein#end()
   set wildmenu
   set laststatus=2
   "set colorcolumn=100
-  let &colorcolumn="80"
+  " let &colorcolumn="80"
   set wrap linebreak nolist
   set wildmode=full
 " leader is ,
@@ -344,10 +346,11 @@ nmap cp :let @+ = expand("%") <cr>
 noremap <leader>TM :TableModeToggle<CR>
 " exit insert, dd line, enter insert
 inoremap <c-d> <esc>ddi
-noremap H ^
-noremap L g_
-noremap J 5j
-noremap K 5k
+" Los saco por ahora porque no es una buena practica
+" noremap H ^
+" noremap L g_
+" noremap J 5j
+" noremap K 5k
 " this is the best, let me tell you why
 " how annoying is that everytime you want to do something in vim
 " you have to do shift-; to get :, can't we just do ;?
