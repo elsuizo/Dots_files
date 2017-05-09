@@ -429,6 +429,7 @@ let g:tagbar_type_julia = {
 " Colorschemes!!!
 "-------------------------------------------------------------------------
 syntax enable
+set termguicolors
 " colorscheme PaperColor
 colorscheme paramount-suizo " colorscheme minimalistic
 " colorscheme nofrils-dark
