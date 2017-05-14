@@ -146,7 +146,6 @@ call dein#add('drjova/airline-drjova') " cool airline theme
 call dein#add('tpope/vim-commentary')
 call dein#add('aklt/plantuml-syntax') " Plant UML
 call dein#add('arakashic/chromatica.nvim') " fast syntax c files
-
 "-------------------------------------------------------------------------
 
 if dein#check_install()
@@ -161,6 +160,7 @@ call dein#end()
   set noshowmode
   set noswapfile
   filetype on
+  " set nowrap
   set relativenumber number
   filetype plugin indent on
   "map cc <Nop>
@@ -185,13 +185,13 @@ call dein#end()
   set tabstop=3
 
   " Linebreak on 500 characters
-  set lbr
-  set tw=500
-   inoremap { {<CR>}<up><end><CR>
+  " set lbr
+  " set tw=500
+autocmd FileType c,cpp,arduino,oil inoremap { {<CR>}<up><end><CR>
   set ai "Auto indent
   set si "Smart indent
   " set cindent
-  set wrap "Wrap lines
+  " set wrap "Wrap lines
 " block select not limited by shortest line
   set virtualedit=
   set wildmenu
@@ -255,6 +255,8 @@ nmap <leader>a :argadd **/*.c **/*.h<cr>
 nmap <leader>k :bd<cr>
 "open oil files
 au BufEnter,BufRead,BufNewFile *.oil setfiletype oil
+" open tex files
+au BufEnter,BufRead,BufNewFile *.tex setfiletype tex
 " Center the buffer in a search
 :nnoremap n nzz
 :nnoremap N Nzz
