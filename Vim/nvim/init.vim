@@ -96,6 +96,7 @@ call dein#add('vim-scripts/SyntaxRange')
 call dein#add('zchee/deoplete-go', {'build': 'make'},{'on_ft': 'go'})
 call dein#add('rhysd/nyaovim-popup-tooltip')
 call dein#add('ryanoasis/vim-devicons')
+call dein#add('zchee/deoplete-clang') " deoplete completion for c
 "-------------------------------------------------------------------------
 "elsuizo adds
 "-------------------------------------------------------------------------
@@ -120,8 +121,9 @@ call dein#add('Konfekt/FastFold') " fold
 call dein#add('alaric/neovim-visor') " open the terminal split
 call dein#add('wincent/scalpel') " nose
 call dein#add('lervag/vimtex')
-call dein#add('JuliaEditorSupport/deoplete-julia') " search and replace
+call dein#add('JuliaEditorSupport/deoplete-julia') " Julia completion support
 call dein#add('rust-lang/rust.vim') " Rust
+call dein#add('sebastianmarkow/deoplete-rust') " Rust
 call dein#add('vim-scripts/DoxygenToolkit.vim') " Doxygen
 call dein#add('altercation/vim-colors-solarized') " Solarized original
 call dein#add('junegunn/vim-easy-align') " align
@@ -146,6 +148,7 @@ call dein#add('drjova/airline-drjova') " cool airline theme
 call dein#add('tpope/vim-commentary')
 call dein#add('aklt/plantuml-syntax') " Plant UML
 call dein#add('arakashic/chromatica.nvim') " fast syntax c files
+call dein#add('trevordmiller/nova-vim')
 "-------------------------------------------------------------------------
 
 if dein#check_install()
@@ -187,6 +190,7 @@ call dein#end()
   " Linebreak on 500 characters
   " set lbr
   " set tw=500
+  " Magic
 autocmd FileType c,cpp,arduino,oil inoremap { {<CR>}<up><end><CR>
   set ai "Auto indent
   set si "Smart indent
@@ -229,6 +233,10 @@ autocmd FileType c,cpp,arduino,oil inoremap { {<CR>}<up><end><CR>
 
   "test
   ":set cursorline!
+  " cursor shapes
+  :set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+  \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+  \,sm:block-blinkwait175-blinkoff150-blinkon175
   set lazyredraw
   set synmaxcol=128
   syntax sync minlines=256
@@ -569,7 +577,7 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 " Tell Neosnippet about the other snippets
 let g:neosnippet#snippets_directory='~/.vim/.cache/init.vim/.dein/snippets, ~/.vim/My_snippets'
 " Snippets
-  let g:deoplete#enable_at_startup = 0
+  let g:deoplete#enable_at_startup = 1
   " let g:neosnippet#enable_snipmate_compatibility = 1
   " let g:neosnippet#expand_word_boundary = 1
   " imap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -591,12 +599,19 @@ let g:deoplete#enable_smart_case = 1
 imap <expr><TAB> pumvisible() ? "\<C-n>" : neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 inoremap <expr><CR> pumvisible() ? deoplete#mappings#close_popup() : "\<CR>"
-"
-" enable disable latex2unicode
-noremap <expr> <F7> LaTeXtoUnicode#Toggle()
-inoremap <expr> <F7> LaTeXtoUnicode#Toggle()
 
-let g:latex_to_unicode_suggestions = 1
+" Rust deplete
+let g:deoplete#sources#rust#racer_binary='/home/elsuizo/.cargo/bin/racer'
+let g:deoplete#sources#rust#rust_source_path='/home/elsuizo/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
+" C deoplete
+setlocal path+='/home/elsuizo/Development/CIAA_work/Firmware/'
+let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
+let g:deoplete#sources#clang#clang_header = '/usr/include/clang'
+" enable disable latex2unicode
+" noremap <expr> <F7> LaTeXtoUnicode#Toggle()
+" inoremap <expr> <F7> LaTeXtoUnicode#Toggle()
+"
+" let g:latex_to_unicode_suggestions = 1
 
 " unite ---------------------------------------------------------------------{{{
 "
@@ -656,6 +671,9 @@ endfunction "}}}
 "}}}
 "}}}
 
+" fugitive
+" nmap <leader>gs :Gstatus<CR>
+" nmap <leader>gc :Gcommit<CR>i
 " Navigate between vim buffers and tmux panels ------------------------------{{{
 let g:tmux_navigator_no_mappings = 1
 nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
