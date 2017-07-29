@@ -31,25 +31,25 @@ let pluginsExist = 0
 " call dein#add('flazz/vim-colorschemes.git')
 call dein#add('Shougo/dein.vim')
 " syntax
-call dein#add('othree/yajs.vim', {'on_ft': 'javascript'})
-call dein#add('othree/jsdoc-syntax.vim', {'on_ft':['javascript', 'typescript']})
-call dein#add('othree/es.next.syntax.vim', {'on_ft': 'javascript'})
-call dein#add('1995eaton/vim-better-javascript-completion', {'on_ft': ['javascript']})
-call dein#add('othree/javascript-libraries-syntax.vim')
-call dein#add('kchmck/vim-coffee-script', {'on_ft': 'coffee'})
-call dein#add('hail2u/vim-css3-syntax', {'on_ft':['css','scss']})
+" call dein#add('othree/yajs.vim', {'on_ft': 'javascript'})
+" call dein#add('othree/jsdoc-syntax.vim', {'on_ft':['javascript', 'typescript']})
+" call dein#add('othree/es.next.syntax.vim', {'on_ft': 'javascript'})
+" call dein#add('1995eaton/vim-better-javascript-completion', {'on_ft': ['javascript']})
+" call dein#add('othree/javascript-libraries-syntax.vim')
+" call dein#add('kchmck/vim-coffee-script', {'on_ft': 'coffee'})
+" call dein#add('hail2u/vim-css3-syntax', {'on_ft':['css','scss']})
 call dein#add('elzr/vim-json', {'on_ft': 'json'})
 call dein#add('tpope/vim-markdown', {'on_ft': 'markdown'})
 call dein#add('dhruvasagar/vim-table-mode')
 call dein#add('suan/vim-instant-markdown', {'on_ft': 'markdown'})
 call dein#add('tmhedberg/SimpylFold', {'on_ft': 'python'})
-call dein#add('HerringtonDarkholme/yats.vim', {'on_ft': 'typescript'})
-call dein#add('Quramy/tsuquyomi', {'on_ft': 'typescript'})
+" call dein#add('HerringtonDarkholme/yats.vim', {'on_ft': 'typescript'})
+" call dein#add('Quramy/tsuquyomi', {'on_ft': 'typescript'})
 
 call dein#add('mhartington/oceanic-next')
 "call dein#add('Yggdroot/indentLine')
-call dein#add('Raimondi/delimitMate', {'on_ft': ['javascript', 'typescript', 'css', 'scss']})
-call dein#add('valloric/MatchTagAlways', {'on_ft': 'html'})
+" call dein#add('Raimondi/delimitMate', {'on_ft': ['javascript', 'typescript', 'css', 'scss']})
+" call dein#add('valloric/MatchTagAlways', {'on_ft': 'html'})
 
 call dein#add('tpope/vim-fugitive')
 call dein#add('jreybert/vimagit')
@@ -69,9 +69,9 @@ call dein#add('vim-airline/vim-airline')
 call dein#add('vim-airline/vim-airline-themes')
 call dein#add('tpope/vim-surround')
 call dein#add('tomtom/tcomment_vim')
-call dein#add('mattn/emmet-vim', {'on_ft': 'html'})
+" call dein#add('mattn/emmet-vim', {'on_ft': 'html'})
 call dein#add('Chiel92/vim-autoformat')
-call dein#add('ap/vim-css-color')
+" call dein#add('ap/vim-css-color')
 call dein#add('Shougo/unite.vim')
 call dein#add('Shougo/unite-outline')
 call dein#add('ujihisa/unite-colorscheme')
@@ -85,13 +85,13 @@ call dein#add('zchee/deoplete-jedi')
 call dein#add('Shougo/neosnippet.vim')
 call dein#add('Shougo/neosnippet-snippets')
 call dein#add('honza/vim-snippets')
-call dein#add('matthewsimo/angular-vim-snippets')
-call dein#add('mhinz/vim-sayonara')
-call dein#add('mattn/webapi-vim')
-call dein#add('mattn/gist-vim')
+" call dein#add('matthewsimo/angular-vim-snippets')
+" call dein#add('mhinz/vim-sayonara')
+" call dein#add('mattn/webapi-vim')
+" call dein#add('mattn/gist-vim')
 call dein#add('terryma/vim-multiple-cursors')
 call dein#add('rhysd/github-complete.vim')
-call dein#add('junegunn/goyo.vim')
+" call dein#add('junegunn/goyo.vim')
 call dein#add('vim-scripts/SyntaxRange')
 call dein#add('zchee/deoplete-go', {'build': 'make'},{'on_ft': 'go'})
 call dein#add('rhysd/nyaovim-popup-tooltip')
@@ -106,8 +106,8 @@ call dein#add ('NLKNguyen/papercolor-theme')
 call dein#add('vim-scripts/taglist.vim')
 call dein#add('tpope/vim-pathogen')
 call dein#add('mattn/calendar-vim')
-" call dein#add('JuliaEditorSupport/julia-vim') " julia language support
-call dein#add('ajpaulson/julia-syntax.vim') " julia language old
+call dein#add('JuliaEditorSupport/julia-vim') " julia language support
+" call dein#add('ajpaulson/julia-syntax.vim') " julia language old
 call dein#add('majutsushi/tagbar') " TODO no se si anda bien
 call dein#add('jceb/vim-orgmode')
 call dein#add('vim-scripts/utl.vim')
@@ -125,9 +125,10 @@ call dein#add('JuliaEditorSupport/deoplete-julia') " Julia completion support
 call dein#add('rust-lang/rust.vim') " Rust
 call dein#add('sebastianmarkow/deoplete-rust') " Rust
 call dein#add('vim-scripts/DoxygenToolkit.vim') " Doxygen
-call dein#add('altercation/vim-colors-solarized') " Solarized original
+" call dein#add('altercation/vim-colors-solarized') " Solarized original
+call dein#add('frankier/neovim-colors-solarized-truecolor-only')
 call dein#add('junegunn/vim-easy-align') " align
-call dein#add('derekwyatt/vim-fswitch') " Switch between .c and .h
+" call dein#add('derekwyatt/vim-fswitch') " Switch between .c and .h
 call dein#add('morhetz/gruvbox') " Gruvbox colorscheme
 call dein#add('chrisbra/csv.vim') " CSV data files
 call dein#add('vim-scripts/OIL.vim') " OIL syntax highlight
@@ -138,17 +139,19 @@ call dein#add('dermusikman/sonicpi.vim') " Sonic pi plugging
 call dein#add('vim-scripts/DrawIt') " Draw ASCII art with neovim
 call dein#add('robertmeta/nofrils') " minimalistic colorscheme(gray and black)
 "call dein#add('SirVer/ultisnips') " Ultisnip (no anda por ahora)
-call dein#add('octol/vim-cpp-enhanced-highlight') " C++14 colorscheme
-call dein#add('clinstid/eink.vim') " eink colorscheme(gray and black only)
+" call dein#add('octol/vim-cpp-enhanced-highlight') " C++14 colorscheme
 call dein#add('ryanpcmcquen/true-monochrome_vim')
 " call dein#add('owickstrom/vim-colors-paramount')
 call dein#add('elsuizo/vim-colors-paramount-suizo')
 call dein#add('chriskempson/base16-vim')
 call dein#add('drjova/airline-drjova') " cool airline theme
 call dein#add('tpope/vim-commentary')
-call dein#add('aklt/plantuml-syntax') " Plant UML
+" call dein#add('aklt/plantuml-syntax') " Plant UML
 call dein#add('arakashic/chromatica.nvim') " fast syntax c files
 call dein#add('trevordmiller/nova-vim')
+call dein#add('jacoborus/tender.vim') " tender colorscheme
+call dein#add('danilo-augusto/vim-afterglow')
+call dein#add('huawenyu/neogdb.vim')
 "-------------------------------------------------------------------------
 
 if dein#check_install()
@@ -191,7 +194,7 @@ call dein#end()
   " set lbr
   " set tw=500
   " Magic
-autocmd FileType c,cpp,arduino,oil inoremap { {<CR>}<up><end><CR>
+autocmd FileType c,cpp,arduino,oil,rust inoremap { {<CR>}<up><end><CR>
   set ai "Auto indent
   set si "Smart indent
   " set cindent
@@ -252,6 +255,7 @@ autocmd FileType c,cpp,arduino,oil inoremap { {<CR>}<up><end><CR>
  nnoremap <F5> :make<CR>
  " make clean
  nnoremap <F6> :make clean<CR>
+ nnoremap <Space>h :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 " }}}
 "
 " System mappings  ----------------------------------------------------------{{{
@@ -289,7 +293,6 @@ vnoremap <silent> # :call VisualSelection('b', '')<CR>
 "map <space> /
 map <c-space> ?
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Pressing ,ss will toggle and untoggle spell checking
 map <leader>ss :setlocal spell!<cr>
@@ -318,7 +321,7 @@ nnoremap <leader>c :e! ~/.config/nvim/init.vim<cr>
 " Parenthesis/bracket
 "----------------------------------------------------------------
 vnoremap $1 <esc>`>a)<esc>`<i(<esc>
-vnoremap $2 <esc>`>a]<esc>`<i[<esc>
+"zsh: parse error near `\n'
 vnoremap $3 <esc>`>a}<esc>`<i{<esc>
 vnoremap $$ <esc>`>a"<esc>`<i"<esc>
 vnoremap $q <esc>`>a'<esc>`<i'<esc>
@@ -409,7 +412,6 @@ vnoremap <c-/> :TComment<cr>
 :nnoremap <A-j> <C-w>j
 :nnoremap <A-k> <C-w>k
 :nnoremap <A-l> <C-w>l
-autocmd FileType typescript nmap <buffer> <Leader>T : <C-u>echo tsuquyomi#hint()<CR>
 
 " tagbar piola para Julia language
 let g:tagbar_type_julia = {
@@ -440,12 +442,15 @@ let g:tagbar_type_julia = {
 "-------------------------------------------------------------------------
 syntax enable
 set termguicolors
+" set background=light
+set background=dark
 " colorscheme PaperColor
-colorscheme paramount-suizo " colorscheme minimalistic
+" colorscheme paramount-suizo " colorscheme minimalistic
+colorscheme afterglow
+" colorscheme solarized " colorscheme minimalistic
+" colorscheme alduin " alduin colorscheme
 " colorscheme nofrils-dark
 " colorscheme gruvbox
-set background=dark
-" set background=light
 " no need to fold things in markdown all the time
 let g:vim_markdown_folding_disabled = 0
 " turn on spelling for markdown files
@@ -474,21 +479,7 @@ function! MyFoldText() " {{{
     return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
 endfunction " }}}
 
-function! JavaScriptFold() "{{{
-  " syntax region foldBraces start=/{/ end=/}/ transparent fold keepend extend
-  setlocal foldmethod=syntax
-  setlocal foldlevel=99
-  echo "hello"
-  syn region foldBraces start=/{/ skip=/\(\/\/.*\)\|\(\/.*\/\)/ end=/}/ transparent fold keepend extend
-endfunction "}}}
 
-function! HTMLFold() "{{{
-  " syn sync fromstart
-  set foldmethod=syntax
-  syn region HTMLFold start=+^<\([^/?!><]*[^/]>\)\&.*\(<\1\|[[:alnum:]]\)$+ end=+^</.*[^-?]>$+ fold transparent keepend extend
-  syn match HTMLCData "<!\[CDATA\[\_.\{-}\]\]>" fold transparent extend
-  syn match HTMLCommentFold "<!--\_.\{-}-->" fold transparent extend
-endfunction "}}}
 
 set foldtext=MyFoldText()
 
@@ -690,7 +681,8 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline_powerline_fonts = 1
 " let g:airline_theme='monochrome'
-let g:airline_theme = 'drjova'
+" let g:airline_theme = 'drjova'
+let g:airline_theme = 'afterglow'
 " let g:airline_theme='papercolor'
 " let g:airline_theme='gruvbox'
 " let g:airline_theme='bubblegum'
