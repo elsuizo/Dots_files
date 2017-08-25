@@ -152,6 +152,8 @@ call dein#add('trevordmiller/nova-vim')
 call dein#add('jacoborus/tender.vim') " tender colorscheme
 call dein#add('danilo-augusto/vim-afterglow')
 call dein#add('huawenyu/neogdb.vim')
+call dein#add('dracula/vim')
+call dein#add('cespare/vim-toml')
 "-------------------------------------------------------------------------
 
 if dein#check_install()
@@ -681,7 +683,7 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline_powerline_fonts = 1
 " let g:airline_theme='monochrome'
-" let g:airline_theme = 'drjova'
+" let g:airline_theme = 'solarized'
 let g:airline_theme = 'afterglow'
 " let g:airline_theme='papercolor'
 " let g:airline_theme='gruvbox'

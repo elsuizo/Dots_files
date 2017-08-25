@@ -1,0 +1,27 @@
+# My snippets for Python files
+# 1. Nice coments
+#-------------------------------------------------------------------------
+#                                Coments
+#-------------------------------------------------------------------------
+# inline comments
+snippet COM
+   # ${0:your nice comment in line here}
+
+# block comments
+snippet BCOM
+   #-------------------------------------------------------------------------
+   #                        ${0:yor nice comment here}
+   #-------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------
+#                                auxiliaries
+#-------------------------------------------------------------------------
+snippet TODO
+   # TODO(elsuizo:${0:`strftime("%Y-%m-%d")`}):${1:your todo task here}
+
+snippet FIXME
+   # FIXME(elsuizo:${0:`strftime("%Y-%m-%d")`}):${1:your fix task here}
+
+snippet NOTE
+   # NOTE(elsuizo:${0:`strftime("%Y-%m-%d")`}):${1:your note here}
+
