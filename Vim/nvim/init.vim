@@ -121,7 +121,7 @@ call dein#add('Konfekt/FastFold') " fold
 call dein#add('alaric/neovim-visor') " open the terminal split
 call dein#add('wincent/scalpel') " nose
 call dein#add('lervag/vimtex')
-call dein#add('JuliaEditorSupport/deoplete-julia') " Julia completion support
+" call dein#add('JuliaEditorSupport/deoplete-julia') " Julia completion support
 call dein#add('rust-lang/rust.vim') " Rust
 call dein#add('sebastianmarkow/deoplete-rust') " Rust
 call dein#add('vim-scripts/DoxygenToolkit.vim') " Doxygen
@@ -154,6 +154,7 @@ call dein#add('danilo-augusto/vim-afterglow')
 call dein#add('huawenyu/neogdb.vim')
 call dein#add('dracula/vim')
 call dein#add('cespare/vim-toml')
+call dein#add('vim-scripts/Zenburn')
 "-------------------------------------------------------------------------
 
 if dein#check_install()
@@ -447,12 +448,13 @@ set termguicolors
 " set background=light
 set background=dark
 " colorscheme PaperColor
+" colorscheme zenburn
 " colorscheme paramount-suizo " colorscheme minimalistic
-colorscheme afterglow
+" colorscheme afterglow
 " colorscheme solarized " colorscheme minimalistic
 " colorscheme alduin " alduin colorscheme
 " colorscheme nofrils-dark
-" colorscheme gruvbox
+colorscheme gruvbox
 " no need to fold things in markdown all the time
 let g:vim_markdown_folding_disabled = 0
 " turn on spelling for markdown files
@@ -683,10 +685,11 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline_powerline_fonts = 1
 " let g:airline_theme='monochrome'
+" let g:airline_theme='minimalist'
 " let g:airline_theme = 'solarized'
-let g:airline_theme = 'afterglow'
+" let g:airline_theme = 'afterglow'
 " let g:airline_theme='papercolor'
-" let g:airline_theme='gruvbox'
+let g:airline_theme='gruvbox'
 " let g:airline_theme='bubblegum'
 let g:airline#extensions#tabline#tab_nr_type = 1
 cnoreabbrev <expr> x getcmdtype() == ":" && getcmdline() == 'x' ? 'nos vemos guacho' : 'x'
