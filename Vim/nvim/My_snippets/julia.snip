@@ -1,0 +1,26 @@
+snippet     BCOM
+abbr        BLOCK
+options     head
+  #=------------------------------------------------------------------------------
+                        ${0:#your comment here}
+  ------------------------------------------------------------------------------=#
+
+snippet     COM
+abbr        Comentario
+options     head
+  # ${0:#your nice comment here}
+
+snippet     TODO
+abbr        todo
+options     head
+   # TODO(`$USER`: ${1:#que hay que hacer})--->`strftime("%d %b %Y")`${0}
+
+snippet     FIX
+abbr        fix
+options     head
+   # FIXME(`$USER`: ${1:#que hay que arreglar})--->`strftime("%d %b %Y")`${0}
+
+snippet     NOTE
+abbr        note
+options     head
+   # NOTE(`$USER`: ${1:#comentarios})--->`strftime("%d %b %Y")`${0}
