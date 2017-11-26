@@ -56,8 +56,8 @@ floating_modifier $mod
 #smart_gaps on
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
-#bindsym $mod+Return exec xfce4-terminal
-bindsym $mod+Return exec gnome-terminal
+bindsym $mod+Return exec xfce4-terminal
+#bindsym $mod+Return exec gnome-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -218,8 +218,8 @@ bindsym $mod+r mode "resize"
 # elsuizo adds
 #-------------------------------------------------------------------------
 # wallpaper
-#exec_always feh --bg-scale /home/elsuizo/images/wallpapers/wallup-332153.jpg
-exec_always --no-startup-id feh --no-fehbg --bg-scale /home/elsuizo/Images/Wallpapers/debian_black.jpg
+# exec_always --no-startup-id feh --no-fehbg --bg-scale /home/elsuizo/Pictures/Wallpapers/arch_piola.png
+exec_always --no-startup-id feh --no-fehbg --bg-scale /home/elsuizo/Pictures/Wallpapers/arch_black2.png
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
@@ -244,7 +244,7 @@ bindsym $mod+F12 exec xfce4-screenshooter
 bindsym $mod+f exec thunar
 assign [class="Thunar"] $workspace3
 # Telegram
-bindsym $mod+t exec Telegram
+bindsym $mod+t exec telegram-desktop
 assign [class="Telegram"] $workspace5
 
 # open pdfs in workspace4
@@ -256,8 +256,8 @@ assign [class="qutebrowser"] $workspace1
 bindsym $mod+b exec firefox
 
 # music
-#bindsym $mod+m exec xfce4-terminal -e cmus
-bindsym $mod+m exec gnome-terminal -e cmus
+bindsym $mod+m exec xfce4-terminal -e cmus
+#bindsym $mod+m exec gnome-terminal -e cmus
 # power off gui
 #bindsym $mod+x exec cbpp-exit
 
@@ -315,4 +315,5 @@ bindsym F3  exec rofi -show run    -fg "#f1f1f1" -bg "#333333" -hlfg "#ffffff" -
 bindsym F10 exec rofi -show drun   -fg "#f1f1f1" -bg "#333333" -hlfg "#ffffff" -hlbg "#336699" -o 85
 bindsym F12 exec rofi -show window -fg "#f1f1f1" -bg "#333333" -hlfg "#ffffff" -hlbg "#336699" -o 85
 
-
+# change the keyboard layout with shortcut (para los putos acentos espanioles)
+exec_always "setxkbmap -model pc105 -layout us,es -variant ,, -option grp:alt_shift_toggle"
