@@ -32,3 +32,4 @@
 (package-initialize)
 
 (setq gc-cons-threshold 800000)
+(load-theme 'solarized t)

@@ -15,15 +15,6 @@ Comienza la fiesta!!!
   (evil-mode 1)
 #+end_src
 
-#+begin_src emacs-lisp
-(use-package nlinum-relative
-  :ensure t
-  :config
-  (nlinum-relative-setup-evil)
-  (setq nlinum-relative-redisplay-delay 0)
-(add-hook 'prog-mode-hook #'nlinum-relative-mode))
-#+end_src
-
 * Autopairs
 
 #+begin_src emacs-lisp
