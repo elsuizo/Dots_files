@@ -28,7 +28,7 @@ let pluginsExist = 0
 " Let NeoBundle manage NeoBundle
 " Required:
 " colorschemes
-" call dein#add('flazz/vim-colorschemes.git')
+call dein#add('flazz/vim-colorschemes.git')
 call dein#add('Shougo/dein.vim')
 " syntax
 " call dein#add('othree/yajs.vim', {'on_ft': 'javascript'})
@@ -155,6 +155,9 @@ call dein#add('huawenyu/neogdb.vim')
 call dein#add('dracula/vim')
 call dein#add('cespare/vim-toml')
 call dein#add('vim-scripts/Zenburn')
+call dein#add('rafi/awesome-vim-colorschemes')
+call dein#add('icymind/NeoSolarized')
+call dein#add('roxma/vim-tmux-clipboard')
 "-------------------------------------------------------------------------
 
 if dein#check_install()
@@ -236,9 +239,10 @@ autocmd FileType c,cpp,arduino,oil,rust inoremap { {<CR>}<up><end><CR>
   autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(save_cwd)
   let g:indentLine_char='│'
   " enable deoplete
-
+  " tex files super slows
+   :set lazyredraw
   "test
-  ":set cursorline!
+  " :set cursorline
   " cursor shapes
   :set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
   \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
@@ -449,12 +453,12 @@ set termguicolors
 set background=dark
 " colorscheme PaperColor
 " colorscheme zenburn
-" colorscheme paramount-suizo " colorscheme minimalistic
+colorscheme paramount-suizo " colorscheme minimalistic
 " colorscheme afterglow
-" colorscheme solarized " colorscheme minimalistic
+" colorscheme NeoSolarized " colorscheme minimalistic
 " colorscheme alduin " alduin colorscheme
 " colorscheme nofrils-dark
-colorscheme gruvbox
+" colorscheme gruvbox
 " no need to fold things in markdown all the time
 let g:vim_markdown_folding_disabled = 0
 " turn on spelling for markdown files
@@ -597,7 +601,8 @@ inoremap <expr><CR> pumvisible() ? deoplete#mappings#close_popup() : "\<CR>"
 
 " Rust deplete
 let g:deoplete#sources#rust#racer_binary='/home/elsuizo/.cargo/bin/racer'
-let g:deoplete#sources#rust#rust_source_path='/home/elsuizo/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
+" let g:deoplete#sources#rust#rust_source_path='/home/elsuizo/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
+let g:deoplete#sources#rust#rust_source_path='/home/elsuizo/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
 " C deoplete
 setlocal path+='/home/elsuizo/Development/CIAA_work/Firmware/'
 let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
@@ -685,11 +690,12 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline_powerline_fonts = 1
 " let g:airline_theme='monochrome'
+let g:airline_theme='drjova'
 " let g:airline_theme='minimalist'
 " let g:airline_theme = 'solarized'
 " let g:airline_theme = 'afterglow'
 " let g:airline_theme='papercolor'
-let g:airline_theme='gruvbox'
+" let g:airline_theme='gruvbox'
 " let g:airline_theme='bubblegum'
 let g:airline#extensions#tabline#tab_nr_type = 1
 cnoreabbrev <expr> x getcmdtype() == ":" && getcmdline() == 'x' ? 'nos vemos guacho' : 'x'
