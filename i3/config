@@ -126,7 +126,7 @@ bindsym $mod+a focus parent
 # variables
 #-------------------------------------------------------------------------
 set $workspace1 "1:Internet "
-set $workspace2 "2:Programming"
+set $workspace2 "2:Programming "
 set $workspace3 "3:Lectures "
 set $workspace4 "4:Files "
 set $workspace5 "5:Telegram "
