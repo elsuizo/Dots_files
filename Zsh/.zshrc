@@ -106,6 +106,9 @@ export PATH=$HOME/Dev/bin_exercism:$PATH
 # julia
 export PATH=$HOME/Dev/julia:$PATH
 
+# ruby shit
+export PATH=$HOME/.gem/ruby/2.4.0/bin:$PATH
+
 # .bash_aliases
 export PATH="/home/elsuizo/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
