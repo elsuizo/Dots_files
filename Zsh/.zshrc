@@ -5,7 +5,7 @@
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+ZSH_THEME="agnoster"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -99,6 +99,12 @@ alias clang++-3.6="clang++"
 
 #Rust paths
 export PATH="/home/elsuizo/.cargo/bin:$PATH"
+
+# exercism
+export PATH=$HOME/Dev/bin_exercism:$PATH
+
+# julia
+export PATH=$HOME/Dev/julia:$PATH
 
 # .bash_aliases
 export PATH="/home/elsuizo/.pyenv/bin:$PATH"
