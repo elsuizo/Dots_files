@@ -46,3 +46,5 @@ sudo pacman -S ruby
 sudo pacman -S nodejs
 # npm
 sudo pacman -S npm
+# clang
+sudo pacman -S clang
