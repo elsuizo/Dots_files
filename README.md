@@ -1,17 +1,17 @@
 # Dots_files
 El mejor workflow lejos!!!
 
-* Openbox
+* i3-wm
+* i3-status-rust
+* Neovim
 * zsh
 * Vim
 * Conky
 * Ranger
-* Neovim
 * Emacs
-* i3-wm
+* Openbox
 
 
-## Desktops
-![Debian testing](https://github.com/elsuizo/Dots_files/blob/master/debian_testing.png "Debian testing suizo")
+## Desktop
 
-![Archlinux](https://github.com/elsuizo/Dots_files/blob/master/archlinux2017.png "archlinux2017")
+![Archlinux](https://github.com/elsuizo/Dots_files/blob/master/arch.png "archlinux2017")
