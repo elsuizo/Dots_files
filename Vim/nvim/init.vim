@@ -158,6 +158,7 @@ call dein#add('vim-scripts/Zenburn')
 call dein#add('rafi/awesome-vim-colorschemes')
 call dein#add('icymind/NeoSolarized')
 call dein#add('roxma/vim-tmux-clipboard')
+call dein#add('racer-rust/vim-racer')
 "-------------------------------------------------------------------------
 
 if dein#check_install()
@@ -308,6 +309,15 @@ map <leader>sn ]s
 map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
+" Racer completion
+set hidden
+let g:racer_cmd = "/home/elsuizo/.cargo/bin/racer"
+let g:racer_experimental_completer = 1
+au FileType rust nmap gd <Plug>(rust-def)
+au FileType rust nmap gs <Plug>(rust-def-split)
+au FileType rust nmap gx <Plug>(rust-def-vertical)
+au FileType rust nmap <leader>gd <Plug>(rust-doc)
+
 " if new line show arrow
 if has('linebreak')
   let &showbreak='⤷ ' " arrow pointing downwards then curving rightwards (U+2937, UTF-8: E2 A4 B7)
@@ -603,6 +613,7 @@ inoremap <expr><CR> pumvisible() ? deoplete#mappings#close_popup() : "\<CR>"
 let g:deoplete#sources#rust#racer_binary='/home/elsuizo/.cargo/bin/racer'
 " let g:deoplete#sources#rust#rust_source_path='/home/elsuizo/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
 let g:deoplete#sources#rust#rust_source_path='/home/elsuizo/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
+
 " C deoplete
 setlocal path+='/home/elsuizo/Development/CIAA_work/Firmware/'
 let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
