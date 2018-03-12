@@ -50,15 +50,12 @@ ZSH_THEME="agnoster"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
-
 # User configuration
-
-  export PATH="/home/elsuizo/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"
+export PATH="/home/elsuizo/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"
 # export MANPATH="/usr/local/man:$MANPATH"
 
-# CIAA
-
- export PATH=$PATH:$HOME/Programacion/CIAA/gcc-arm-none-eabi-5_2-2015q4/bin/:/home/elsuizo/Programacion/CIAA/openocd-0.9.0/src
+# editor de texto
+export VISUAL="nvim"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -85,17 +82,36 @@ source $ZSH/oh-my-zsh.sh
 #
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
+#------------------------------------------------------------------------
+# alias para folders
+#------------------------------------------------------------------------
+# alias para ir a la carpeta Firmware
+alias firm="cd /home/elsuizo/Repos/Firmware"
+# alias para ir a la carpeta firmwarev2
+alias firm2="cd /home/elsuizo/Repos/firmware_v2"
+#------------------------------------------------------------------------
+# alias para archivos
+#------------------------------------------------------------------------
+# alias para abrir el archivo TODO
+alias TODO="nvim ~/Dropbox/Org_mode_files/Personal_org_mode_files/TODO.org"
+#------------------------------------------------------------------------
+# alias para comandos mas utilizados
+#------------------------------------------------------------------------
 # alias para saber el statatus de un repositorio github
 alias gits="git status"
-alias firm="cd /home/elsuizo/Programacion/CIAA/Firmware"
 # alias para lanzar dropbox
 alias drop="dropbox start"
 # alias para compilar y bajar codigo a la educiaa
 alias supermake="make clean && make generate && make && make download"
-# alias para compilar la educiaa baremetal 
+# alias para compilar la educiaa baremetal
 alias makes="make && make download"
-#clang alias
-alias clang++-3.6="clang++"
+#alias para genrar las carpetas clasicas de un proyecto de C con Makefile
+alias MAKE_C_PROJECT="mkdir src inc bin obj"
+#------------------------------------------------------------------------
+# exports
+#------------------------------------------------------------------------
+# para tener
+export PATH=$HOME/bin:$PATH
 
 #Rust paths
 export PATH="/home/elsuizo/.cargo/bin:$PATH"
@@ -107,9 +123,12 @@ export PATH=$HOME/Dev/bin_exercism:$PATH
 export PATH=$HOME/Dev/julia:$PATH
 
 # ruby shit
-export PATH=$HOME/.gem/ruby/2.4.0/bin:$PATH
+export PATH=$HOME/.gem/ruby/2.5.0/bin:$PATH
 
 # .bash_aliases
 export PATH="/home/elsuizo/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+
+export NVM_DIR="/home/elsuizo/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
