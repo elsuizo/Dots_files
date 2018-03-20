@@ -139,7 +139,7 @@ call dein#add('dermusikman/sonicpi.vim') " Sonic pi plugging
 call dein#add('vim-scripts/DrawIt') " Draw ASCII art with neovim
 call dein#add('robertmeta/nofrils') " minimalistic colorscheme(gray and black)
 "call dein#add('SirVer/ultisnips') " Ultisnip (no anda por ahora)
-" call dein#add('octol/vim-cpp-enhanced-highlight') " C++14 colorscheme
+call dein#add('octol/vim-cpp-enhanced-highlight') " C++14 colorscheme
 call dein#add('ryanpcmcquen/true-monochrome_vim')
 " call dein#add('owickstrom/vim-colors-paramount')
 call dein#add('elsuizo/vim-colors-paramount-suizo')
@@ -255,6 +255,8 @@ autocmd FileType c,cpp,arduino,oil,rust inoremap { {<CR>}<up><end><CR>
   " elsuizo adds
   let g:cpp_experimental_template_highlight = 1
   let g:cpp_class_scope_highlight = 1
+  " python2 virtualenv path
+  let g:python_host_prog = '/home/elsuizo/.pyenv/versions/neovim2/bin/python'
   " python3 path
   let g:python3_host_prog = '/home/elsuizo/.pyenv/versions/neovim/bin/python3'
   " magic for seach the current word in cursor wirh AG(silversearchear)
@@ -435,6 +437,7 @@ let g:tagbar_type_julia = {
     \ 'ctagstype' : 'julia',
     \ 'kinds'     : ['a:abstract', 'i:immutable', 't:type', 'f:function', 'm:macro']
     \ }
+let g:cpp_class_scope_highlight = 1
 " nnoremap <leader>e :call <SID>SynStack()<CR>
 " function! <SID>SynStack()
 "    if !exists("*synstack")
@@ -463,7 +466,9 @@ set termguicolors
 set background=dark
 " colorscheme PaperColor
 " colorscheme zenburn
+" colorscheme solarized8_high
 colorscheme paramount-suizo " colorscheme minimalistic
+" colorscheme dracula "
 " colorscheme afterglow
 " colorscheme NeoSolarized " colorscheme minimalistic
 " colorscheme alduin " alduin colorscheme
@@ -577,16 +582,16 @@ call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', '#141e23')
 "}}}
 
 " Snipppets -----------------------------------------------------------------{{{
-
+let g:deoplete#enable_at_startup = 1
 "Enable snipMate compatibility feature.
 let g:neosnippet#enable_snipmate_compatibility = 1
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
+let g:deoplete#auto_complete_delay = 1
 " Tell Neosnippet about the other snippets
 let g:neosnippet#snippets_directory='~/.vim/.cache/init.vim/.dein/snippets, ~/.vim/My_snippets'
 " Snippets
-  let g:deoplete#enable_at_startup = 1
   " let g:neosnippet#enable_snipmate_compatibility = 1
   " let g:neosnippet#expand_word_boundary = 1
   " imap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -702,6 +707,7 @@ let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline_powerline_fonts = 1
 " let g:airline_theme='monochrome'
 let g:airline_theme='drjova'
+" let g:airline_theme='dracula'
 " let g:airline_theme='minimalist'
 " let g:airline_theme = 'solarized'
 " let g:airline_theme = 'afterglow'
