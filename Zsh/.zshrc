@@ -130,5 +130,6 @@ export PATH="/home/elsuizo/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
-export NVM_DIR="/home/elsuizo/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+# Esta mierda es para Node.js o no se que carajos
+# export NVM_DIR="/home/elsuizo/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
