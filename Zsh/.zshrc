@@ -5,7 +5,8 @@
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="agnoster"
+# ZSH_THEME="agnoster"
+ZSH_THEME="refined"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -130,6 +131,5 @@ export PATH="/home/elsuizo/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
-# Esta mierda es para Node.js o no se que carajos
 # export NVM_DIR="/home/elsuizo/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
