@@ -1,36 +1,35 @@
-# Cpp comments:
-# NOTE(elsuizo): Agrego los de C ya que cuando trabajas con un archivo .h los lee de aca
+# Rust comments
 #-------------------------------------------------------------------------
-#                                C
+#                                Rust
 #-------------------------------------------------------------------------
 # 1. Nice coments
 snippet COM
-   /* ${0:your nice comment here} */
+   // ${0:your nice comment here}
 
 snippet BCOM
-   /*-------------------------------------------------------------------------
-                           ${0:yor nice comment here}
-   -------------------------------------------------------------------------*/
+   //-------------------------------------------------------------------------
+   //                        ${0:yor nice comment here}
+   //-------------------------------------------------------------------------
 
 #-------------------------------------------------------------------------
 #                                Code
 #-------------------------------------------------------------------------
-snippet STR
-   struct ${1:struct name} {
-         ${2:data};
-      };
+snippet PRINTLN
+   println!("${1:message}{:}", ${2:var_name});${0}
 
+snippet ASS
+   assert_eq!(${1:first argument}, ${2:second argument});
 #-------------------------------------------------------------------------
 #                                auxiliaries
 #-------------------------------------------------------------------------
 snippet TODO
-   /* TODO(elsuizo:${0:`strftime("%Y-%m-%d")`}):${1:your todo task here} */
+   // TODO(elsuizo:${0:`strftime("%Y-%m-%d")`}):${1:your todo task here}
 
 snippet FIXME
-   /* FIXME(elsuizo:${0:`strftime("%Y-%m-%d")`}):${1:your fix task here} */
+   // FIXME(elsuizo:${0:`strftime("%Y-%m-%d")`}):${1:your fix task here}
 
 snippet NOTE
-   /* NOTE(elsuizo:${0:`strftime("%Y-%m-%d")`}):${1:your note here} */
+   // NOTE(elsuizo:${0:`strftime("%Y-%m-%d")`}):${1:your note here}
 
 #-------------------------------------------------------------------------
 #                                C++

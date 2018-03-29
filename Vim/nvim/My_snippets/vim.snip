@@ -1,33 +1,29 @@
-# My snippets for C files
+# My snippets for Vim files
 # 1. Nice coments
 #-------------------------------------------------------------------------
 #                                Coments
 #-------------------------------------------------------------------------
 snippet COM
-   /* ${0:your nice comment here} */
+   " ${0:your nice comment here}
 
 snippet BCOM
-   /*-------------------------------------------------------------------------
-                        ${0:yor nice comment here}
-   -------------------------------------------------------------------------*/
+   "-------------------------------------------------------------------------
+   "                     ${0:yor nice comment here}
+   "-------------------------------------------------------------------------
 
 #-------------------------------------------------------------------------
 #                                auxiliaries
 #-------------------------------------------------------------------------
 snippet TODO
-   /* TODO(`$USER`:${0:`strftime("%Y-%m-%d")`}): ${1:your todo task here} */
+   " TODO(`$USER`:${0:`strftime("%Y-%m-%d")`}): ${1:your todo task here}
 
 snippet FIXME
-   /* FIXME(`$USER`:${0:`strftime("%Y-%m-%d")`}): ${1:your fix task here} */
+   " FIXME(`$USER`:${0:`strftime("%Y-%m-%d")`}): ${1:your fix task here}
 
 snippet NOTE
-   /* NOTE(`$USER`:${0:`strftime("%Y-%m-%d")`}): ${1:your note here} */
+   " NOTE(`$USER`:${0:`strftime("%Y-%m-%d")`}): ${1:your note here}
 
 
 #-------------------------------------------------------------------------
 #                                Code
 #-------------------------------------------------------------------------
-snippet STR
-   struct ${0:struct name} {
-         ${1:data};
-      };
