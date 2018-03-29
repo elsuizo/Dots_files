@@ -159,6 +159,7 @@ call dein#add('rafi/awesome-vim-colorschemes')
 call dein#add('icymind/NeoSolarized')
 call dein#add('roxma/vim-tmux-clipboard')
 call dein#add('racer-rust/vim-racer')
+call dein#add('fszymanski/deoplete-emoji')
 "-------------------------------------------------------------------------
 
 if dein#check_install()
@@ -614,6 +615,8 @@ imap <expr><TAB> pumvisible() ? "\<C-n>" : neosnippet#expandable_or_jumpable() ?
 imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 inoremap <expr><CR> pumvisible() ? deoplete#mappings#close_popup() : "\<CR>"
 
+" emoji-deoplete
+call deoplete#custom#set('emoji', 'filetypes', ['rst', 'jl', 'txt', 'rs'])
 " Rust deplete
 let g:deoplete#sources#rust#racer_binary='/home/elsuizo/.cargo/bin/racer'
 " let g:deoplete#sources#rust#rust_source_path='/home/elsuizo/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
