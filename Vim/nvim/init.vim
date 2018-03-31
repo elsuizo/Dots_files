@@ -127,6 +127,7 @@ call dein#add('icymind/NeoSolarized')
 call dein#add('roxma/vim-tmux-clipboard')
 call dein#add('racer-rust/vim-racer')
 call dein#add('fszymanski/deoplete-emoji')
+call dein#add('KeitaNakamura/neodark.vim')
 " check packages instalations
 if dein#check_install()
    call dein#install()
@@ -323,7 +324,8 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='drjova'
+" let g:airline_theme='drjova'
+let g:airline_theme='neodark'
 let g:airline#extensions#tabline#tab_nr_type = 1
 cnoreabbrev <expr> x getcmdtype() == ":" && getcmdline() == 'x' ? 'nos vemos guacho' : 'x'
 
@@ -445,8 +447,8 @@ if &listchars ==# 'eol:$'
 endif
 set list                " Show problematic characters.
 " Also highlight all tabs and trailing whitespace characters.
-highlight ExtraWhitespace ctermbg=red guibg=darkgreen
-match ExtraWhitespace /\s\+$\|\t/
+" highlight ExtraWhitespace ctermbg=red guibg=white
+" match ExtraWhitespace /\s\+$\|\t/
 
 " open the fucking config file
 nnoremap <leader>c :e! ~/.config/nvim/init.vim<cr>
