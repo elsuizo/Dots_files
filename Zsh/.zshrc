@@ -8,8 +8,9 @@
 # ZSH_THEME="agnoster"
 # ZSH_THEME="refined"
 # ZSH_THEME="dracula"
-ZSH_THEME="af-magic"
-
+# ZSH_THEME="af-magic"
+ZSH_THEME="powerlevel9k/powerlevel9k"
+POWERLEVEL9K_MODE="nerdfont-complete"
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
