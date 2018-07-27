@@ -262,10 +262,11 @@ let g:cpp_class_scope_highlight = 1
 syntax enable
 set termguicolors
 " backgrounds
-" set background=light
-set background=dark
+set background=light
+" set background=dark
 
-colorscheme paramount-suizo " colorscheme minimalistic
+colorscheme PaperColor
+" colorscheme paramount-suizo " colorscheme minimalistic
 
 autocmd BufRead,BufNewFile *.md setlocal spell complete+=kspell
 " highlight bad words in red
@@ -296,7 +297,7 @@ let g:AutoPairsMapCR=0
 let g:deoplete#enable_smart_case = 1
 
 " emoji-deoplete
-call deoplete#custom#set('emoji', 'filetypes', ['rst', 'jl', 'txt', 'rs'])
+call deoplete#custom#source('emoji', 'filetypes', ['rst', 'jl', 'txt', 'rs'])
 
 " Rust deplete
 let g:deoplete#sources#rust#racer_binary='/home/elsuizo/.cargo/bin/racer'
