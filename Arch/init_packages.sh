@@ -18,8 +18,6 @@ sudo pacman -S zsh
 sudo pacman -S wget
 # para bajar cosas de internet desde consola
 sudo pacman -S curl
-# la terminal que mejor anda (por ahora)
-sudo pacman -S gnome-terminal
 # fonts
 sudo pacman -S powerline-fonts
 # fonts
@@ -48,3 +46,9 @@ sudo pacman -S nodejs
 sudo pacman -S npm
 # clang
 sudo pacman -S clang
+# para que monte los usb
+sudo pacman -S gvfs
+sudo pacman -S gvfs-nfs
+# para que reconozca el celular y el ereader
+sudo pacman -S gvfs-mtp
+
