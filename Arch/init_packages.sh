@@ -8,6 +8,8 @@ sudo pacman -S base-devel
 sudo pacman -S feh
 # conky (visualizacion del sistema)
 sudo pacman -S conky
+# visor de programas
+sudo pacman -S rofi
 # visualizacion de imagenes
 sudo pacman -S viewnior
 # cmake
@@ -51,4 +53,12 @@ sudo pacman -S gvfs
 sudo pacman -S gvfs-nfs
 # para que reconozca el celular y el ereader
 sudo pacman -S gvfs-mtp
+# para el audio
+sudo pacman -S alsa
+sudo pacman -S alsa-utils
+sudo pacman -S alsa-plugins
+sudo pacman -S alsa-tools
 
+sudo pacman -S pulseaudio
+sudo pacman -S pulseaudio-alsa
+sudo pacman -S pulsemixer
