@@ -62,3 +62,5 @@ sudo pacman -S alsa-tools
 sudo pacman -S pulseaudio
 sudo pacman -S pulseaudio-alsa
 sudo pacman -S pulsemixer
+# ctags
+sudo pacman -S ctags
