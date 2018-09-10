@@ -10,7 +10,15 @@
 # ZSH_THEME="dracula"
 # ZSH_THEME="af-magic"
 ZSH_THEME="powerlevel9k/powerlevel9k"
+#-------------------------------------------------------------------------
+# powerlevel9k theme
+#-------------------------------------------------------------------------
 POWERLEVEL9K_MODE="nerdfont-complete"
+# custom bar
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(custom_arch_icon dir vcs)
+POWERLEVEL9K_CUSTOM_ARCH_ICON="echo  archlinux"
+# POWERLEVEL9K_CUSTOM_ARCH_ICON_BACKGROUND=000
+# POWERLEVEL9K_CUSTOM_ARCH_ICON_FOREGROUND=023
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -121,7 +129,7 @@ export PATH=$HOME/bin:$PATH
 export PATH="/home/elsuizo/.cargo/bin:$PATH"
 
 # exercism
-export PATH=$HOME/Dev/bin_exercism:$PATH
+export PATH=$HOME/Dev/Exercism/Exercism_bin:$PATH
 
 # julia
 export PATH=$HOME/Dev/julia:$PATH
@@ -136,3 +144,4 @@ eval "$(pyenv virtualenv-init -)"
 
 # export NVM_DIR="/home/elsuizo/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
