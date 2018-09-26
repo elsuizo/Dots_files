@@ -27,9 +27,9 @@ let pluginsExist = 0
 call dein#add('flazz/vim-colorschemes.git')
 call dein#add('Shougo/dein.vim')
 call dein#add('elzr/vim-json', {'on_ft': 'json'})
-call dein#add('tpope/vim-markdown', {'on_ft': 'markdown'})
+" call dein#add('tpope/vim-markdown', {'on_ft': 'markdown'})
 call dein#add('dhruvasagar/vim-table-mode')
-call dein#add('suan/vim-instant-markdown', {'on_ft': 'markdown'})
+" call dein#add('suan/vim-instant-markdown', {'on_ft': 'markdown'})
 call dein#add('tmhedberg/SimpylFold', {'on_ft': 'python'})
 call dein#add('mhartington/oceanic-next')
 call dein#add('tpope/vim-fugitive')
@@ -128,6 +128,10 @@ call dein#add('roxma/vim-tmux-clipboard')
 call dein#add('racer-rust/vim-racer')
 call dein#add('fszymanski/deoplete-emoji')
 call dein#add('KeitaNakamura/neodark.vim')
+call dein#add('euclio/vim-markdown-composer')
+call dein#add('matze/vim-meson')
+" call dein#add('vhdirk/vim-cmake')
+call dein#add('pboettch/vim-cmake-syntax')
 " check packages instalations
 if dein#check_install()
    call dein#install()
@@ -262,11 +266,11 @@ let g:cpp_class_scope_highlight = 1
 syntax enable
 set termguicolors
 " backgrounds
-set background=light
-" set background=dark
+" set background=light
+set background=dark
 
-colorscheme PaperColor
-" colorscheme paramount-suizo " colorscheme minimalistic
+" colorscheme PaperColor
+colorscheme paramount-suizo " colorscheme minimalistic
 
 autocmd BufRead,BufNewFile *.md setlocal spell complete+=kspell
 " highlight bad words in red
