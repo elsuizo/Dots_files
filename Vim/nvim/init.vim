@@ -259,6 +259,42 @@ let g:tagbar_type_julia = {
     \ 'kinds'     : ['a:abstract', 'i:immutable', 't:type', 'f:function', 'm:macro']
     \ }
 
+" NOTE(elsuizo:2019-03-26): tagbar para rust
+let g:rust_use_custom_ctags_defs = 1
+let g:tagbar_type_rust = {
+  \ 'ctagsbin' : '/path/to/your/universal/ctags',
+  \ 'ctagstype' : 'rust',
+  \ 'kinds' : [
+      \ 'n:modules',
+      \ 's:structures:1',
+      \ 'i:interfaces',
+      \ 'c:implementations',
+      \ 'f:functions:1',
+      \ 'g:enumerations:1',
+      \ 't:type aliases:1:0',
+      \ 'v:constants:1:0',
+      \ 'M:macros:1',
+      \ 'm:fields:1:0',
+      \ 'e:enum variants:1:0',
+      \ 'P:methods:1',
+  \ ],
+  \ 'sro': '::',
+  \ 'kind2scope' : {
+      \ 'n': 'module',
+      \ 's': 'struct',
+      \ 'i': 'interface',
+      \ 'c': 'implementation',
+      \ 'f': 'function',
+      \ 'g': 'enum',
+      \ 't': 'typedef',
+      \ 'v': 'variable',
+      \ 'M': 'macro',
+      \ 'm': 'field',
+      \ 'e': 'enumerator',
+      \ 'P': 'method',
+  \ },
+\ }
+
 " FIXME(elsuizo:2018-03-29): ??? yo diria de sacarlo
 let g:cpp_class_scope_highlight = 1
 
@@ -270,7 +306,17 @@ set termguicolors
 set background=dark
 
 " colorscheme PaperColor
-colorscheme paramount-suizo " colorscheme minimalistic
+" colorscheme paramount-suizo " colorscheme minimalistic
+colorscheme NeoSolarized " solarized
+
+" If you wish to enable/disable NeoSolarized from displaying bold, underlined or italicized
+" typefaces, simply assign 1 or 0 to the appropriate variable. Default values:
+let g:neosolarized_bold = 1
+let g:neosolarized_underline = 1
+let g:neosolarized_italic = 1
+
+set t_8f=^[[38;2;%lu;%lu;%lum
+set t_8b=^[[48;2;%lu;%lu;%lum
 
 autocmd BufRead,BufNewFile *.md setlocal spell complete+=kspell
 " highlight bad words in red
@@ -338,6 +384,10 @@ cnoreabbrev <expr> x getcmdtype() == ":" && getcmdline() == 'x' ? 'nos vemos gua
 let g:neomake_cpp_enable_markers=['g++']
 let g:neomake_cpp_gcc_args = ["-std=c++14", "-Wextra", "-Wall", "-fsanitize=undefined","-g"]
 
+" meson file extension
+" Set the filetype based on the file's extension, overriding any
+" 'filetype' that has already been set
+au BufRead,BufNewFile *.build set filetype=meson
 
 "-------------------------------------------------------------------------
 "                     Mappings
@@ -657,3 +707,21 @@ function! s:insert_description_tex()
     endfor
     execute "normal! Go\<Esc>k"
 endfunction
+
+"-------------------------------------------------------------------------
+"                     clipboard magic???
+"-------------------------------------------------------------------------
+let g:clipboard = {
+  \   'name': 'xclip-xfce4-clipman',
+  \   'copy': {
+  \      '+': 'xclip -selection clipboard',
+  \      '*': 'xclip -selection clipboard',
+  \    },
+  \   'paste': {
+  \      '+': 'xclip -selection clipboard -o',
+  \      '*': 'xclip -selection clipboard -o',
+  \   },
+  \   'cache_enabled': 1,
+  \ }
+
+set clipboard+=unnamedplus
