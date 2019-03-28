@@ -302,12 +302,14 @@ let g:cpp_class_scope_highlight = 1
 syntax enable
 set termguicolors
 " backgrounds
-" set background=light
-set background=dark
+set background=light
+" set background=dark
 
 " colorscheme PaperColor
 " colorscheme paramount-suizo " colorscheme minimalistic
-colorscheme NeoSolarized " solarized
+" colorscheme NeoSolarized " solarized
+" colorscheme gruvbox
+colorscheme solarized8_light_low
 
 " If you wish to enable/disable NeoSolarized from displaying bold, underlined or italicized
 " typefaces, simply assign 1 or 0 to the appropriate variable. Default values:
