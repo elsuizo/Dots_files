@@ -130,6 +130,8 @@ call dein#add('fszymanski/deoplete-emoji')
 call dein#add('KeitaNakamura/neodark.vim')
 call dein#add('euclio/vim-markdown-composer')
 call dein#add('matze/vim-meson')
+call dein#add('ayu-theme/ayu-vim')
+" call dein#add('airblade/vim-gitgutter')
 " call dein#add('vhdirk/vim-cmake')
 call dein#add('pboettch/vim-cmake-syntax')
 " check packages instalations
@@ -294,7 +296,6 @@ let g:tagbar_type_rust = {
       \ 'P': 'method',
   \ },
 \ }
-
 " FIXME(elsuizo:2018-03-29): ??? yo diria de sacarlo
 let g:cpp_class_scope_highlight = 1
 
@@ -302,14 +303,17 @@ let g:cpp_class_scope_highlight = 1
 syntax enable
 set termguicolors
 " backgrounds
-set background=light
-" set background=dark
-
+" set background=light
+set background=dark
+" let ayucolor="light"  " for light version of theme
+let ayucolor="mirage" " for mirage version of theme
+" let ayucolor="dark"   " for dark version of theme
+colorscheme ayu
 " colorscheme PaperColor
 " colorscheme paramount-suizo " colorscheme minimalistic
 " colorscheme NeoSolarized " solarized
 " colorscheme gruvbox
-colorscheme solarized8_light_low
+" colorscheme solarized8_light_low
 
 " If you wish to enable/disable NeoSolarized from displaying bold, underlined or italicized
 " typefaces, simply assign 1 or 0 to the appropriate variable. Default values:
@@ -379,6 +383,7 @@ let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline_powerline_fonts = 1
 " let g:airline_theme='drjova'
 let g:airline_theme='neodark'
+" let g:airline_theme='grubvox'
 let g:airline#extensions#tabline#tab_nr_type = 1
 cnoreabbrev <expr> x getcmdtype() == ":" && getcmdline() == 'x' ? 'nos vemos guacho' : 'x'
 
@@ -419,7 +424,7 @@ nnoremap <silent> <C-;> :TmuxNavigatePrevious<cr>
 
 nnoremap <silent> <c-p> :Unite -auto-resize -start-insert -direction=botright file_rec/async<CR>
 nnoremap <silent> <leader>i :Unite -auto-resize -start-insert -direction=botright colorscheme<CR>
-nnoremap <silent> <leader>u :Unite neobundle/update<CR>
+nnoremap <silent> <leader>U :Unite neobundle/update<CR>
 
 " Custom mappings for the unite buffer
 autocmd FileType unite call s:unite_settings()
