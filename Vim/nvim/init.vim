@@ -602,6 +602,7 @@ vnoremap <c-/> :TComment<cr>
 
 " insert the headers
 autocmd BufNewFile *.{tex} call <SID>insert_description_tex()
+autocmd BufNewFile *.{rs} call <SID>insert_description_rust()
 autocmd BufNewFile *.{jl,py} call <SID>insert_description_julia()
 autocmd BufNewFile *.{c++,cpp,cc,c,h,hpp,ino} call <SID>insert_description()
 
@@ -703,6 +704,20 @@ endfunction
 
 function! s:insert_description_tex()
     let template = $HOME . "/.vim/template/tex.template"
+    let file_name = expand("%:t") " Get file name without path
+    let date = strftime("%D %T") " Get the current year in format YYYY
+    let i = 0
+    for line in readfile(template)
+        let line = substitute(line, "<file_name>", file_name, "ge")
+        let line = substitute(line, "<date>", date, "ge")
+        call append(i, line)
+        let i += 1
+    endfor
+    execute "normal! Go\<Esc>k"
+endfunction
+
+function! s:insert_description_rust()
+    let template = $HOME . "/.vim/template/rust.template"
     let file_name = expand("%:t") " Get file name without path
     let date = strftime("%D %T") " Get the current year in format YYYY
     let i = 0
