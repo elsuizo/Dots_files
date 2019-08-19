@@ -306,11 +306,11 @@ set termguicolors
 " set background=light
 set background=dark
 " let ayucolor="light"  " for light version of theme
-let ayucolor="mirage" " for mirage version of theme
+" let ayucolor="mirage" " for mirage version of theme
 " let ayucolor="dark"   " for dark version of theme
-colorscheme ayu
+" colorscheme ayu
 " colorscheme PaperColor
-" colorscheme paramount-suizo " colorscheme minimalistic
+colorscheme paramount-suizo " colorscheme minimalistic
 " colorscheme NeoSolarized " solarized
 " colorscheme gruvbox
 " colorscheme solarized8_light_low
@@ -428,11 +428,11 @@ nnoremap <silent> <leader>U :Unite neobundle/update<CR>
 
 " Custom mappings for the unite buffer
 autocmd FileType unite call s:unite_settings()
-
+let g:UltiSnipsExpandTrigger=1
 " snippets mapps
 imap <expr><TAB> pumvisible() ? "\<C-n>" : neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
-inoremap <expr><CR> pumvisible() ? deoplete#mappings#close_popup() : "\<CR>"
+inoremap <expr><CR> pumvisible() ? deoplete#mappings#_complete() : "\<CR>"
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
