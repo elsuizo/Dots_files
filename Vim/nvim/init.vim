@@ -69,6 +69,7 @@ call dein#add('zchee/deoplete-go', {'build': 'make'},{'on_ft': 'go'})
 call dein#add('rhysd/nyaovim-popup-tooltip')
 call dein#add('ryanoasis/vim-devicons')
 call dein#add('zchee/deoplete-clang') " deoplete completion for c
+call dein#add('amadeus/vim-xml')
 "-------------------------------------------------------------------------
 "elsuizo adds
 "-------------------------------------------------------------------------
@@ -310,6 +311,7 @@ set background=dark
 " let ayucolor="dark"   " for dark version of theme
 " colorscheme ayu
 " colorscheme PaperColor
+" NOTE(elsuizo:2019-08-20): aguante mi colorscheme
 colorscheme paramount-suizo " colorscheme minimalistic
 " colorscheme NeoSolarized " solarized
 " colorscheme gruvbox
@@ -428,11 +430,11 @@ nnoremap <silent> <leader>U :Unite neobundle/update<CR>
 
 " Custom mappings for the unite buffer
 autocmd FileType unite call s:unite_settings()
-let g:UltiSnipsExpandTrigger=1
+
 " snippets mapps
 imap <expr><TAB> pumvisible() ? "\<C-n>" : neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
-inoremap <expr><CR> pumvisible() ? deoplete#mappings#_complete() : "\<CR>"
+inoremap <expr><CR> pumvisible() ? deoplete#mappings#close_popup() : "\<CR>"
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
@@ -460,6 +462,9 @@ nmap <leader>k :bd<cr>
 
 "open oil files
 au BufEnter,BufRead,BufNewFile *.oil setfiletype oil
+
+" launch files(from ROS) like xml
+au BufEnter,BufRead,BufNewFile *.launch setfiletype xml
 
 " open tex files
 au BufEnter,BufRead,BufNewFile *.tex setfiletype tex
