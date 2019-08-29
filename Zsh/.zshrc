@@ -1,6 +1,6 @@
+export LANG="en_US.UTF-8"
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/elsuizo/.oh-my-zsh
-
+export ZSH=/home/elsuizo/.oh-my-zsh
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -10,6 +10,8 @@
 # ZSH_THEME="dracula"
 # ZSH_THEME="af-magic"
 ZSH_THEME="powerlevel9k/powerlevel9k"
+plugins=(virtualenv)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status virtualenv)
 #-------------------------------------------------------------------------
 # powerlevel9k theme
 #-------------------------------------------------------------------------
@@ -119,6 +121,8 @@ alias supermake="make clean && make generate && make && make download"
 alias makes="make && make download"
 #alias para genrar las carpetas clasicas de un proyecto de C con Makefile
 alias MAKE_C_PROJECT="mkdir src inc bin obj"
+# alias para ir al workspace de ROS
+alias ROS_WORK="cd ~/Dev/catking_workspace"
 #------------------------------------------------------------------------
 # exports
 #------------------------------------------------------------------------
@@ -144,4 +148,5 @@ eval "$(pyenv virtualenv-init -)"
 
 # export NVM_DIR="/home/elsuizo/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
+#source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
+source /opt/ros/melodic/setup.zsh
