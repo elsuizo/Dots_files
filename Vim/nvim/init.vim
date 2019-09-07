@@ -58,7 +58,7 @@ call dein#add('Shougo/deoplete.nvim')
 call dein#add('Shougo/neco-vim', {'on_ft': 'vim'})
 call dein#add('Shougo/neoinclude.vim')
 call dein#add('ujihisa/neco-look')
-call dein#add('zchee/deoplete-jedi')
+" call dein#add('zchee/deoplete-jedi')
 call dein#add('Shougo/neosnippet.vim')
 call dein#add('Shougo/neosnippet-snippets')
 call dein#add('honza/vim-snippets')
@@ -70,6 +70,10 @@ call dein#add('rhysd/nyaovim-popup-tooltip')
 call dein#add('ryanoasis/vim-devicons')
 call dein#add('zchee/deoplete-clang') " deoplete completion for c
 call dein#add('amadeus/vim-xml')
+call dein#add('autozimu/LanguageClient-neovim', {
+    \ 'rev': 'next',
+    \ 'build': 'bash install.sh',
+    \ })
 "-------------------------------------------------------------------------
 "elsuizo adds
 "-------------------------------------------------------------------------
@@ -129,9 +133,10 @@ call dein#add('roxma/vim-tmux-clipboard')
 call dein#add('racer-rust/vim-racer')
 call dein#add('fszymanski/deoplete-emoji')
 call dein#add('KeitaNakamura/neodark.vim')
-call dein#add('euclio/vim-markdown-composer')
+" call dein#add('euclio/vim-markdown-composer')
 call dein#add('matze/vim-meson')
 call dein#add('ayu-theme/ayu-vim')
+call dein#add('iamcco/markdown-preview.nvim', {'on_ft': ['markdown', 'pandoc.markdown', 'rmd'],'build': 'cd app & yarn install' })
 " call dein#add('airblade/vim-gitgutter')
 " call dein#add('vhdirk/vim-cmake')
 call dein#add('pboettch/vim-cmake-syntax')
@@ -144,7 +149,7 @@ call dein#end()
 "-------------------------------------------------------------------------
 "                     Settings
 "-------------------------------------------------------------------------
-
+set completeopt-=preview
 set noshowmode
 set noswapfile
 filetype on
@@ -220,6 +225,22 @@ let g:indentLine_char='│'
 " enable deoplete
 " tex files super slows
 :set lazyredraw
+" Required for operations modifying multiple buffers like rename.
+set hidden
+
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+    \ 'python': ['/usr/local/bin/pyls'],
+    \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
+    \ }
+
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+" Or map each action separately
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gD :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 " :set cursorline
 " cursor shapes
@@ -239,11 +260,16 @@ let g:cpp_class_scope_highlight = 1
 let g:python_host_prog = '/home/elsuizo/.pyenv/versions/neovim2/bin/python'
 " python3 path
 let g:python3_host_prog = '/home/elsuizo/.pyenv/versions/neovim/bin/python3'
+set hidden
 
 " Racer completion
-set hidden
 let g:racer_cmd = "/home/elsuizo/.cargo/bin/racer"
 let g:racer_experimental_completer = 1
+let g:rustfmt_command = "rustfmt +nightly"
+let g:rustfmt_autosave = 1
+let g:rustfmt_emit_files = 1
+let g:rustfmt_fail_silently = 0
+let g:rust_clip_command = 'xclip -selection clipboard'
 au FileType rust nmap gd <Plug>(rust-def)
 au FileType rust nmap gs <Plug>(rust-def-split)
 au FileType rust nmap gx <Plug>(rust-def-vertical)
@@ -398,9 +424,101 @@ let g:neomake_cpp_gcc_args = ["-std=c++14", "-Wextra", "-Wall", "-fsanitize=unde
 " 'filetype' that has already been set
 au BufRead,BufNewFile *.build set filetype=meson
 
+" Markdown stuff
+" set to 1, nvim will open the preview window after entering the markdown buffer
+" default: 0
+let g:mkdp_auto_start = 1
+
+" set to 1, the nvim will auto close current preview window when change
+" from markdown buffer to another buffer
+" default: 1
+let g:mkdp_auto_close = 1
+
+" set to 1, the vim will refresh markdown when save the buffer or
+" leave from insert mode, default 0 is auto refresh markdown as you edit or
+" move the cursor
+" default: 0
+let g:mkdp_refresh_slow = 0
+
+" set to 1, the MarkdownPreview command can be use for all files,
+" by default it can be use in markdown file
+" default: 0
+let g:mkdp_command_for_global = 0
+
+" set to 1, preview server available to others in your network
+" by default, the server listens on localhost (127.0.0.1)
+" default: 0
+let g:mkdp_open_to_the_world = 0
+
+" use custom IP to open preview page
+" useful when you work in remote vim and preview on local browser
+" more detail see: https://github.com/iamcco/markdown-preview.nvim/pull/9
+" default empty
+let g:mkdp_open_ip = ''
+
+" specify browser to open preview page
+" default: ''
+let g:mkdp_browser = 'firefox'
+
+" set to 1, echo preview page url in command line when open preview page
+" default is 0
+let g:mkdp_echo_preview_url = 0
+
+" a custom vim function name to open preview page
+" this function will receive url as param
+" default is empty
+let g:mkdp_browserfunc = ''
+
+" options for markdown render
+" mkit: markdown-it options for render
+" katex: katex options for math
+" uml: markdown-it-plantuml options
+" maid: mermaid options
+" disable_sync_scroll: if disable sync scroll, default 0
+" sync_scroll_type: 'middle', 'top' or 'relative', default value is 'middle'
+"   middle: mean the cursor position alway show at the middle of the preview page
+"   top: mean the vim top viewport alway show at the top of the preview page
+"   relative: mean the cursor position alway show at the relative positon of the preview page
+" hide_yaml_meta: if hide yaml metadata, default is 1
+" sequence_diagrams: js-sequence-diagrams options
+let g:mkdp_preview_options = {
+    \ 'mkit': {},
+    \ 'katex': {},
+    \ 'uml': {},
+    \ 'maid': {},
+    \ 'disable_sync_scroll': 0,
+    \ 'sync_scroll_type': 'middle',
+    \ 'hide_yaml_meta': 1,
+    \ 'sequence_diagrams': {}
+    \ }
+
+" use a custom markdown style must be absolute path
+let g:mkdp_markdown_css = ''
+
+" use a custom highlight style must absolute path
+let g:mkdp_highlight_css = ''
+
+" use a custom port to start server or random for empty
+let g:mkdp_port = ''
+
+" preview page title
+" ${name} will be replace with the file name
+let g:mkdp_page_title = '「${name}」'
+
 "-------------------------------------------------------------------------
 "                     Mappings
 "-------------------------------------------------------------------------
+
+" Markdown
+
+" " normal/insert
+" <Plug>MarkdownPreview
+" <Plug>MarkdownPreviewStop
+" <Plug>MarkdownPreviewToggle
+"
+" nmap <C-s> <Plug>MarkdownPreview
+" nmap <M-s> <Plug>MarkdownPreviewStop
+" nmap <C-p> <Plug>MarkdownPreviewToggle
 
 " airline mappings
 nmap <leader>t :term<cr>
@@ -431,10 +549,12 @@ nnoremap <silent> <leader>U :Unite neobundle/update<CR>
 " Custom mappings for the unite buffer
 autocmd FileType unite call s:unite_settings()
 
+
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " snippets mapps
-imap <expr><TAB> pumvisible() ? "\<C-n>" : neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
-inoremap <expr><CR> pumvisible() ? deoplete#mappings#close_popup() : "\<CR>"
+" imap <expr><TAB> pumvisible() ? "\<C-n>" : neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+" imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+" inoremap <expr><CR> pumvisible() ? deoplete#mappings#close_popup() : "\<CR>"
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
@@ -446,10 +566,15 @@ autocmd StdinReadPre * let s:std_in=1
 
 " auto indent when press {
 autocmd FileType c,cpp,arduino,oil,rust inoremap { {<CR>}<up><end><CR>
+
 nnoremap S :Ag <cword><CR>:cw<CR>
+
+" <leader>= reformats current range of Rust code
+nnoremap <leader>= :'<,'>RustFmtRange<cr>
 
 " make
 nnoremap <F5> :make<CR>
+
 " make clean
 nnoremap <F6> :make clean<CR>
 
@@ -485,8 +610,8 @@ autocmd FileType python setlocal completeopt-=preview " for jedi popup doc disab
 set history=700
 " Fast saving
 nmap <leader>w :w!<cr>
-let g:move_key_modifier = 'C'
 
+let g:move_key_modifier = 'C'
 " Super useful! From an idea by Michael Naumann
 vnoremap <silent> * :call VisualSelection('f', '')<CR>
 vnoremap <silent> # :call VisualSelection('b', '')<CR>
