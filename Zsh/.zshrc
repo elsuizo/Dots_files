@@ -10,8 +10,9 @@ export ZSH=/home/elsuizo/.oh-my-zsh
 # ZSH_THEME="dracula"
 # ZSH_THEME="af-magic"
 ZSH_THEME="powerlevel9k/powerlevel9k"
-plugins=(virtualenv)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status virtualenv)
+# plugins=(virtualenv vi-mode)
+plugins=(virtualenv)
 #-------------------------------------------------------------------------
 # powerlevel9k theme
 #-------------------------------------------------------------------------
@@ -139,7 +140,7 @@ export PATH=$HOME/Dev/Exercism/Exercism_bin:$PATH
 export PATH=$HOME/Dev/julia:$PATH
 
 # ruby shit
-export PATH=$HOME/.gem/ruby/2.5.0/bin:$PATH
+export PATH=$HOME/.gem/ruby/2.6.0/bin:$PATH
 
 # .bash_aliases
 export PATH="/home/elsuizo/.pyenv/bin:$PATH"
@@ -150,3 +151,7 @@ eval "$(pyenv virtualenv-init -)"
 # [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 #source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
 source /opt/ros/melodic/setup.zsh
+
+# para android studio
+export ANDROID_SDK_ROOT=$HOME/elsuizo/Dev/android
+

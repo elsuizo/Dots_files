@@ -58,7 +58,7 @@ call dein#add('Shougo/deoplete.nvim')
 call dein#add('Shougo/neco-vim', {'on_ft': 'vim'})
 call dein#add('Shougo/neoinclude.vim')
 call dein#add('ujihisa/neco-look')
-" call dein#add('zchee/deoplete-jedi')
+call dein#add('zchee/deoplete-jedi')
 call dein#add('Shougo/neosnippet.vim')
 call dein#add('Shougo/neosnippet-snippets')
 call dein#add('honza/vim-snippets')
@@ -261,10 +261,13 @@ let g:python_host_prog = '/home/elsuizo/.pyenv/versions/neovim2/bin/python'
 " python3 path
 let g:python3_host_prog = '/home/elsuizo/.pyenv/versions/neovim/bin/python3'
 set hidden
-
+" latex stuff
+let g:vimtex_compiler_progname = 'nvr'
 " Racer completion
 let g:racer_cmd = "/home/elsuizo/.cargo/bin/racer"
 let g:racer_experimental_completer = 1
+let g:racer_insert_paren = 1
+" rustfmt
 let g:rustfmt_command = "rustfmt +nightly"
 let g:rustfmt_autosave = 1
 let g:rustfmt_emit_files = 1
@@ -366,11 +369,12 @@ let g:NERDTreeAutoDeleteBuffer=1
 
 " deoplete variables
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#check_stderr = 0
 "Enable snipMate compatibility feature.
 let g:neosnippet#enable_snipmate_compatibility = 1
 
 " " TODO(elsuizo:2018-03-29): ver si esto cambia en algo la velocidad
-let g:deoplete#auto_complete_delay = 1
+let g:deoplete#auto_complete_delay = 0
 
 " snippets directorys
 let g:neosnippet#snippets_directory='~/.vim/.cache/init.vim/.dein/snippets, ~/.vim/My_snippets'
@@ -387,9 +391,9 @@ call deoplete#custom#source('emoji', 'filetypes', ['rst', 'jl', 'txt', 'rs'])
 let g:deoplete#sources#rust#racer_binary='/home/elsuizo/.cargo/bin/racer'
 " let g:deoplete#sources#rust#rust_source_path='/home/elsuizo/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
 let g:deoplete#sources#rust#rust_source_path='/home/elsuizo/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
-
+let g:racer_disable_errors = 1
 " C deoplete
-setlocal path+='/home/elsuizo/Development/CIAA_work/Firmware/'
+setlocal path+='/home/elsuizo/Repos/firmware_v3'
 let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
 let g:deoplete#sources#clang#clang_header = '/usr/include/clang'
 
@@ -552,7 +556,7 @@ autocmd FileType unite call s:unite_settings()
 
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " snippets mapps
-" imap <expr><TAB> pumvisible() ? "\<C-n>" : neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+imap <expr><TAB> pumvisible() ? "\<C-n>" : neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 " imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 " inoremap <expr><CR> pumvisible() ? deoplete#mappings#close_popup() : "\<CR>"
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
