@@ -78,6 +78,8 @@ nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
 nnoremap <silent> <C-h> :TmuxNavigateLeft<CR>
 nnoremap <silent> <C-;> :TmuxNavigatePrevious<cr>
+" open this fucking file
+nnoremap <leader>c :e! ~/.vimrc<CR>
 " multicursor
 let g:multi_cursor_next_key='<C-n>'
 let g:multi_cursor_prev_key='<C-p>'
@@ -86,8 +88,9 @@ let g:multi_cursor_quit_key='<Esc>'
 " Align blocks of text and keep them selected
 vmap < <gv
 vmap > >gv
-nnoremap <leader>d "_d
-vnoremap <leader>d "_d
+" TODO(elsuizo) no se para que carajo es esto, o anda mal
+" nnoremap <leader>d "_d 
+" vnoremap <leader>d "_d
 vnoremap <c-/> :TComment<cr>
 " Tagbar for los pibes
 nmap <F8> :Tagbar<CR>
@@ -99,15 +102,17 @@ map <silent> <leader><cr> :noh<cr>
 " magic for seach the current word in cursor wirh AG(silversearchear)
 nnoremap S :Ag <cword><CR>:cw<CR>
 " Remember cursor position between vim sessions
-  autocmd BufReadPost *
+autocmd BufReadPost *
               \ if line("'\"") > 0 && line ("'\"") <= line("$") |
               \   exe "normal! g'\"" |
               \ endif
               " center buffer around cursor when opening files
-  autocmd BufRead * normal zz
+autocmd BufRead * normal zz
 
 let g:ranger_map_keys = 0
 map <leader>f :Ranger<CR>
+" togle NERDTree
+map <C-\> :NERDTreeToggle<CR>
 "-------------------------------------------------------------------------
 "                          window properties
 "-------------------------------------------------------------------------
@@ -134,8 +139,8 @@ let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline_powerline_fonts = 1
 " let g:airline_theme='gruvbox'
 " let g:airline_theme='papercolor'
-"let g:airline_theme='bubblegum'
-let g:airline_theme='monochrome'
+let g:airline_theme='neodark'
+" let g:airline_theme='monochrome'
 let g:airline#extensions#tabline#tab_nr_type = 1
 nmap <leader>t :term<cr>
 nmap <leader>, :bnext<CR>
@@ -212,7 +217,7 @@ Plugin 'vim-scripts/DrawIt' " Draw ASCII art with neovim
 Plugin 'octol/vim-cpp-enhanced-highlight' " C++14 colorscheme
 Plugin 'tpope/vim-dispatch'
 Plugin 'honza/vim-snippets'
-
+Plugin 'KeitaNakamura/neodark.vim'
 
 "-------------------------------------------------------------------------
 "                          Pluggin themes
@@ -228,6 +233,7 @@ Plugin 'clinstid/eink.vim' " minimalistic gray and black
 Plugin 'ryanpcmcquen/true-monochrome_vim' " minimalistic gray and black
 Plugin 'owickstrom/vim-colors-paramount' " minimalistic gray and violet
 Plugin 'RussellBradley/vim-nets-away' " minimalistic emulatin the NETS colors
+Plugin 'elsuizo/vim-colors-paramount-suizo' " minimalistic emulatin the NETS colors
 
 Plugin 'pbrisbin/vim-colors-off' " minimalistic emulatin the NETS colors
 Plugin 'altercation/vim-colors-solarized'
@@ -245,9 +251,9 @@ filetype plugin indent on
 "-------------------------------------------------------------------------
 "                          Basic
 "-------------------------------------------------------------------------
-"colorscheme gruvbox
+" colorscheme gruvbox
 " colorscheme paramount
-colorscheme suizo
+colorscheme paramount-suizo
 "set guifont=Monospace\ 10
 "set guifont=courier_new:h12:w5:b:cRUSSIAN
 " set guifont=RobotoMono\10
@@ -275,7 +281,7 @@ let &colorcolumn="80"
 
 " move blocks of code in visual mode with Control+j, Control+k
 let g:move_key_modifier = 'C'
-
+set hlsearch
 if exists('$SUDO_USER')
   set nobackup                        " don't create root-owned files
   set nowritebackup                   " don't create root-owned files
@@ -466,3 +472,21 @@ function! s:insert_description_tex()
     execute "normal! Go\<Esc>k"
 endfunction
 autocmd BufNewFile *.{tex} call <SID>insert_description_tex()
+
+"-------------------------------------------------------------------------
+"                     clipboard magic???
+"-------------------------------------------------------------------------
+let g:clipboard = {
+  \   'name': 'xclip-xfce4-clipman',
+  \   'copy': {
+  \      '+': 'xclip -selection clipboard',
+  \      '*': 'xclip -selection clipboard',
+  \    },
+  \   'paste': {
+  \      '+': 'xclip -selection clipboard -o',
+  \      '*': 'xclip -selection clipboard -o',
+  \   },
+  \   'cache_enabled': 1,
+  \ }
+
+set clipboard+=unnamedplus
