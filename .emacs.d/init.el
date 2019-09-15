@@ -1,5 +1,10 @@
-(setq gc-cons-threshold 400000000)
+(require 'package)
 
+; List the packages you want
+(setq package-list '(evil-leader))
+
+(setq gc-cons-threshold 400000000)
+(set-default-font "mononoki  Nerd Font Mono 13")
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
@@ -33,3 +38,20 @@
 
 (setq gc-cons-threshold 800000)
 (load-theme 'solarized t)
+(require 'evil-leader)
+(global-evil-leader-mode)
+(evil-leader/set-leader ",")
+(evil-leader/set-key
+  "b" 'switch-to-buffer
+  "w" 'save-buffer
+  "c" 'cargo-process-build)
+; hacemos el puto company global
+(add-hook 'after-init-hook  'global-company-mode)
+; racer mode
+(add-hook 'rust-mode-hook #'racer-mode)
+(add-hook 'racer-mode-hook #'eldoc-mode)
+(add-hook 'racer-mode-hook #'company-mode)
+
+(require 'rust-mode)
+(define-key rust-mode-map (kbd "TAB") #'company-indent-or-complete-common)
+(setq company-tooltip-align-annotations t)

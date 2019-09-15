@@ -1,25 +1,17 @@
-
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
 
 (require 'evil)
   (evil-mode 1)
 
-(use-package nlinum-relative
-  :ensure t
-  :config
-  (nlinum-relative-setup-evil)
-  (setq nlinum-relative-redisplay-delay 0)
-(add-hook 'prog-mode-hook #'nlinum-relative-mode))
-
 (electric-pair-mode)
 
 (ac-config-default)
 
-(use-package yasnippet
-    :ensure t
-    :init
-    (yas-global-mode 1))
+;#(use-package yasnippet
+;#    :ensure t
+;#    :init
+;#    (yas-global-mode 1))
 
 ;#+TODO: TODO(t) | DONE(d)
 ;#+TODO: REPORT(r) BUG(b) KNOWNCAUSE(k) | FIXED(f)
