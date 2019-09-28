@@ -140,6 +140,7 @@ call dein#add('iamcco/markdown-preview.nvim', {'on_ft': ['markdown', 'pandoc.mar
 " call dein#add('airblade/vim-gitgutter')
 " call dein#add('vhdirk/vim-cmake')
 call dein#add('pboettch/vim-cmake-syntax')
+call dein#add('rakr/vim-one')
 " check packages instalations
 if dein#check_install()
    call dein#install()
@@ -269,7 +270,7 @@ let g:racer_experimental_completer = 1
 let g:racer_insert_paren = 1
 " rustfmt
 let g:rustfmt_command = "rustfmt +nightly"
-let g:rustfmt_autosave = 1
+let g:rustfmt_autosave = 0
 let g:rustfmt_emit_files = 1
 let g:rustfmt_fail_silently = 0
 let g:rust_clip_command = 'xclip -selection clipboard'
@@ -342,9 +343,11 @@ set background=dark
 " colorscheme PaperColor
 " NOTE(elsuizo:2019-08-20): aguante mi colorscheme
 colorscheme paramount-suizo " colorscheme minimalistic
+" colorscheme one
 " colorscheme NeoSolarized " solarized
 " colorscheme gruvbox
 " colorscheme solarized8_light_low
+" colorscheme neodark
 
 " If you wish to enable/disable NeoSolarized from displaying bold, underlined or italicized
 " typefaces, simply assign 1 or 0 to the appropriate variable. Default values:
@@ -414,8 +417,13 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline_powerline_fonts = 1
 " let g:airline_theme='drjova'
-let g:airline_theme='neodark'
+let g:airline_theme='minimalist'
+" let g:airline_theme='lucius'
+" let g:airline_theme='zenburn'
+" let g:airline_theme='neodark'
+" let g:airline_theme='one'
 " let g:airline_theme='grubvox'
+" let g:airline_theme='dark'
 let g:airline#extensions#tabline#tab_nr_type = 1
 cnoreabbrev <expr> x getcmdtype() == ":" && getcmdline() == 'x' ? 'nos vemos guacho' : 'x'
 
@@ -610,7 +618,7 @@ nnoremap Q !!$SHELL <CR>
 " When you press <leader>r you can search and replace the selected text
 vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 
-autocmd FileType python setlocal completeopt-=preview " for jedi popup doc disable
+autocmd FileType rust,python setlocal completeopt-=preview " for jedi popup doc disable
 set history=700
 " Fast saving
 nmap <leader>w :w!<cr>
@@ -619,10 +627,6 @@ let g:move_key_modifier = 'C'
 " Super useful! From an idea by Michael Naumann
 vnoremap <silent> * :call VisualSelection('f', '')<CR>
 vnoremap <silent> # :call VisualSelection('b', '')<CR>
-
-" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-"map <space> /
-map <c-space> ?
 
 " Pressing ,ss will toggle and untoggle spell checking
 map <leader>ss :setlocal spell!<cr>
@@ -642,9 +646,6 @@ if &listchars ==# 'eol:$'
    set listchars=trail:-,nbsp:+
 endif
 set list                " Show problematic characters.
-" Also highlight all tabs and trailing whitespace characters.
-" highlight ExtraWhitespace ctermbg=red guibg=white
-" match ExtraWhitespace /\s\+$\|\t/
 
 " open the fucking config file
 nnoremap <leader>c :e! ~/.config/nvim/init.vim<cr>
