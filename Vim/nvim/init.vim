@@ -141,6 +141,13 @@ call dein#add('iamcco/markdown-preview.nvim', {'on_ft': ['markdown', 'pandoc.mar
 " call dein#add('vhdirk/vim-cmake')
 call dein#add('pboettch/vim-cmake-syntax')
 call dein#add('rakr/vim-one')
+call dein#add('sainnhe/gruvbox-material')
+" tabnine
+if has('win32') || has('win64')
+  call dein#add('tbodt/deoplete-tabnine', { 'build': 'powershell.exe .\install.ps1' })
+else
+  call dein#add('tbodt/deoplete-tabnine', { 'build': './install.sh' })
+endif
 " check packages instalations
 if dein#check_install()
    call dein#install()
@@ -342,18 +349,19 @@ set background=dark
 " colorscheme ayu
 " colorscheme PaperColor
 " NOTE(elsuizo:2019-08-20): aguante mi colorscheme
-colorscheme paramount-suizo " colorscheme minimalistic
+" colorscheme paramount-suizo " colorscheme minimalistic
 " colorscheme one
 " colorscheme NeoSolarized " solarized
-" colorscheme gruvbox
+let g:gruvbox_material_background = 'hard'
+colorscheme gruvbox-material
 " colorscheme solarized8_light_low
 " colorscheme neodark
 
 " If you wish to enable/disable NeoSolarized from displaying bold, underlined or italicized
 " typefaces, simply assign 1 or 0 to the appropriate variable. Default values:
-let g:neosolarized_bold = 1
-let g:neosolarized_underline = 1
-let g:neosolarized_italic = 1
+" let g:neosolarized_bold = 1
+" let g:neosolarized_underline = 1
+" let g:neosolarized_italic = 1
 
 set t_8f=^[[38;2;%lu;%lu;%lum
 set t_8b=^[[48;2;%lu;%lu;%lum
@@ -417,10 +425,10 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline_powerline_fonts = 1
 " let g:airline_theme='drjova'
-let g:airline_theme='minimalist'
+" let g:airline_theme='minimalist'
 " let g:airline_theme='lucius'
 " let g:airline_theme='zenburn'
-" let g:airline_theme='neodark'
+let g:airline_theme='neodark'
 " let g:airline_theme='one'
 " let g:airline_theme='grubvox'
 " let g:airline_theme='dark'
