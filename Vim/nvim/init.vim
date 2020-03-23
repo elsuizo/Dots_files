@@ -84,7 +84,6 @@ call dein#add('vim-scripts/taglist.vim')
 call dein#add('tpope/vim-pathogen')
 call dein#add('mattn/calendar-vim')
 call dein#add('JuliaEditorSupport/julia-vim') " julia language support
-" call dein#add('ajpaulson/julia-syntax.vim') " julia language old
 call dein#add('majutsushi/tagbar') " TODO no se si anda bien
 call dein#add('jceb/vim-orgmode')
 call dein#add('vim-scripts/utl.vim')
@@ -198,7 +197,7 @@ set virtualedit=
 set wildmenu
 set laststatus=2
 
-"set colorcolumn=100
+" set colorcolumn=100
 " let &colorcolumn="80"
 set wrap linebreak nolist
 
@@ -285,6 +284,8 @@ au FileType rust nmap gd <Plug>(rust-def)
 au FileType rust nmap gs <Plug>(rust-def-split)
 au FileType rust nmap gx <Plug>(rust-def-vertical)
 au FileType rust nmap <leader>gd <Plug>(rust-doc)
+au FileType rust nmap <leader>r :Cargo run<cr>
+au FileType rust nmap <leader>t :Cargo test<cr>
 
 " multiple cursor
 let g:multi_cursor_next_key='<C-n>'
@@ -298,7 +299,35 @@ let g:tagbar_type_julia = {
     \ 'ctagstype' : 'julia',
     \ 'kinds'     : ['a:abstract', 'i:immutable', 't:type', 'f:function', 'm:macro']
     \ }
-
+"  " julia language server
+" if executable('julia')
+"     au User lsp_setup call lsp#register_server({
+"         \ 'name': 'julia',
+"         \ 'cmd': {server_info->['julia',
+"         \     '--startup-file=no',
+"         \     '--history-file=no',
+"         \     '-e', '
+"         \         using LanguageServer, Pkg;
+"         \         import StaticLint;
+"         \         import SymbolServer;
+"         \         prj_path = dirname(first(filter(!isnothing, [
+"         \         	  Base.current_project(pwd())
+"         \             Pkg.Types.Context().env.project_file
+"         \         ])));
+"         \         debug = true;
+"         \         server = LanguageServer.LanguageServerInstance(stdin, stdout,
+"         \             debug, prj_path, string(), Dict());
+"         \         server.runlinter = true;
+"         \         run(server);
+"         \     ']},
+"         \ 'whitelist': ['julia', 'juliamarkdown'],
+"         \ })
+"     " clean up popup text, which by default always has a superfluous newline
+"     autocmd User lsp_float_opened call
+"         \ popup_settext(lsp#ui#vim#output#getpreviewwinid(),
+"         \   winbufnr(lsp#ui#vim#output#getpreviewwinid())->deletebufline(
+"         \		line('$', lsp#ui#vim#output#getpreviewwinid())))
+" endif
 " NOTE(elsuizo:2019-03-26): tagbar para rust
 let g:rust_use_custom_ctags_defs = 1
 let g:tagbar_type_rust = {
@@ -342,7 +371,7 @@ syntax enable
 set termguicolors
 " backgrounds
 " set background=light
-set background=dark
+" set background=dark
 " let ayucolor="light"  " for light version of theme
 " let ayucolor="mirage" " for mirage version of theme
 " let ayucolor="dark"   " for dark version of theme
@@ -351,12 +380,19 @@ set background=dark
 " NOTE(elsuizo:2019-08-20): aguante mi colorscheme
 " colorscheme paramount-suizo " colorscheme minimalistic
 " colorscheme one
-" colorscheme NeoSolarized " solarized
-let g:gruvbox_material_background = 'hard'
-colorscheme gruvbox-material
-" colorscheme solarized8_light_low
-" colorscheme neodark
 
+"  colorscheme gruvbox-material
+colorscheme gruvbox-material
+" let g:gruvbox_material_background = 'soft'
+" let g:gruvbox_material_background = 'medium'
+let g:gruvbox_material_background = 'hard'
+let g:gruvbox_material_visual = 'reverse'
+" colorscheme solarized8_light_low
+
+" colorscheme neodark
+" let g:neodark#background = '#202020'
+
+" colorscheme NeoSolarized " solarized
 " If you wish to enable/disable NeoSolarized from displaying bold, underlined or italicized
 " typefaces, simply assign 1 or 0 to the appropriate variable. Default values:
 " let g:neosolarized_bold = 1
@@ -385,7 +421,7 @@ let g:deoplete#check_stderr = 0
 let g:neosnippet#enable_snipmate_compatibility = 1
 
 " " TODO(elsuizo:2018-03-29): ver si esto cambia en algo la velocidad
-let g:deoplete#auto_complete_delay = 0
+let g:deoplete#auto_complete_delay = 1
 
 " snippets directorys
 let g:neosnippet#snippets_directory='~/.vim/.cache/init.vim/.dein/snippets, ~/.vim/My_snippets'
@@ -407,6 +443,8 @@ let g:racer_disable_errors = 1
 setlocal path+='/home/elsuizo/Repos/firmware_v3'
 let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
 let g:deoplete#sources#clang#clang_header = '/usr/include/clang'
+" Julia deoplete ???
+" let g:deoplete#sources#julia# = '/home/elsuizo/Repos/julia/base/exports.jl'
 
 " TODO(elsuizo:2018-03-29): darle mas bola a esto y saber para que se usa
 " unite
@@ -428,9 +466,9 @@ let g:airline_powerline_fonts = 1
 " let g:airline_theme='minimalist'
 " let g:airline_theme='lucius'
 " let g:airline_theme='zenburn'
-let g:airline_theme='neodark'
+" let g:airline_theme='neodark'
 " let g:airline_theme='one'
-" let g:airline_theme='grubvox'
+let g:airline_theme='gruvbox_material'
 " let g:airline_theme='dark'
 let g:airline#extensions#tabline#tab_nr_type = 1
 cnoreabbrev <expr> x getcmdtype() == ":" && getcmdline() == 'x' ? 'nos vemos guacho' : 'x'
@@ -537,11 +575,11 @@ let g:mkdp_page_title = '「${name}」'
 " <Plug>MarkdownPreviewToggle
 "
 " nmap <C-s> <Plug>MarkdownPreview
-" nmap <M-s> <Plug>MarkdownPreviewStop
+ nmap <M-s> <Plug>MarkdownPreviewStop
 " nmap <C-p> <Plug>MarkdownPreviewToggle
 
 " airline mappings
-nmap <leader>t :term<cr>
+" map <leader>t :term<cr>
 nmap <leader>, :bnext<CR>
 nmap <leader>. :bprevious<CR>
 nmap <leader>b :b#<CR>
@@ -599,7 +637,7 @@ nnoremap <F5> :make<CR>
 nnoremap <F6> :make clean<CR>
 
 " FIXME(elsuizo:2018-03-29): no se que carajo hace
-nnoremap <Space>h :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
+" nnoremap <Space>h :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 
 " open all .c and .h files
 nmap <leader>a :argadd **/*.c **/*.h<cr>
@@ -699,7 +737,7 @@ inoremap <c-d> <esc>ddi
 
 " copy current files path to clipboard
 " TODO(elsuizo): no se para que es esto!!!
-nmap cp :let @+ = expand("%") <cr>
+" nmap cp :let @+ = expand("%") <cr>
 
 " TODO(elsuizo:2018-03-29): ver para que era esa table mode
 noremap <leader>TM :TableModeToggle<CR>
