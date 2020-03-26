@@ -236,7 +236,6 @@ let g:indentLine_char='│'
 set hidden
 
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
     \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
     \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
     \ 'python': ['/usr/local/bin/pyls'],
@@ -328,10 +327,24 @@ let g:tagbar_type_julia = {
 "         \   winbufnr(lsp#ui#vim#output#getpreviewwinid())->deletebufline(
 "         \		line('$', lsp#ui#vim#output#getpreviewwinid())))
 " endif
+
+" et g:tagbar_type_rust = {
+"     \ 'ctagstype' : 'rust',
+"     \ 'kinds' : [
+"         \'T:types,type definitions',
+"         \'f:functions,function definitions',
+"         \'g:enum,enumeration names',
+"         \'s:structure names',
+"         \'m:modules,module names',
+"         \'c:consts,static constants',
+"         \'t:traits',
+"         \'i:impls,trait implementations',
+"     \]
+"     \}
 " NOTE(elsuizo:2019-03-26): tagbar para rust
 let g:rust_use_custom_ctags_defs = 1
 let g:tagbar_type_rust = {
-  \ 'ctagsbin' : '/path/to/your/universal/ctags',
+  \ 'ctagsbin' : '/usr/bin/ctags',
   \ 'ctagstype' : 'rust',
   \ 'kinds' : [
       \ 'n:modules',
@@ -378,15 +391,15 @@ set termguicolors
 " colorscheme ayu
 " colorscheme PaperColor
 " NOTE(elsuizo:2019-08-20): aguante mi colorscheme
-" colorscheme paramount-suizo " colorscheme minimalistic
+colorscheme paramount-suizo " colorscheme minimalistic
 " colorscheme one
 
 "  colorscheme gruvbox-material
-colorscheme gruvbox-material
+"  colorscheme gruvbox-material
 " let g:gruvbox_material_background = 'soft'
 " let g:gruvbox_material_background = 'medium'
-let g:gruvbox_material_background = 'hard'
-let g:gruvbox_material_visual = 'reverse'
+" let g:gruvbox_material_background = 'hard'
+" let g:gruvbox_material_visual = 'reverse'
 " colorscheme solarized8_light_low
 
 " colorscheme neodark
@@ -395,9 +408,9 @@ let g:gruvbox_material_visual = 'reverse'
 " colorscheme NeoSolarized " solarized
 " If you wish to enable/disable NeoSolarized from displaying bold, underlined or italicized
 " typefaces, simply assign 1 or 0 to the appropriate variable. Default values:
-" let g:neosolarized_bold = 1
-" let g:neosolarized_underline = 1
-" let g:neosolarized_italic = 1
+let g:neosolarized_bold = 1
+let g:neosolarized_underline = 1
+let g:neosolarized_italic = 1
 
 set t_8f=^[[38;2;%lu;%lu;%lum
 set t_8b=^[[48;2;%lu;%lu;%lum
@@ -463,12 +476,12 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline_powerline_fonts = 1
 " let g:airline_theme='drjova'
-" let g:airline_theme='minimalist'
+let g:airline_theme='minimalist'
 " let g:airline_theme='lucius'
 " let g:airline_theme='zenburn'
 " let g:airline_theme='neodark'
 " let g:airline_theme='one'
-let g:airline_theme='gruvbox_material'
+" let g:airline_theme='gruvbox_material'
 " let g:airline_theme='dark'
 let g:airline#extensions#tabline#tab_nr_type = 1
 cnoreabbrev <expr> x getcmdtype() == ":" && getcmdline() == 'x' ? 'nos vemos guacho' : 'x'
@@ -714,7 +727,7 @@ inoremap $e ""<esc>i
 inoremap $t <><esc>i
 
 " Tagbar for los pibes
-nmap <F8> :Tagbar<CR>
+nmap <F8> :TagbarToggle<CR>
 nmap <leader>F :NERDTreeFind<CR>
 
 " Doxygen generate
