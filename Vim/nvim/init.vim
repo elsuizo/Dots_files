@@ -437,7 +437,7 @@ let g:neosnippet#enable_snipmate_compatibility = 1
 let g:deoplete#auto_complete_delay = 1
 
 " snippets directorys
-let g:neosnippet#snippets_directory='~/.vim/.cache/init.vim/.dein/snippets, ~/.vim/My_snippets'
+let g:neosnippet#snippets_directory='~/.vim/.cache/init.vim/.dein/neosnippet, ~/.vim/My_snippets'
 
 " " deoplete + neosnippet + autopairs
 let g:AutoPairsMapCR=0
