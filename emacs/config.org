@@ -1,0 +1,200 @@
+#+TITLE: elsuizo emacs configuratiojia"
+user-mail-address "mnoblia@disroot.org")
+#+end_src
+* Customize settings
+
+#+begin_src emacs-lisp
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(load custom-file)
+#+end_src
+
+#+begin_src emacs-lisp
+(setq gc-cons-threshold 400000000)
+(set-default-font "mononoki  Nerd Font Mono 13")
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+(column-number-mode)
+(show-paren-mode)
+#+end_src
+
+* Melpa
+#+begin_src emacs-lisp
+;;; Set up package
+(require 'package)
+(add-to-list 'package-archives
+ '("melpa" . "http://melpa.org/packages/") t)
+(package-initialize)
+; Bootstrap `use-package'
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+;; From use-package README
+(eval-when-compile
+  (require 'use-package))
+(require 'diminish)                ;; if you use :diminish
+(require 'bind-key)
+(setq use-package-verbose t)
+(server-start)
+#+end_src
+* Evil mode
+Comienza la fiesta!!!
+#+begin_src emacs-lisp
+(require 'evil)
+  (evil-mode 1)
+#+end_src
+
+#+begin_src emacs-lisp
+(setq gc-cons-threshold 800000)
+(require 'evil-leader)
+(global-evil-leader-mode)
+(evil-leader/set-leader ",")
+(evil-leader/set-key
+  "b" 'switch-to-buffer
+  "w" 'save-buffer
+  "c" 'cargo-process-build
+  "t" 'term)
+(setq package-list '(evil-leader))
+#+end_src
+* Autopairs
+#+begin_src emacs-lisp
+(electric-pair-mode)
+#+end_src 
+* Autocomplete(company)
+#+begin_src emacs-lisp
+; hacemos el puto company global
+(add-hook 'after-init-hook  'global-company-mode)
+; racer mode
+(add-hook 'rust-mode-hook #'racer-mode)
+(add-hook 'racer-mode-hook #'eldoc-mode)
+(add-hook 'racer-mode-hook #'company-mode)
+#+end_src 
+* Colorthemes
+#+begin_src emacs-lisp
+(load-theme 'solarized t)
+#+end_src
+* Yasnippet
+#+begin_src emacs-lisp
+;#(use-package yasnippet
+;#    :ensure t
+;#    :init
+;#    (yas-global-mode 1))
+#+end_src
+* Org-mode
+** Agregamos mas estados 
+ si queremos podemos agregar los estados que queremos
+
+#+BEGIN_SRC emacs-lisp
+  ;#+TODO: TODO(t) | DONE(d)
+  ;#+TODO: REPORT(r) BUG(b) KNOWNCAUSE(k) | FIXED(f)
+  ;#+TODO: | CANCELED(c)
+#+END_SRC
+
+estos van a ser los estados por default
+
+#+BEGIN_SRC emacs-lisp
+(setq org-todo-keywords
+       '((sequence "TODO" "FEEDBACK" "VERIFY" "WAITING" "|" "DONE" "DELEGATED")))
+#+END_SRC
+
+** Elegimos con que programa queremos que se abra un link
+#+begin_src emacs-lisp
+(setq org-file-apps
+      '((auto-mode . emacs)
+        ("\\.x?html?\\'" . "firefox %s")
+        ("\\.pdf\\'" . "zathura \"%s\"")
+        ("\\.pdf::\\([0-9]+\\)\\'" . "zathura \"%s\" -p %1")
+        ("\\.pdf.xoj" . "xournal %s")
+        ("\\.csv" . "gvim %s")))
+#+end_src
+** TODO Hacemos que se puedan evaluar bloques de codigo de algunos lenguajes
+
+#+BEGIN_SRC emacs-lisp
+(require 'virtualenvwrapper)
+(venv-initialize-interactive-shells) ;; if you want interactive shell support
+(venv-initialize-eshell) ;; if you want eshell support
+(setq venv-location "/home/elsuizo/.pyenv/versions/3.5.2/bin/python3")
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((python . t)))
+#+END_SRC
+** Bullets
+   #+BEGIN_SRC emacs-lisp
+    (require 'org-bullets)
+    (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+   #+END_SRC
+** Agenda stuff
+   Estos son los archivos que agrego para que sean trackeados por org-agenda
+   #+BEGIN_SRC emacs-lis
+   (setq org-agenda-files (list "~/home/elsuizo/Dropbox/Org_mode_files/Personal_org_mode_files/dia_a_dia.org"
+                             "~/home/elsuizo/Dropbox/Org_mode_files/Personal_org_mode_files/iaci_tasks.org" 
+                             "~/home/elsuizo/Dropbox/Org_mode_files/Personal_org_mode_files/personal_tasks.org"))
+   #+END_SRC
+* Custom functions and commands
+Con esto lo que hago es guardar en el clipboard el path del archivo en el
+que estoy actualmente y ademas la linea en donde se encuentre el cursor por ejemplo
+la siguiente linea:
+/home/elsuizo/.emacs.d/config.org::85
+esto nos sirve para hacer links a cualquier linea de cualquier archivo!!!
+
+[[http://stackoverflow.com/a/12080871/3521007][formato de links en org-mode]]
+
+  #+BEGIN_SRC emacs-lisp
+ (defun what-line-only-number ()
+       "lalala"
+       (interactive)
+       (save-restriction
+         (widen)
+         (save-excursion
+           (beginning-of-line)
+           (message "%d"
+                    (1+ (count-lines 1 (point)))))))
+  #+END_SRC
+
+  #+BEGIN_SRC emacs-lisp
+  (defun name-of-the-file-and-line ()
+  (interactive)
+  (kill-new
+          (concat 
+                (buffer-file-name (window-buffer (minibuffer-selected-window))) "::" (what-line-only-number))))
+  #+END_SRC
+Seteo el llamado a la funcion con `C-c f` y queda grabado en el clipboard
+  #+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "C-c f") 'name-of-the-file-and-line)
+  #+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+(defun indent-buffer ()
+      (interactive)
+      (save-excursion
+        (indent-region (point-min) (point-max) nil)))
+    (global-set-key [f4] 'indent-buffer)
+#+END_SRC
+* History
+#+BEGIN_SRC emacs-lisp
+(setq savehist-file "~/.emacs.d/savehist")
+(savehist-mode 1)
+(setq history-length t)
+(setq history-delete-duplicates t)
+(setq savehist-save-minibuffer-history 1)
+(setq savehist-additional-variables
+      '(kill-ring
+        search-ring
+        regexp-search-ring))
+#+END_SRC
+  Para comenzar en el ultimo lugar del buffer en el que dejamos la ultima vez
+#+BEGIN_SRC emacs-lisp
+(require 'saveplace)
+(setq-default save-place t)
+#+END_SRC
+* Rust
+Setup el rust-mode
+#+begin_src emacs-lisp
+(require 'rust-mode)
+(define-key rust-mode-map (kbd "TAB") #'company-indent-or-complete-common)
+(setq company-tooltip-align-annotations t)
+#+end_src
