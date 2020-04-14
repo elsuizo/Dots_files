@@ -10,6 +10,8 @@
 " repo: https://github.com/amix/vimrc
 
 " NOTE(elsuizo:2018-03-29): limpieza y orden
+" NOTE(elsuizo:2020-04-14): mas limpieza y orden porque esta mas lento
+" que Vim !!!
 
 "-------------------------------------------------------------------------
 "                     Packages
@@ -27,20 +29,13 @@ let pluginsExist = 0
 call dein#add('flazz/vim-colorschemes.git')
 call dein#add('Shougo/dein.vim')
 call dein#add('elzr/vim-json', {'on_ft': 'json'})
-" call dein#add('tpope/vim-markdown', {'on_ft': 'markdown'})
-call dein#add('dhruvasagar/vim-table-mode')
-" call dein#add('suan/vim-instant-markdown', {'on_ft': 'markdown'})
 call dein#add('tmhedberg/SimpylFold', {'on_ft': 'python'})
-call dein#add('mhartington/oceanic-next')
 call dein#add('tpope/vim-fugitive')
-call dein#add('jreybert/vimagit')
 call dein#add('mhinz/vim-signify')
 call dein#add('Xuyuanp/nerdtree-git-plugin')
 call dein#add('tpope/vim-repeat')
-call dein#add('benekastah/neomake')
 call dein#add('editorconfig/editorconfig-vim')
 call dein#add('scrooloose/nerdtree')
-call dein#add('AndrewRadev/switch.vim')
 call dein#add('christoomey/vim-tmux-navigator')
 call dein#add('tmux-plugins/vim-tmux')
 call dein#add('tmux-plugins/vim-tmux-focus-events')
@@ -48,7 +43,6 @@ call dein#add('vim-airline/vim-airline')
 call dein#add('vim-airline/vim-airline-themes')
 call dein#add('tpope/vim-surround')
 call dein#add('tomtom/tcomment_vim')
-call dein#add('Chiel92/vim-autoformat')
 call dein#add('Shougo/unite.vim')
 call dein#add('Shougo/unite-outline')
 call dein#add('ujihisa/unite-colorscheme')
@@ -57,19 +51,16 @@ call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
 call dein#add('Shougo/deoplete.nvim')
 call dein#add('Shougo/neco-vim', {'on_ft': 'vim'})
 call dein#add('Shougo/neoinclude.vim')
-call dein#add('ujihisa/neco-look')
+call dein#add('ujihisa/neco-look')                          " Se fija en las palabras del diccionario para autocompletar
 call dein#add('zchee/deoplete-jedi')
 call dein#add('Shougo/neosnippet.vim')
 call dein#add('Shougo/neosnippet-snippets')
 call dein#add('honza/vim-snippets')
 call dein#add('terryma/vim-multiple-cursors')
-call dein#add('rhysd/github-complete.vim')
 call dein#add('vim-scripts/SyntaxRange')
-call dein#add('zchee/deoplete-go', {'build': 'make'},{'on_ft': 'go'})
-call dein#add('rhysd/nyaovim-popup-tooltip')
 call dein#add('ryanoasis/vim-devicons')
-call dein#add('zchee/deoplete-clang') " deoplete completion for c
 call dein#add('amadeus/vim-xml')
+call dein#add('tweekmonster/deoplete-clang2')
 call dein#add('autozimu/LanguageClient-neovim', {
     \ 'rev': 'next',
     \ 'build': 'bash install.sh',
@@ -91,7 +82,6 @@ call dein#add('tpope/vim-speeddating')
 call dein#add('chrisbra/NrrwRgn')
 call dein#add('Numkil/ag.nvim')
 call dein#add('matze/vim-move')
-call dein#add('AlessandroYorba/Alduin') " Alduin colorscheme
 call dein#add('Raimondi/delimitMate') " autopairs
 call dein#add('Konfekt/FastFold') " fold
 call dein#add('alaric/neovim-visor') " open the terminal split
@@ -100,47 +90,17 @@ call dein#add('lervag/vimtex')
 call dein#add('rust-lang/rust.vim') " Rust
 call dein#add('sebastianmarkow/deoplete-rust') " Rust
 call dein#add('vim-scripts/DoxygenToolkit.vim') " Doxygen
-call dein#add('frankier/neovim-colors-solarized-truecolor-only')
 call dein#add('junegunn/vim-easy-align') " align
-call dein#add('morhetz/gruvbox') " Gruvbox colorscheme
 call dein#add('chrisbra/csv.vim') " CSV data files
 call dein#add('vim-scripts/OIL.vim') " OIL syntax highlight
-call dein#add('4Evergreen4/vim-hardy') " Arduino IDE integration
-call dein#add('jplaut/vim-arduino-ino') "
-call dein#add('sickill/vim-monokai') " Molokai colorscheme
-call dein#add('dermusikman/sonicpi.vim') " Sonic pi plugging
-call dein#add('vim-scripts/DrawIt') " Draw ASCII art with neovim
-call dein#add('robertmeta/nofrils') " minimalistic colorscheme(gray and black)
-call dein#add('octol/vim-cpp-enhanced-highlight') " C++14 colorscheme
-call dein#add('ryanpcmcquen/true-monochrome_vim')
 call dein#add('elsuizo/vim-colors-paramount-suizo')
-call dein#add('chriskempson/base16-vim')
-call dein#add('drjova/airline-drjova') " cool airline theme
 call dein#add('tpope/vim-commentary')
-" call dein#add('aklt/plantuml-syntax') " Plant UML
-call dein#add('arakashic/chromatica.nvim') " fast syntax c files
-call dein#add('trevordmiller/nova-vim')
-call dein#add('jacoborus/tender.vim') " tender colorscheme
-call dein#add('danilo-augusto/vim-afterglow')
-call dein#add('huawenyu/neogdb.vim')
-call dein#add('dracula/vim')
-call dein#add('cespare/vim-toml')
-call dein#add('vim-scripts/Zenburn')
-call dein#add('rafi/awesome-vim-colorschemes')
-call dein#add('icymind/NeoSolarized')
 call dein#add('roxma/vim-tmux-clipboard')
 call dein#add('racer-rust/vim-racer')
-call dein#add('fszymanski/deoplete-emoji')
 call dein#add('KeitaNakamura/neodark.vim')
-" call dein#add('euclio/vim-markdown-composer')
 call dein#add('matze/vim-meson')
 call dein#add('ayu-theme/ayu-vim')
 call dein#add('iamcco/markdown-preview.nvim', {'on_ft': ['markdown', 'pandoc.markdown', 'rmd'],'build': 'cd app & yarn install' })
-" call dein#add('airblade/vim-gitgutter')
-" call dein#add('vhdirk/vim-cmake')
-call dein#add('pboettch/vim-cmake-syntax')
-call dein#add('rakr/vim-one')
-call dein#add('sainnhe/gruvbox-material')
 " tabnine
 if has('win32') || has('win64')
   call dein#add('tbodt/deoplete-tabnine', { 'build': 'powershell.exe .\install.ps1' })
@@ -152,27 +112,26 @@ if dein#check_install()
    call dein#install()
 endif
 call dein#end()
-
 "-------------------------------------------------------------------------
 "                     Settings
 "-------------------------------------------------------------------------
 set completeopt-=preview
-set noshowmode
-set noswapfile
-filetype on
-" set nowrap
-set relativenumber number
+
+set noshowmode             " no quiero que me muestres INSERT
+
+set noswapfile             " no quiero esos estupidos file~
+
+filetype on                " quiero que te preocupes por que tipo de file estas abriendo
+
+set nowrap                 " no quiero que se corten las lineas!!!
+
+set relativenumber number  " quiero ver las lineas relativas
+
 filetype plugin indent on
-"map cc <Nop>
-" set tabstop=2 shiftwidth=2 expandtab
-" set conceallevel=0
-"map <F4> :vs %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
-"map <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
+
 " Height of the command bar
 set cmdheight=1
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
-" => Text, tab and indent related
 " Use spaces instead of tabs
 set expandtab
 
@@ -196,12 +155,6 @@ set si "Smart indent
 set virtualedit=
 set wildmenu
 set laststatus=2
-
-" set colorcolumn=100
-" let &colorcolumn="80"
-set wrap linebreak nolist
-
-set wildmode=full
 
 " leader is ,
 let mapleader = ','
@@ -231,35 +184,19 @@ autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(save_cwd)
 let g:indentLine_char='│'
 " enable deoplete
 " tex files super slows
-:set lazyredraw
+set lazyredraw
+set ruler " mostrar la posicion del cursor siempre
 " Required for operations modifying multiple buffers like rename.
 set hidden
 
-let g:LanguageClient_serverCommands = {
-    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
-    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
-    \ 'python': ['/usr/local/bin/pyls'],
-    \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
-    \ }
-
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-" Or map each action separately
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gD :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-
-" :set cursorline
 " cursor shapes
 :set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
 \,sm:block-blinkwait175-blinkoff150-blinkon175
-set lazyredraw
+
 set synmaxcol=128
 syntax sync minlines=256
 set noshowcmd
-
-let g:cpp_experimental_template_highlight = 1
-let g:cpp_class_scope_highlight = 1
 
 " python versions
 " python2 virtualenv path
@@ -292,55 +229,6 @@ let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
-" FIXME(elsuizo:2018-03-29): Hacer andar los tags files para Julia
-" tagbar piola para Julia language
-let g:tagbar_type_julia = {
-    \ 'ctagstype' : 'julia',
-    \ 'kinds'     : ['a:abstract', 'i:immutable', 't:type', 'f:function', 'm:macro']
-    \ }
-"  " julia language server
-" if executable('julia')
-"     au User lsp_setup call lsp#register_server({
-"         \ 'name': 'julia',
-"         \ 'cmd': {server_info->['julia',
-"         \     '--startup-file=no',
-"         \     '--history-file=no',
-"         \     '-e', '
-"         \         using LanguageServer, Pkg;
-"         \         import StaticLint;
-"         \         import SymbolServer;
-"         \         prj_path = dirname(first(filter(!isnothing, [
-"         \         	  Base.current_project(pwd())
-"         \             Pkg.Types.Context().env.project_file
-"         \         ])));
-"         \         debug = true;
-"         \         server = LanguageServer.LanguageServerInstance(stdin, stdout,
-"         \             debug, prj_path, string(), Dict());
-"         \         server.runlinter = true;
-"         \         run(server);
-"         \     ']},
-"         \ 'whitelist': ['julia', 'juliamarkdown'],
-"         \ })
-"     " clean up popup text, which by default always has a superfluous newline
-"     autocmd User lsp_float_opened call
-"         \ popup_settext(lsp#ui#vim#output#getpreviewwinid(),
-"         \   winbufnr(lsp#ui#vim#output#getpreviewwinid())->deletebufline(
-"         \		line('$', lsp#ui#vim#output#getpreviewwinid())))
-" endif
-
-" et g:tagbar_type_rust = {
-"     \ 'ctagstype' : 'rust',
-"     \ 'kinds' : [
-"         \'T:types,type definitions',
-"         \'f:functions,function definitions',
-"         \'g:enum,enumeration names',
-"         \'s:structure names',
-"         \'m:modules,module names',
-"         \'c:consts,static constants',
-"         \'t:traits',
-"         \'i:impls,trait implementations',
-"     \]
-"     \}
 " NOTE(elsuizo:2019-03-26): tagbar para rust
 let g:rust_use_custom_ctags_defs = 1
 let g:tagbar_type_rust = {
@@ -376,57 +264,25 @@ let g:tagbar_type_rust = {
       \ 'P': 'method',
   \ },
 \ }
-" FIXME(elsuizo:2018-03-29): ??? yo diria de sacarlo
-let g:cpp_class_scope_highlight = 1
 
 " colorschemes
 syntax enable
 set termguicolors
-" backgrounds
-" set background=light
-" set background=dark
-" let ayucolor="light"  " for light version of theme
-" let ayucolor="mirage" " for mirage version of theme
-" let ayucolor="dark"   " for dark version of theme
-" colorscheme ayu
-" colorscheme PaperColor
-" NOTE(elsuizo:2019-08-20): aguante mi colorscheme
+set background=dark
 colorscheme paramount-suizo " colorscheme minimalistic
-" colorscheme one
 
-"  colorscheme gruvbox-material
-"  colorscheme gruvbox-material
-" let g:gruvbox_material_background = 'soft'
-" let g:gruvbox_material_background = 'medium'
-" let g:gruvbox_material_background = 'hard'
-" let g:gruvbox_material_visual = 'reverse'
-" colorscheme solarized8_light_low
-
-" colorscheme neodark
-" let g:neodark#background = '#202020'
-
-" colorscheme NeoSolarized " solarized
-" If you wish to enable/disable NeoSolarized from displaying bold, underlined or italicized
-" typefaces, simply assign 1 or 0 to the appropriate variable. Default values:
-let g:neosolarized_bold = 1
-let g:neosolarized_underline = 1
-let g:neosolarized_italic = 1
-
-set t_8f=^[[38;2;%lu;%lu;%lum
-set t_8b=^[[48;2;%lu;%lu;%lum
-
-autocmd BufRead,BufNewFile *.md setlocal spell complete+=kspell
-" highlight bad words in red
-autocmd BufRead,BufNewFile *.md hi SpellBad guibg=#ff2929 guifg=#ffffff" ctermbg=224
-
-" disable markdown auto-preview. Gets annoying
-let g:instant_markdown_autostart = 1
+" TODO(elsuizo:2020-04-14): no se para que mierda es esto
+" set t_8f=^[[38;2;%lu;%lu;%lum
+" set t_8b=^[[48;2;%lu;%lu;%lum
 
 " NerdTree variables
 let NERDTreeShowHidden=1
 let g:NERDTreeWinSize=45
 let g:NERDTreeAutoDeleteBuffer=1
 
+"-------------------------------------------------------------------------
+"                     deoplete stuff
+"-------------------------------------------------------------------------
 " deoplete variables
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#check_stderr = 0
@@ -437,27 +293,18 @@ let g:neosnippet#enable_snipmate_compatibility = 1
 let g:deoplete#auto_complete_delay = 1
 
 " snippets directorys
-let g:neosnippet#snippets_directory='~/.vim/.cache/init.vim/.dein/neosnippet, ~/.vim/My_snippets'
+let g:neosnippet#snippets_directory='~/.vim/repos/github.com/Shougo/neosnippet-snippets, ~/.vim/My_snippets'
 
 " " deoplete + neosnippet + autopairs
 let g:AutoPairsMapCR=0
 " let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
 
-" emoji-deoplete
-call deoplete#custom#source('emoji', 'filetypes', ['rst', 'jl', 'txt', 'rs'])
-
 " Rust deplete
 let g:deoplete#sources#rust#racer_binary='/home/elsuizo/.cargo/bin/racer'
 " let g:deoplete#sources#rust#rust_source_path='/home/elsuizo/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
 let g:deoplete#sources#rust#rust_source_path='/home/elsuizo/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
 let g:racer_disable_errors = 1
-" C deoplete
-setlocal path+='/home/elsuizo/Repos/firmware_v3'
-let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
-let g:deoplete#sources#clang#clang_header = '/usr/include/clang'
-" Julia deoplete ???
-" let g:deoplete#sources#julia# = '/home/elsuizo/Repos/julia/base/exports.jl'
 
 " TODO(elsuizo:2018-03-29): darle mas bola a esto y saber para que se usa
 " unite
@@ -476,121 +323,22 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline_powerline_fonts = 1
 " let g:airline_theme='drjova'
-let g:airline_theme='minimalist'
+" let g:airline_theme='minimalist'
 " let g:airline_theme='lucius'
 " let g:airline_theme='zenburn'
-" let g:airline_theme='neodark'
+let g:airline_theme='neodark'
 " let g:airline_theme='one'
-" let g:airline_theme='gruvbox_material'
+" let :airline_theme='gruvbox_material'
 " let g:airline_theme='dark'
 let g:airline#extensions#tabline#tab_nr_type = 1
-cnoreabbrev <expr> x getcmdtype() == ":" && getcmdline() == 'x' ? 'nos vemos guacho' : 'x'
-
-" neomake variables
-let g:neomake_cpp_enable_markers=['g++']
-let g:neomake_cpp_gcc_args = ["-std=c++14", "-Wextra", "-Wall", "-fsanitize=undefined","-g"]
 
 " meson file extension
 " Set the filetype based on the file's extension, overriding any
 " 'filetype' that has already been set
 au BufRead,BufNewFile *.build set filetype=meson
-
-" Markdown stuff
-" set to 1, nvim will open the preview window after entering the markdown buffer
-" default: 0
-let g:mkdp_auto_start = 1
-
-" set to 1, the nvim will auto close current preview window when change
-" from markdown buffer to another buffer
-" default: 1
-let g:mkdp_auto_close = 1
-
-" set to 1, the vim will refresh markdown when save the buffer or
-" leave from insert mode, default 0 is auto refresh markdown as you edit or
-" move the cursor
-" default: 0
-let g:mkdp_refresh_slow = 0
-
-" set to 1, the MarkdownPreview command can be use for all files,
-" by default it can be use in markdown file
-" default: 0
-let g:mkdp_command_for_global = 0
-
-" set to 1, preview server available to others in your network
-" by default, the server listens on localhost (127.0.0.1)
-" default: 0
-let g:mkdp_open_to_the_world = 0
-
-" use custom IP to open preview page
-" useful when you work in remote vim and preview on local browser
-" more detail see: https://github.com/iamcco/markdown-preview.nvim/pull/9
-" default empty
-let g:mkdp_open_ip = ''
-
-" specify browser to open preview page
-" default: ''
-let g:mkdp_browser = 'firefox'
-
-" set to 1, echo preview page url in command line when open preview page
-" default is 0
-let g:mkdp_echo_preview_url = 0
-
-" a custom vim function name to open preview page
-" this function will receive url as param
-" default is empty
-let g:mkdp_browserfunc = ''
-
-" options for markdown render
-" mkit: markdown-it options for render
-" katex: katex options for math
-" uml: markdown-it-plantuml options
-" maid: mermaid options
-" disable_sync_scroll: if disable sync scroll, default 0
-" sync_scroll_type: 'middle', 'top' or 'relative', default value is 'middle'
-"   middle: mean the cursor position alway show at the middle of the preview page
-"   top: mean the vim top viewport alway show at the top of the preview page
-"   relative: mean the cursor position alway show at the relative positon of the preview page
-" hide_yaml_meta: if hide yaml metadata, default is 1
-" sequence_diagrams: js-sequence-diagrams options
-let g:mkdp_preview_options = {
-    \ 'mkit': {},
-    \ 'katex': {},
-    \ 'uml': {},
-    \ 'maid': {},
-    \ 'disable_sync_scroll': 0,
-    \ 'sync_scroll_type': 'middle',
-    \ 'hide_yaml_meta': 1,
-    \ 'sequence_diagrams': {}
-    \ }
-
-" use a custom markdown style must be absolute path
-let g:mkdp_markdown_css = ''
-
-" use a custom highlight style must absolute path
-let g:mkdp_highlight_css = ''
-
-" use a custom port to start server or random for empty
-let g:mkdp_port = ''
-
-" preview page title
-" ${name} will be replace with the file name
-let g:mkdp_page_title = '「${name}」'
-
 "-------------------------------------------------------------------------
 "                     Mappings
 "-------------------------------------------------------------------------
-
-" Markdown
-
-" " normal/insert
-" <Plug>MarkdownPreview
-" <Plug>MarkdownPreviewStop
-" <Plug>MarkdownPreviewToggle
-"
-" nmap <C-s> <Plug>MarkdownPreview
- nmap <M-s> <Plug>MarkdownPreviewStop
-" nmap <C-p> <Plug>MarkdownPreviewToggle
-
 " airline mappings
 " map <leader>t :term<cr>
 nmap <leader>, :bnext<CR>
@@ -633,11 +381,7 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 map <C-\> :NERDTreeToggle<CR>
 autocmd StdinReadPre * let s:std_in=1
 
-" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-
-" auto indent when press {
-autocmd FileType c,cpp,arduino,oil,rust inoremap { {<CR>}<up><end><CR>
-
+" buscar la palabra en la que esta el cursor con ag(silversearcher)
 nnoremap S :Ag <cword><CR>:cw<CR>
 
 " <leader>= reformats current range of Rust code
@@ -648,9 +392,6 @@ nnoremap <F5> :make<CR>
 
 " make clean
 nnoremap <F6> :make clean<CR>
-
-" FIXME(elsuizo:2018-03-29): no se que carajo hace
-" nnoremap <Space>h :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 
 " open all .c and .h files
 nmap <leader>a :argadd **/*.c **/*.h<cr>
@@ -666,12 +407,12 @@ au BufEnter,BufRead,BufNewFile *.launch setfiletype xml
 au BufEnter,BufRead,BufNewFile *.tex setfiletype tex
 
 " Center the buffer in a search
-:nnoremap n nzz
-:nnoremap N Nzz
-:nnoremap * *zz
-:nnoremap # #zz
-:nnoremap g* g*zz
-:nnoremap g# g#zz
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
+nnoremap g* g*zz
+nnoremap g# g#zz
 nnoremap Q !!$SHELL <CR>
 
 " When you press <leader>r you can search and replace the selected text
@@ -736,29 +477,6 @@ nmap <leader>D :Dox<cr>
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
 
-" FIXME(elsuizo:2018-03-29): no se para que carajo es esto
-inoremap <c-d> <esc>ddi
-" Navigate between display lines
-" noremap  <silent> <Up>   gk
-" noremap  <silent> <Down> gj
-" noremap  <silent> k gk
-" noremap  <silent> j gj
-" noremap  <silent> <Home> g<Home>
-" noremap  <silent> <End>  g<End>
-" inoremap <silent> <Home> <C-o>g<Home>
-" inoremap <silent> <End>  <C-o>g<End>
-
-" copy current files path to clipboard
-" TODO(elsuizo): no se para que es esto!!!
-" nmap cp :let @+ = expand("%") <cr>
-
-" TODO(elsuizo:2018-03-29): ver para que era esa table mode
-noremap <leader>TM :TableModeToggle<CR>
-
-" FIXME(elsuizo:2018-03-29): ???
-" exit insert, dd line, enter insert
-inoremap <c-d> <esc>ddi
-
 " when press ; go to command mode
 nnoremap ; :
 
@@ -777,23 +495,17 @@ vmap > >gv
 nnoremap <leader>d "_d
 vnoremap <leader>d "_d
 vnoremap <c-/> :TComment<cr>
-" ino " ""<left>
-" ino ' ''<left>
-" ino ( ()<left>
-" ino [ []<left>
-" ino { {}<left>
-" ino {<CR> {<CR>}<ESC>O
-" map <esc> :noh<cr>
 " terminal mappings
-:tnoremap <A-h> <C-\><C-n><C-w>h
-:tnoremap <A-j> <C-\><C-n><C-w>j
-:tnoremap <A-k> <C-\><C-n><C-w>k
-:tnoremap <A-l> <C-\><C-n><C-w>l
-:nnoremap <A-h> <C-w>h
-:nnoremap <A-j> <C-w>j
-:nnoremap <A-k> <C-w>k
-:nnoremap <A-l> <C-w>l
+tnoremap <A-h> <C-\><C-n><C-w>h
+tnoremap <A-j> <C-\><C-n><C-w>j
+tnoremap <A-k> <C-\><C-n><C-w>k
+tnoremap <A-l> <C-\><C-n><C-w>l
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
 
+" TODO(elsuizo:2020-04-10): esto tendria que ser una sola funcion
 " insert the headers
 autocmd BufNewFile *.{tex} call <SID>insert_description_tex()
 autocmd BufNewFile *.{rs} call <SID>insert_description_rust()
@@ -809,26 +521,6 @@ function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
 exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
 exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
 endfunction
-
-call NERDTreeHighlightFile('h', 'green', 'none', 'green', '#141e23')
-call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#141e23')
-call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#141e23')
-call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#141e23')
-call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#141e23')
-call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#141e23')
-call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#141e23')
-call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#141e23')
-call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#141e23')
-call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#141e23')
-call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#141e23')
-call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#141e23')
-call NERDTreeHighlightFile('ts', 'Blue', 'none', '#6699cc', '#141e23')
-call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#141e23')
-call NERDTreeHighlightFile('ds_store', 'Gray', 'none', '#686868', '#141e23')
-call NERDTreeHighlightFile('gitconfig', 'Gray', 'none', '#686868', '#141e23')
-call NERDTreeHighlightFile('gitignore', 'Gray', 'none', '#686868', '#141e23')
-call NERDTreeHighlightFile('bashrc', 'Gray', 'none', '#686868', '#141e23')
-call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', '#141e23')
 
 function! s:unite_settings()
   " Enable navigation with control-j and control-k in insert mode
