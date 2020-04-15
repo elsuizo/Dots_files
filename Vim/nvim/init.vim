@@ -284,13 +284,13 @@ let g:NERDTreeAutoDeleteBuffer=1
 "                     deoplete stuff
 "-------------------------------------------------------------------------
 " deoplete variables
-let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup = 0
 let g:deoplete#check_stderr = 0
 "Enable snipMate compatibility feature.
 let g:neosnippet#enable_snipmate_compatibility = 1
 
 " " TODO(elsuizo:2018-03-29): ver si esto cambia en algo la velocidad
-let g:deoplete#auto_complete_delay = 1
+let g:deoplete#auto_complete_delay = 3
 
 " snippets directorys
 let g:neosnippet#snippets_directory='~/.vim/repos/github.com/Shougo/neosnippet-snippets, ~/.vim/My_snippets'
