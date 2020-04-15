@@ -7,6 +7,7 @@
 "      \/          \/               \/                      \/            \/
 " creacion: 2017-04-16
 " TODO:
+"  -[ ] En realidad lo que quiero
 "  -[X] Copiar con control-c
 "  -[X] Pegar con control-v
 "  -[ ] resaltar con color los resultados de una busqueda
@@ -52,55 +53,64 @@ set wildmode=full
 set backspace=indent,eol,start
 set noshowmode
 set showtabline=0
+set lazyredraw
 "-------------------------------------------------------------------------
 "                          mappings
 "-------------------------------------------------------------------------
 " leader is ,
 let mapleader = ','
-" Fast saving
-nmap <leader>w :w!<cr>
-" yank all line!!!
-noremap Y y$
-" open all .c and .h files
-nmap <leader>a :argadd **/*.c **/*.h<cr>
-" kill the fucking actual buffer
-nmap <leader>k :bd<cr>
-" navigation in normal mode
-noremap H ^
-noremap L g_
-noremap J 5j
-noremap K 5k
-" replace ; with :(te ahorras el shift)
-nnoremap ; :
+
 let g:tmux_navigator_no_mappings = 1
 nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
 nnoremap <silent> <C-h> :TmuxNavigateLeft<CR>
 nnoremap <silent> <C-;> :TmuxNavigatePrevious<cr>
+
+" Fast saving
+nmap <leader>w :w!<cr>
+
+" yank all line!!!
+noremap Y y$
+
+" open all .c and .h files
+nmap <leader>a :argadd **/*.c **/*.h<cr>
+
+" kill the fucking actual buffer
+nmap <leader>k :bd<cr>
+
+" replace ; with :(te ahorras el shift)
+nnoremap ; :
+
 " open this fucking file
 nnoremap <leader>c :e! ~/.vimrc<CR>
+
 " multicursor
 let g:multi_cursor_next_key='<C-n>'
 let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
+
 " Align blocks of text and keep them selected
 vmap < <gv
 vmap > >gv
-" TODO(elsuizo) no se para que carajo es esto, o anda mal
-" nnoremap <leader>d "_d 
-" vnoremap <leader>d "_d
+
+" comentar !!!
 vnoremap <c-/> :TComment<cr>
+
 " Tagbar for los pibes
 nmap <F8> :Tagbar<CR>
-nmap <leader>F :NERDTreeFind<CR>
-" Doxygen generate
+
+
+" generar docs para archivos .c .h
 nmap <leader>D :Dox<cr>
+
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
+
 " magic for seach the current word in cursor wirh AG(silversearchear)
 nnoremap S :Ag <cword><CR>:cw<CR>
+
 " Remember cursor position between vim sessions
 autocmd BufReadPost *
               \ if line("'\"") > 0 && line ("'\"") <= line("$") |
@@ -111,8 +121,7 @@ autocmd BufRead * normal zz
 
 let g:ranger_map_keys = 0
 map <leader>f :Ranger<CR>
-" togle NERDTree
-map <C-\> :NERDTreeToggle<CR>
+
 "-------------------------------------------------------------------------
 "                          window properties
 "-------------------------------------------------------------------------
@@ -122,7 +131,7 @@ set cmdheight=1 "command bar height
 if &listchars ==# 'eol:$'
    set listchars=trail:-,nbsp:+
 endif
-" set list                " Show problematic characters.
+set list  " quiero que muestres los trailings y cuando hay un cambio de linea
 
 " Also highlight all tabs and trailing whitespace characters.
 highlight ExtraWhitespace ctermbg=red guibg=darkgreen
@@ -137,12 +146,13 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline_powerline_fonts = 1
-" let g:airline_theme='gruvbox'
-" let g:airline_theme='papercolor'
+
+" colorscheme de airline
+" let g:airline_theme='minimalist'
 let g:airline_theme='neodark'
-" let g:airline_theme='monochrome'
+
 let g:airline#extensions#tabline#tab_nr_type = 1
-nmap <leader>t :term<cr>
+nmap <leader>t :terminal<cr>
 nmap <leader>, :bnext<CR>
 nmap <leader>. :bprevious<CR>
 nmap <leader>b :b#<CR>
@@ -164,124 +174,255 @@ set timeoutlen=1000 ttimeoutlen=0
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
+call plug#begin('~/.vim/plugged')
 "-------------------------------------------------------------------------
 "                          pluggings
 "-------------------------------------------------------------------------
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'vim-scripts/L9'
-Plugin 'tpope/vim-fugitive'
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-Plugin 'scrooloose/nerdtree'
-"Plugin 'Valloric/YouCompleteMe'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'scrooloose/syntastic'
-Plugin 'christoomey/vim-conflicted'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'mattn/emmet-vim'
-Plugin 'sjl/gundo.vim'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'tpope/vim-surround'
-Plugin 'kien/ctrlp.vim'
-Plugin 'godlygeek/tabular'
-Plugin 'jceb/vim-orgmode'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'Shougo/neocomplete.vim'
-Plugin 'JuliaEditorSupport/julia-vim'
-Plugin 'majutsushi/tagbar' " TODO no se si anda bien
-Plugin 'tpope/vim-speeddating'
-Plugin 'Raimondi/delimitMate' " autopairs
-Plugin 'vim-scripts/DoxygenToolkit.vim' " Doxygen
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'tmux-plugins/vim-tmux'
-Plugin 'tmux-plugins/vim-tmux-focus-events'
-Plugin  'chrisbra/csv.vim'         "  CSV data  files
-Plugin  'vim-scripts/utl.vim'      "  orgmode
-Plugin  'tpope/vim-repeat'         "  orgmode
-Plugin  'vim-scripts/taglist.vim'  "  orgmode
-Plugin  'chrisbra/NrrwRgn'         "  orgmode
-Plugin  'tpope/vim-pathogen'       "  orgmode
-Plugin  'mattn/calendar-vim'       "  orgmode
-Plugin  'vim-scripts/SyntaxRange'  "  orgmode
-Plugin 'matze/vim-move' "move block of text
-Plugin 'SirVer/ultisnips' " snippets
-Plugin 'tomtom/tcomment_vim'
-Plugin 'Numkil/ag.nvim'
-Plugin 'rust-lang/rust.vim' " Rust
-Plugin 'vim-scripts/OIL.vim' " OIL syntax highlight
-Plugin 'dermusikman/sonicpi.vim' " Sonic pi plugging
-Plugin 'vim-scripts/DrawIt' " Draw ASCII art with neovim
-Plugin 'octol/vim-cpp-enhanced-highlight' " C++14 colorscheme
-Plugin 'tpope/vim-dispatch'
-Plugin 'honza/vim-snippets'
-Plugin 'KeitaNakamura/neodark.vim'
-
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'vim-scripts/L9'
+Plug 'tpope/vim-fugitive'
+Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
+Plug 'scrooloose/nerdtree'
+Plug 'airblade/vim-gitgutter'
+Plug 'scrooloose/syntastic'
+Plug 'christoomey/vim-conflicted'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'mattn/emmet-vim'
+Plug 'sjl/gundo.vim'
+Plug 'easymotion/vim-easymotion'
+Plug 'tpope/vim-surround'
+Plug 'kien/ctrlp.vim'
+Plug 'godlygeek/tabular'
+Plug 'jceb/vim-orgmode'
+Plug 'JuliaEditorSupport/julia-vim'
+Plug 'majutsushi/tagbar' " TODO no se si anda bien
+Plug 'tpope/vim-speeddating'
+Plug 'Raimondi/delimitMate' " autopairs
+Plug 'vim-scripts/DoxygenToolkit.vim' " Doxygen
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'tmux-plugins/vim-tmux'
+Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'chrisbra/csv.vim'         "  CSV data  files
+Plug 'vim-scripts/utl.vim'      "  orgmode
+Plug 'tpope/vim-repeat'         "  orgmode
+Plug 'vim-scripts/taglist.vim'  "  orgmode
+Plug 'chrisbra/NrrwRgn'         "  orgmode
+Plug 'tpope/vim-pathogen'       "  orgmode
+Plug 'mattn/calendar-vim'       "  orgmode
+Plug 'vim-scripts/SyntaxRange'  "  orgmode
+Plug 'matze/vim-move' "move block of text
+Plug 'tomtom/tcomment_vim'
+Plug 'Numkil/ag.nvim'
+Plug 'rust-lang/rust.vim' " Rust
+Plug 'vim-scripts/OIL.vim' " OIL syntax highlight
+Plug 'dermusikman/sonicpi.vim' " Sonic pi plugging
+Plug 'vim-scripts/DrawIt' " Draw ASCII art with neovim
+Plug 'octol/vim-cpp-enhanced-highlight' " C++14 colorscheme
+Plug 'tpope/vim-dispatch'
+Plug 'KeitaNakamura/neodark.vim'
+Plug 'drjova/airline-drjova' " cool airline theme
+Plug 'roxma/vim-tmux-clipboard'
 "-------------------------------------------------------------------------
 "                          Pluggin themes
 "-------------------------------------------------------------------------
-Plugin 'vim-scripts/darktango.vim'
-Plugin 'jonathanfilip/vim-lucius'
-Plugin 'morhetz/gruvbox'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'dracula/vim'
-Plugin 'sickill/vim-monokai' " Molokai colorscheme
-Plugin 'robertmeta/nofrils' " minimalistic colorscheme(gray and black)
-Plugin 'clinstid/eink.vim' " minimalistic gray and black
-Plugin 'ryanpcmcquen/true-monochrome_vim' " minimalistic gray and black
-Plugin 'owickstrom/vim-colors-paramount' " minimalistic gray and violet
-Plugin 'RussellBradley/vim-nets-away' " minimalistic emulatin the NETS colors
-Plugin 'elsuizo/vim-colors-paramount-suizo' " minimalistic emulatin the NETS colors
-
-Plugin 'pbrisbin/vim-colors-off' " minimalistic emulatin the NETS colors
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'francoiscabrol/ranger.vim'
+Plug 'vim-scripts/darktango.vim'
+Plug 'jonathanfilip/vim-lucius'
+Plug 'morhetz/gruvbox'
+Plug 'flazz/vim-colorschemes'
+Plug 'dracula/vim'
+Plug 'sickill/vim-monokai' " Molokai colorscheme
+Plug 'robertmeta/nofrils' " minimalistic colorscheme(gray and black)
+Plug 'clinstid/eink.vim' " minimalistic gray and black
+Plug 'ryanpcmcquen/true-monochrome_vim' " minimalistic gray and black
+Plug 'owickstrom/vim-colors-paramount' " minimalistic gray and violet
+Plug 'RussellBradley/vim-nets-away' " minimalistic emulatin the NETS colors
+Plug 'elsuizo/vim-colors-paramount-suizo' " minimalistic emulatin the NETS colors
+Plug 'francoiscabrol/ranger.vim'
 "-------------------------------------------------------------------------
 "                          Plugin syntaxes
 "-------------------------------------------------------------------------
-Plugin 'cakebaker/scss-syntax.vim'
-Plugin 'hdima/python-syntax'
-Plugin 'othree/yajs.vim'
-Plugin 'mitsuhiko/vim-jinja'
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'hdima/python-syntax'
+Plug 'othree/yajs.vim'
+Plug 'mitsuhiko/vim-jinja'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+" Initialize plugin system
+call plug#end()
+"-------------------------------------------------------------------------
+"                          coc
+"-------------------------------------------------------------------------
+" TextEdit might fail if hidden is not set.
+set hidden
 
-call vundle#end()
-filetype plugin indent on
+" Some servers have issues with backup files, see #649.
+set nobackup
+set nowritebackup
+set noshowmode " no quiero que muestres el mensaje del modo, lo hace airline
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+set signcolumn=yes
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+" position. Coc only does snippet and additional edit on confirm.
+if exists('*complete_info')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap keys for applying codeAction to the current line.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Introduce function text object
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+xmap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap if <Plug>(coc-funcobj-i)
+omap af <Plug>(coc-funcobj-a)
+
+" Use <TAB> for selections ranges.
+" NOTE: Requires 'textDocument/selectionRange' support from the language server.
+" coc-tsserver, coc-python are the examples of servers that support it.
+nmap <silent> <TAB> <Plug>(coc-range-select)
+xmap <silent> <TAB> <Plug>(coc-range-select)
+
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
+
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" Add (Neo)Vim's native statusline support.
+" NOTE: Please see `:h coc-status` for integrations with external plugins that
+" provide custom statusline: lightline.vim, vim-airline.
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" Mappings using CoCList:
+" Show all diagnostics.
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions.
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show commands.
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document.
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols.
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list.
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 "-------------------------------------------------------------------------
 "                          Basic
 "-------------------------------------------------------------------------
-" colorscheme gruvbox
-" colorscheme paramount
 colorscheme paramount-suizo
-"set guifont=Monospace\ 10
-"set guifont=courier_new:h12:w5:b:cRUSSIAN
-" set guifont=RobotoMono\10
+
 set guifont=Monaco:h12
-" set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 11
+
 set fillchars+=vert:\$
+
 syntax enable
+
 set background=dark
-set ruler
+
+set ruler           " mostrar la posicion del cursor siempre!!!"
+
 set hidden
+
 set number
+
 set laststatus=2
-set smartindent
-let &colorcolumn="80"
-:set guioptions-=m  "remove menu bar
-:set guioptions-=T  "remove toolbar
-:set guioptions-=r  "remove right-hand scroll bar
-:set guioptions-=L  "remove left-hand scroll bar
-:set lines=999 columns=999
-" copy and paste
-" TODO esto borra el mapeo re importante de visual block!!!
-" vnoremap <silent> <C-c> "+y
-" nnoremap <silent> <C-v> "+p
-" inoremap <silent> <C-v>  <C-o>"+p
+
+set smartindent     " quiero que busques la palabra no importa si esta en CamelCase!!!
+
+set hlsearch
+
+" Gvim opciones
+set guioptions-=m   "remove menu bar
+set guioptions-=T   "remove toolbar
+set guioptions-=r   "remove right-hand scroll bar
+set guioptions-=L   "remove left-hand scroll bar
+set lines=999 columns=999
+
 
 " move blocks of code in visual mode with Control+j, Control+k
 let g:move_key_modifier = 'C'
-set hlsearch
 if exists('$SUDO_USER')
   set nobackup                        " don't create root-owned files
   set nowritebackup                   " don't create root-owned files
@@ -297,101 +438,11 @@ let NERDTreeIgnore = ['\.pyc$', '\.o$', '\.so$', '\.a$', '[a-zA-Z]*egg[a-zA-Z]*'
 let g:NERDTreeWinPos="left"
 let g:NERDTreeDirArrows=0
 map <C-t> :NERDTreeToggle<CR>
+" encontrar el archivo en el que estamos con ,F
+nmap <leader>F :NERDTreeFind<CR>
 
-"-------------------------------------------------------------------------
-"                          syntaxtic
-"-------------------------------------------------------------------------
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-" let g:syntastic_javascript_checkers = ['eslint']
-" let g:syntastic_javascript_mri_args = "--config=$HOME/.jshintrc"
-" let g:syntastic_python_checkers = [ 'pylint', 'flake8', 'pep8', 'pyflakes', 'python']
-" let g:syntastic_yaml_checkers = ['jsyaml']
-" let g:syntastic_html_tidy_exec = 'tidy5'
-
-"-------------------------------------------------------------------------
-"                          easy motion
-"-------------------------------------------------------------------------
-"let g:EasyMotion_do_mapping = 0
-"let g:EasyMotion_smartcase = 1
-"nmap f <Plug>(easymotion-s)
-"-------------------------------------------------------------------------
-"                          neocomplete
-"-------------------------------------------------------------------------
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0 " por ahora no voy a utilizar autocompletado
-" Use neocomplete.
-let g:neocomplete#enable_at_startup = 0
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-
-" Define dictionary.
-let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
-
-" Define keyword.
-if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplete#undo_completion()
-inoremap <expr><C-l>     neocomplete#complete_common_string()
-
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
-  " For no inserting <CR> key.
-  "return pumvisible() ? "\<C-y>" : "\<CR>"
-endfunction
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-" Close popup by <Space>.
-"inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
-
-" AutoComplPop like behavior.
-"let g:neocomplete#enable_auto_select = 1
-
-" Shell like behavior(not recommended).
-"set completeopt+=longest
-"let g:neocomplete#enable_auto_select = 1
-"let g:neocomplete#disable_auto_complete = 1
-"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
-
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-" Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
-endif
-"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-
-" For perlomni.vim setting.
-" https://github.com/c9s/perlomni.vim
-let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+" togle NERDTree
+map <C-\> :NERDTreeToggle<CR>
 
 "-------------------------------------------------------------------------
 "                          insert headers
@@ -488,5 +539,27 @@ let g:clipboard = {
   \   },
   \   'cache_enabled': 1,
   \ }
-
+" usar el clipboard del sistema
 set clipboard+=unnamedplus
+
+let g:default_julia_version = '1.4'
+" language server
+let g:LanguageClient_autoStart = 1
+let g:LanguageClient_serverCommands = {
+\   'julia-1.4': ['julia-1.4', '--startup-file=no', '--history-file=no', '-e', '
+\       using LanguageServer;
+\       using Pkg;
+\       import StaticLint;
+\       import SymbolServer;
+\       env_path = dirname(Pkg.Types.Context().env.project_file);
+\       debug = false;
+\
+\       server = LanguageServer.LanguageServerInstance(stdin, stdout, debug, env_path, "", Dict());
+\       server.runlinter = true;
+\       run(server);
+\   ']
+\ }
+
+nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
