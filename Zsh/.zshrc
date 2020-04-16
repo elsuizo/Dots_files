@@ -12,11 +12,12 @@ export ZSH=/home/elsuizo/.oh-my-zsh
 ZSH_THEME="powerlevel9k/powerlevel9k"
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status virtualenv)
 # plugins=(virtualenv vi-mode)
-plugins=(virtualenv)
+plugins=(virtualenv cargo fzf)
 #-------------------------------------------------------------------------
 # powerlevel9k theme
 #-------------------------------------------------------------------------
 POWERLEVEL9K_MODE="nerdfont-complete"
+POWERLEVEL9K_COLOR_SCHEME='dark'
 # custom bar
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(custom_arch_icon dir vcs)
 POWERLEVEL9K_CUSTOM_ARCH_ICON="echo  archlinux"
@@ -64,11 +65,10 @@ POWERLEVEL9K_CUSTOM_ARCH_ICON="echo  archlinux"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
 # User configuration
 export PATH="/home/elsuizo/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"
 # export MANPATH="/usr/local/man:$MANPATH"
-
+export FZF_BASE="/usr/share/fzf"
 # editor de texto
 export VISUAL="nvim"
 
@@ -124,6 +124,12 @@ alias makes="make && make download"
 alias MAKE_C_PROJECT="mkdir src inc bin obj"
 # alias para ir al workspace de ROS
 alias ROS_WORK="cd ~/Dev/catking_workspace"
+
+# alias julia-lts
+alias julia-lts="/home/elsuizo/Dev/julia-lts/bin/./julia"
+
+# alias julia 1.4
+alias julia-1.4="/home/elsuizo/Dev/julia-1.4.0/bin/./julia"
 #------------------------------------------------------------------------
 # exports
 #------------------------------------------------------------------------
@@ -137,10 +143,10 @@ export PATH="/home/elsuizo/.cargo/bin:$PATH"
 export PATH=$HOME/Dev/Exercism/Exercism_bin:$PATH
 
 # julia
-export PATH=$HOME/Dev/julia:$PATH
+# export PATH=$HOME/Dev/julia-dev:$PATH
 
 # ruby shit
-export PATH=$HOME/.gem/ruby/2.6.0/bin:$PATH
+export PATH=$HOME/.gem/ruby/2.7.0/bin:$PATH
 
 # .bash_aliases
 export PATH="/home/elsuizo/.pyenv/bin:$PATH"
@@ -150,7 +156,7 @@ eval "$(pyenv virtualenv-init -)"
 # export NVM_DIR="/home/elsuizo/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 #source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
-source /opt/ros/melodic/setup.zsh
+# source /opt/ros/melodic/setup.zsh
 
 # para android studio
 export ANDROID_SDK_ROOT=$HOME/elsuizo/Dev/android
