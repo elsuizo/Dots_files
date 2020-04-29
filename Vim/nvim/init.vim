@@ -91,13 +91,8 @@ call dein#add('tpope/vim-commentary')
 call dein#add('roxma/vim-tmux-clipboard')
 call dein#add('racer-rust/vim-racer')
 call dein#add('matze/vim-meson')
-call dein#add('iamcco/markdown-preview.nvim', {'on_ft': ['markdown', 'pandoc.markdown', 'rmd'],'build': 'cd app & yarn install' })
-" tabnine
-if has('win32') || has('win64')
-  call dein#add('tbodt/deoplete-tabnine', { 'build': 'powershell.exe .\install.ps1' })
-else
-  call dein#add('tbodt/deoplete-tabnine', { 'build': './install.sh' })
-endif
+call dein#add('iamcco/markdown-preview.nvim', {'on_ft': ['markdown', 'pandoc.markdown', 'rmd'],
+                                                \ 'build': 'sh -c "cd app & yarn install"' })
 " check packages instalations
 if dein#check_install()
    call dein#install()
