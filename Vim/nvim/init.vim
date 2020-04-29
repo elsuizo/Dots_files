@@ -16,12 +16,12 @@
 "-------------------------------------------------------------------------
 "                     Packages
 "-------------------------------------------------------------------------
+set nocompatible
 " Shougo package mannager
 if (!isdirectory(expand("$HOME/.vim/repos/github.com/Shougo/dein.vim")))
    call system(expand("mkdir -p $HOME/.vim/repos/github.com"))
    call system(expand("git clone https://github.com/Shougo/dein.vim $HOME/.vim/repos/github.com/Shougo/dein.vim"))
 endif
-set nocompatible
 " Required:
 set runtimepath+=~/.vim/repos/github.com/Shougo/dein.vim/
 call dein#begin(expand('~/.vim'))
@@ -29,24 +29,20 @@ let pluginsExist = 0
 call dein#add('flazz/vim-colorschemes.git')
 call dein#add('Shougo/dein.vim')
 call dein#add('elzr/vim-json', {'on_ft': 'json'})
-call dein#add('tmhedberg/SimpylFold', {'on_ft': 'python'})
-call dein#add('tpope/vim-fugitive')
-call dein#add('mhinz/vim-signify')
-call dein#add('Xuyuanp/nerdtree-git-plugin')
-call dein#add('tpope/vim-repeat')
-call dein#add('editorconfig/editorconfig-vim')
-call dein#add('scrooloose/nerdtree')
-call dein#add('christoomey/vim-tmux-navigator')
+call dein#add('tpope/vim-fugitive')                        " para trabajar con git(no lo uso casi nada)
+call dein#add('mhinz/vim-signify')                         " muestra cuando estamos modificando un file de un repo
+call dein#add('Xuyuanp/nerdtree-git-plugin')               " para ver las modificaciones de git en nerdtree???
+call dein#add('tpope/vim-repeat')                          " para repetir patrones locos cuando utilizamos .
+call dein#add('scrooloose/nerdtree')                       " el aclamado navegador de archivos
+call dein#add('christoomey/vim-tmux-navigator')            " para navegar cuando tenemos archivos abiertos de tmux
 call dein#add('tmux-plugins/vim-tmux')
 call dein#add('tmux-plugins/vim-tmux-focus-events')
 call dein#add('vim-airline/vim-airline')
 call dein#add('vim-airline/vim-airline-themes')
 call dein#add('tpope/vim-surround')
 call dein#add('tomtom/tcomment_vim')
-call dein#add('Shougo/unite.vim')
-call dein#add('Shougo/unite-outline')
-call dein#add('ujihisa/unite-colorscheme')
-call dein#add('junkblocker/unite-codesearch')
+" call dein#add('Shougo/unite.vim')                       " NOTE(elsuizo:2020-04-29): no los uso
+" call dein#add('Shougo/unite-outline')
 call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
 call dein#add('Shougo/deoplete.nvim')
 call dein#add('Shougo/neco-vim', {'on_ft': 'vim'})
@@ -55,12 +51,10 @@ call dein#add('ujihisa/neco-look')                          " Se fija en las pal
 call dein#add('zchee/deoplete-jedi')
 call dein#add('Shougo/neosnippet.vim')
 call dein#add('Shougo/neosnippet-snippets')
-call dein#add('honza/vim-snippets')
 call dein#add('terryma/vim-multiple-cursors')
 call dein#add('vim-scripts/SyntaxRange')
 call dein#add('ryanoasis/vim-devicons')
 call dein#add('amadeus/vim-xml')
-call dein#add('tweekmonster/deoplete-clang2')
 call dein#add('autozimu/LanguageClient-neovim', {
     \ 'rev': 'next',
     \ 'build': 'bash install.sh',
@@ -81,11 +75,10 @@ call dein#add('vim-scripts/utl.vim')
 call dein#add('tpope/vim-speeddating')
 call dein#add('chrisbra/NrrwRgn')
 call dein#add('Numkil/ag.nvim')
-call dein#add('matze/vim-move')
+call dein#add('matze/vim-move')                         " este es muuuy bueno
 call dein#add('Raimondi/delimitMate') " autopairs
-call dein#add('Konfekt/FastFold') " fold
 call dein#add('alaric/neovim-visor') " open the terminal split
-call dein#add('wincent/scalpel') " nose
+call dein#add('wincent/scalpel') " es para reemplazar la palabra que tenemos bajo el cursor con otra
 call dein#add('lervag/vimtex')
 call dein#add('rust-lang/rust.vim') " Rust
 call dein#add('sebastianmarkow/deoplete-rust') " Rust
@@ -93,13 +86,11 @@ call dein#add('vim-scripts/DoxygenToolkit.vim') " Doxygen
 call dein#add('junegunn/vim-easy-align') " align
 call dein#add('chrisbra/csv.vim') " CSV data files
 call dein#add('vim-scripts/OIL.vim') " OIL syntax highlight
-call dein#add('elsuizo/vim-colors-paramount-suizo')
+call dein#add('elsuizo/vim-colors-paramount-suizo') " el mejor colorscheme
 call dein#add('tpope/vim-commentary')
 call dein#add('roxma/vim-tmux-clipboard')
 call dein#add('racer-rust/vim-racer')
-call dein#add('KeitaNakamura/neodark.vim')
 call dein#add('matze/vim-meson')
-call dein#add('ayu-theme/ayu-vim')
 call dein#add('iamcco/markdown-preview.nvim', {'on_ft': ['markdown', 'pandoc.markdown', 'rmd'],'build': 'cd app & yarn install' })
 " tabnine
 if has('win32') || has('win64')
@@ -190,7 +181,7 @@ set ruler " mostrar la posicion del cursor siempre
 set hidden
 
 " cursor shapes
-:set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
 \,sm:block-blinkwait175-blinkoff150-blinkon175
 
