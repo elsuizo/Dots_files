@@ -298,15 +298,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline_powerline_fonts = 1
-" let g:airline_theme='simple'
-" let g:airline_theme='minimalist'
-" let g:airline_theme='sol'
 let g:airline_theme='lucius'
-" let g:airline_theme='zenburn'
-" let g:airline_theme='neodark'
-" let g:airline_theme='one'
-" let :airline_theme='gruvbox_material'
-" let g:airline_theme='dark'
 let g:airline#extensions#tabline#tab_nr_type = 1
 
 " meson file extension
