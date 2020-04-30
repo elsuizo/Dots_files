@@ -74,7 +74,6 @@ call dein#add('tpope/vim-speeddating')
 call dein#add('chrisbra/NrrwRgn')
 call dein#add('Numkil/ag.nvim')
 call dein#add('matze/vim-move')                         " este es muuuy bueno
-" call dein#add('Raimondi/delimitMate') " autopairs
 call dein#add('alaric/neovim-visor') " open the terminal split
 call dein#add('wincent/scalpel') " es para reemplazar la palabra que tenemos bajo el cursor con otra
 call dein#add('lervag/vimtex')
@@ -255,10 +254,6 @@ set termguicolors
 set background=dark
 colorscheme paramount-suizo " colorscheme minimalistic
 
-" TODO(elsuizo:2020-04-14): no se para que mierda es esto
-" set t_8f=^[[38;2;%lu;%lu;%lum
-" set t_8b=^[[48;2;%lu;%lu;%lum
-
 " NerdTree variables
 let NERDTreeShowHidden=1
 let g:NERDTreeWinSize=45
@@ -308,8 +303,14 @@ au BufRead,BufNewFile *.build set filetype=meson
 "-------------------------------------------------------------------------
 "                     Mappings
 "-------------------------------------------------------------------------
+
+" dont use the fucking arrows
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+
 " airline mappings
-" map <leader>t :term<cr>
 nmap <leader>, :bnext<CR>
 nmap <leader>. :bprevious<CR>
 nmap <leader>b :b#<CR>
@@ -430,6 +431,8 @@ inoremap $t <><esc>i
 
 " Tagbar for los pibes
 nmap <F8> :TagbarToggle<CR>
+
+" open NERDtree here
 nmap <leader>F :NERDTreeFind<CR>
 
 " Doxygen generate
