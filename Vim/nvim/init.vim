@@ -41,8 +41,6 @@ call dein#add('vim-airline/vim-airline')
 call dein#add('vim-airline/vim-airline-themes')
 call dein#add('tpope/vim-surround')
 call dein#add('tomtom/tcomment_vim')
-" call dein#add('Shougo/unite.vim')                       " NOTE(elsuizo:2020-04-29): no los uso
-" call dein#add('Shougo/unite-outline')
 call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
 call dein#add('Shougo/deoplete.nvim')
 call dein#add('Shougo/neco-vim', {'on_ft': 'vim'})
@@ -304,15 +302,15 @@ let g:tmux_navigator_no_mappings = 1
 
 " airline variables
 let g:airline#extensions#tabline#enabled = 1
-"set hidden
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline_powerline_fonts = 1
-" let g:airline_theme='drjova'
+" let g:airline_theme='simple'
 " let g:airline_theme='minimalist'
-" let g:airline_theme='lucius'
+" let g:airline_theme='sol'
+let g:airline_theme='lucius'
 " let g:airline_theme='zenburn'
-let g:airline_theme='neodark'
+" let g:airline_theme='neodark'
 " let g:airline_theme='one'
 " let :airline_theme='gruvbox_material'
 " let g:airline_theme='dark'
