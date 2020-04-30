@@ -74,7 +74,7 @@ call dein#add('tpope/vim-speeddating')
 call dein#add('chrisbra/NrrwRgn')
 call dein#add('Numkil/ag.nvim')
 call dein#add('matze/vim-move')                         " este es muuuy bueno
-call dein#add('Raimondi/delimitMate') " autopairs
+" call dein#add('Raimondi/delimitMate') " autopairs
 call dein#add('alaric/neovim-visor') " open the terminal split
 call dein#add('wincent/scalpel') " es para reemplazar la palabra que tenemos bajo el cursor con otra
 call dein#add('lervag/vimtex')
@@ -290,13 +290,6 @@ let g:deoplete#sources#rust#racer_binary='/home/elsuizo/.cargo/bin/racer'
 let g:deoplete#sources#rust#rust_source_path='/home/elsuizo/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
 let g:racer_disable_errors = 1
 
-" TODO(elsuizo:2018-03-29): darle mas bola a esto y saber para que se usa
-" unite
-let g:unite_data_directory='~/.nvim/.cache/unite'
-let g:unite_source_history_yank_enable=1
-let g:unite_prompt='» '
-let g:unite_source_rec_async_command =['ag', '--follow', '--nocolor', '--nogroup','--hidden', '-g', '', '--ignore', '.git', '--ignore', '*.png', '--ignore', 'lib']
-
 " tmux variables
 let g:tmux_navigator_no_mappings = 1
 
@@ -344,14 +337,6 @@ nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
 nnoremap <silent> <C-h> :TmuxNavigateLeft<CR>
 nnoremap <silent> <C-;> :TmuxNavigatePrevious<cr>
-
-nnoremap <silent> <c-p> :Unite -auto-resize -start-insert -direction=botright file_rec/async<CR>
-nnoremap <silent> <leader>i :Unite -auto-resize -start-insert -direction=botright colorscheme<CR>
-nnoremap <silent> <leader>U :Unite neobundle/update<CR>
-
-" Custom mappings for the unite buffer
-autocmd FileType unite call s:unite_settings()
-
 
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " snippets mapps
@@ -504,12 +489,6 @@ autocmd BufNewFile *.{c++,cpp,cc,c,h,hpp,ino} call <SID>insert_description()
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
 exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
 exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
-endfunction
-
-function! s:unite_settings()
-  " Enable navigation with control-j and control-k in insert mode
-  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
-  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
 endfunction
 
 function! VisualSelection(direction, extra_filter) range
