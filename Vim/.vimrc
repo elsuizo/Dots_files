@@ -47,7 +47,7 @@ set wrap "Wrap lines
 set virtualedit=
 set wildmenu
 set laststatus=2
-"set colorcolumn=100
+set colorcolumn=80
 set wrap linebreak nolist
 set wildmode=full
 set backspace=indent,eol,start
@@ -393,7 +393,7 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 "-------------------------------------------------------------------------
 colorscheme paramount-suizo
 
-set guifont=Monaco:h12
+set guifont=mononoki\ Nerd\ Font\ Mono\ 13
 
 set fillchars+=vert:\$
 
@@ -491,6 +491,10 @@ function! s:insert_description()
     execute "normal! Go\<Esc>k"
 endfunction
 autocmd BufNewFile *.{c++,cpp,cc,c,h,hpp,ino} call <SID>insert_description()
+" comandos para Rust cargo
+au FileType rust nmap <leader>r :Cargo run<cr>
+au FileType rust nmap <leader>t :Cargo test<cr>
+au FileType rust nmap <leader>tc :Cargo check<cr>
 
 " TODO(elsuizo): hacer una sola puta funcion
 " Headers for Julia and Python
