@@ -30,6 +30,7 @@ call dein#add('flazz/vim-colorschemes.git')
 call dein#add('Shougo/dein.vim')
 call dein#add('elzr/vim-json', {'on_ft': 'json'})
 call dein#add('tpope/vim-fugitive')                        " para trabajar con git(no lo uso casi nada)
+call dein#add('jiangmiao/auto-pairs')
 call dein#add('mhinz/vim-signify')                         " muestra cuando estamos modificando un file de un repo
 call dein#add('Xuyuanp/nerdtree-git-plugin')               " para ver las modificaciones de git en nerdtree???
 call dein#add('tpope/vim-repeat')                          " para repetir patrones locos cuando utilizamos .
@@ -195,7 +196,7 @@ let g:racer_experimental_completer = 1
 let g:racer_insert_paren = 1
 " rustfmt
 let g:rustfmt_command = "rustfmt +nightly"
-let g:rustfmt_autosave = 0
+let g:rustfmt_autosave = 1
 let g:rustfmt_emit_files = 1
 let g:rustfmt_fail_silently = 0
 let g:rust_clip_command = 'xclip -selection clipboard'
@@ -205,6 +206,7 @@ au FileType rust nmap gx <Plug>(rust-def-vertical)
 au FileType rust nmap <leader>gd <Plug>(rust-doc)
 au FileType rust nmap <leader>r :Cargo run<cr>
 au FileType rust nmap <leader>t :Cargo test<cr>
+au FileType rust nmap <leader>tc :Cargo check<cr>
 
 " multiple cursor
 let g:multi_cursor_next_key='<C-n>'
