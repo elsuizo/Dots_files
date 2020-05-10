@@ -31,7 +31,6 @@ call dein#add('Shougo/dein.vim')
 call dein#add('elzr/vim-json', {'on_ft': 'json'})
 call dein#add('tpope/vim-fugitive')                        " para trabajar con git(no lo uso casi nada)
 call dein#add('jiangmiao/auto-pairs')
-call dein#add('mhinz/vim-signify')                         " muestra cuando estamos modificando un file de un repo
 call dein#add('Xuyuanp/nerdtree-git-plugin')               " para ver las modificaciones de git en nerdtree???
 call dein#add('tpope/vim-repeat')                          " para repetir patrones locos cuando utilizamos .
 call dein#add('scrooloose/nerdtree')                       " el aclamado navegador de archivos
@@ -196,7 +195,7 @@ let g:racer_experimental_completer = 1
 let g:racer_insert_paren = 1
 " rustfmt
 let g:rustfmt_command = "rustfmt +nightly"
-let g:rustfmt_autosave = 1
+let g:rustfmt_autosave = 0
 let g:rustfmt_emit_files = 1
 let g:rustfmt_fail_silently = 0
 let g:rust_clip_command = 'xclip -selection clipboard'
@@ -254,7 +253,8 @@ let g:tagbar_type_rust = {
 syntax enable
 set termguicolors
 set background=dark
-colorscheme paramount-suizo " colorscheme minimalistic
+" colorscheme paramount-suizo " colorscheme minimalistic
+colorscheme solarized8_light_low " solarized piola
 
 " NerdTree variables
 let NERDTreeShowHidden=1
@@ -271,7 +271,7 @@ let g:deoplete#check_stderr = 0
 let g:neosnippet#enable_snipmate_compatibility = 1
 
 " " TODO(elsuizo:2018-03-29): ver si esto cambia en algo la velocidad
-let g:deoplete#auto_complete_delay = 3
+" let g:deoplete#auto_complete_delay = 3
 
 " snippets directorys
 let g:neosnippet#snippets_directory='~/.vim/repos/github.com/Shougo/neosnippet-snippets, ~/.vim/My_snippets'
@@ -279,7 +279,8 @@ let g:neosnippet#snippets_directory='~/.vim/repos/github.com/Shougo/neosnippet-s
 " " deoplete + neosnippet + autopairs
 let g:AutoPairsMapCR=0
 " let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_smart_case = 1
+" let g:deoplete#enable_smart_case = 1
+" let g:deoplete#custom
 
 " Rust deplete
 let g:deoplete#sources#rust#racer_binary='/home/elsuizo/.cargo/bin/racer'
@@ -295,7 +296,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='lucius'
+let g:airline_theme='solarized'
 let g:airline#extensions#tabline#tab_nr_type = 1
 
 " meson file extension
