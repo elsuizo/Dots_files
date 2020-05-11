@@ -249,12 +249,14 @@ let g:tagbar_type_rust = {
   \ },
 \ }
 
-" colorschemes
+" colorschemes los que mas me gustan
 syntax enable
 set termguicolors
 set background=dark
 " colorscheme paramount-suizo " colorscheme minimalistic
-colorscheme solarized8_light_low " solarized piola
+colorscheme vim-material " colorscheme minimalistic
+" colorscheme solarized8_light " solarized piola
+" colorscheme solarized8_dark_high " solarized piola dark
 
 " NerdTree variables
 let NERDTreeShowHidden=1
@@ -296,7 +298,8 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='solarized'
+let g:airline_theme='lucius'
+" let g:airline_theme='default'
 let g:airline#extensions#tabline#tab_nr_type = 1
 
 " meson file extension
