@@ -26,6 +26,7 @@ endif
 set runtimepath+=~/.vim/repos/github.com/Shougo/dein.vim/
 call dein#begin(expand('~/.vim'))
 let pluginsExist = 0
+call dein#add('justinmk/vim-syntax-extra')
 call dein#add('andreypopp/vim-colors-plain')
 call dein#add('flazz/vim-colorschemes.git')
 call dein#add('Shougo/dein.vim')
