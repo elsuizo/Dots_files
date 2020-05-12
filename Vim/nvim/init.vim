@@ -26,6 +26,7 @@ endif
 set runtimepath+=~/.vim/repos/github.com/Shougo/dein.vim/
 call dein#begin(expand('~/.vim'))
 let pluginsExist = 0
+call dein#add('andreypopp/vim-colors-plain')
 call dein#add('flazz/vim-colorschemes.git')
 call dein#add('Shougo/dein.vim')
 call dein#add('elzr/vim-json', {'on_ft': 'json'})
@@ -247,9 +248,14 @@ syntax enable
 set termguicolors
 set background=dark
 " set background=light
+" estos son los que mas me gustan
 " colorscheme paramount-suizo " colorscheme minimalistic
-colorscheme paramount " colorscheme minimalistic
+" colorscheme paramount " colorscheme minimalistic
+" colorscheme clearance
 " colorscheme vim-material " colorscheme minimalistic
+" colorscheme plain
+colorscheme PaperColor
+" colorscheme tender
 " colorscheme solarized8_light_high " solarized piola
 " colorscheme solarized8_dark_high " solarized piola dark
 
@@ -293,8 +299,9 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='lucius'
-" let g:airline_theme='default'
+" let g:airline_theme='lucius'
+let g:airline_theme='minimalist'
+" let g:airline_theme='papercolor'
 let g:airline#extensions#tabline#tab_nr_type = 1
 
 " meson file extension
