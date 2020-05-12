@@ -64,3 +64,5 @@ sudo pacman -S pulseaudio-alsa
 sudo pacman -S pulsemixer
 # ctags
 sudo pacman -S ctags
+# man pages!!!
+sudo pacman -S man-db

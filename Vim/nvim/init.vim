@@ -41,7 +41,6 @@ call dein#add('vim-airline/vim-airline')
 call dein#add('vim-airline/vim-airline-themes')
 call dein#add('tpope/vim-surround')
 call dein#add('tomtom/tcomment_vim')
-call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
 call dein#add('Shougo/deoplete.nvim')
 call dein#add('Shougo/neco-vim', {'on_ft': 'vim'})
 call dein#add('Shougo/neoinclude.vim')
@@ -62,29 +61,23 @@ call dein#add('autozimu/LanguageClient-neovim', {
 "-------------------------------------------------------------------------
 "orgmode
 "
-call dein#add ('NLKNguyen/papercolor-theme')
-call dein#add('vim-scripts/taglist.vim')
-call dein#add('tpope/vim-pathogen')
 call dein#add('mattn/calendar-vim')
 call dein#add('JuliaEditorSupport/julia-vim') " julia language support
 call dein#add('majutsushi/tagbar') " TODO no se si anda bien
 call dein#add('jceb/vim-orgmode')
-call dein#add('vim-scripts/utl.vim')
+call dein#add('vim-scripts/utl.vim') " para abrir links y demas desde neovim
 call dein#add('tpope/vim-speeddating')
 call dein#add('chrisbra/NrrwRgn')
 call dein#add('Numkil/ag.nvim')
-call dein#add('matze/vim-move')                         " este es muuuy bueno
+call dein#add('matze/vim-move')      " este es muuuy bueno
 call dein#add('alaric/neovim-visor') " open the terminal split
-call dein#add('wincent/scalpel') " es para reemplazar la palabra que tenemos bajo el cursor con otra
 call dein#add('lervag/vimtex')
 call dein#add('rust-lang/rust.vim') " Rust
 call dein#add('sebastianmarkow/deoplete-rust') " Rust
 call dein#add('vim-scripts/DoxygenToolkit.vim') " Doxygen
-call dein#add('junegunn/vim-easy-align') " align
 call dein#add('chrisbra/csv.vim') " CSV data files
 call dein#add('vim-scripts/OIL.vim') " OIL syntax highlight
 call dein#add('elsuizo/vim-colors-paramount-suizo') " el mejor colorscheme
-call dein#add('tpope/vim-commentary')
 call dein#add('roxma/vim-tmux-clipboard')
 call dein#add('racer-rust/vim-racer')
 call dein#add('matze/vim-meson')
@@ -253,9 +246,10 @@ let g:tagbar_type_rust = {
 syntax enable
 set termguicolors
 set background=dark
-" colorscheme paramount-suizo " colorscheme minimalistic
-colorscheme vim-material " colorscheme minimalistic
-" colorscheme solarized8_light " solarized piola
+" set background=light
+colorscheme paramount-suizo " colorscheme minimalistic
+" colorscheme vim-material " colorscheme minimalistic
+" colorscheme solarized8_light_high " solarized piola
 " colorscheme solarized8_dark_high " solarized piola dark
 
 " NerdTree variables
