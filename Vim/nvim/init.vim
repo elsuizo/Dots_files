@@ -247,7 +247,8 @@ syntax enable
 set termguicolors
 set background=dark
 " set background=light
-colorscheme paramount-suizo " colorscheme minimalistic
+" colorscheme paramount-suizo " colorscheme minimalistic
+colorscheme paramount " colorscheme minimalistic
 " colorscheme vim-material " colorscheme minimalistic
 " colorscheme solarized8_light_high " solarized piola
 " colorscheme solarized8_dark_high " solarized piola dark
