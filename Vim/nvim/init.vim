@@ -12,84 +12,73 @@
 " NOTE(elsuizo:2018-03-29): limpieza y orden
 " NOTE(elsuizo:2020-04-14): mas limpieza y orden porque esta mas lento
 " que Vim !!!
+" NOTE(elsuizo:2020-05-17): cambie a Plug!!!
+"-------------------------------------------------------------------------
+"                     vundle stuff
+"-------------------------------------------------------------------------
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
-"-------------------------------------------------------------------------
-"                     Packages
-"-------------------------------------------------------------------------
-set nocompatible
-" Shougo package mannager
-if (!isdirectory(expand("$HOME/.vim/repos/github.com/Shougo/dein.vim")))
-   call system(expand("mkdir -p $HOME/.vim/repos/github.com"))
-   call system(expand("git clone https://github.com/Shougo/dein.vim $HOME/.vim/repos/github.com/Shougo/dein.vim"))
-endif
-" Required:
-set runtimepath+=~/.vim/repos/github.com/Shougo/dein.vim/
-call dein#begin(expand('~/.vim'))
-let pluginsExist = 0
-call dein#add('justinmk/vim-syntax-extra')
-call dein#add('andreypopp/vim-colors-plain')
-call dein#add('flazz/vim-colorschemes.git')
-call dein#add('Shougo/dein.vim')
-call dein#add('elzr/vim-json', {'on_ft': 'json'})
-call dein#add('tpope/vim-fugitive')                        " para trabajar con git(no lo uso casi nada)
-call dein#add('jiangmiao/auto-pairs')
-call dein#add('Xuyuanp/nerdtree-git-plugin')               " para ver las modificaciones de git en nerdtree???
-call dein#add('tpope/vim-repeat')                          " para repetir patrones locos cuando utilizamos .
-call dein#add('scrooloose/nerdtree')                       " el aclamado navegador de archivos
-call dein#add('christoomey/vim-tmux-navigator')            " para navegar cuando tenemos archivos abiertos de tmux
-call dein#add('tmux-plugins/vim-tmux')
-call dein#add('tmux-plugins/vim-tmux-focus-events')
-call dein#add('vim-airline/vim-airline')
-call dein#add('vim-airline/vim-airline-themes')
-call dein#add('tpope/vim-surround')
-call dein#add('tomtom/tcomment_vim')
-call dein#add('Shougo/deoplete.nvim')
-call dein#add('Shougo/neco-vim', {'on_ft': 'vim'})
-call dein#add('Shougo/neoinclude.vim')
-call dein#add('ujihisa/neco-look')                          " Se fija en las palabras del diccionario para autocompletar
-call dein#add('zchee/deoplete-jedi')
-call dein#add('Shougo/neosnippet.vim')
-call dein#add('Shougo/neosnippet-snippets')
-call dein#add('terryma/vim-multiple-cursors')
-call dein#add('vim-scripts/SyntaxRange')
-call dein#add('ryanoasis/vim-devicons')
-call dein#add('amadeus/vim-xml')
-call dein#add('autozimu/LanguageClient-neovim', {
-    \ 'rev': 'next',
-    \ 'build': 'bash install.sh',
-    \ })
+call plug#begin('~/.vim/plugged')
+
+Plug 'junegunn/fzf.vim',  { 'do': { -> fzf#install() } }
+Plug 'justinmk/vim-syntax-extra'
+Plug 'elzr/vim-json', {'on_ft': 'json'}
+Plug 'tpope/vim-fugitive'                        " para trabajar con git(no lo uso casi nada
+Plug 'jiangmiao/auto-pairs'
+Plug 'Xuyuanp/nerdtree-git-plugin'               " para ver las modificaciones de git en nerdtree???
+Plug 'tpope/vim-repeat'                          " para repetir patrones locos cuando utilizamos .
+Plug 'scrooloose/nerdtree'                       " el aclamado navegador de archivos
+Plug 'christoomey/vim-tmux-navigator'            " para navegar cuando tenemos archivos abiertos de tmux
+Plug 'tmux-plugins/vim-tmux'
+Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-surround'
+Plug 'tomtom/tcomment_vim'
+Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/neco-vim', {'on_ft': 'vim'}
+Plug 'Shougo/neoinclude.vim'
+Plug 'ujihisa/neco-look'                          " Se fija en las palabras del diccionario para autocompleta
+Plug 'zchee/deoplete-jedi'
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'vim-scripts/SyntaxRange'
+Plug 'ryanoasis/vim-devicons'
+Plug 'amadeus/vim-xml'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 "-------------------------------------------------------------------------
 "elsuizo adds
 "-------------------------------------------------------------------------
 "orgmode
 "
-call dein#add('mattn/calendar-vim')
-call dein#add('JuliaEditorSupport/julia-vim') " julia language support
-call dein#add('majutsushi/tagbar') " TODO no se si anda bien
-call dein#add('jceb/vim-orgmode')
-call dein#add('vim-scripts/utl.vim') " para abrir links y demas desde neovim
-call dein#add('tpope/vim-speeddating')
-call dein#add('chrisbra/NrrwRgn')
-call dein#add('Numkil/ag.nvim')
-call dein#add('matze/vim-move')      " este es muuuy bueno
-call dein#add('alaric/neovim-visor') " open the terminal split
-call dein#add('lervag/vimtex')
-call dein#add('rust-lang/rust.vim') " Rust
-call dein#add('sebastianmarkow/deoplete-rust') " Rust
-call dein#add('vim-scripts/DoxygenToolkit.vim') " Doxygen
-call dein#add('chrisbra/csv.vim') " CSV data files
-call dein#add('vim-scripts/OIL.vim') " OIL syntax highlight
-call dein#add('elsuizo/vim-colors-paramount-suizo') " el mejor colorscheme
-call dein#add('roxma/vim-tmux-clipboard')
-call dein#add('racer-rust/vim-racer')
-call dein#add('matze/vim-meson')
-call dein#add('iamcco/markdown-preview.nvim', {'on_ft': ['markdown', 'pandoc.markdown', 'rmd'],
-                                                \ 'build': 'sh -c "cd app & yarn install"' })
-" check packages instalations
-if dein#check_install()
-   call dein#install()
-endif
-call dein#end()
+Plug 'mattn/calendar-vim'
+Plug 'JuliaEditorSupport/julia-vim' " julia language support
+Plug 'majutsushi/tagbar' " TODO no se si anda bien
+Plug 'jceb/vim-orgmode'
+Plug 'vim-scripts/utl.vim' " para abrir links y demas desde neovim
+Plug 'tpope/vim-speeddating'
+Plug 'chrisbra/NrrwRgn'
+Plug 'Numkil/ag.nvim'
+Plug 'matze/vim-move'      " este es muuuy bueno
+Plug 'alaric/neovim-visor' " open the terminal split
+Plug 'lervag/vimtex'
+Plug 'rust-lang/rust.vim' " Rust
+Plug 'sebastianmarkow/deoplete-rust' " Rust
+Plug 'vim-scripts/DoxygenToolkit.vim' " Doxygen
+Plug 'chrisbra/csv.vim' " CSV data files
+Plug 'vim-scripts/OIL.vim' " OIL syntax highlight
+Plug 'elsuizo/vim-colors-paramount-suizo' " el mejor colorscheme
+Plug 'roxma/vim-tmux-clipboard'
+Plug 'racer-rust/vim-racer'
+Plug 'matze/vim-meson'
+Plug 'iamcco/markdown-preview.nvim', {'do': 'cd app & yarn install'}
+Plug 'NLKNguyen/papercolor-theme'
+call plug#end()
 "-------------------------------------------------------------------------
 "                     Settings
 "-------------------------------------------------------------------------
@@ -168,9 +157,9 @@ set ruler " mostrar la posicion del cursor siempre
 set hidden
 
 " cursor shapes
-set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
-\,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
-\,sm:block-blinkwait175-blinkoff150-blinkon175
+" set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+" \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+" \,sm:block-blinkwait175-blinkoff150-blinkon175
 
 set synmaxcol=128
 syntax sync minlines=256
@@ -201,6 +190,14 @@ au FileType rust nmap <leader>gd <Plug>(rust-doc)
 au FileType rust nmap <leader>r :Cargo run<cr>
 au FileType rust nmap <leader>t :Cargo test<cr>
 au FileType rust nmap <leader>tc :Cargo check<cr>
+
+" TODO(elsuizo:2020-05-14): hacer que muestre un msg si hay errores o un ok si
+" no hubo errores
+au FileType rust nmap <leader>R :silent !tmux run-shell -b -t 'output' 'cargo run 2>&1'<cr>
+
+" TODO(elsuizo:2020-05-15): cuando hago un make en C quiero que lo pases otro
+" boliche para que queden ahi los resultados
+" au FileType c,cpp nmap <leader>R :silent !tmux run-shell -b -t left 'cargo run 2>&1'<cr>
 
 " multiple cursor
 let g:multi_cursor_next_key='<C-n>'
@@ -256,9 +253,11 @@ set background=dark
 " colorscheme vim-material " colorscheme minimalistic
 " colorscheme plain
 colorscheme PaperColor
-" colorscheme tender
+" colorscheme default
 " colorscheme solarized8_light_high " solarized piola
 " colorscheme solarized8_dark_high " solarized piola dark
+" con esto habilitamos italics!!!
+hi Comment gui=italic cterm=italic term=italic
 
 " NerdTree variables
 let NERDTreeShowHidden=1
@@ -302,7 +301,7 @@ let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline_powerline_fonts = 1
 " let g:airline_theme='lucius'
 let g:airline_theme='minimalist'
-" let g:airline_theme='papercolor'
+" let g:airline_theme='raven'
 let g:airline#extensions#tabline#tab_nr_type = 1
 
 " meson file extension
@@ -359,14 +358,19 @@ nnoremap S :Ag <cword><CR>:cw<CR>
 nnoremap <leader>= :'<,'>RustFmtRange<cr>
 
 " make
-nnoremap <F5> :make<CR>
+autocmd FileType c,c++ nnoremap <F5> :make<CR>
 
 " make clean
-nnoremap <F6> :make clean<CR>
+autocmd FileType c,c++ nnoremap <F6> :make clean<CR>
 
 " open all .c and .h files
 nmap <leader>a :argadd **/*.c **/*.h<cr>
+" kill the buffer!!!
 nmap <leader>k :bd<cr>
+" open fzf
+nmap <leader>f :Files<cr>
+" open buffers in fzf
+nmap <leader>b :Buffers<cr>
 
 "open oil files
 au BufEnter,BufRead,BufNewFile *.oil setfiletype oil
@@ -584,7 +588,7 @@ function! s:insert_description_rust()
 endfunction
 
 "-------------------------------------------------------------------------
-"                     clipboard magic???
+"                     clipboard magic
 "-------------------------------------------------------------------------
 let g:clipboard = {
   \   'name': 'xclip-xfce4-clipman',
@@ -600,3 +604,10 @@ let g:clipboard = {
   \ }
 
 set clipboard+=unnamedplus
+
+" NOTE(elsuizo) no se si uso esto, pero la onda es cuando estas en la ventana
+" de fzf que haga esas acciones
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-s': 'split',
+  \ 'ctrl-v': 'vsplit' }
