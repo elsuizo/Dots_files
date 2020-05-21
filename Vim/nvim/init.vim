@@ -38,15 +38,11 @@ Plug 'tpope/vim-surround'
 Plug 'tomtom/tcomment_vim'
 Plug 'Shougo/deoplete.nvim'
 Plug 'Shougo/neco-vim', {'on_ft': 'vim'}
-Plug 'Shougo/neoinclude.vim'
 Plug 'ujihisa/neco-look'                          " Se fija en las palabras del diccionario para autocompleta
 Plug 'zchee/deoplete-jedi'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'vim-scripts/SyntaxRange'
-Plug 'ryanoasis/vim-devicons'
-Plug 'amadeus/vim-xml'
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
@@ -85,7 +81,6 @@ call plug#end()
 set completeopt-=preview
 
 set noshowmode             " no quiero que me muestres INSERT
-
 set noswapfile             " no quiero esos estupidos file~
 
 filetype on                " quiero que te preocupes por que tipo de file estas abriendo
@@ -96,6 +91,8 @@ set relativenumber number  " quiero ver las lineas relativas
 
 filetype plugin indent on
 
+" TODO(elsuizo:2020-05-21): no se si anda bien esto
+" set noshowcmd noruler
 " Height of the command bar
 set cmdheight=1
 
@@ -149,10 +146,11 @@ let g:gitgutter_max_signs = 1000  " default value
 autocmd InsertEnter * let save_cwd = getcwd() | set autochdir
 autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(save_cwd)
 let g:indentLine_char='│'
-" enable deoplete
-" tex files super slows
+" cosas que pueden mejorar la latencia
 set lazyredraw
-set ruler " mostrar la posicion del cursor siempre
+set ttyfast
+
+" set ruler " mostrar la posicion del cursor siempre
 " Required for operations modifying multiple buffers like rename.
 set hidden
 
@@ -199,11 +197,13 @@ au FileType rust nmap <leader>R :silent !tmux run-shell -b -t 'output' 'cargo ru
 " boliche para que queden ahi los resultados
 " au FileType c,cpp nmap <leader>R :silent !tmux run-shell -b -t left 'cargo run 2>&1'<cr>
 
+" " NOTE(elsuizo:2020-05-21): como no lo uso casi nunca lo saco, pero lo dejo
+" por las dudas
 " multiple cursor
-let g:multi_cursor_next_key='<C-n>'
-let g:multi_cursor_prev_key='<C-p>'
-let g:multi_cursor_skip_key='<C-x>'
-let g:multi_cursor_quit_key='<Esc>'
+" let g:multi_cursor_next_key='<C-n>'
+" let g:multi_cursor_prev_key='<C-p>'
+" let g:multi_cursor_skip_key='<C-x>'
+" let g:multi_cursor_quit_key='<Esc>'
 
 " NOTE(elsuizo:2019-03-26): tagbar para rust
 let g:rust_use_custom_ctags_defs = 1
@@ -246,16 +246,8 @@ syntax enable
 set termguicolors
 set background=dark
 " set background=light
-" estos son los que mas me gustan
-" colorscheme paramount-suizo " colorscheme minimalistic
-" colorscheme paramount " colorscheme minimalistic
-" colorscheme clearance
-" colorscheme vim-material " colorscheme minimalistic
-" colorscheme plain
 colorscheme PaperColor
-" colorscheme default
-" colorscheme solarized8_light_high " solarized piola
-" colorscheme solarized8_dark_high " solarized piola dark
+
 " con esto habilitamos italics!!!
 hi Comment gui=italic cterm=italic term=italic
 
@@ -353,6 +345,8 @@ autocmd StdinReadPre * let s:std_in=1
 
 " buscar la palabra en la que esta el cursor con ag(silversearcher)
 nnoremap S :Ag <cword><CR>:cw<CR>
+" TODO(elsuizo:2020-05-18): no se porque no anda con Rg
+" nnoremap S :Rg <cword><CR>:cw<CR>
 
 " <leader>= reformats current range of Rust code
 nnoremap <leader>= :'<,'>RustFmtRange<cr>
