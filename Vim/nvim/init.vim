@@ -74,6 +74,8 @@ Plug 'racer-rust/vim-racer'
 Plug 'matze/vim-meson'
 Plug 'iamcco/markdown-preview.nvim', {'do': 'cd app & yarn install'}
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'neutaaaaan/monosvkem'
+
 call plug#end()
 "-------------------------------------------------------------------------
 "                     Settings
@@ -177,7 +179,7 @@ let g:racer_experimental_completer = 1
 let g:racer_insert_paren = 1
 " rustfmt
 let g:rustfmt_command = "rustfmt +nightly"
-let g:rustfmt_autosave = 0
+let g:rustfmt_autosave = 1
 let g:rustfmt_emit_files = 1
 let g:rustfmt_fail_silently = 0
 let g:rust_clip_command = 'xclip -selection clipboard'
@@ -246,7 +248,8 @@ syntax enable
 set termguicolors
 set background=dark
 " set background=light
-colorscheme PaperColor
+" colorscheme PaperColor
+colorscheme Monosvkem
 
 " con esto habilitamos italics!!!
 hi Comment gui=italic cterm=italic term=italic
@@ -256,26 +259,18 @@ let NERDTreeShowHidden=1
 let g:NERDTreeWinSize=45
 let g:NERDTreeAutoDeleteBuffer=1
 
-"-------------------------------------------------------------------------
-"                     deoplete stuff
-"-------------------------------------------------------------------------
+" "-------------------------------------------------------------------------
+" "                     deoplete stuff
+" "-------------------------------------------------------------------------
 " deoplete variables
-let g:deoplete#enable_at_startup = 0
-let g:deoplete#check_stderr = 0
-"Enable snipMate compatibility feature.
-let g:neosnippet#enable_snipmate_compatibility = 1
-
 " " TODO(elsuizo:2018-03-29): ver si esto cambia en algo la velocidad
-" let g:deoplete#auto_complete_delay = 3
-
-" snippets directorys
+" " snippets directorys
 let g:neosnippet#snippets_directory='~/.vim/repos/github.com/Shougo/neosnippet-snippets, ~/.vim/My_snippets'
-
+"
 " " deoplete + neosnippet + autopairs
+let g:deoplete#check_stderr = 0
 let g:AutoPairsMapCR=0
-" let g:deoplete#enable_at_startup = 1
-" let g:deoplete#enable_smart_case = 1
-" let g:deoplete#custom
+let g:deoplete#enable_at_startup = 1
 
 " Rust deplete
 let g:deoplete#sources#rust#racer_binary='/home/elsuizo/.cargo/bin/racer'
