@@ -85,12 +85,6 @@ nnoremap ; :
 " open this fucking file
 nnoremap <leader>c :e! ~/.vimrc<CR>
 
-" multicursor
-let g:multi_cursor_next_key='<C-n>'
-let g:multi_cursor_prev_key='<C-p>'
-let g:multi_cursor_skip_key='<C-x>'
-let g:multi_cursor_quit_key='<Esc>'
-
 " Align blocks of text and keep them selected
 vmap < <gv
 vmap > >gv
@@ -148,8 +142,9 @@ let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline_powerline_fonts = 1
 
 " colorscheme de airline
-" let g:airline_theme='minimalist'
-let g:airline_theme='neodark'
+" let g:airline_theme='lucius'
+" let g:airline_theme='papercolor'
+let g:airline_theme='minimalist'
 
 let g:airline#extensions#tabline#tab_nr_type = 1
 nmap <leader>t :terminal<cr>
@@ -178,27 +173,19 @@ call plug#begin('~/.vim/plugged')
 "-------------------------------------------------------------------------
 "                          pluggings
 "-------------------------------------------------------------------------
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'vim-scripts/L9'
 Plug 'tpope/vim-fugitive'
-Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plug 'scrooloose/nerdtree'
-Plug 'airblade/vim-gitgutter'
-Plug 'scrooloose/syntastic'
-Plug 'christoomey/vim-conflicted'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'mattn/emmet-vim'
-Plug 'sjl/gundo.vim'
-Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
-Plug 'kien/ctrlp.vim'
-Plug 'godlygeek/tabular'
 Plug 'jceb/vim-orgmode'
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'majutsushi/tagbar' " TODO no se si anda bien
 Plug 'tpope/vim-speeddating'
-Plug 'Raimondi/delimitMate' " autopairs
 Plug 'vim-scripts/DoxygenToolkit.vim' " Doxygen
+Plug 'jiangmiao/auto-pairs'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'tmux-plugins/vim-tmux-focus-events'
@@ -215,36 +202,16 @@ Plug 'tomtom/tcomment_vim'
 Plug 'Numkil/ag.nvim'
 Plug 'rust-lang/rust.vim' " Rust
 Plug 'vim-scripts/OIL.vim' " OIL syntax highlight
-Plug 'dermusikman/sonicpi.vim' " Sonic pi plugging
-Plug 'vim-scripts/DrawIt' " Draw ASCII art with neovim
-Plug 'octol/vim-cpp-enhanced-highlight' " C++14 colorscheme
-Plug 'tpope/vim-dispatch'
-Plug 'KeitaNakamura/neodark.vim'
-Plug 'drjova/airline-drjova' " cool airline theme
 Plug 'roxma/vim-tmux-clipboard'
 "-------------------------------------------------------------------------
 "                          Pluggin themes
 "-------------------------------------------------------------------------
-Plug 'vim-scripts/darktango.vim'
-Plug 'jonathanfilip/vim-lucius'
-Plug 'morhetz/gruvbox'
-Plug 'flazz/vim-colorschemes'
-Plug 'dracula/vim'
-Plug 'sickill/vim-monokai' " Molokai colorscheme
-Plug 'robertmeta/nofrils' " minimalistic colorscheme(gray and black)
-Plug 'clinstid/eink.vim' " minimalistic gray and black
-Plug 'ryanpcmcquen/true-monochrome_vim' " minimalistic gray and black
-Plug 'owickstrom/vim-colors-paramount' " minimalistic gray and violet
-Plug 'RussellBradley/vim-nets-away' " minimalistic emulatin the NETS colors
 Plug 'elsuizo/vim-colors-paramount-suizo' " minimalistic emulatin the NETS colors
 Plug 'francoiscabrol/ranger.vim'
 "-------------------------------------------------------------------------
 "                          Plugin syntaxes
 "-------------------------------------------------------------------------
-Plug 'cakebaker/scss-syntax.vim'
 Plug 'hdima/python-syntax'
-Plug 'othree/yajs.vim'
-Plug 'mitsuhiko/vim-jinja'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " Initialize plugin system
@@ -318,7 +285,8 @@ endfunction
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
-
+" con esto habilitamos italics!!!
+hi Comment gui=italic cterm=italic term=italic
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 
@@ -391,7 +359,8 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 "-------------------------------------------------------------------------
 "                          Basic
 "-------------------------------------------------------------------------
-colorscheme paramount-suizo
+" colorscheme paramount-suizo
+colorscheme PaperColor
 
 set guifont=mononoki\ Nerd\ Font\ Mono\ 13
 
@@ -491,6 +460,7 @@ function! s:insert_description()
     execute "normal! Go\<Esc>k"
 endfunction
 autocmd BufNewFile *.{c++,cpp,cc,c,h,hpp,ino} call <SID>insert_description()
+
 " comandos para Rust cargo
 au FileType rust nmap <leader>r :Cargo run<cr>
 au FileType rust nmap <leader>t :Cargo test<cr>
