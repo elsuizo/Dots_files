@@ -22,11 +22,9 @@ filetype off                  " required
 call plug#begin('~/.vim/plugged')
 
 Plug 'junegunn/fzf.vim',  { 'do': { -> fzf#install() } }
-Plug 'justinmk/vim-syntax-extra'
 Plug 'elzr/vim-json', {'on_ft': 'json'}
 Plug 'tpope/vim-fugitive'                        " para trabajar con git(no lo uso casi nada
 Plug 'jiangmiao/auto-pairs'
-Plug 'Xuyuanp/nerdtree-git-plugin'               " para ver las modificaciones de git en nerdtree???
 Plug 'tpope/vim-repeat'                          " para repetir patrones locos cuando utilizamos .
 Plug 'scrooloose/nerdtree'                       " el aclamado navegador de archivos
 Plug 'christoomey/vim-tmux-navigator'            " para navegar cuando tenemos archivos abiertos de tmux
@@ -37,28 +35,16 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-surround'
 Plug 'tomtom/tcomment_vim'
 Plug 'Shougo/deoplete.nvim'
-Plug 'Shougo/neco-vim', {'on_ft': 'vim'}
 Plug 'ujihisa/neco-look'                          " Se fija en las palabras del diccionario para autocompleta
 Plug 'zchee/deoplete-jedi'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
-Plug 'vim-scripts/SyntaxRange'
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
-"-------------------------------------------------------------------------
-"elsuizo adds
-"-------------------------------------------------------------------------
-"orgmode
-"
-Plug 'mattn/calendar-vim'
 Plug 'JuliaEditorSupport/julia-vim' " julia language support
 Plug 'majutsushi/tagbar' " TODO no se si anda bien
-Plug 'jceb/vim-orgmode'
-Plug 'vim-scripts/utl.vim' " para abrir links y demas desde neovim
-Plug 'tpope/vim-speeddating'
-Plug 'chrisbra/NrrwRgn'
 Plug 'Numkil/ag.nvim'
 Plug 'matze/vim-move'      " este es muuuy bueno
 Plug 'alaric/neovim-visor' " open the terminal split
@@ -84,6 +70,15 @@ set completeopt-=preview
 
 set noshowmode             " no quiero que me muestres INSERT
 set noswapfile             " no quiero esos estupidos file~
+
+" una columna horizontal de color a 80 para tener de centinela de la patria
+" del buen gusto y las buenas costumbres
+set colorcolumn=80
+
+" para que ande el copy paste piola
+set clipboard+=unnamedplus
+
+set list                " Show problematic characters.
 
 filetype on                " quiero que te preocupes por que tipo de file estas abriendo
 
@@ -139,40 +134,35 @@ autocmd BufReadPost *
         \ if line("'\"") > 0 && line ("'\"") <= line("$") |
         \   exe "normal! g'\"" |
         \ endif
-        " center buffer around cursor when opening files
+" center buffer around cursor when opening files
 autocmd BufRead * normal zz
-let g:jsx_ext_required = 0
-set complete=.,w,b,u,t,k
-let g:gitgutter_max_signs = 1000  " default value
 
-autocmd InsertEnter * let save_cwd = getcwd() | set autochdir
-autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(save_cwd)
-let g:indentLine_char='│'
+" TODO(elsuizo): no se para que es esto
+"" autocmd InsertEnter * let save_cwd = getcwd() | set autochdir
+" autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(save_cwd)
+" let g:indentLine_char='│'
+
 " cosas que pueden mejorar la latencia
 set lazyredraw
 set ttyfast
 
 " set ruler " mostrar la posicion del cursor siempre
 " Required for operations modifying multiple buffers like rename.
-set hidden
-
-" cursor shapes
-" set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
-" \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
-" \,sm:block-blinkwait175-blinkoff150-blinkon175
-
 set synmaxcol=128
 syntax sync minlines=256
 set noshowcmd
+set hidden
 
 " python versions
 " python2 virtualenv path
 let g:python_host_prog = '/home/elsuizo/.pyenv/versions/neovim2/bin/python'
 " python3 path
 let g:python3_host_prog = '/home/elsuizo/.pyenv/versions/neovim/bin/python3'
-set hidden
+
 " latex stuff
 let g:vimtex_compiler_progname = 'nvr'
+
+" Rust stuff
 " Racer completion
 let g:racer_cmd = "/home/elsuizo/.cargo/bin/racer"
 let g:racer_experimental_completer = 1
@@ -198,14 +188,6 @@ au FileType rust nmap <leader>R :silent !tmux run-shell -b -t 'output' 'cargo ru
 " TODO(elsuizo:2020-05-15): cuando hago un make en C quiero que lo pases otro
 " boliche para que queden ahi los resultados
 " au FileType c,cpp nmap <leader>R :silent !tmux run-shell -b -t left 'cargo run 2>&1'<cr>
-
-" " NOTE(elsuizo:2020-05-21): como no lo uso casi nunca lo saco, pero lo dejo
-" por las dudas
-" multiple cursor
-" let g:multi_cursor_next_key='<C-n>'
-" let g:multi_cursor_prev_key='<C-p>'
-" let g:multi_cursor_skip_key='<C-x>'
-" let g:multi_cursor_quit_key='<Esc>'
 
 " NOTE(elsuizo:2019-03-26): tagbar para rust
 let g:rust_use_custom_ctags_defs = 1
@@ -243,6 +225,8 @@ let g:tagbar_type_rust = {
   \ },
 \ }
 
+"  Colorschemes
+"
 " colorschemes los que mas me gustan
 syntax enable
 set termguicolors
@@ -270,11 +254,14 @@ let g:neosnippet#snippets_directory='~/.vim/repos/github.com/Shougo/neosnippet-s
 " " deoplete + neosnippet + autopairs
 let g:deoplete#check_stderr = 0
 let g:AutoPairsMapCR=0
-let g:deoplete#enable_at_startup = 0
+let g:deoplete#enable_at_startup = 1
+call deoplete#custom#option({
+\ 'auto_complete_delay': 50,
+\ 'smart_case': v:true,
+\ })
 
-" Rust deplete
+" Rust deoplete
 let g:deoplete#sources#rust#racer_binary='/home/elsuizo/.cargo/bin/racer'
-" let g:deoplete#sources#rust#rust_source_path='/home/elsuizo/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
 let g:deoplete#sources#rust#rust_source_path='/home/elsuizo/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
 let g:racer_disable_errors = 1
 
@@ -295,15 +282,39 @@ let g:airline#extensions#tabline#tab_nr_type = 1
 " Set the filetype based on the file's extension, overriding any
 " 'filetype' that has already been set
 au BufRead,BufNewFile *.build set filetype=meson
+
+"-------------------------------------------------------------------------
+"                     clipboard magic
+"-------------------------------------------------------------------------
+let g:clipboard = {
+  \   'name': 'xclip-xfce4-clipman',
+  \   'copy': {
+  \      '+': 'xclip -selection clipboard',
+  \      '*': 'xclip -selection clipboard',
+  \    },
+  \   'paste': {
+  \      '+': 'xclip -selection clipboard -o',
+  \      '*': 'xclip -selection clipboard -o',
+  \   },
+  \   'cache_enabled': 1,
+  \ }
+
+
+" NOTE(elsuizo) no se si uso esto, pero la onda es cuando estas en la ventana
+" de fzf que haga esas acciones
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-s': 'split',
+  \ 'ctrl-v': 'vsplit' }
 "-------------------------------------------------------------------------
 "                     Mappings
 "-------------------------------------------------------------------------
 
 " dont use the fucking arrows
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
+nmap <Up> <NOP>
+nmap <Down> <NOP>
+nmap <Left> <NOP>
+nmap <Right> <NOP>
 
 " airline mappings
 nmap <leader>, :bnext<CR>
@@ -382,16 +393,20 @@ nnoremap Q !!$SHELL <CR>
 " When you press <leader>r you can search and replace the selected text
 vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 
+" python jedi pop-up
 autocmd FileType rust,python setlocal completeopt-=preview " for jedi popup doc disable
 set history=700
 " Fast saving
 nmap <leader>w :w!<cr>
 
+" esto es para vim-move (que nos deja mover un bloque de codigo)
 let g:move_key_modifier = 'C'
+
 " Super useful! From an idea by Michael Naumann
 vnoremap <silent> * :call VisualSelection('f', '')<CR>
 vnoremap <silent> # :call VisualSelection('b', '')<CR>
 
+" cosas para chequear errores de lenguaje
 " Pressing ,ss will toggle and untoggle spell checking
 map <leader>ss :setlocal spell!<cr>
 " Shortcuts using <leader>
@@ -409,12 +424,6 @@ endif
 if &listchars ==# 'eol:$'
    set listchars=trail:-,nbsp:+
 endif
-
-set list                " Show problematic characters.
-
-" una columna horizontal de color a 80 para tener de centinela de la patria
-" del buen gusto y las buenas costumbres
-set colorcolumn=80
 
 " open the fucking config file
 nnoremap <leader>c :e! ~/.config/nvim/init.vim<cr>
@@ -486,12 +495,6 @@ autocmd BufNewFile *.{c++,cpp,cc,c,h,hpp,ino} call <SID>insert_description()
 "-------------------------------------------------------------------------
 "                     functions
 "-------------------------------------------------------------------------
-
-" NerdTree color files
-function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
-exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
-exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
-endfunction
 
 function! VisualSelection(direction, extra_filter) range
     let l:saved_reg = @"
@@ -580,28 +583,3 @@ function! s:insert_description_rust()
     endfor
     execute "normal! Go\<Esc>k"
 endfunction
-
-"-------------------------------------------------------------------------
-"                     clipboard magic
-"-------------------------------------------------------------------------
-let g:clipboard = {
-  \   'name': 'xclip-xfce4-clipman',
-  \   'copy': {
-  \      '+': 'xclip -selection clipboard',
-  \      '*': 'xclip -selection clipboard',
-  \    },
-  \   'paste': {
-  \      '+': 'xclip -selection clipboard -o',
-  \      '*': 'xclip -selection clipboard -o',
-  \   },
-  \   'cache_enabled': 1,
-  \ }
-
-set clipboard+=unnamedplus
-
-" NOTE(elsuizo) no se si uso esto, pero la onda es cuando estas en la ventana
-" de fzf que haga esas acciones
-let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-s': 'split',
-  \ 'ctrl-v': 'vsplit' }
