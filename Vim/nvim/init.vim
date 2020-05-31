@@ -179,7 +179,7 @@ let g:racer_experimental_completer = 1
 let g:racer_insert_paren = 1
 " rustfmt
 let g:rustfmt_command = "rustfmt +nightly"
-let g:rustfmt_autosave = 1
+let g:rustfmt_autosave = 0
 let g:rustfmt_emit_files = 1
 let g:rustfmt_fail_silently = 0
 let g:rust_clip_command = 'xclip -selection clipboard'
@@ -270,7 +270,7 @@ let g:neosnippet#snippets_directory='~/.vim/repos/github.com/Shougo/neosnippet-s
 " " deoplete + neosnippet + autopairs
 let g:deoplete#check_stderr = 0
 let g:AutoPairsMapCR=0
-let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup = 0
 
 " Rust deplete
 let g:deoplete#sources#rust#racer_binary='/home/elsuizo/.cargo/bin/racer'
@@ -409,7 +409,12 @@ endif
 if &listchars ==# 'eol:$'
    set listchars=trail:-,nbsp:+
 endif
+
 set list                " Show problematic characters.
+
+" una columna horizontal de color a 80 para tener de centinela de la patria
+" del buen gusto y las buenas costumbres
+set colorcolumn=80
 
 " open the fucking config file
 nnoremap <leader>c :e! ~/.config/nvim/init.vim<cr>
