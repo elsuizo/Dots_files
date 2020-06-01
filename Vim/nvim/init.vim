@@ -34,9 +34,9 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-surround'
 Plug 'tomtom/tcomment_vim'
-Plug 'Shougo/deoplete.nvim'
-Plug 'ujihisa/neco-look'                          " Se fija en las palabras del diccionario para autocompleta
-Plug 'zchee/deoplete-jedi'
+" Plug 'Shougo/deoplete.nvim'
+" Plug 'ujihisa/neco-look'                          " Se fija en las palabras del diccionario para autocompleta
+" Plug 'zchee/deoplete-jedi'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'autozimu/LanguageClient-neovim', {
@@ -50,7 +50,7 @@ Plug 'matze/vim-move'      " este es muuuy bueno
 Plug 'alaric/neovim-visor' " open the terminal split
 Plug 'lervag/vimtex'
 Plug 'rust-lang/rust.vim' " Rust
-Plug 'sebastianmarkow/deoplete-rust' " Rust
+" Plug 'sebastianmarkow/deoplete-rust' " Rust
 Plug 'vim-scripts/DoxygenToolkit.vim' " Doxygen
 Plug 'chrisbra/csv.vim' " CSV data files
 Plug 'vim-scripts/OIL.vim' " OIL syntax highlight
@@ -62,12 +62,12 @@ Plug 'iamcco/markdown-preview.nvim', {'do': 'cd app & yarn install'}
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'neutaaaaan/monosvkem'
 
+Plug 'chriskempson/base16-vim'
 call plug#end()
 "-------------------------------------------------------------------------
 "                     Settings
 "-------------------------------------------------------------------------
 set completeopt-=preview
-
 set noshowmode             " no quiero que me muestres INSERT
 set noswapfile             " no quiero esos estupidos file~
 
@@ -137,16 +137,11 @@ autocmd BufReadPost *
 " center buffer around cursor when opening files
 autocmd BufRead * normal zz
 
-" TODO(elsuizo): no se para que es esto
-"" autocmd InsertEnter * let save_cwd = getcwd() | set autochdir
-" autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(save_cwd)
-" let g:indentLine_char='│'
-
 " cosas que pueden mejorar la latencia
 set lazyredraw
 set ttyfast
 
-" set ruler " mostrar la posicion del cursor siempre
+set ruler " mostrar la posicion del cursor siempre
 " Required for operations modifying multiple buffers like rename.
 set synmaxcol=128
 syntax sync minlines=256
@@ -232,9 +227,9 @@ syntax enable
 set termguicolors
 set background=dark
 " set background=light
-" colorscheme PaperColor
-colorscheme Monosvkem
-
+" colorscheme paramount-suizo
+" colorscheme Monosvkem
+colorscheme base16-gruvbox-light-soft
 " con esto habilitamos italics!!!
 hi Comment gui=italic cterm=italic term=italic
 
@@ -249,21 +244,21 @@ let g:NERDTreeAutoDeleteBuffer=1
 " deoplete variables
 " " TODO(elsuizo:2018-03-29): ver si esto cambia en algo la velocidad
 " " snippets directorys
-let g:neosnippet#snippets_directory='~/.vim/repos/github.com/Shougo/neosnippet-snippets, ~/.vim/My_snippets'
+" let g:neosnippet#snippets_directory='~/.vim/repos/github.com/Shougo/neosnippet-snippets, ~/.vim/My_snippets'
+" "
+" " " deoplete + neosnippet + autopairs
+" let g:deoplete#check_stderr = 0
+" let g:AutoPairsMapCR=0
+" let g:deoplete#enable_at_startup = 1
+" " call deoplete#custom#option({
+" " \ 'auto_complete_delay': 200,
+" " \ 'smart_case': v:true,
+" " \ })
 "
-" " deoplete + neosnippet + autopairs
-let g:deoplete#check_stderr = 0
-let g:AutoPairsMapCR=0
-let g:deoplete#enable_at_startup = 1
-call deoplete#custom#option({
-\ 'auto_complete_delay': 50,
-\ 'smart_case': v:true,
-\ })
-
-" Rust deoplete
-let g:deoplete#sources#rust#racer_binary='/home/elsuizo/.cargo/bin/racer'
-let g:deoplete#sources#rust#rust_source_path='/home/elsuizo/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
-let g:racer_disable_errors = 1
+" " Rust deoplete
+" let g:deoplete#sources#rust#racer_binary='/home/elsuizo/.cargo/bin/racer'
+" let g:deoplete#sources#rust#rust_source_path='/home/elsuizo/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
+" let g:racer_disable_errors = 1
 
 " tmux variables
 let g:tmux_navigator_no_mappings = 1
@@ -273,8 +268,8 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline_powerline_fonts = 1
-" let g:airline_theme='lucius'
-let g:airline_theme='minimalist'
+let g:airline_theme='lucius'
+" let g:airline_theme='minimalist'
 " let g:airline_theme='raven'
 let g:airline#extensions#tabline#tab_nr_type = 1
 
