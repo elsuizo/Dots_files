@@ -60,9 +60,12 @@ Plug 'racer-rust/vim-racer'
 Plug 'matze/vim-meson'
 Plug 'iamcco/markdown-preview.nvim', {'do': 'cd app & yarn install'}
 Plug 'NLKNguyen/papercolor-theme'
-Plug 'neutaaaaan/monosvkem'
-
+" Plug 'neutaaaaan/monosvkem'
+Plug 'justinmk/vim-syntax-extra'
 Plug 'chriskempson/base16-vim'
+
+Plug 'elsuizo/monosvkem'
+
 call plug#end()
 "-------------------------------------------------------------------------
 "                     Settings
@@ -138,8 +141,8 @@ autocmd BufReadPost *
 autocmd BufRead * normal zz
 
 " cosas que pueden mejorar la latencia
-set lazyredraw
-set ttyfast
+" set lazyredraw
+" set ttyfast
 
 set ruler " mostrar la posicion del cursor siempre
 " Required for operations modifying multiple buffers like rename.
@@ -154,6 +157,8 @@ let g:python_host_prog = '/home/elsuizo/.pyenv/versions/neovim2/bin/python'
 " python3 path
 let g:python3_host_prog = '/home/elsuizo/.pyenv/versions/neovim/bin/python3'
 
+" snippets directorys
+let g:neosnippet#snippets_directory='~/.vim/repos/github.com/Shougo/neosnippet-snippets, ~/.vim/My_snippets'
 " latex stuff
 let g:vimtex_compiler_progname = 'nvr'
 
@@ -228,8 +233,10 @@ set termguicolors
 set background=dark
 " set background=light
 " colorscheme paramount-suizo
-" colorscheme Monosvkem
-colorscheme base16-gruvbox-light-soft
+colorscheme Monosvkem
+" colorscheme PaperColor
+" colorscheme base16-solarized-dark
+
 " con esto habilitamos italics!!!
 hi Comment gui=italic cterm=italic term=italic
 
@@ -237,28 +244,6 @@ hi Comment gui=italic cterm=italic term=italic
 let NERDTreeShowHidden=1
 let g:NERDTreeWinSize=45
 let g:NERDTreeAutoDeleteBuffer=1
-
-" "-------------------------------------------------------------------------
-" "                     deoplete stuff
-" "-------------------------------------------------------------------------
-" deoplete variables
-" " TODO(elsuizo:2018-03-29): ver si esto cambia en algo la velocidad
-" " snippets directorys
-" let g:neosnippet#snippets_directory='~/.vim/repos/github.com/Shougo/neosnippet-snippets, ~/.vim/My_snippets'
-" "
-" " " deoplete + neosnippet + autopairs
-" let g:deoplete#check_stderr = 0
-" let g:AutoPairsMapCR=0
-" let g:deoplete#enable_at_startup = 1
-" " call deoplete#custom#option({
-" " \ 'auto_complete_delay': 200,
-" " \ 'smart_case': v:true,
-" " \ })
-"
-" " Rust deoplete
-" let g:deoplete#sources#rust#racer_binary='/home/elsuizo/.cargo/bin/racer'
-" let g:deoplete#sources#rust#rust_source_path='/home/elsuizo/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
-" let g:racer_disable_errors = 1
 
 " tmux variables
 let g:tmux_navigator_no_mappings = 1
@@ -268,9 +253,11 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='lucius'
+" let g:airline_theme='term'
 " let g:airline_theme='minimalist'
-" let g:airline_theme='raven'
+let g:airline_theme='zenburn'
+" let g:airline_theme='hybrid'
+
 let g:airline#extensions#tabline#tab_nr_type = 1
 
 " meson file extension
