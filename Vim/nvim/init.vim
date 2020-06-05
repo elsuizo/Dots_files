@@ -23,99 +23,81 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'junegunn/fzf.vim',  { 'do': { -> fzf#install() } }
 Plug 'elzr/vim-json', {'on_ft': 'json'}
-Plug 'tpope/vim-fugitive'                        " para trabajar con git(no lo uso casi nada
-Plug 'jiangmiao/auto-pairs'
-Plug 'tpope/vim-repeat'                          " para repetir patrones locos cuando utilizamos .
-Plug 'scrooloose/nerdtree'                       " el aclamado navegador de archivos
-Plug 'christoomey/vim-tmux-navigator'            " para navegar cuando tenemos archivos abiertos de tmux
-Plug 'tmux-plugins/vim-tmux'
-Plug 'tmux-plugins/vim-tmux-focus-events'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'tpope/vim-surround'
-Plug 'tomtom/tcomment_vim'
-" Plug 'Shougo/deoplete.nvim'
-" Plug 'ujihisa/neco-look'                          " Se fija en las palabras del diccionario para autocompleta
-" Plug 'zchee/deoplete-jedi'
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-Plug 'JuliaEditorSupport/julia-vim' " julia language support
-Plug 'majutsushi/tagbar' " TODO no se si anda bien
-Plug 'Numkil/ag.nvim'
-Plug 'matze/vim-move'      " este es muuuy bueno
-Plug 'alaric/neovim-visor' " open the terminal split
-Plug 'lervag/vimtex'
-Plug 'rust-lang/rust.vim' " Rust
-" Plug 'sebastianmarkow/deoplete-rust' " Rust
-Plug 'vim-scripts/DoxygenToolkit.vim' " Doxygen
-Plug 'chrisbra/csv.vim' " CSV data files
-Plug 'vim-scripts/OIL.vim' " OIL syntax highlight
-Plug 'elsuizo/vim-colors-paramount-suizo' " el mejor colorscheme
-Plug 'roxma/vim-tmux-clipboard'
-Plug 'racer-rust/vim-racer'
-Plug 'matze/vim-meson'
-Plug 'iamcco/markdown-preview.nvim', {'do': 'cd app & yarn install'}
-Plug 'NLKNguyen/papercolor-theme'
-" Plug 'neutaaaaan/monosvkem'
-Plug 'justinmk/vim-syntax-extra'
-Plug 'chriskempson/base16-vim'
-
-Plug 'elsuizo/monosvkem'
+Plug 'tpope/vim-fugitive'                                            " to work with git
+Plug 'jiangmiao/auto-pairs'                                          " smart autopairs
+Plug 'tpope/vim-repeat'                                              " to repeat crazy paterns with .
+Plug 'scrooloose/nerdtree'                                           " file mannager
+Plug 'christoomey/vim-tmux-navigator'                                " tmux file navigation
+Plug 'tmux-plugins/vim-tmux'                                         " tmux integration
+Plug 'tmux-plugins/vim-tmux-focus-events'                            " tmux
+Plug 'vim-airline/vim-airline'                                       " airline bar and buffer bar
+Plug 'vim-airline/vim-airline-themes'                                " themes for airline
+Plug 'tpope/vim-surround'                                            " augment the surround capacity
+Plug 'Shougo/neosnippet.vim'                                         " code snippets pluging
+Plug 'Shougo/neosnippet-snippets'                                    " more code snippets
+Plug 'JuliaEditorSupport/julia-vim'                                  " Julia language support
+Plug 'majutsushi/tagbar'                                             " navigation code bar(functions, definitions, types)
+Plug 'Numkil/ag.nvim'                                                " ag support(searching text)
+Plug 'matze/vim-move'                                                " move blocks of code
+Plug 'lervag/vimtex'                                                 " for work with tex files
+Plug 'rust-lang/rust.vim'                                            " Rust language support
+Plug 'vim-scripts/DoxygenToolkit.vim'                                " Doxygen support
+Plug 'chrisbra/csv.vim'                                              " Visualize csv files
+Plug 'vim-scripts/OIL.vim'                                           " OIL syntax highlight
+Plug 'elsuizo/vim-colors-paramount-suizo'                            " personal colorscheme
+Plug 'roxma/vim-tmux-clipboard'                                      " tmux copy and paste support
+Plug 'racer-rust/vim-racer'                                          " Rust code navigation
+Plug 'matze/vim-meson'                                               " Meson files support
+Plug 'iamcco/markdown-preview.nvim', {'do': 'cd app & yarn install'} " markdown support
+Plug 'NLKNguyen/papercolor-theme'                                    " a nice colorscheme
+Plug 'chriskempson/base16-vim'                                       " a set of colorschemes
+Plug 'elsuizo/monosvkem'                                             " personal colorscheme(modified)
 
 call plug#end()
 "-------------------------------------------------------------------------
 "                     Settings
 "-------------------------------------------------------------------------
 set completeopt-=preview
-set noshowmode             " no quiero que me muestres INSERT
-set noswapfile             " no quiero esos estupidos file~
+set noshowmode             " dont show INSERT
+set noswapfile             " dont want swap files ~
 
-" una columna horizontal de color a 80 para tener de centinela de la patria
-" del buen gusto y las buenas costumbres
+" vertical column at 80(for reference)
 set colorcolumn=80
 
-" para que ande el copy paste piola
+" for copy and paste
 set clipboard+=unnamedplus
 
-set list                " Show problematic characters.
+set list                   " show problematic characters.
 
-filetype on                " quiero que te preocupes por que tipo de file estas abriendo
+filetype on                " look what type of file is
 
-set nowrap                 " no quiero que se corten las lineas!!!
+set nowrap                 " dont cut the lines
 
-set relativenumber number  " quiero ver las lineas relativas
+set history=700
+
+set relativenumber number  " i want relative number lines
 
 filetype plugin indent on
 
-" TODO(elsuizo:2020-05-21): no se si anda bien esto
-" set noshowcmd noruler
-" Height of the command bar
-set cmdheight=1
 
-" Use spaces instead of tabs
-set expandtab
+set cmdheight=1           " height of the command bar
 
-" Be smart when using tabs ;)
+
+set expandtab             " Use spaces instead of tabs
+
+
+" TODO(elsuizo:2020-06-05): no se para que es esto
+"" Be smart when using tabs ;)
 " set smarttab
 
 " 1 tab == 3 spaces
 set shiftwidth=3
 set tabstop=3
 
-" Linebreak on 500 characters
-" set lbr
-" set tw=500
-" Magic
-set ai "Auto indent
-set si "Smart indent
-" set cindent
-" set wrap "Wrap lines
-" block select not limited by shortest line
+set ai                    " auto indent
+set si                    " smart indent
 
+" block select not limited by shortest line
 set virtualedit=
 set wildmenu
 set laststatus=2
@@ -125,7 +107,7 @@ let mapleader = ','
 
 set undofile
 
-" Save temporary/backup files not in the local directory, but in your ~/.vim
+" save temporary/backup files not in the local directory, but in your ~/.vim
 " directory, to keep them out of git repos.
 " Pretty sure you need to mkdir backup, swap, and undo first to make this work
 set backupdir=~/.vim/backup//
@@ -137,6 +119,7 @@ autocmd BufReadPost *
         \ if line("'\"") > 0 && line ("'\"") <= line("$") |
         \   exe "normal! g'\"" |
         \ endif
+
 " center buffer around cursor when opening files
 autocmd BufRead * normal zz
 
@@ -145,6 +128,7 @@ autocmd BufRead * normal zz
 " set ttyfast
 
 set ruler " mostrar la posicion del cursor siempre
+
 " Required for operations modifying multiple buffers like rename.
 set synmaxcol=128
 syntax sync minlines=256
@@ -189,7 +173,7 @@ au FileType rust nmap <leader>R :silent !tmux run-shell -b -t 'output' 'cargo ru
 " boliche para que queden ahi los resultados
 " au FileType c,cpp nmap <leader>R :silent !tmux run-shell -b -t left 'cargo run 2>&1'<cr>
 
-" NOTE(elsuizo:2019-03-26): tagbar para rust
+" tag bar for Rust
 let g:rust_use_custom_ctags_defs = 1
 let g:tagbar_type_rust = {
   \ 'ctagsbin' : '/usr/bin/ctags',
@@ -227,7 +211,6 @@ let g:tagbar_type_rust = {
 
 "  Colorschemes
 "
-" colorschemes los que mas me gustan
 syntax enable
 set termguicolors
 set background=dark
@@ -237,7 +220,7 @@ colorscheme Monosvkem
 " colorscheme PaperColor
 " colorscheme base16-solarized-dark
 
-" con esto habilitamos italics!!!
+" i want italic in comments
 hi Comment gui=italic cterm=italic term=italic
 
 " NerdTree variables
@@ -253,16 +236,12 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline_powerline_fonts = 1
-" let g:airline_theme='term'
-" let g:airline_theme='minimalist'
+" colortheme airline
 let g:airline_theme='zenburn'
-" let g:airline_theme='hybrid'
 
 let g:airline#extensions#tabline#tab_nr_type = 1
 
 " meson file extension
-" Set the filetype based on the file's extension, overriding any
-" 'filetype' that has already been set
 au BufRead,BufNewFile *.build set filetype=meson
 
 "-------------------------------------------------------------------------
@@ -322,8 +301,6 @@ nnoremap <silent> <C-;> :TmuxNavigatePrevious<cr>
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " snippets mapps
 imap <expr><TAB> pumvisible() ? "\<C-n>" : neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-" imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
-" inoremap <expr><CR> pumvisible() ? deoplete#mappings#close_popup() : "\<CR>"
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
@@ -331,7 +308,7 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 map <C-\> :NERDTreeToggle<CR>
 autocmd StdinReadPre * let s:std_in=1
 
-" buscar la palabra en la que esta el cursor con ag(silversearcher)
+" search for the word under the cursor and search in all places with AG
 nnoremap S :Ag <cword><CR>:cw<CR>
 " TODO(elsuizo:2020-05-18): no se porque no anda con Rg
 " nnoremap S :Rg <cword><CR>:cw<CR>
@@ -346,7 +323,10 @@ autocmd FileType c,c++ nnoremap <F5> :make<CR>
 autocmd FileType c,c++ nnoremap <F6> :make clean<CR>
 
 " open all .c and .h files
-nmap <leader>a :argadd **/*.c **/*.h<cr>
+au FileType c,cpp nmap <leader>a :argadd **/*.c **/*.h<cr>
+
+" open the terminal in horizontal split(with Alt-t)
+nmap <M-t> :split term://zsh<cr>
 " kill the buffer!!!
 nmap <leader>k :bd<cr>
 " open fzf
@@ -375,20 +355,17 @@ nnoremap Q !!$SHELL <CR>
 " When you press <leader>r you can search and replace the selected text
 vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 
-" python jedi pop-up
-autocmd FileType rust,python setlocal completeopt-=preview " for jedi popup doc disable
-set history=700
 " Fast saving
 nmap <leader>w :w!<cr>
 
-" esto es para vim-move (que nos deja mover un bloque de codigo)
+" vim move a block of code with Control
 let g:move_key_modifier = 'C'
 
 " Super useful! From an idea by Michael Naumann
 vnoremap <silent> * :call VisualSelection('f', '')<CR>
 vnoremap <silent> # :call VisualSelection('b', '')<CR>
 
-" cosas para chequear errores de lenguaje
+" spell checking
 " Pressing ,ss will toggle and untoggle spell checking
 map <leader>ss :setlocal spell!<cr>
 " Shortcuts using <leader>
@@ -407,7 +384,7 @@ if &listchars ==# 'eol:$'
    set listchars=trail:-,nbsp:+
 endif
 
-" open the fucking config file
+" open this fucking config file
 nnoremap <leader>c :e! ~/.config/nvim/init.vim<cr>
 
 " Parenthesis/bracket
@@ -454,9 +431,6 @@ vnoremap Y myY`y
 " Align blocks of text and keep them selected
 vmap < <gv
 vmap > >gv
-nnoremap <leader>d "_d
-vnoremap <leader>d "_d
-vnoremap <c-/> :TComment<cr>
 " terminal mappings
 tnoremap <A-h> <C-\><C-n><C-w>h
 tnoremap <A-j> <C-\><C-n><C-w>j
