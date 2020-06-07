@@ -27,7 +27,6 @@ Plug 'tpope/vim-fugitive'                                            " to work w
 Plug 'jiangmiao/auto-pairs'                                          " smart autopairs
 Plug 'tpope/vim-repeat'                                              " to repeat crazy paterns with .
 Plug 'scrooloose/nerdtree'                                           " file mannager
-Plug 'christoomey/vim-tmux-navigator'                                " tmux file navigation
 Plug 'tmux-plugins/vim-tmux'                                         " tmux integration
 Plug 'tmux-plugins/vim-tmux-focus-events'                            " tmux
 Plug 'vim-airline/vim-airline'                                       " airline bar and buffer bar
@@ -52,7 +51,7 @@ Plug 'iamcco/markdown-preview.nvim', {'do': 'cd app & yarn install'} " markdown 
 Plug 'NLKNguyen/papercolor-theme'                                    " a nice colorscheme
 Plug 'chriskempson/base16-vim'                                       " a set of colorschemes
 Plug 'elsuizo/monosvkem'                                             " personal colorscheme(modified)
-
+Plug 'alaric/neovim-visor'
 call plug#end()
 "-------------------------------------------------------------------------
 "                     Settings
@@ -326,7 +325,7 @@ autocmd FileType c,c++ nnoremap <F6> :make clean<CR>
 au FileType c,cpp nmap <leader>a :argadd **/*.c **/*.h<cr>
 
 " open the terminal in horizontal split(with Alt-t)
-nmap <M-t> :split term://zsh<cr>
+" nmap <M-t> :split term://zsh<cr>
 " kill the buffer!!!
 nmap <leader>k :bd<cr>
 " open fzf
