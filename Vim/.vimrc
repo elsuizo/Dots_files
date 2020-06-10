@@ -113,9 +113,6 @@ autocmd BufReadPost *
               " center buffer around cursor when opening files
 autocmd BufRead * normal zz
 
-let g:ranger_map_keys = 0
-map <leader>f :Ranger<CR>
-
 "-------------------------------------------------------------------------
 "                          window properties
 "-------------------------------------------------------------------------
@@ -135,15 +132,12 @@ set noshowmode
 set noswapfile
 set relativenumber number
 
-let g:airline#extensions#tabline#enabled = 1
 "set hidden
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline_powerline_fonts = 1
 
 " colorscheme de airline
-" let g:airline_theme='lucius'
-" let g:airline_theme='papercolor'
 let g:airline_theme='minimalist'
 
 let g:airline#extensions#tabline#tab_nr_type = 1
@@ -207,7 +201,7 @@ Plug 'roxma/vim-tmux-clipboard'
 "                          Pluggin themes
 "-------------------------------------------------------------------------
 Plug 'elsuizo/vim-colors-paramount-suizo' " minimalistic emulatin the NETS colors
-Plug 'francoiscabrol/ranger.vim'
+Plug 'elsuizo/monosvkem'
 "-------------------------------------------------------------------------
 "                          Plugin syntaxes
 "-------------------------------------------------------------------------
@@ -225,7 +219,8 @@ set hidden
 " Some servers have issues with backup files, see #649.
 set nobackup
 set nowritebackup
-set noshowmode " no quiero que muestres el mensaje del modo, lo hace airline
+
+
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
 set updatetime=300
@@ -235,7 +230,12 @@ set shortmess+=c
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
-set signcolumn=yes
+if has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
@@ -256,10 +256,11 @@ inoremap <silent><expr> <c-space> coc#refresh()
 
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
 " position. Coc only does snippet and additional edit on confirm.
+" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
 if exists('*complete_info')
   inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 else
-  imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
 
 " Use `[g` and `]g` to navigate diagnostics
@@ -285,8 +286,7 @@ endfunction
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
-" con esto habilitamos italics!!!
-hi Comment gui=italic cterm=italic term=italic
+
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 
@@ -307,23 +307,26 @@ augroup end
 xmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>a  <Plug>(coc-codeaction-selected)
 
-" Remap keys for applying codeAction to the current line.
+" Remap keys for applying codeAction to the current buffer.
 nmap <leader>ac  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
 
-" Introduce function text object
+" Map function and class text objects
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
 xmap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
 omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
 omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
 
-" Use <TAB> for selections ranges.
-" NOTE: Requires 'textDocument/selectionRange' support from the language server.
-" coc-tsserver, coc-python are the examples of servers that support it.
-nmap <silent> <TAB> <Plug>(coc-range-select)
-xmap <silent> <TAB> <Plug>(coc-range-select)
+" Use CTRL-S for selections ranges.
+" Requires 'textDocument/selectionRange' support of LS, ex: coc-tsserver
+nmap <silent> <C-s> <Plug>(coc-range-select)
+xmap <silent> <C-s> <Plug>(coc-range-select)
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
@@ -360,7 +363,8 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 "                          Basic
 "-------------------------------------------------------------------------
 " colorscheme paramount-suizo
-colorscheme PaperColor
+" colorscheme PaperColor
+colorscheme Monosvkem
 
 set guifont=mononoki\ Nerd\ Font\ Mono\ 13
 
