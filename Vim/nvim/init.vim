@@ -52,6 +52,7 @@ Plug 'NLKNguyen/papercolor-theme'                                    " a nice co
 Plug 'chriskempson/base16-vim'                                       " a set of colorschemes
 Plug 'elsuizo/monosvkem'                                             " personal colorscheme(modified)
 Plug 'alaric/neovim-visor'
+Plug 'flazz/vim-colorschemes'
 call plug#end()
 "-------------------------------------------------------------------------
 "                     Settings
@@ -209,13 +210,13 @@ let g:tagbar_type_rust = {
 \ }
 
 "  Colorschemes
-"
 syntax enable
 set termguicolors
 set background=dark
 " set background=light
 " colorscheme paramount-suizo
 colorscheme Monosvkem
+" colorscheme solarized8_dark
 " colorscheme PaperColor
 " colorscheme base16-solarized-dark
 
@@ -277,9 +278,9 @@ nmap <Left> <NOP>
 nmap <Right> <NOP>
 
 " airline mappings
-nmap <leader>, :bnext<CR>
-nmap <leader>. :bprevious<CR>
-nmap <leader>b :b#<CR>
+nmap <space>, :bnext<CR>
+nmap <space>. :bprevious<CR>
+nmap <space>b :b#<CR>
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 nmap <leader>1 <Plug>AirlineSelectTab1
 nmap <leader>2 <Plug>AirlineSelectTab2
@@ -415,8 +416,10 @@ nmap <leader>D :Dox<cr>
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
 
+" NOTE(elsuizo:2020-06-15): acabo de ver que ; se utiliza para una magia
+" zarpada que es cuando buscamos con F o T
 " when press ; go to command mode
-nnoremap ; :
+" nnoremap ; :
 
 "complete files
 inoremap <c-f> <c-x><c-f>
