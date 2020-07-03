@@ -53,6 +53,7 @@ Plug 'chriskempson/base16-vim'                                       " a set of 
 Plug 'elsuizo/monosvkem'                                             " personal colorscheme(modified)
 Plug 'alaric/neovim-visor'
 Plug 'flazz/vim-colorschemes'
+
 call plug#end()
 "-------------------------------------------------------------------------
 "                     Settings
@@ -60,6 +61,7 @@ call plug#end()
 set completeopt-=preview
 set noshowmode             " dont show INSERT
 set noswapfile             " dont want swap files ~
+set scrolloff=10
 
 " vertical column at 80(for reference)
 set colorcolumn=80
@@ -142,7 +144,7 @@ let g:python_host_prog = '/home/elsuizo/.pyenv/versions/neovim2/bin/python'
 let g:python3_host_prog = '/home/elsuizo/.pyenv/versions/neovim/bin/python3'
 
 " snippets directorys
-let g:neosnippet#snippets_directory='~/.vim/repos/github.com/Shougo/neosnippet-snippets, ~/.vim/My_snippets'
+let g:neosnippet#snippets_directory='~/.vim/plugged/neosnippet-snippets, ~/.vim/My_snippets'
 " latex stuff
 let g:vimtex_compiler_progname = 'nvr'
 
@@ -169,9 +171,8 @@ au FileType rust nmap <leader>tc :Cargo check<cr>
 " no hubo errores
 au FileType rust nmap <leader>R :silent !tmux run-shell -b -t 'output' 'cargo run 2>&1'<cr>
 
-" TODO(elsuizo:2020-05-15): cuando hago un make en C quiero que lo pases otro
-" boliche para que queden ahi los resultados
-" au FileType c,cpp nmap <leader>R :silent !tmux run-shell -b -t left 'cargo run 2>&1'<cr>
+au FileType julia nmap <leader>r :silent !tmux send-keys -t 'julia' "include("'"%"'")" Enter<cr>
+" au FileType c,cpp nmap <leader>M :silent !tmux run-shell -b -t 'output' 'make 2>&1'<cr>
 
 " tag bar for Rust
 let g:rust_use_custom_ctags_defs = 1
@@ -216,10 +217,8 @@ set background=dark
 " set background=light
 " colorscheme paramount-suizo
 colorscheme Monosvkem
-" colorscheme solarized8_dark
-" colorscheme PaperColor
-" colorscheme base16-solarized-dark
-
+"colorscheme PaperColor
+" colorscheme base16-summerfruit-dark
 " i want italic in comments
 hi Comment gui=italic cterm=italic term=italic
 
@@ -238,6 +237,7 @@ let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline_powerline_fonts = 1
 " colortheme airline
 let g:airline_theme='zenburn'
+"let g:airline_theme='minimalist'
 
 let g:airline#extensions#tabline#tab_nr_type = 1
 
