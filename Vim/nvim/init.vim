@@ -53,6 +53,7 @@ Plug 'chriskempson/base16-vim'                                       " a set of 
 Plug 'elsuizo/monosvkem'                                             " personal colorscheme(modified)
 Plug 'alaric/neovim-visor'
 Plug 'flazz/vim-colorschemes'
+Plug 'tomtom/tcomment_vim'
 
 call plug#end()
 "-------------------------------------------------------------------------
@@ -61,7 +62,7 @@ call plug#end()
 set completeopt-=preview
 set noshowmode             " dont show INSERT
 set noswapfile             " dont want swap files ~
-set scrolloff=10
+set scrolloff=10           " move the window 10 lines after reach the bottom
 
 " vertical column at 80(for reference)
 set colorcolumn=80
@@ -217,7 +218,7 @@ set background=dark
 " set background=light
 " colorscheme paramount-suizo
 colorscheme Monosvkem
-"colorscheme PaperColor
+" colorscheme PaperColor
 " colorscheme base16-summerfruit-dark
 " i want italic in comments
 hi Comment gui=italic cterm=italic term=italic
@@ -237,7 +238,7 @@ let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline_powerline_fonts = 1
 " colortheme airline
 let g:airline_theme='zenburn'
-"let g:airline_theme='minimalist'
+" let g:airline_theme='minimalist'
 
 let g:airline#extensions#tabline#tab_nr_type = 1
 
