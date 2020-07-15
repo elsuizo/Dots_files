@@ -23,7 +23,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'junegunn/fzf.vim',  { 'do': { -> fzf#install() } }
 Plug 'elzr/vim-json', {'on_ft': 'json'}
-Plug 'tpope/vim-fugitive'                                            " to work with git
+Plug 'tpope/vim-fugitive'                                            " work with git
 Plug 'jiangmiao/auto-pairs'                                          " smart autopairs
 Plug 'tpope/vim-repeat'                                              " to repeat crazy paterns with .
 Plug 'scrooloose/nerdtree'                                           " file mannager
@@ -51,9 +51,10 @@ Plug 'iamcco/markdown-preview.nvim', {'do': 'cd app & yarn install'} " markdown 
 Plug 'NLKNguyen/papercolor-theme'                                    " a nice colorscheme
 Plug 'chriskempson/base16-vim'                                       " a set of colorschemes
 Plug 'elsuizo/monosvkem'                                             " personal colorscheme(modified)
-Plug 'alaric/neovim-visor'
-Plug 'flazz/vim-colorschemes'
-Plug 'tomtom/tcomment_vim'
+Plug 'alaric/neovim-visor'                                           " open/close the terminal with Alt-t
+Plug 'flazz/vim-colorschemes'                                        " almost all the colorschemes
+Plug 'tomtom/tcomment_vim'                                           " comment lines of blocks of code
+" Plug 'neovim/nvim-lsp'
 
 call plug#end()
 "-------------------------------------------------------------------------
@@ -173,6 +174,8 @@ au FileType rust nmap <leader>tc :Cargo check<cr>
 au FileType rust nmap <leader>R :silent !tmux run-shell -b -t 'output' 'cargo run 2>&1'<cr>
 
 au FileType julia nmap <leader>r :silent !tmux send-keys -t 'julia' "include("'"%"'")" Enter<cr>
+
+au FileType tex nmap <leader>o :silent !tmux run-shell -b -t 'output' 'make open 2>&1'<cr>
 " au FileType c,cpp nmap <leader>M :silent !tmux run-shell -b -t 'output' 'make 2>&1'<cr>
 
 " tag bar for Rust
@@ -219,7 +222,7 @@ set background=dark
 " colorscheme paramount-suizo
 colorscheme Monosvkem
 " colorscheme PaperColor
-" colorscheme base16-summerfruit-dark
+"colorscheme jellyx
 " i want italic in comments
 hi Comment gui=italic cterm=italic term=italic
 
@@ -318,10 +321,10 @@ nnoremap S :Ag <cword><CR>:cw<CR>
 nnoremap <leader>= :'<,'>RustFmtRange<cr>
 
 " make
-autocmd FileType c,c++ nnoremap <F5> :make<CR>
+autocmd FileType c,c++,tex nnoremap <F5> :make<CR>
 
 " make clean
-autocmd FileType c,c++ nnoremap <F6> :make clean<CR>
+autocmd FileType c,c++,tex nnoremap <F6> :make clean<CR>
 
 " open all .c and .h files
 au FileType c,cpp nmap <leader>a :argadd **/*.c **/*.h<cr>
@@ -375,11 +378,6 @@ map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
 
-" if new line show arrow
-if has('linebreak')
-  let &showbreak='⤷ ' " arrow pointing downwards then curving rightwards (U+2937, UTF-8: E2 A4 B7)
-endif
-
 " show all White spaces and tabs
 if &listchars ==# 'eol:$'
    set listchars=trail:-,nbsp:+
@@ -425,11 +423,15 @@ map <silent> <leader><cr> :noh<cr>
 "complete files
 inoremap <c-f> <c-x><c-f>
 
+" NOTE(elsuizo:2020-07-15): lo que pasa es que Y esta piolaaa
 " some copy magics
-vnoremap y "*y<CR>
-nnoremap Y "*Y<CR>
-vnoremap y myy`y
-vnoremap Y myY`y
+" vnoremap y "*y<CR>
+" nnoremap Y "*Y<CR>
+" vnoremap y myy`y
+" vnoremap Y myY`y
+
+" yank all line!!!
+noremap Y y$
 
 " Align blocks of text and keep them selected
 vmap < <gv

@@ -123,6 +123,7 @@ set $workspace5 "5:Telegram "
 set $workspace6 "6:Videos 嗢"
 set $workspace7 "7:Music "
 set $workspace8 "8:Mail "
+set $workspace11 "11:TODO "
 #-------------------------------------------------------------------------
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -135,6 +136,7 @@ bindsym $mod+7 workspace $workspace7
 bindsym $mod+8 workspace $workspace8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
+bindsym $mod+Shift+t workspace $workspace11
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $workspace1
@@ -157,7 +159,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # resize window (you can also use the mouse for that)
 bar {
-      font pango:DejaVu Sans Mono, FontAwesome 10
+      font pango:DejaVu Sans Mono, FontAwesome 9
       # position top
       mode hide
       status_command /home/elsuizo/Repos/i3status-rust/target/release/./i3status-rs /home/elsuizo/.config/i3/status.toml
