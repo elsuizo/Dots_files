@@ -29,9 +29,6 @@ Plug 'tpope/vim-repeat'                                              " to repeat
 Plug 'scrooloose/nerdtree'                                           " file mannager
 Plug 'tmux-plugins/vim-tmux'                                         " tmux integration
 Plug 'tmux-plugins/vim-tmux-focus-events'                            " tmux
-" Plug 'vim-airline/vim-airline'                                       " airline bar and buffer bar
-" Plug 'vim-airline/vim-airline-themes'                                " themes for airline
-" Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-surround'                                            " augment the surround capacity
 Plug 'Shougo/neosnippet.vim'                                         " code snippets pluging
 Plug 'Shougo/neosnippet-snippets'                                    " more code snippets
@@ -56,7 +53,6 @@ Plug 'alaric/neovim-visor'                                           " open/clos
 Plug 'flazz/vim-colorschemes'                                        " almost all the colorschemes
 Plug 'tomtom/tcomment_vim'                                           " comment lines of blocks of code
 " Plug 'neovim/nvim-lsp'
-" Plug 'jacoborus/tender.vim'
 call plug#end()
 "-------------------------------------------------------------------------
 "                     Settings
@@ -220,10 +216,7 @@ syntax enable
 set termguicolors
 set background=dark
 " set background=light
-" colorscheme paramount-suizo
 colorscheme Monosvkem
-"colorscheme tender
-"colorscheme jellyx
 " i want italic in comments
 hi Comment gui=italic cterm=italic term=italic
 
@@ -234,27 +227,6 @@ let g:NERDTreeAutoDeleteBuffer=1
 
 " tmux variables
 let g:tmux_navigator_no_mappings = 1
-
-" airline variables
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline#extensions#tabline#show_tab_nr = 1
-let g:airline_powerline_fonts = 1
-" colortheme airline
-let g:airline_theme='zenburn'
-" let g:airline_theme='minimalist'
-let g:airline#extensions#tabline#tab_nr_type = 1
-
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'FugitiveHead'
-      \ },
-      \ }
 
 " meson file extension
 au BufRead,BufNewFile *.build set filetype=meson
@@ -276,6 +248,8 @@ let g:clipboard = {
   \ }
 
 
+let $FZF_DEFAULT_OPTS='--reverse'
+let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
 " NOTE(elsuizo) no se si uso esto, pero la onda es cuando estas en la ventana
 " de fzf que haga esas acciones
 let g:fzf_action = {
@@ -292,20 +266,6 @@ nmap <Down> <NOP>
 nmap <Left> <NOP>
 nmap <Right> <NOP>
 
-" airline mappings
-nmap <space>, :bnext<CR>
-nmap <space>. :bprevious<CR>
-nmap <space>b :b#<CR>
-let g:airline#extensions#tabline#buffer_idx_mode = 1
-nmap <leader>1 <Plug>AirlineSelectTab1
-nmap <leader>2 <Plug>AirlineSelectTab2
-nmap <leader>3 <Plug>AirlineSelectTab3
-nmap <leader>4 <Plug>AirlineSelectTab4
-nmap <leader>5 <Plug>AirlineSelectTab5
-nmap <leader>6 <Plug>AirlineSelectTab6
-nmap <leader>7 <Plug>AirlineSelectTab7
-nmap <leader>8 <Plug>AirlineSelectTab8
-nmap <leader>9 <Plug>AirlineSelectTab9
 " tmux mappings
 nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
@@ -465,8 +425,6 @@ autocmd BufNewFile *.{jl,py} call <SID>insert_description_julia()
 autocmd BufNewFile *.{c++,cpp,cc,c,h,hpp,ino} call <SID>insert_description()
 
 
-let $FZF_DEFAULT_OPTS='--reverse'
-let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
 
 "-------------------------------------------------------------------------
 "                     functions
