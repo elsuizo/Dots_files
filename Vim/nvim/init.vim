@@ -29,8 +29,9 @@ Plug 'tpope/vim-repeat'                                              " to repeat
 Plug 'scrooloose/nerdtree'                                           " file mannager
 Plug 'tmux-plugins/vim-tmux'                                         " tmux integration
 Plug 'tmux-plugins/vim-tmux-focus-events'                            " tmux
-Plug 'vim-airline/vim-airline'                                       " airline bar and buffer bar
-Plug 'vim-airline/vim-airline-themes'                                " themes for airline
+" Plug 'vim-airline/vim-airline'                                       " airline bar and buffer bar
+" Plug 'vim-airline/vim-airline-themes'                                " themes for airline
+" Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-surround'                                            " augment the surround capacity
 Plug 'Shougo/neosnippet.vim'                                         " code snippets pluging
 Plug 'Shougo/neosnippet-snippets'                                    " more code snippets
@@ -55,13 +56,13 @@ Plug 'alaric/neovim-visor'                                           " open/clos
 Plug 'flazz/vim-colorschemes'                                        " almost all the colorschemes
 Plug 'tomtom/tcomment_vim'                                           " comment lines of blocks of code
 " Plug 'neovim/nvim-lsp'
-
+" Plug 'jacoborus/tender.vim'
 call plug#end()
 "-------------------------------------------------------------------------
 "                     Settings
 "-------------------------------------------------------------------------
 set completeopt-=preview
-set noshowmode             " dont show INSERT
+" set noshowmode             " dont show INSERT
 set noswapfile             " dont want swap files ~
 set scrolloff=10           " move the window 10 lines after reach the bottom
 
@@ -221,7 +222,7 @@ set background=dark
 " set background=light
 " colorscheme paramount-suizo
 colorscheme Monosvkem
-" colorscheme PaperColor
+"colorscheme tender
 "colorscheme jellyx
 " i want italic in comments
 hi Comment gui=italic cterm=italic term=italic
@@ -242,8 +243,18 @@ let g:airline_powerline_fonts = 1
 " colortheme airline
 let g:airline_theme='zenburn'
 " let g:airline_theme='minimalist'
-
 let g:airline#extensions#tabline#tab_nr_type = 1
+
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead'
+      \ },
+      \ }
 
 " meson file extension
 au BufRead,BufNewFile *.build set filetype=meson
@@ -452,6 +463,10 @@ autocmd BufNewFile *.{tex} call <SID>insert_description_tex()
 autocmd BufNewFile *.{rs} call <SID>insert_description_rust()
 autocmd BufNewFile *.{jl,py} call <SID>insert_description_julia()
 autocmd BufNewFile *.{c++,cpp,cc,c,h,hpp,ino} call <SID>insert_description()
+
+
+let $FZF_DEFAULT_OPTS='--reverse'
+let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
 
 "-------------------------------------------------------------------------
 "                     functions
