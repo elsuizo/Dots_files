@@ -1,0 +1,3 @@
+tmux new-session -s dev -n ranger -d
+tmux send-keys -t dev 'ranger' C-m
+tmux attach -t dev
