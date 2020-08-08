@@ -52,15 +52,17 @@ Plug 'elsuizo/monosvkem'                                             " personal 
 Plug 'alaric/neovim-visor'                                           " open/close the terminal with Alt-t
 Plug 'flazz/vim-colorschemes'                                        " almost all the colorschemes
 Plug 'tomtom/tcomment_vim'                                           " comment lines of blocks of code
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
+" Plug 'justinmk/vim-syntax-extra'
 " Plug 'neovim/nvim-lsp'
+" Plug 'sheerun/vim-polyglot'
 call plug#end()
 "-------------------------------------------------------------------------
 "                     Settings
 "-------------------------------------------------------------------------
 set completeopt-=preview
-" set noshowmode             " dont show INSERT
+set noshowmode             " dont show INSERT
 set noswapfile             " dont want swap files ~
 set scrolloff=10           " move the window 10 lines after reach the bottom
 
@@ -145,10 +147,10 @@ let g:python_host_prog = '/home/elsuizo/.pyenv/versions/neovim2/bin/python'
 let g:python3_host_prog = '/home/elsuizo/.pyenv/versions/neovim/bin/python3'
 
 " snippets directorys
-let g:neosnippet#snippets_directory='~/.vim/plugged/neosnippet-snippets, ~/.vim/My_snippets'
+let g:neosnippet#snippets_directory='~/.vim/plugged/neosnippet-snippets/neosnippets, ~/.vim/My_snippets'
 " latex stuff
 let g:vimtex_compiler_progname = 'nvr'
-
+let g:tex_flavor = 'latex'
 " Rust stuff
 " Racer completion
 let g:racer_cmd = "/home/elsuizo/.cargo/bin/racer"
@@ -217,8 +219,10 @@ let g:tagbar_type_rust = {
 syntax enable
 set termguicolors
 set background=dark
+let base16colorspace=256
 " set background=light
-colorscheme Monosvkem
+" colorscheme Monosvkem
+colorscheme base16-classic-dark
 " i want italic in comments
 hi Comment gui=italic cterm=italic term=italic
 
@@ -291,6 +295,10 @@ nmap <Up> <NOP>
 nmap <Down> <NOP>
 nmap <Left> <NOP>
 nmap <Right> <NOP>
+
+" Jump to start and end of line using the home row keys
+map H ^
+map L $
 
 " tmux mappings
 nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
