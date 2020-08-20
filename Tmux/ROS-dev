@@ -1,0 +1,6 @@
+tmux new-session -s ros-dev -n ranger -d
+tmux send-keys -t ros-dev 'ranger' C-m
+tmux new-window -t ros-dev -n ROS-dev
+tmux send-keys -t ros-dev 'CAT' C-m
+tmux new-window -t ros-dev -n output
+tmux attach -t ros-dev
