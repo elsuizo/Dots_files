@@ -17,13 +17,15 @@
 "                     vundle stuff
 "-------------------------------------------------------------------------
 set nocompatible              " be iMproved, required
+set hidden
+" set cursorline
 filetype off                  " required
 
 call plug#begin('~/.vim/plugged')
 
 Plug 'junegunn/fzf.vim',  { 'do': { -> fzf#install() } }
 Plug 'elzr/vim-json', {'on_ft': 'json'}
-Plug 'tpope/vim-fugitive'                                            " work with git
+" Plug 'tpope/vim-fugitive'                                            " work with git
 Plug 'jiangmiao/auto-pairs'                                          " smart autopairs
 Plug 'tpope/vim-repeat'                                              " to repeat crazy paterns with .
 Plug 'scrooloose/nerdtree'                                           " file mannager
@@ -34,29 +36,23 @@ Plug 'Shougo/neosnippet.vim'                                         " code snip
 Plug 'Shougo/neosnippet-snippets'                                    " more code snippets
 Plug 'JuliaEditorSupport/julia-vim'                                  " Julia language support
 Plug 'majutsushi/tagbar'                                             " navigation code bar(functions, definitions, types)
-Plug 'Numkil/ag.nvim'                                                " ag support(searching text)
+" Plug 'Numkil/ag.nvim'                                                " ag support(searching text)
 Plug 'matze/vim-move'                                                " move blocks of code
 Plug 'lervag/vimtex'                                                 " for work with tex files
 Plug 'rust-lang/rust.vim'                                            " Rust language support
-Plug 'vim-scripts/DoxygenToolkit.vim'                                " Doxygen support
+" Plug 'vim-scripts/DoxygenToolkit.vim'                                " Doxygen support
 Plug 'chrisbra/csv.vim'                                              " Visualize csv files
-Plug 'vim-scripts/OIL.vim'                                           " OIL syntax highlight
-Plug 'elsuizo/vim-colors-paramount-suizo'                            " personal colorscheme
+" Plug 'vim-scripts/OIL.vim'                                           " OIL syntax highlight
+" Plug 'elsuizo/vim-colors-paramount-suizo'                            " personal colorscheme
 Plug 'roxma/vim-tmux-clipboard'                                      " tmux copy and paste support
 Plug 'racer-rust/vim-racer'                                          " Rust code navigation
-Plug 'matze/vim-meson'                                               " Meson files support
+" Plug 'matze/vim-meson'                                               " Meson files support
 Plug 'iamcco/markdown-preview.nvim', {'do': 'cd app & yarn install'} " markdown support
-Plug 'NLKNguyen/papercolor-theme'                                    " a nice colorscheme
 Plug 'chriskempson/base16-vim'                                       " a set of colorschemes
 Plug 'elsuizo/monosvkem'                                             " personal colorscheme(modified)
 Plug 'alaric/neovim-visor'                                           " open/close the terminal with Alt-t
 Plug 'flazz/vim-colorschemes'                                        " almost all the colorschemes
 Plug 'tomtom/tcomment_vim'                                           " comment lines of blocks of code
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
-" Plug 'justinmk/vim-syntax-extra'
-" Plug 'neovim/nvim-lsp'
-" Plug 'sheerun/vim-polyglot'
 call plug#end()
 "-------------------------------------------------------------------------
 "                     Settings
@@ -84,16 +80,9 @@ set relativenumber number  " i want relative number lines
 
 filetype plugin indent on
 
-
 set cmdheight=1           " height of the command bar
 
-
 set expandtab             " Use spaces instead of tabs
-
-
-" TODO(elsuizo:2020-06-05): no se para que es esto
-"" Be smart when using tabs ;)
-" set smarttab
 
 " 1 tab == 3 spaces
 set shiftwidth=3
@@ -217,38 +206,19 @@ let g:tagbar_type_rust = {
 
 "  Colorschemes
 syntax enable
-set termguicolors
+" set termguicolors
 set background=dark
-let base16colorspace=256
+" let base16colorspace=256
 " set background=light
-" colorscheme Monosvkem
-colorscheme base16-classic-dark
+colorscheme Monosvkem
+" colorscheme NeoSolarized
+" colorscheme solarized8_dark_flat
+" colorscheme tendercontrast
+" colorscheme paramount-suizo
+" colorscheme two-firewatch
+
 " i want italic in comments
 hi Comment gui=italic cterm=italic term=italic
-
-"set hidden
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline#extensions#tabline#show_tab_nr = 1
-let g:airline_powerline_fonts = 1
-" colorscheme de airline
-let g:airline_theme='zenburn'
-
-let g:airline#extensions#tabline#tab_nr_type = 1
-nmap <leader>t :terminal<cr>
-nmap <space>, :bnext<CR>
-nmap <space>. :bprevious<CR>
-nmap <leader>b :b#<CR>
-let g:airline#extensions#tabline#buffer_idx_mode = 1
-nmap <leader>1 <Plug>AirlineSelectTab1
-nmap <leader>2 <Plug>AirlineSelectTab2
-nmap <leader>3 <Plug>AirlineSelectTab3
-nmap <leader>4 <Plug>AirlineSelectTab4
-nmap <leader>5 <Plug>AirlineSelectTab5
-nmap <leader>6 <Plug>AirlineSelectTab6
-nmap <leader>7 <Plug>AirlineSelectTab7
-nmap <leader>8 <Plug>AirlineSelectTab8
-nmap <leader>9 <Plug>AirlineSelectTab9
 
 " NerdTree variables
 let NERDTreeShowHidden=1
