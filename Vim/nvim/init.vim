@@ -25,7 +25,6 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'junegunn/fzf.vim',  { 'do': { -> fzf#install() } }
 Plug 'elzr/vim-json', {'on_ft': 'json'}
-" Plug 'tpope/vim-fugitive'                                            " work with git
 Plug 'jiangmiao/auto-pairs'                                          " smart autopairs
 Plug 'tpope/vim-repeat'                                              " to repeat crazy paterns with .
 Plug 'scrooloose/nerdtree'                                           " file mannager
@@ -36,11 +35,9 @@ Plug 'Shougo/neosnippet.vim'                                         " code snip
 Plug 'Shougo/neosnippet-snippets'                                    " more code snippets
 Plug 'JuliaEditorSupport/julia-vim'                                  " Julia language support
 Plug 'majutsushi/tagbar'                                             " navigation code bar(functions, definitions, types)
-" Plug 'Numkil/ag.nvim'                                                " ag support(searching text)
 Plug 'matze/vim-move'                                                " move blocks of code
 Plug 'lervag/vimtex'                                                 " for work with tex files
 Plug 'rust-lang/rust.vim'                                            " Rust language support
-" Plug 'vim-scripts/DoxygenToolkit.vim'                                " Doxygen support
 Plug 'chrisbra/csv.vim'                                              " Visualize csv files
 " Plug 'vim-scripts/OIL.vim'                                           " OIL syntax highlight
 " Plug 'elsuizo/vim-colors-paramount-suizo'                            " personal colorscheme
@@ -53,12 +50,14 @@ Plug 'elsuizo/monosvkem'                                             " personal 
 Plug 'alaric/neovim-visor'                                           " open/close the terminal with Alt-t
 Plug 'flazz/vim-colorschemes'                                        " almost all the colorschemes
 Plug 'tomtom/tcomment_vim'                                           " comment lines of blocks of code
+" Plug 'elsuizo/lightline.vim'
+Plug 'overcache/NeoSolarized'
 call plug#end()
 "-------------------------------------------------------------------------
 "                     Settings
 "-------------------------------------------------------------------------
 set completeopt-=preview
-set noshowmode             " dont show INSERT
+" set noshowmode             " dont show INSERT
 set noswapfile             " dont want swap files ~
 set scrolloff=10           " move the window 10 lines after reach the bottom
 
@@ -206,19 +205,18 @@ let g:tagbar_type_rust = {
 
 "  Colorschemes
 syntax enable
-" set termguicolors
+set termguicolors
 set background=dark
-" let base16colorspace=256
-" set background=light
-colorscheme Monosvkem
+" colorscheme Monosvkem
+colorscheme base16-gruvbox-dark-hard
+" colorscheme base16-classic-dark
 " colorscheme NeoSolarized
-" colorscheme solarized8_dark_flat
-" colorscheme tendercontrast
-" colorscheme paramount-suizo
-" colorscheme two-firewatch
-
+" let g:lightline = {
+"   \ 'colorscheme': 'gruvbox',
+"   \}
 " i want italic in comments
 hi Comment gui=italic cterm=italic term=italic
+highlight LineNr term=bold cterm=NONE ctermfg=Black ctermbg=NONE gui=NONE guifg=Black guibg=NONE
 
 " NerdTree variables
 let NERDTreeShowHidden=1
