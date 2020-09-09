@@ -217,7 +217,7 @@ colorscheme base16-gruvbox-dark-hard
 " i want italic in comments
 hi Comment gui=italic cterm=italic term=italic
 highlight LineNr term=bold cterm=NONE ctermfg=Black ctermbg=NONE gui=NONE guifg=Black guibg=NONE
-
+highlight CursorLineNr guifg=#a89984 guibg=#050505 gui=NONE
 " NerdTree variables
 let NERDTreeShowHidden=1
 let g:NERDTreeWinSize=45
