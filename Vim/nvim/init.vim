@@ -52,6 +52,7 @@ Plug 'flazz/vim-colorschemes'                                        " almost al
 Plug 'tomtom/tcomment_vim'                                           " comment lines of blocks of code
 " Plug 'elsuizo/lightline.vim'
 Plug 'overcache/NeoSolarized'
+Plug 'neutaaaaan/iosvkem'
 call plug#end()
 "-------------------------------------------------------------------------
 "                     Settings
@@ -205,19 +206,20 @@ let g:tagbar_type_rust = {
 
 "  Colorschemes
 syntax enable
-set termguicolors
+" set termguicolors
 set background=dark
 " colorscheme Monosvkem
-colorscheme base16-gruvbox-dark-hard
+colorscheme Iosvkem
 " colorscheme base16-classic-dark
+" colorscheme tender
 " colorscheme NeoSolarized
 " let g:lightline = {
 "   \ 'colorscheme': 'gruvbox',
 "   \}
 " i want italic in comments
 hi Comment gui=italic cterm=italic term=italic
-highlight LineNr term=bold cterm=NONE ctermfg=Black ctermbg=NONE gui=NONE guifg=Black guibg=NONE
-highlight CursorLineNr guifg=#a89984 guibg=#050505 gui=NONE
+" highlight LineNr term=bold cterm=NONE ctermfg=Black ctermbg=NONE gui=NONE guifg=Black guibg=NONE
+" highlight CursorLineNr guifg=DarkGrey guibg=#050505 gui=NONE
 " NerdTree variables
 let NERDTreeShowHidden=1
 let g:NERDTreeWinSize=45
