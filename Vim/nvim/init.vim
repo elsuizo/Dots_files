@@ -51,8 +51,9 @@ Plug 'alaric/neovim-visor'                                           " open/clos
 Plug 'flazz/vim-colorschemes'                                        " almost all the colorschemes
 Plug 'tomtom/tcomment_vim'                                           " comment lines of blocks of code
 " Plug 'elsuizo/lightline.vim'
-Plug 'overcache/NeoSolarized'
+" Plug 'overcache/NeoSolarized'
 Plug 'neutaaaaan/iosvkem'
+" Plug 'neovim/nvim-lspconfig'
 call plug#end()
 "-------------------------------------------------------------------------
 "                     Settings
