@@ -288,10 +288,16 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 map <C-\> :NERDTreeToggle<CR>
 autocmd StdinReadPre * let s:std_in=1
 
-" search for the word under the cursor and search in all places with AG
-nnoremap S :Ag <cword><CR>:cw<CR>
-" TODO(elsuizo:2020-05-18): no se porque no anda con Rg
-" nnoremap S :Rg <cword><CR>:cw<CR>
+" esto lo necesitamos para hacer la busqueda de una palabra que esta bajo el
+" cursor en todo los archivos que estan en un proyecto
+command! -bang -nargs=* Find
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always '.shellescape(expand('<cword>')), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
+" search for the word under the cursor and search in all places with Rg
+nnoremap S :Find <cword><CR>
 
 " <leader>= reformats current range of Rust code
 nnoremap <leader>= :'<,'>RustFmtRange<cr>
