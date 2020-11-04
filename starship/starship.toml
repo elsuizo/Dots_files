@@ -1,10 +1,9 @@
 # Don't print a new line at the start of the prompt
 add_newline = false
-
 # Replace the "❯" symbol in the prompt with "➜"
 [character]      # The name of the module we are configuring is "character"
-symbol = " archlinux:>"     # The "symbol" segment is being set to "➜"
-style_success = "bold blue"
+success_symbol = "[ archlinux:>](bold blue)"
+error_symbol = "[ archlinux:>](bold red)"
 # Disable the package module, hiding it from the prompt completely
 [package]
 disabled = true
