@@ -6,11 +6,12 @@ user-mail-address "mnoblia@disroot.org")
 #+begin_src emacs-lisp
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
+(setq byte-compile-warnings '(cl-functions))
 #+end_src
 
 #+begin_src emacs-lisp
 (setq gc-cons-threshold 400000000)
-(set-default-font "mononoki  Nerd Font Mono 13")
+(set-frame-font "mononoki  Nerd Font Mono 13")
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
@@ -24,7 +25,6 @@ user-mail-address "mnoblia@disroot.org")
 (require 'package)
 (add-to-list 'package-archives
  '("melpa" . "http://melpa.org/packages/") t)
-(package-initialize)
 ; Bootstrap `use-package'
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
