@@ -1,6 +1,5 @@
-#+TITLE: elsuizo emacs configuratiojia"
-user-mail-address "mnoblia@disroot.org")
-#+end_src
+#+TITLE: elsuizo emacs configuration
+#+EMAIL: mnoblia@disroot.org
 * Customize settings
 
 #+begin_src emacs-lisp
@@ -127,13 +126,26 @@ estos van a ser los estados por default
     (require 'org-bullets)
     (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
    #+END_SRC
-** Agenda stuff
+** TODO Agenda stuff
    Estos son los archivos que agrego para que sean trackeados por org-agenda
-   #+BEGIN_SRC emacs-lis
-   (setq org-agenda-files (list "~/home/elsuizo/Dropbox/Org_mode_files/Personal_org_mode_files/dia_a_dia.org"
-                             "~/home/elsuizo/Dropbox/Org_mode_files/Personal_org_mode_files/iaci_tasks.org" 
-                             "~/home/elsuizo/Dropbox/Org_mode_files/Personal_org_mode_files/personal_tasks.org"))
+   #+BEGIN_SRC emacs-lisp
+   (setq org-agenda-files 
+   '("/home/elsuizo/Dropbox/Org_mode_files/Personal_org_mode_files/TODO.org"))
+   ; hacemos que cada vez que damos por terminada una tarea ponga la fecha y hora de cuando termino
+   (setq org-log-done 'time)
+   (setq org-agenda-start-with-log-mode t)
    #+END_SRC
+** Pasar una tarea que tenemos en un archivo a otro
+   Con esto lo que hacemos es cuando
+   #+begin_src emacs-lisp
+   (setq org-refile-targets
+    '("/home/elsuizo/Dropbox/Org_mode_files/Personal_org_mode_files/TODO.org" :maxlevel . 1)
+    ("/home/elsuizo/Dropbox/Org_mode_files/Personal_org_mode_files/Proyectos_freelance/octave2julia.org"))
+   #+end_src
+   Luego hacemos que cuando los pasamos se guarden los archivos solos
+   #+begin_src emacs-lisp
+   (advice-add 'org-refile :after 'org-save-all-org-buffers)
+   #+end_src
 * Custom functions and commands
 Con esto lo que hago es guardar en el clipboard el path del archivo en el
 que estoy actualmente y ademas la linea en donde se encuentre el cursor por ejemplo
