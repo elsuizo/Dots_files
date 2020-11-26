@@ -50,9 +50,10 @@ Plug 'elsuizo/monosvkem'                                             " personal 
 Plug 'alaric/neovim-visor'                                           " open/close the terminal with Alt-t
 Plug 'flazz/vim-colorschemes'                                        " almost all the colorschemes
 Plug 'tomtom/tcomment_vim'                                           " comment lines of blocks of code
-" Plug 'elsuizo/lightline.vim'
-" Plug 'overcache/NeoSolarized'
 Plug 'neutaaaaan/iosvkem'
+
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 " Plug 'neovim/nvim-lspconfig'
 call plug#end()
 "-------------------------------------------------------------------------
@@ -145,7 +146,7 @@ let g:tex_flavor = 'latex'
 " Racer completion
 let g:racer_cmd = "/home/elsuizo/.cargo/bin/racer"
 let g:racer_experimental_completer = 1
-let g:racer_insert_paren = 1
+" let g:racer_insert_paren = 1
 " rustfmt
 let g:rustfmt_command = "rustfmt +nightly"
 let g:rustfmt_autosave = 0
@@ -165,6 +166,10 @@ au FileType rust nmap <leader>tc :Cargo check<cr>
 au FileType rust nmap <leader>R :silent !tmux run-shell -b -t 'output' 'cargo run 2>&1'<cr>
 
 au FileType julia nmap <leader>r :silent !tmux send-keys -t 'julia' "include("'"%"'")" Enter<cr>
+
+" NOTE(elsuizo:2020-11-24): aca tenemos que tener abierto ipython en el lugar
+" donde estamos corriendo el script
+au FileType python nmap <leader>r :silent !tmux send-keys -t 'output' "python "%"" Enter<cr>
 
 au FileType tex nmap <leader>o :silent !tmux run-shell -b -t 'output' 'make open 2>&1'<cr>
 " au FileType c,cpp nmap <leader>M :silent !tmux run-shell -b -t 'output' 'make 2>&1'<cr>
@@ -205,12 +210,37 @@ let g:tagbar_type_rust = {
   \ },
 \ }
 
+" airline stuff
+" Let airline tell me my status
+"set hidden
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#show_tab_nr = 1
+let g:airline_powerline_fonts = 1
+" colorscheme de airline
+let g:airline_theme='zenburn'
+set termguicolors
+let g:airline#extensions#tabline#tab_nr_type = 1
+nmap <leader>t :terminal<cr>
+nmap <space>, :bnext<CR>
+nmap <space>. :bprevious<CR>
+nmap <leader>b :b#<CR>
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
 "  Colorschemes
 syntax enable
 " set termguicolors
 set background=dark
-" colorscheme Monosvkem
-colorscheme Iosvkem
+colorscheme Monosvkem
+" colorscheme Iosvkem
 " colorscheme base16-classic-dark
 " colorscheme tender
 " colorscheme NeoSolarized
