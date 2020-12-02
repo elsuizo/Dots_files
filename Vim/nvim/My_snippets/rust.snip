@@ -18,7 +18,7 @@ snippet BCOM
    //                        ${0:yor nice comment here}
    //-------------------------------------------------------------------------
 
-snippet BDOC_FUNC
+snippet BDF
    /// Brief.
    ///
    /// ${1: your nice function algorithm resume here}
@@ -27,11 +27,22 @@ snippet BDOC_FUNC
    /// ${0: your nice function arguments description here}
    ///
 
+snippet BDT
+   ///
+   /// ${1: your nice type resume here}
+   ///
+
 #-------------------------------------------------------------------------
 #                                Code
 #-------------------------------------------------------------------------
-snippet PRINTLN
+snippet PR
    println!("${1:message}{:}", ${2:var_name});${0}
+
+snippet PRS
+   println!("${1:message}");${0}
+
+snippet PRV
+   println!("${1:message}: {:?}", $1);${0}
 
 snippet ASS
    assert_eq!(${1:first argument}, ${2:second argument});
