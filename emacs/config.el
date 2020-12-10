@@ -1,8 +1,9 @@
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
+(setq byte-compile-warnings '(cl-functions))
 
 (setq gc-cons-threshold 400000000)
-(set-default-font "mononoki  Nerd Font Mono 13")
+(set-frame-font "mononoki  Nerd Font Mono 13")
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
@@ -13,7 +14,6 @@
 (require 'package)
 (add-to-list 'package-archives
  '("melpa" . "http://melpa.org/packages/") t)
-(package-initialize)
 ; Bootstrap `use-package'
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
@@ -72,10 +72,10 @@
         ("\\.pdf.xoj" . "xournal %s")
         ("\\.csv" . "gvim %s")))
 
-(require 'virtualenvwrapper)
-(venv-initialize-interactive-shells) ;; if you want interactive shell support
-(venv-initialize-eshell) ;; if you want eshell support
-(setq venv-location "/home/elsuizo/.pyenv/versions/3.5.2/bin/python3")
+;(require 'virtualenvwrapper)
+;(venv-initialize-interactive-shells) ;; if you want interactive shell support
+;(venv-initialize-eshell) ;; if you want eshell support
+;(setq venv-location "/home/elsuizo/.pyenv/versions/3.5.2/bin/python3")
 
 (org-babel-do-load-languages
  'org-babel-load-languages
@@ -83,6 +83,17 @@
 
 (require 'org-bullets)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+
+(setq org-agenda-files 
+'("/home/elsuizo/Dropbox/Org_mode_files/Personal_org_mode_files/TODO.org"))
+; hacemos que cada vez que damos por terminada una tarea ponga la fecha y hora de cuando termino
+(setq org-log-done 'time)
+(setq org-agenda-start-with-log-mode t)
+
+(setq org-refile-targets
+ '("/home/elsuizo/Dropbox/Org_mode_files/Personal_org_mode_files/TODO.org" :maxlevel . 1))
+
+(advice-add 'org-refile :after 'org-save-all-org-buffers)
 
 (defun what-line-only-number ()
       "lalala"
