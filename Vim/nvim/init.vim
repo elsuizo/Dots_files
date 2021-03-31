@@ -51,9 +51,10 @@ Plug 'alaric/neovim-visor'                                           " open/clos
 Plug 'flazz/vim-colorschemes'                                        " almost all the colorschemes
 Plug 'tomtom/tcomment_vim'                                           " comment lines of blocks of code
 Plug 'neutaaaaan/iosvkem'
+Plug 'vim-scripts/DoxygenToolkit.vim'
 
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
 " Plug 'neovim/nvim-lspconfig'
 call plug#end()
 "-------------------------------------------------------------------------
@@ -237,16 +238,13 @@ nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
 "  Colorschemes
 syntax enable
-" set termguicolors
+set termguicolors
 set background=dark
-colorscheme Monosvkem
-" colorscheme Iosvkem
-" colorscheme base16-classic-dark
+" set background=light
+" colorscheme Monosvkem
+colorscheme Iosvkem
 " colorscheme tender
 " colorscheme NeoSolarized
-" let g:lightline = {
-"   \ 'colorscheme': 'gruvbox',
-"   \}
 " i want italic in comments
 hi Comment gui=italic cterm=italic term=italic
 " highlight LineNr term=bold cterm=NONE ctermfg=Black ctermbg=NONE gui=NONE guifg=Black guibg=NONE
@@ -337,6 +335,8 @@ autocmd FileType c,c++,tex nnoremap <F5> :make<CR>
 
 " make clean
 autocmd FileType c,c++,tex nnoremap <F6> :make clean<CR>
+
+autocmd FileType c,c++ nnoremap <F4> :make run<CR>
 
 " open all .c and .h files
 au FileType c,cpp nmap <leader>a :argadd **/*.c **/*.h<cr>
