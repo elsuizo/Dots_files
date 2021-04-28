@@ -23,13 +23,11 @@ filetype off                  " required
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'junegunn/fzf.vim',  { 'do': { -> fzf#install() } }
+" Plug 'junegunn/fzf.vim',  { 'do': { -> fzf#install() } }
 Plug 'elzr/vim-json', {'on_ft': 'json'}
 Plug 'jiangmiao/auto-pairs'                                          " smart autopairs
 Plug 'tpope/vim-repeat'                                              " to repeat crazy paterns with .
 Plug 'scrooloose/nerdtree'                                           " file mannager
-Plug 'tmux-plugins/vim-tmux'                                         " tmux integration
-Plug 'tmux-plugins/vim-tmux-focus-events'                            " tmux
 Plug 'tpope/vim-surround'                                            " augment the surround capacity
 Plug 'Shougo/neosnippet.vim'                                         " code snippets pluging
 Plug 'Shougo/neosnippet-snippets'                                    " more code snippets
@@ -39,23 +37,25 @@ Plug 'matze/vim-move'                                                " move bloc
 Plug 'lervag/vimtex'                                                 " for work with tex files
 Plug 'rust-lang/rust.vim'                                            " Rust language support
 Plug 'chrisbra/csv.vim'                                              " Visualize csv files
-" Plug 'vim-scripts/OIL.vim'                                           " OIL syntax highlight
-" Plug 'elsuizo/vim-colors-paramount-suizo'                            " personal colorscheme
+Plug 'elsuizo/vim-colors-paramount-suizo'                            " personal colorscheme
 Plug 'roxma/vim-tmux-clipboard'                                      " tmux copy and paste support
 Plug 'racer-rust/vim-racer'                                          " Rust code navigation
-" Plug 'matze/vim-meson'                                               " Meson files support
 Plug 'iamcco/markdown-preview.nvim', {'do': 'cd app & yarn install'} " markdown support
 Plug 'chriskempson/base16-vim'                                       " a set of colorschemes
 Plug 'elsuizo/monosvkem'                                             " personal colorscheme(modified)
-Plug 'alaric/neovim-visor'                                           " open/close the terminal with Alt-t
+" Plug 'alaric/neovim-visor'                                           " open/close the terminal with Alt-t
 Plug 'flazz/vim-colorschemes'                                        " almost all the colorschemes
 Plug 'tomtom/tcomment_vim'                                           " comment lines of blocks of code
 Plug 'neutaaaaan/iosvkem'
 Plug 'vim-scripts/DoxygenToolkit.vim'
-
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
-" Plug 'neovim/nvim-lspconfig'
+" telescope
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'cespare/vim-toml'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'romgrk/barbar.nvim'
+Plug 'voldikss/vim-floaterm'
 call plug#end()
 "-------------------------------------------------------------------------
 "                     Settings
@@ -214,41 +214,52 @@ let g:tagbar_type_rust = {
 " airline stuff
 " Let airline tell me my status
 "set hidden
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline#extensions#tabline#show_tab_nr = 1
-let g:airline_powerline_fonts = 1
-" colorscheme de airline
-let g:airline_theme='zenburn'
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#fnamemod = ':t'
+" let g:airline#extensions#tabline#show_tab_nr = 1
+" let g:airline_powerline_fonts = 1
+" " colorscheme de airline
+" let g:airline_theme='zenburn'
 set termguicolors
 let g:airline#extensions#tabline#tab_nr_type = 1
 nmap <leader>t :terminal<cr>
 nmap <space>, :bnext<CR>
 nmap <space>. :bprevious<CR>
 nmap <leader>b :b#<CR>
-let g:airline#extensions#tabline#buffer_idx_mode = 1
-nmap <leader>1 <Plug>AirlineSelectTab1
-nmap <leader>2 <Plug>AirlineSelectTab2
-nmap <leader>3 <Plug>AirlineSelectTab3
-nmap <leader>4 <Plug>AirlineSelectTab4
-nmap <leader>5 <Plug>AirlineSelectTab5
-nmap <leader>6 <Plug>AirlineSelectTab6
-nmap <leader>7 <Plug>AirlineSelectTab7
-nmap <leader>8 <Plug>AirlineSelectTab8
-nmap <leader>9 <Plug>AirlineSelectTab9
+" let g:airline#extensions#tabline#buffer_idx_mode = 1
+" nmap <leader>1 <Plug>AirlineSelectTab1
+" nmap <leader>2 <Plug>AirlineSelectTab2
+" nmap <leader>3 <Plug>AirlineSelectTab3
+" nmap <leader>4 <Plug>AirlineSelectTab4
+" nmap <leader>5 <Plug>AirlineSelectTab5
+" nmap <leader>6 <Plug>AirlineSelectTab6
+" nmap <leader>7 <Plug>AirlineSelectTab7
+" nmap <leader>8 <Plug>AirlineSelectTab8
+" nmap <leader>9 <Plug>AirlineSelectTab9
 "  Colorschemes
+nnoremap <leader>1 :BufferGoto 1<CR>
+nnoremap <leader>2 :BufferGoto 2<CR>
+nnoremap <leader>3 :BufferGoto 3<CR>
+nnoremap <leader>4 :BufferGoto 4<CR>
+nnoremap <leader>5 :BufferGoto 5<CR>
+nnoremap <leader>6 :BufferGoto 6<CR>
+nnoremap <leader>7 :BufferGoto 7<CR>
+nnoremap <leader>8 :BufferGoto 8<CR>
+nnoremap <leader>9 :BufferLast<CR>
 syntax enable
 set termguicolors
 set background=dark
 " set background=light
-" colorscheme Monosvkem
-colorscheme Iosvkem
+colorscheme Monosvkem
+" colorscheme Iosvkem
+" colorscheme naysayer88
+" colorscheme solarized8_light_high
+" colorscheme deep-space
 " colorscheme tender
-" colorscheme NeoSolarized
 " i want italic in comments
 hi Comment gui=italic cterm=italic term=italic
-" highlight LineNr term=bold cterm=NONE ctermfg=Black ctermbg=NONE gui=NONE guifg=Black guibg=NONE
-" highlight CursorLineNr guifg=DarkGrey guibg=#050505 gui=NONE
+" highlight LineNr term=bold cterm=NONE ctermfg=Gray ctermbg=NONE gui=NONE guifg=Gray guibg=NONE
+" highlight CursorLineNr guifg=Red guibg=#050505 gui=NONE
 " NerdTree variables
 let NERDTreeShowHidden=1
 let g:NERDTreeWinSize=45
@@ -277,14 +288,14 @@ let g:clipboard = {
   \ }
 
 
-let $FZF_DEFAULT_OPTS='--reverse'
-let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
-" NOTE(elsuizo) no se si uso esto, pero la onda es cuando estas en la ventana
-" de fzf que haga esas acciones
-let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-s': 'split',
-  \ 'ctrl-v': 'vsplit' }
+" let $FZF_DEFAULT_OPTS='--reverse'
+" let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
+" " NOTE(elsuizo) no se si uso esto, pero la onda es cuando estas en la ventana
+" " de fzf que haga esas acciones
+" let g:fzf_action = {
+"   \ 'ctrl-t': 'tab split',
+"   \ 'ctrl-s': 'split',
+"   \ 'ctrl-v': 'vsplit' }
 "-------------------------------------------------------------------------
 "                     Mappings
 "-------------------------------------------------------------------------
@@ -300,11 +311,17 @@ map H ^
 map L $
 
 " tmux mappings
-nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
-nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
-nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
-nnoremap <silent> <C-h> :TmuxNavigateLeft<CR>
-nnoremap <silent> <C-;> :TmuxNavigatePrevious<cr>
+" nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
+" nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+" nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
+" nnoremap <silent> <C-h> :TmuxNavigateLeft<CR>
+" nnoremap <silent> <C-;> :TmuxNavigatePrevious<cr>
+
+" telescope
+nnoremap <leader>f <cmd>Telescope find_files<cr>
+nnoremap <leader>g <cmd>Telescope live_grep<cr>
+nnoremap <leader>b <cmd>Telescope buffers<cr>
+nnoremap <leader>h <cmd>Telescope help_tags<cr>
 
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " snippets mapps
@@ -318,14 +335,14 @@ autocmd StdinReadPre * let s:std_in=1
 
 " esto lo necesitamos para hacer la busqueda de una palabra que esta bajo el
 " cursor en todo los archivos que estan en un proyecto
-command! -bang -nargs=* Find
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always '.shellescape(expand('<cword>')), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
+" command! -bang -nargs=* Find
+"   \ call fzf#vim#grep(
+"   \   'rg --column --line-number --no-heading --color=always '.shellescape(expand('<cword>')), 1,
+"   \   <bang>0 ? fzf#vim#with_preview('up:60%')
+"   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+"   \   <bang>0)
 " search for the word under the cursor and search in all places with Rg
-nnoremap S :Find <cword><CR>
+" nnoremap S :Find <cword><CR>
 
 " <leader>= reformats current range of Rust code
 nnoremap <leader>= :'<,'>RustFmtRange<cr>
@@ -346,9 +363,9 @@ au FileType c,cpp nmap <leader>a :argadd **/*.c **/*.h<cr>
 " kill the buffer!!!
 nmap <leader>k :bd<cr>
 " open fzf
-nmap <leader>f :Files<cr>
-" open buffers in fzf
-nmap <leader>b :Buffers<cr>
+" nmap <leader>f :Files<cr>
+" " open buffers in fzf
+" nmap <leader>b :Buffers<cr>
 
 "open oil files
 au BufEnter,BufRead,BufNewFile *.oil setfiletype oil
@@ -427,11 +444,6 @@ nmap <leader>D :Dox<cr>
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
 
-" NOTE(elsuizo:2020-06-15): acabo de ver que ; se utiliza para una magia
-" zarpada que es cuando buscamos con F o T
-" when press ; go to command mode
-" nnoremap ; :
-
 "complete files
 inoremap <c-f> <c-x><c-f>
 
@@ -458,14 +470,21 @@ nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
+nnoremap   <silent>   <A-t>    :FloatermNew<CR>
+tnoremap   <silent>   <F7>    <C-\><C-n>:FloatermNew<CR>
+nnoremap   <silent>   <F8>    :FloatermPrev<CR>
+tnoremap   <silent>   <F8>    <C-\><C-n>:FloatermPrev<CR>
+nnoremap   <silent>   <F9>    :FloatermNext<CR>
+tnoremap   <silent>   <F9>    <C-\><C-n>:FloatermNext<CR>
+nnoremap   <silent>   <A-t>   :FloatermToggle<CR>
+tnoremap   <silent>   <A-t>   <C-\><C-n>:FloatermToggle<CR>
+
 " TODO(elsuizo:2020-04-10): esto tendria que ser una sola funcion
 " insert the headers
 autocmd BufNewFile *.{tex} call <SID>insert_description_tex()
 autocmd BufNewFile *.{rs} call <SID>insert_description_rust()
 autocmd BufNewFile *.{jl,py} call <SID>insert_description_julia()
 autocmd BufNewFile *.{c++,cpp,cc,c,h,hpp,ino} call <SID>insert_description()
-
-
 
 "-------------------------------------------------------------------------
 "                     functions

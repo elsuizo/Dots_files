@@ -36,7 +36,7 @@ g['deoplete#enable_at_startup'] = 1  -- enable deoplete at startup
 
 -------------------- OPTIONS -------------------------------
 local indent = 4
-cmd 'colorscheme Monosvkem'                              -- Put your favorite colorscheme here
+cmd 'colorscheme Monosvkem'                           -- Put your favorite colorscheme here
 opt('b', 'expandtab', true)                           -- Use spaces instead of tabs
 opt('b', 'shiftwidth', indent)                        -- Size of an indent
 opt('b', 'smartindent', true)                         -- Insert indents automatically

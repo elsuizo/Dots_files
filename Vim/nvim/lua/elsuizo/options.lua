@@ -48,7 +48,6 @@ Option.g {
   updatetime = 500,
   redrawtime = 500,
   fillchars = vim.o.fillchars .. "vert:│",
-  undofile = true,
   backupdir="~/.vim/backup",
   directory="~/.vim/swap",
   undodir="~/.vim/undo",
