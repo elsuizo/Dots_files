@@ -2,9 +2,6 @@ local vim = vim
 local api = vim.api
 local M = {}
 
--- NOTE(elsuizo): esto no anda
--- vim.bo.undofile=true
-
 function M.map(mode, lhs, rhs, opts)
   local options = {noremap = true, silent = true}
   if opts then

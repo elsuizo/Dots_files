@@ -1,5 +1,4 @@
 -- Options
---local parsers = require'nvim-treesitter.parsers'
 local Type = {GLOBAL_OPTION = "o", WINDOW_OPTION = "wo", BUFFER_OPTION = "bo"}
 local add_options = function(option_type, options)
   if type(options) ~= "table" then
@@ -31,7 +30,7 @@ Option.g {
   mouse = "a",
   clipboard = "unnamedplus",
   hidden = true,
-  showmode = false,
+  showmode = true,
   timeoutlen = 3e3,
   tabstop = 3,
   shiftwidth = 3,
@@ -39,19 +38,19 @@ Option.g {
   expandtab = true,
   conceallevel = 0,
   laststatus = 2,
-  wrap = false,
+  wrap = true,
   linebreak = false,
   list = true,
   listchars = "tab:»·,trail:-",
   wildmenu = true,
   wildmode = "full",
   autoread = true,
-  updatetime = 500,
-  redrawtime = 500,
+  -- updatetime = 500,
+  -- redrawtime = 500,
   fillchars = vim.o.fillchars .. "vert:│",
-  backupdir="~/.vim/backup",
-  directory="~/.vim/swap",
-  undodir="~/.vim/undo",
+  undofile = true,
+  -- TODO(elsuizo) esto no anda el dir esta bien seteado pero no se porque no lo usa
+  -- undodir = os.getenv("HOME") .. "/.vim/undo/",
   virtualedit = "onemore",
   guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20",
   complete = ".,w,b,u,t,k",
@@ -77,7 +76,6 @@ Option.g {
   splitbelow = true,
   emoji = false,
   indentexpr="nvim_treesitter#indent()"
-
 }
 
 Option.b {
@@ -115,8 +113,22 @@ vim.cmd('let &t_8b = "\\<Esc>[48;2;%lu;%lu;%lum"')
 vim.g.python_host_prog = '/home/elsuizo/.pyenv/versions/neovim2/bin/python'
 vim.g.python3_host_prog = '/home/elsuizo/.pyenv/versions/neovim/bin/python3'
 
+-- TODO(elsuizo:2021-05-01): hay que portar esto a lua
 -- snippets directorys
--- vim.g.neosnippet#snippets_directory = '~/.vim/plugged/neosnippet-snippets/neosnippets, ~/.vim/My_snippets'
+-- vim.g.neosnippet[snippets_directory] = '~/.vim/plugged/neosnippet-snippets/neosnippets, ~/.vim/My_snippets'
+vim.api.nvim_exec([[
+let g:neosnippet#snippets_directory='~/.vim/plugged/neosnippet-snippets/neosnippets, ~/.vim/My_snippets'
+]], true)
+-- neosnippet function
+vim.api.nvim_exec([[
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" snippets mapps
+imap <expr><TAB> pumvisible() ? "\<C-n>" : neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+]], true)
+
 -- rust options
 vim.g.rustfmt_command = "rustfmt +nightly"
 vim.g.rustfmt_autosave = 0
