@@ -258,6 +258,7 @@ colorscheme Monosvkem
 " colorscheme tender
 " i want italic in comments
 hi Comment gui=italic cterm=italic term=italic
+hi FloatermBorder guibg=black guifg=white
 " highlight LineNr term=bold cterm=NONE ctermfg=Gray ctermbg=NONE gui=NONE guifg=Gray guibg=NONE
 " highlight CursorLineNr guifg=Red guibg=#050505 gui=NONE
 " NerdTree variables
