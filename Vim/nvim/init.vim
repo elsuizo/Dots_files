@@ -23,7 +23,6 @@ filetype off                  " required
 
 call plug#begin('~/.vim/plugged')
 
-" Plug 'junegunn/fzf.vim',  { 'do': { -> fzf#install() } }
 Plug 'elzr/vim-json', {'on_ft': 'json'}
 Plug 'jiangmiao/auto-pairs'                                          " smart autopairs
 Plug 'tpope/vim-repeat'                                              " to repeat crazy paterns with .
@@ -43,11 +42,11 @@ Plug 'racer-rust/vim-racer'                                          " Rust code
 Plug 'iamcco/markdown-preview.nvim', {'do': 'cd app & yarn install'} " markdown support
 Plug 'chriskempson/base16-vim'                                       " a set of colorschemes
 Plug 'elsuizo/monosvkem'                                             " personal colorscheme(modified)
-" Plug 'alaric/neovim-visor'                                           " open/close the terminal with Alt-t
+Plug 'alaric/neovim-visor'                                           " open/close the terminal with Alt-t
 Plug 'flazz/vim-colorschemes'                                        " almost all the colorschemes
 Plug 'tomtom/tcomment_vim'                                           " comment lines of blocks of code
 Plug 'neutaaaaan/iosvkem'
-Plug 'vim-scripts/DoxygenToolkit.vim'
+" Plug 'vim-scripts/DoxygenToolkit.vim'
 " telescope
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -55,7 +54,8 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'cespare/vim-toml'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
-Plug 'voldikss/vim-floaterm'
+Plug 'ziglang/zig.vim'
+Plug 'ishan9299/nvim-solarized-lua'
 call plug#end()
 "-------------------------------------------------------------------------
 "                     Settings
@@ -159,9 +159,16 @@ au FileType rust nmap gs <Plug>(rust-def-split)
 au FileType rust nmap gx <Plug>(rust-def-vertical)
 au FileType rust nmap <leader>gd <Plug>(rust-doc)
 au FileType rust nmap <leader>r :Cargo run<cr>
+au FileType rust nmap <leader>rr :make run --release<cr>
+au FileType rust nmap <leader>b :make build<cr>
+au FileType rust nmap <leader>bb :make build --release<cr>
 au FileType rust nmap <leader>t :Cargo test<cr>
-au FileType rust nmap <leader>tc :Cargo check<cr>
+au FileType rust nmap <leader>tc :make check<cr>
 
+" NOTE(elsuizo:2021-05-05): esto es para saber cuales son los autocomandos que
+" tenemos instalados
+" au InsertCharPre
+" au CursorMovedI
 " TODO(elsuizo:2020-05-14): hacer que muestre un msg si hay errores o un ok si
 " no hubo errores
 au FileType rust nmap <leader>R :silent !tmux run-shell -b -t 'output' 'cargo run 2>&1'<cr>
@@ -252,15 +259,13 @@ set background=dark
 " set background=light
 colorscheme Monosvkem
 " colorscheme Iosvkem
-" colorscheme naysayer88
-" colorscheme solarized8_light_high
 " colorscheme deep-space
-" colorscheme tender
+" colorscheme solarized-high
 " i want italic in comments
 hi Comment gui=italic cterm=italic term=italic
-hi FloatermBorder guibg=black guifg=white
+" hi FloatermBorder guibg=black guifg=white
 " highlight LineNr term=bold cterm=NONE ctermfg=Gray ctermbg=NONE gui=NONE guifg=Gray guibg=NONE
-" highlight CursorLineNr guifg=Red guibg=#050505 gui=NONE
+" highlight CursorLineNr guifg=orange guibg=#050505 gui=NONE
 " NerdTree variables
 let NERDTreeShowHidden=1
 let g:NERDTreeWinSize=45
@@ -311,6 +316,10 @@ nmap <Right> <NOP>
 map H ^
 map L $
 
+nnoremap <leader>o :copen<cr>
+nmap <C-[> :cnext<cr>
+nmap <C-]> :cprevious<cr>
+
 " tmux mappings
 " nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
 " nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
@@ -333,7 +342,7 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 map <C-\> :NERDTreeToggle<CR>
 autocmd StdinReadPre * let s:std_in=1
-
+let g:deoplete#enable_at_startup = 1
 " esto lo necesitamos para hacer la busqueda de una palabra que esta bajo el
 " cursor en todo los archivos que estan en un proyecto
 " command! -bang -nargs=* Find
@@ -359,14 +368,8 @@ autocmd FileType c,c++ nnoremap <F4> :make run<CR>
 " open all .c and .h files
 au FileType c,cpp nmap <leader>a :argadd **/*.c **/*.h<cr>
 
-" open the terminal in horizontal split(with Alt-t)
-" nmap <M-t> :split term://zsh<cr>
 " kill the buffer!!!
 nmap <leader>k :bd<cr>
-" open fzf
-" nmap <leader>f :Files<cr>
-" " open buffers in fzf
-" nmap <leader>b :Buffers<cr>
 
 "open oil files
 au BufEnter,BufRead,BufNewFile *.oil setfiletype oil
@@ -440,7 +443,7 @@ nmap <F8> :TagbarToggle<CR>
 nmap <leader>F :NERDTreeFind<CR>
 
 " Doxygen generate
-nmap <leader>D :Dox<cr>
+" nmap <leader>D :Dox<cr>
 
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
@@ -471,14 +474,14 @@ nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
-nnoremap   <silent>   <A-t>    :FloatermNew<CR>
-tnoremap   <silent>   <F7>    <C-\><C-n>:FloatermNew<CR>
-nnoremap   <silent>   <F8>    :FloatermPrev<CR>
-tnoremap   <silent>   <F8>    <C-\><C-n>:FloatermPrev<CR>
-nnoremap   <silent>   <F9>    :FloatermNext<CR>
-tnoremap   <silent>   <F9>    <C-\><C-n>:FloatermNext<CR>
-nnoremap   <silent>   <A-t>   :FloatermToggle<CR>
-tnoremap   <silent>   <A-t>   <C-\><C-n>:FloatermToggle<CR>
+" nnoremap   <silent>   <A-t>    :FloatermNew<CR>
+" tnoremap   <silent>   <F7>    <C-\><C-n>:FloatermNew<CR>
+" nnoremap   <silent>   <F8>    :FloatermPrev<CR>
+" tnoremap   <silent>   <F8>    <C-\><C-n>:FloatermPrev<CR>
+" nnoremap   <silent>   <F9>    :FloatermNext<CR>
+" tnoremap   <silent>   <F9>    <C-\><C-n>:FloatermNext<CR>
+" nnoremap   <silent>   <A-t>   :FloatermToggle<CR>
+" tnoremap   <silent>   <A-t>   <C-\><C-n>:FloatermToggle<CR>
 
 " TODO(elsuizo:2020-04-10): esto tendria que ser una sola funcion
 " insert the headers
