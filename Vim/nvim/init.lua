@@ -5,18 +5,26 @@
 
 -- TODO(elsuizo:2021-03-31) iniciamos el camino en lua...
 -- - [ ] reescribir los comandos en lua
--- - [ ] hacer que ande bien undoooo
+-- - [X] hacer que ande bien undoooo
+--  - Al final era por la instalacion que estaba haciendo(con la instalacion desde aur anda)
 -- - [X] hacer que ande bien los snippets
 -- - [ ] hacer que ande las italics
 -- - [ ] hacer que el borde de la terminal sea blanco y negro
+-- - [ ] falta los headers cuando abrimos un archivo
 
 -- the fucking leader
 vim.g.mapleader = ','
 
+-- TODO(elsuizo:2021-05-10): pongo estos comentarios porque asi puedo ir con gf al archivo de una
+-- "lua/colors.lua"
 require('colors')
+-- "lua/key_mappings.lua"
 require('key_mappings')
+-- "lua/options.lua"
 require('options')
+-- "lua/variables.lua"
 require('variables')
--- require('settings')
+-- "lua/auto_commands.lua"
 require('auto_commands')
+-- "lua/plugins.lua"
 require('plugins')

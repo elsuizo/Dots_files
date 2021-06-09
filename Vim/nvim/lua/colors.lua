@@ -1,11 +1,13 @@
 -- local M = {}
 -- los mejores colorschemes
-vim.cmd("hi Comment gui=italic cterm=italic term=italic")
-vim.cmd("hi FloatermBorder guibg=orange guifg=cyan")
-vim.cmd("colorscheme Iosvkem")
--- vim.cmd("colorscheme gruvbox")
--- vim.cmd("colorscheme Monosvkem")
+-- vim.cmd("colorscheme Iosvkem")
+vim.cmd("colorscheme Monosvkem")
+-- vim.api.nvim_command('hi FloatermBorder guibg=orange guifg=cyan')
+-- vim.api.nvim_command('hi Comment gui=italic cterm=italic term=italic')
 
+vim.api.nvim_exec([[
+hi FloatermBorder guibg=black guifg=white
+]], true)
 -- TODO(elsuizo): esto parece que no anda
 -- function M.setItalics()
 --   vim.cmd("hi Comment gui=italic cterm=italic term=italic")

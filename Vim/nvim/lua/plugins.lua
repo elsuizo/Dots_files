@@ -32,7 +32,8 @@ return require('packer').startup(function()
    use 'tomtom/tcomment_vim'                     -- comment lines of blocks of code
    use 'elsuizo/monosvkem'                       -- the best colorscheme
    use 'roxma/vim-tmux-clipboard'                -- to get nice clipboard interface with tmux panes
-
+   use 'cespare/vim-toml'
+   use 'alaric/neovim-visor'                     -- open/close the terminal with Alt-t
    -- telescope
    use 'nvim-lua/popup.nvim'
    use 'nvim-lua/plenary.nvim'
@@ -40,7 +41,8 @@ return require('packer').startup(function()
    -- buffer views
    use 'kyazdani42/nvim-web-devicons'
    use 'romgrk/barbar.nvim'                      -- to visualize the buffers in the superior bar
+   use 'ziglang/zig'
    -- floating terminal
-   use 'voldikss/vim-floaterm'                   -- to get a nice floating terminal
+   -- use 'voldikss/vim-floaterm'                   -- to get a nice floating terminal
 
 end)

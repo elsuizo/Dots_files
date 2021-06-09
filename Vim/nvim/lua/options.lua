@@ -24,8 +24,8 @@ Option.b = function(options)
 end
 
 Option.g {
-  ai = true,
-  si = true,
+  autoindent = true,
+  smartindent = true,
   termguicolors = true,
   mouse = "a",
   clipboard = "unnamedplus",
@@ -45,12 +45,9 @@ Option.g {
   wildmenu = true,
   wildmode = "full",
   autoread = true,
-  -- updatetime = 500,
-  -- redrawtime = 500,
   fillchars = vim.o.fillchars .. "vert:│",
   undofile = true,
-  -- TODO(elsuizo) esto no anda el dir esta bien seteado pero no se porque no lo usa
-  -- undodir = os.getenv("HOME") .. "/.vim/undo/",
+  undodir = os.getenv("HOME") .. "/.vim/undo/",
   virtualedit = "onemore",
   guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20",
   complete = ".,w,b,u,t,k",
