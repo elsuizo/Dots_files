@@ -1,4 +1,4 @@
- --  ___| |___ _   _(_)_______    _ ____   _(_)_ __ ___   | |_   _  __ _
+--  ___| |___ _   _(_)_______    _ ____   _(_)_ __ ___   | |_   _  __ _
  -- / _ \ / __| | | | |_  / _ \  | '_ \ \ / / | '_ ` _ \  | | | | |/ _` |
  -- | __/ \__ \ |_| | |/ / (_) | | | | \ V /| | | | | | |_| | |_| | (_| |
  -- \___|_|___/\__,_|_/___\___/  |_| |_|\_/ |_|_| |_| |_(_)_|\__,_|\__,_|
@@ -14,7 +14,8 @@
 
 -- the fucking leader
 vim.g.mapleader = ','
-
+-- "lua/plugins.lua"
+require('plugins')
 -- TODO(elsuizo:2021-05-10): pongo estos comentarios porque asi puedo ir con gf al archivo de una
 -- "lua/colors.lua"
 require('colors')
@@ -26,5 +27,3 @@ require('options')
 require('variables')
 -- "lua/auto_commands.lua"
 require('auto_commands')
--- "lua/plugins.lua"
-require('plugins')

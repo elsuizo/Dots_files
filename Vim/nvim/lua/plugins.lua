@@ -42,6 +42,8 @@ return require('packer').startup(function()
    use 'kyazdani42/nvim-web-devicons'
    use 'romgrk/barbar.nvim'                      -- to visualize the buffers in the superior bar
    use 'ziglang/zig'
+   -- use 'hrsh7th/nvim-compe'
+   -- use 'neovim/nvim-lspconfig'
    -- floating terminal
    -- use 'voldikss/vim-floaterm'                   -- to get a nice floating terminal
 

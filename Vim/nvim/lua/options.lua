@@ -28,7 +28,6 @@ Option.g {
   smartindent = true,
   termguicolors = true,
   mouse = "a",
-  clipboard = "unnamedplus",
   hidden = true,
   showmode = true,
   timeoutlen = 3e3,
@@ -95,12 +94,7 @@ Option.w {
   linebreak = true
 }
 
-vim.g.clipboard = {
-  name = "xclip-xfce4-clipman",
-  copy = {["+"] = "xclip -selection clipboard", ["*"] = "xclip -selection clipboard"},
-  paste = {["+"] = "xclip -selection clipboard -o", ["*"] = "xclip -selection clipboard -o"},
-  cache_enabled = true
-}
+vim.o.clipboard = "unnamedplus"
 
 -- TODO(elsuizo): no se para que carajo es esto
 vim.cmd('let &t_8f = "\\<Esc>[38;2;%lu;%lu;%lum"')
@@ -127,8 +121,8 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 ]], true)
 
 -- rust options
-vim.g.rustfmt_command = "rustfmt +nightly"
-vim.g.rustfmt_autosave = 0
+vim.g.rustfmt_command = "rustfmt"
+vim.g.rustfmt_autosave = 1
 vim.g.rustfmt_emit_files = 1
 vim.g.rustfmt_fail_silently = 0
 vim.g.rust_clip_command = 'xclip -selection clipboard'
@@ -142,7 +136,43 @@ vim.g.tex_flavor = 'latex'
 -- vim move options
 vim.g.move_key_modifier = 'C'
 
--- deoplete
-vim.g["deoplete#enable_at_startup"] = 1
+vim.o.completeopt = "menuone,noselect"
+
+require'compe'.setup {
+  enabled = true;
+  autocomplete = true;
+  debug = false;
+  min_length = 1;
+  preselect = 'enable';
+  throttle_time = 80;
+  source_timeout = 200;
+  incomplete_delay = 400;
+  max_abbr_width = 100;
+  max_kind_width = 100;
+  max_menu_width = 100;
+  documentation = true;
+
+  source = {
+    path = true;
+    buffer = true;
+    calc = true;
+    nvim_lsp = true;
+    nvim_lua = true;
+    vsnip = true;
+    ultisnips = false;
+  };
+}
+
+-- este es para python
+require'lspconfig'.pyright.setup{}
+
+-- este es para rust
+-- require'lspconfig'.rust_analyzer.setup{}
+
+-- esto es para C/C++
+require'lspconfig'.clangd.setup{}
+
+-- esto es para typescript(ah re)
+require'lspconfig'.tsserver.setup{}
 
 return Option
