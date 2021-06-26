@@ -22,13 +22,16 @@ export VISUAL='nvim'
 #------------------------------------------------------------------------
 # alias para folders
 #------------------------------------------------------------------------
-# alias para ir a la carpeta de catkin (ROS package mannager)
-alias CAT="cd /home/elsuizo/Dev/ROS-dev/catkin-workspace"
+# alias para ir a la carpeta del workspace default de ROS y
+# habilitarlo(haciendo el source) se pueden hacer mas...
+alias CAT="cd /home/elsuizo/Dev/ROS-dev/catkin_ws && source devel/setup.zsh"
+# alias para ir a la corpeta de Rust_play
+alias rp="cd /home/elsuizo/Dev/Rust_play"
 #------------------------------------------------------------------------
 # alias para archivos
 #------------------------------------------------------------------------
 # alias para abrir el archivo TODO
-alias TODO="vim ~/Dropbox/Org_mode_files/Personal_org_mode_files/TODO.org"
+alias TODO="nvim ~/Dropbox/Org_mode_files/Personal_org_mode_files/TODO.org"
 #------------------------------------------------------------------------
 # alias para comandos mas utilizados
 #------------------------------------------------------------------------
@@ -53,7 +56,7 @@ export PATH=$HOME/bin:$PATH
 export PATH="/home/elsuizo/.cargo/bin:$PATH"
 
 # exercism
-export PATH=$HOME/Dev/Exercism/Exercism_bin:$PATH
+export PATH=$HOME/Dev/Exercism/bin:$PATH
 
 # julia
 # export PATH=$HOME/Dev/julia-dev:$PATH
@@ -61,11 +64,27 @@ export PATH=$HOME/Dev/Exercism/Exercism_bin:$PATH
 # ruby shit
 # export PATH=$HOME/.gem/ruby/2.7.0/bin:$PATH
 
-# NOTE(elsuizo:2020-08-02):esto hace re lento todo, lo comento por eso
-# export PATH="/home/elsuizo/.pyenv/bin:$PATH"
-# eval "$(pyenv init -)"
-# eval "$(pyenv virtualenv-init -)"
+pyenv_init() {
+   export PATH="/home/elsuizo/.pyenv/bin:$PATH"
+   eval "$(pyenv init -)"
+   eval "$(pyenv virtualenv-init -)"
+}
 
-# source ROS !!!
-# source /opt/ros/noetic/setup.zsh
-# export TURTLEBOT3_MODEL=burger
+# esto es para ROS1
+ros_init(){
+   source /opt/ros/noetic/setup.zsh
+   # source /ros/catkin_ws/devel/setup.zsh
+   # export ROS_PACKAGE_PATH=/ros/catkin_ws/:/opt/ros/kinetic/share/
+   export TURTLEBOT3_MODEL=burger
+   # este es el mas "gordo"
+   # export TURTLEBOT3_MODEL=waffle_pi
+}
+
+# esto es para ROS2
+ros2_on(){
+     export ROS_DOMAIN_ID=42
+     export ROS_VERSION=2
+     export ROS_PYTHON_VERSION=3
+     export ROS_DISTRO=foxy
+     source /opt/ros2/foxy/setup.zsh
+}
