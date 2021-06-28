@@ -10,20 +10,15 @@
 -- - [X] hacer que ande bien los snippets
 -- - [ ] hacer que ande las italics
 -- - [ ] hacer que el borde de la terminal sea blanco y negro
--- - [ ] falta los headers cuando abrimos un archivo
+-- - [X] falta los headers cuando abrimos un archivo
+--    - Esto lo puedo solucionar con un snippets facil
 
 -- the fucking leader
 vim.g.mapleader = ','
--- "lua/plugins.lua"
-require('plugins')
--- TODO(elsuizo:2021-05-10): pongo estos comentarios porque asi puedo ir con gf al archivo de una
--- "lua/colors.lua"
-require('colors')
--- "lua/key_mappings.lua"
-require('key_mappings')
--- "lua/options.lua"
-require('options')
--- "lua/variables.lua"
-require('variables')
--- "lua/auto_commands.lua"
-require('auto_commands')
+
+require('plugins')       -- "lua/plugins.lua"
+require('colors')        -- "lua/colors.lua"
+require('key_mappings')  -- "lua/key_mappings.lua"
+require('options')       -- "lua/options.lua"
+require('variables')     -- "lua/variables.lua"
+require('auto_commands') -- "lua/auto_commands.lua"
