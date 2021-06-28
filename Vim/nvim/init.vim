@@ -56,6 +56,9 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
 Plug 'ziglang/zig.vim'
 Plug 'ishan9299/nvim-solarized-lua'
+" Plug 'nvim-lua/completion-nvim'
+" Plug 'hrsh7th/nvim-compe'
+
 call plug#end()
 "-------------------------------------------------------------------------
 "                     Settings
@@ -119,7 +122,8 @@ autocmd BufReadPost *
 
 " center buffer around cursor when opening files
 autocmd BufRead * normal zz
-
+" " Use completion-nvim in every buffer
+" autocmd BufEnter * lua require'completion'.on_attach()
 " cosas que pueden mejorar la latencia
 " set lazyredraw
 " set ttyfast
@@ -149,7 +153,7 @@ let g:racer_cmd = "/home/elsuizo/.cargo/bin/racer"
 let g:racer_experimental_completer = 1
 " let g:racer_insert_paren = 1
 " rustfmt
-let g:rustfmt_command = "rustfmt +nightly"
+let g:rustfmt_command = "rustfmt"
 let g:rustfmt_autosave = 0
 let g:rustfmt_emit_files = 1
 let g:rustfmt_fail_silently = 0
@@ -164,6 +168,8 @@ au FileType rust nmap <leader>b :make build<cr>
 au FileType rust nmap <leader>bb :make build --release<cr>
 au FileType rust nmap <leader>t :Cargo test<cr>
 au FileType rust nmap <leader>tc :make check<cr>
+au FileType rust nmap <C-[> :cnext<cr>
+au FileType rust nmap <C-]> :cprevious<cr>
 
 " NOTE(elsuizo:2021-05-05): esto es para saber cuales son los autocomandos que
 " tenemos instalados
@@ -259,13 +265,13 @@ set background=dark
 " set background=light
 colorscheme Monosvkem
 " colorscheme Iosvkem
-" colorscheme deep-space
+" colorscheme PaperColor
 " colorscheme solarized-high
 " i want italic in comments
 hi Comment gui=italic cterm=italic term=italic
 " hi FloatermBorder guibg=black guifg=white
 " highlight LineNr term=bold cterm=NONE ctermfg=Gray ctermbg=NONE gui=NONE guifg=Gray guibg=NONE
-" highlight CursorLineNr guifg=orange guibg=#050505 gui=NONE
+" highlight CursorLineNr guifg=red guibg=#050505 gui=NONE
 " NerdTree variables
 let NERDTreeShowHidden=1
 let g:NERDTreeWinSize=45
@@ -276,7 +282,31 @@ let g:tmux_navigator_no_mappings = 1
 
 " meson file extension
 au BufRead,BufNewFile *.build set filetype=meson
-
+" compe
+" set completeopt=menuone,noselect
+" let g:compe = {}
+" let g:compe.enabled = v:true
+" let g:compe.autocomplete = v:true
+" let g:compe.debug = v:false
+" let g:compe.min_length = 1
+" let g:compe.preselect = 'enable'
+" let g:compe.throttle_time = 80
+" let g:compe.source_timeout = 200
+" let g:compe.resolve_timeout = 800
+" let g:compe.incomplete_delay = 400
+" let g:compe.max_abbr_width = 100
+" let g:compe.max_kind_width = 100
+" let g:compe.max_menu_width = 100
+" let g:compe.documentation = v:true
+"
+" let g:compe.source = {}
+" let g:compe.source.path = v:true
+" let g:compe.source.buffer = v:true
+" let g:compe.source.calc = v:true
+" let g:compe.source.nvim_lsp = v:true
+" let g:compe.source.nvim_lua = v:true
+" let g:compe.source.vsnip = v:true
+" let g:compe.source.ultisnips = v:true
 "-------------------------------------------------------------------------
 "                     clipboard magic
 "-------------------------------------------------------------------------
@@ -317,8 +347,6 @@ map H ^
 map L $
 
 nnoremap <leader>o :copen<cr>
-nmap <C-[> :cnext<cr>
-nmap <C-]> :cprevious<cr>
 
 " tmux mappings
 " nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
