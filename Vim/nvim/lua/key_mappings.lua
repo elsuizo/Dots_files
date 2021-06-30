@@ -18,20 +18,10 @@ function M.mapBuf(buf, mode, lhs, rhs, opts)
   vim.api.nvim_buf_set_keymap(buf, mode, lhs, rhs, options)
 end
 
--- statusline
--- require('lualine').setup{
--- options = {theme = 'ayu_dark'}
--- }
-
--- TODO(elsuizo): no se para que son estas
--- M.map("n", "Q", "<nop>")
--- M.map("n", "q", "<nop>")
--- M.map("n", "<Leader>f", "<cmd>Format<cr>")
-
 -- telescope
 M.map("n", "<leader>f", "<cmd>lua require('telescope.builtin').find_files()<cr>")
 M.map("n", "<leader>g", "<cmd>lua require('telescope.builtin').live_grep()<cr>")
-M.map("n", "<leader>b", "<cmd>lua require('telescope.builtin').buffers()<cr>")
+M.map("n", "<leader>B", "<cmd>lua require('telescope.builtin').buffers()<cr>")
 M.map("n", "<leader>h", "<cmd>lua require('telescope.builtin').help_tags()<cr>")
 
 -- save
@@ -57,18 +47,23 @@ M.map("n", "<space>.", "<cmd>bprevious<cr>")
 -- yank to the end of the line
 M.map("n", "Y", "y$")
 -- align blocks of text and keep them selected
-M.map("v", "<", "<gv")
-M.map("v", ">", ">gv")
+M.map('v', '<', '<gv', { noremap = true, silent = true })
+M.map('v', '>', '>gv', { noremap = true, silent = true })
 -- update the packages
 M.map("n", "<Leader>u", "<cmd>PackerUpdate<cr>")
-
--- TODO(elsuizo): no se para que es esto
--- M.map("n", "<Leader>d", '"_d')
--- M.map("v", "<Leader>d", '"_d')
-
+-- open the quickfixlist
+M.map("n", "<Leader>o", ":copen<cr>")
+-- disable the fucking arrows keys
+M.map('n', '<Up>', '<Nop>', { noremap = true, silent = true })
+M.map('n', '<Down>', '<Nop>', { noremap = true, silent = true })
+M.map('n', '<Left>', '<Nop>', { noremap = true, silent = true })
+M.map('n', '<Right>', '<Nop>', { noremap = true, silent = true })
+M.map('i', '<Up>', '<Nop>', { noremap = true, silent = true })
+M.map('i', '<Down>', '<Nop>', { noremap = true, silent = true })
+M.map('i', '<Left>', '<Nop>', { noremap = true, silent = true })
+M.map('i', '<Right>', '<Nop>', { noremap = true, silent = true })
 -- open the NERDTree
 M.map("n", "<C-\\>", ":NERDTreeToggle<CR>")
-
 -- TODO(elsuizo): esto me parece que andan mal o no se para que se usa
 M.map("n", "<C-j>", "<cmd>TmuxNavigateDown<cr>")
 M.map("n", "<C-k>", "<cmd>TmuxNavigateUp<cr>")
@@ -93,12 +88,6 @@ M.map("t", "<A-h>", "<C-\\><C-n><C-w>h")
 M.map("t", "<A-j>", "<C-\\><C-n><C-w>j")
 M.map("t", "<A-k>", "<C-\\><C-n><C-w>k")
 M.map("t", "<A-l>", "<C-\\><C-n><C-w>l")
--- NOTE(elsuizo:2021-06-28): esto es para floaterm(que no se si usarlo porque tiene el borde celeste y no me gusta)
--- M.map("n", "<A-t>", ":FloatermNew<CR>")
--- M.map("n", "<A-t>", ":FloatermToggle<CR>")
--- M.map("t", "<A-t>", "<C-\\><C-n>:FloatermToggle<CR>")
--- M.map("n", "<F7>",  "<C-\\><C-n>:FloatermNew<CR>")
--- M.map("n", "<F8>",  ":FloatermPrev<CR>")
 
 -- bufferline
 M.map("n", "<leader>1",  ":BufferGoto 1<CR>")
@@ -111,16 +100,7 @@ M.map("n", "<leader>7",  ":BufferGoto 7<CR>")
 M.map("n", "<leader>8",  ":BufferGoto 8<CR>")
 M.map("n", "<leader>9",  ":BufferLast<CR>")
 
-
-
--- TODO(elsuizo): parece que esto no anda
--- M.map("s", "<expr><TAB>", "neosnippet#expandable_or_jumpable() ? \\<Plug>(neosnippet_expand_or_jump) : \\<TAB>")
--- M.map("i", "<C-k>", "<Plug>(neosnippet_expand_or_jump)")
--- M.map("s", "<C-k>", "<Plug>(neosnippet_expand_or_jump)")
--- M.map("x", "<C-k>", "<Plug>(neosnippet_expand_target)")
-
 -- terminal mappings
-
 M.map("t", "<Esc>", "<c-\\><c-n><esc><cr>")
 M.map("t", "<Leader>,", "<c-\\><c-n>:bnext<cr>")
 M.map("t", "<Leader>.", "<c-\\><c-n>:bprevious<cr>")
@@ -130,12 +110,8 @@ M.map("t", "<C-l>", "<c-\\><c-n>:TmuxNavigateRight<cr>")
 M.map("t", "<C-h>", "<c-\\><c-n>:TmuxNavigateLeft<CR>")
 
 
--- TODO(elsuizo) ver para que es esto
--- for i = 1, 9 do
---   M.map("n", "<leader>" .. i, ':lua require"bufferline".go_to_buffer(' .. i .. ")<CR>")
---   M.map("t", "<leader>" .. i, '<C-\\><C-n>:lua require"bufferline".go_to_buffer(' .. i .. ")<CR>")
--- end
-
+-- TODO(elsuizo:2021-06-29): de aca en adelante no se si tendria que estar aca porque no son en realidad mappings
+-- lspconfig
 local nvim_lsp = require('lspconfig')
 
 -- Use an on_attach function to only map the following keys
@@ -154,8 +130,9 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  -- NOTE(elsuizo:2021-06-29): esto estaba en `gi` pero a veces es util porque gi va al ultimo lugar que estuvimos en insert-mode
+  buf_set_keymap('n', 'g;', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  buf_set_keymap('n', '<C-K>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
@@ -173,7 +150,7 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { "pyright", "tsserver" }
+local servers = { "pyright", "tsserver", "clangd"}
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup { on_attach = on_attach }
 end

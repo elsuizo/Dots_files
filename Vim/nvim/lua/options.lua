@@ -1,4 +1,4 @@
--- Options
+-- options
 local Type = {GLOBAL_OPTION = "o", WINDOW_OPTION = "wo", BUFFER_OPTION = "bo"}
 local add_options = function(option_type, options)
   if type(options) ~= "table" then
@@ -24,6 +24,7 @@ Option.b = function(options)
 end
 
 Option.g {
+  colorcolumn = "80",
   autoindent = true,
   smartindent = true,
   termguicolors = true,
@@ -76,11 +77,12 @@ Option.g {
 
 Option.b {
   swapfile = false,
-  shiftwidth = 2,
+  shiftwidth = 3,
   indentexpr="nvim_treesitter#indent()"
 }
 
 Option.w {
+  wrap = false,
   number = true,
   relativenumber = true,
   --numberwidth = 1,
@@ -97,16 +99,15 @@ Option.w {
 vim.o.clipboard = "unnamedplus"
 
 -- TODO(elsuizo): no se para que carajo es esto
-vim.cmd('let &t_8f = "\\<Esc>[38;2;%lu;%lu;%lum"')
-vim.cmd('let &t_8b = "\\<Esc>[48;2;%lu;%lu;%lum"')
+-- vim.cmd('let &t_8f = "\\<Esc>[38;2;%lu;%lu;%lum"')
+-- vim.cmd('let &t_8b = "\\<Esc>[48;2;%lu;%lu;%lum"')
 
 -- python versions
 vim.g.python_host_prog = '/home/elsuizo/.pyenv/versions/neovim2/bin/python'
 vim.g.python3_host_prog = '/home/elsuizo/.pyenv/versions/neovim/bin/python3'
 
--- TODO(elsuizo:2021-05-01): hay que portar esto a lua
+-- TODO(elsuizo:2021-05-01): port this to lua
 -- snippets directorys
--- vim.g.neosnippet[snippets_directory] = '~/.vim/plugged/neosnippet-snippets/neosnippets, ~/.vim/My_snippets'
 vim.api.nvim_exec([[
 let g:neosnippet#snippets_directory='~/.vim/plugged/neosnippet-snippets/neosnippets, ~/.vim/My_snippets'
 ]], true)
@@ -151,6 +152,7 @@ require'compe'.setup {
   max_kind_width = 100;
   max_menu_width = 100;
   documentation = true;
+  spell = true;
 
   source = {
     path = true;
@@ -162,17 +164,5 @@ require'compe'.setup {
     ultisnips = false;
   };
 }
-
--- este es para python
-require'lspconfig'.pyright.setup{}
-
--- este es para rust
--- require'lspconfig'.rust_analyzer.setup{}
-
--- esto es para C/C++
-require'lspconfig'.clangd.setup{}
-
--- esto es para typescript(ah re)
-require'lspconfig'.tsserver.setup{}
 
 return Option

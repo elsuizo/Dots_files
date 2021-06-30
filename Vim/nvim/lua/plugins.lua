@@ -15,9 +15,7 @@ return require('packer').startup(function()
 -- Packer can manage itself
    use 'wbthomason/packer.nvim'
    use 'jiangmiao/auto-pairs'                    -- smart autopairs
-   use 'tpope/vim-repeat'                        -- to repeat crazy paterns with .
    use 'scrooloose/nerdtree'                     -- file mannager
-   use 'tpope/vim-surround'                      -- augment the surround capacity
    use 'Shougo/neosnippet.vim'                   -- code snippets pluging
    use 'Shougo/neosnippet-snippets'              -- more code snippets
    use 'JuliaEditorSupport/julia-vim'            -- Julia language support
@@ -29,23 +27,19 @@ return require('packer').startup(function()
    use 'elsuizo/vim-colors-paramount-suizo'      -- personal colorscheme
    use 'racer-rust/vim-racer'                    -- Rust code navigation
    use 'neutaaaaan/iosvkem'                      -- one of the best colorschemes
-   use 'tomtom/tcomment_vim'                     -- comment lines of blocks of code
+   use 'tomtom/tcomment_vim'                     -- comment lines or blocks of code
    use 'elsuizo/monosvkem'                       -- the best colorscheme
    use 'roxma/vim-tmux-clipboard'                -- to get nice clipboard interface with tmux panes
-   use 'cespare/vim-toml'
+   use 'cespare/vim-toml'                        -- support to toml files
    use 'alaric/neovim-visor'                     -- open/close the terminal with Alt-t
    -- telescope
    use 'nvim-lua/popup.nvim'
    use 'nvim-lua/plenary.nvim'
-   use 'nvim-telescope/telescope.nvim'
+   use 'nvim-telescope/telescope.nvim'           -- fuzzy finder and more...
    -- buffer views
    use 'kyazdani42/nvim-web-devicons'
    use 'romgrk/barbar.nvim'                      -- to visualize the buffers in the superior bar
-   use 'ziglang/zig'
-   -- use 'nvim-lua/completion-nvim'
-   use 'hrsh7th/nvim-compe'
-   use 'neovim/nvim-lspconfig'
-   -- floating terminal
-   -- use 'voldikss/vim-floaterm'                   -- to get a nice floating terminal
-
+   use 'ziglang/zig'                             -- zig language support
+   use 'hrsh7th/nvim-compe'                      -- autocomplete engine
+   use 'neovim/nvim-lspconfig'                   -- lsp neovim support
 end)
