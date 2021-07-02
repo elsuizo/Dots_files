@@ -64,20 +64,6 @@ M.map('i', '<Left>', '<Nop>', { noremap = true, silent = true })
 M.map('i', '<Right>', '<Nop>', { noremap = true, silent = true })
 -- open the NERDTree
 M.map("n", "<C-\\>", ":NERDTreeToggle<CR>")
--- TODO(elsuizo): esto me parece que andan mal o no se para que se usa
-M.map("n", "<C-j>", "<cmd>TmuxNavigateDown<cr>")
-M.map("n", "<C-k>", "<cmd>TmuxNavigateUp<cr>")
-M.map("n", "<C-l>", "<cmd>TmuxNavigateRight<cr>")
-M.map("n", "<C-h>", "<cmd>TmuxNavigateLeft<CR>")
-
-M.map("i", "<C-j>", "<cmd>TmuxNavigateDown<cr>")
-M.map("i", "<C-k>", "<cmd>TmuxNavigateUp<cr>")
-M.map("i", "<C-l>", "<cmd>TmuxNavigateRight<cr>")
-M.map("i", "<C-h>", "<cmd>TmuxNavigateLeft<CR>")
-
--- snippets
-M.map("i", "<C-k>", "<cmd>lua return require'snippets'.expand_or_advance(1)<CR>")
-M.map("i", "<C-j>", "<cmd>lua return require'snippets'.advance_snippet(-1)<CR>")
 
 M.map("n", "<A-h>", "<C-w>h")
 M.map("n", "<A-j>", "<C-w>j")
@@ -104,11 +90,6 @@ M.map("n", "<leader>9",  ":BufferLast<CR>")
 M.map("t", "<Esc>", "<c-\\><c-n><esc><cr>")
 M.map("t", "<Leader>,", "<c-\\><c-n>:bnext<cr>")
 M.map("t", "<Leader>.", "<c-\\><c-n>:bprevious<cr>")
-M.map("t", "<C-j>", "<c-\\><c-n>:TmuxNavigateDown<cr>")
-M.map("t", "<C-k>", "<c-\\><c-n>:TmuxNavigateUp<cr>")
-M.map("t", "<C-l>", "<c-\\><c-n>:TmuxNavigateRight<cr>")
-M.map("t", "<C-h>", "<c-\\><c-n>:TmuxNavigateLeft<CR>")
-
 
 -- TODO(elsuizo:2021-06-29): de aca en adelante no se si tendria que estar aca porque no son en realidad mappings
 -- lspconfig

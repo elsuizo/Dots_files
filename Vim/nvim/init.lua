@@ -25,8 +25,8 @@
 vim.g.mapleader = ','
 
 require('plugins')       -- "lua/plugins.lua"
-require('colors')        -- "lua/colors.lua"
-require('key_mappings')  -- "lua/key_mappings.lua"
 require('options')       -- "lua/options.lua"
+require('key_mappings')  -- "lua/key_mappings.lua"
+require('colors')        -- "lua/colors.lua"
 require('variables')     -- "lua/variables.lua" -- TODO(elsuizo:2021-06-28): este archivo parece que no se usa...
 require('auto_commands') -- "lua/auto_commands.lua"
