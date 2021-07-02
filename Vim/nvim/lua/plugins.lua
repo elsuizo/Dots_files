@@ -42,4 +42,8 @@ return require('packer').startup(function()
    use 'ziglang/zig'                             -- zig language support
    use 'hrsh7th/nvim-compe'                      -- autocomplete engine
    use 'neovim/nvim-lspconfig'                   -- lsp neovim support
+   use {
+     'hoob3rt/lualine.nvim',
+     requires = {'kyazdani42/nvim-web-devicons', opt = true}
+   }
 end)

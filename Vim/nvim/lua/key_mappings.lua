@@ -23,6 +23,7 @@ M.map("n", "<leader>f", "<cmd>lua require('telescope.builtin').find_files()<cr>"
 M.map("n", "<leader>g", "<cmd>lua require('telescope.builtin').live_grep()<cr>")
 M.map("n", "<leader>B", "<cmd>lua require('telescope.builtin').buffers()<cr>")
 M.map("n", "<leader>h", "<cmd>lua require('telescope.builtin').help_tags()<cr>")
+M.map("n", "<leader>s", "<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.expand('<cword>') })<cr>")
 
 -- save
 M.map("n", "<Leader>w", ":w!<cr>")

@@ -30,7 +30,7 @@ Option.g {
   termguicolors = true,
   mouse = "a",
   hidden = true,
-  showmode = true,
+  showmode = false,
   timeoutlen = 3e3,
   tabstop = 3,
   shiftwidth = 3,
@@ -124,7 +124,7 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 -- rust options
 vim.g.rustfmt_command = "rustfmt"
 vim.g.rustfmt_autosave = 1
-vim.g.rustfmt_emit_files = 1
+vim.g.rustfmt_emit_files = 0
 vim.g.rustfmt_fail_silently = 0
 vim.g.rust_clip_command = 'xclip -selection clipboard'
 vim.g.racer_cmd = "/home/elsuizo/.cargo/bin/racer"
