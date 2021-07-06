@@ -25,7 +25,9 @@
 --    - piolaaa es una funcion "build-in" en telescope, yo la mapeo a <leader>s porque es lo mas parecido a lo que tenia
 --    antes usaba S pero es un comando que se usa ya cuando queres borrar toda
 --    la line y empezar en el 0 de la misma lineaa en INSERT mode
--- - [ ] Creo que capaz falte un lualine para ver tener siempre presente que branch estamos y otras cositas...
+-- - [X] Creo que capaz falte un lualine para ver tener siempre presente que branch estamos y otras cositas...
+--    - ahora si lualine quedo bien configurada con los colores que quiero, anda bien no se siente que se pierda performance
+--    con esto, ademas agregar los colores es una pavada!!!
 
 -- TODO(elsuizo:2021-07-01): Nueva seccion: pluggins para probar
 -- - [ ] https://github.com/jbyuki/venn.nvim
