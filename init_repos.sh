@@ -1,44 +1,61 @@
 #!/usr/bin/env bash
 echo "Download the repos..."
-#git clone https://github.com/elsuizo/Dots_files.git
-git clone https://github.com/elsuizo/Control1.git
-git clone https://github.com/elsuizo/TODO_list.git
-git clone https://github.com/elsuizo/Poles_adventures.git
-git clone https://github.com/elsuizo/Objects_detection.git
-# git clone https://github.com/elsuizo/opencv.git
-git clone https://github.com/elsuizo/C_work.git
-git clone https://github.com/elsuizo/AVR_programming.git
-git clone https://github.com/elsuizo/Haskell_work.git
-git clone https://github.com/elsuizo/CodeJam.git
-git clone https://github.com/elsuizo/Julia_work.git
-git clone https://github.com/elsuizo/Robotics.git
-git clone https://github.com/elsuizo/Cheatsheets.git
-git clone https://github.com/elsuizo/Sistemas_digitales_TPF.git
-git clone https://github.com/elsuizo/Sistemas_digitales.git
-git clone https://github.com/elsuizo/Kivy_work.git
-git clone https://github.com/elsuizo/Rust_work.git
-git clone https://github.com/elsuizo/Cpp.git
-git clone https://github.com/elsuizo/Telecomunicaciones.git
-# git clone https://github.com/elsuizo/Rosette.git
-git clone https://github.com/elsuizo/Euler.git
-git clone https://github.com/elsuizo/Numerical_methods.git
-git clone https://github.com/elsuizo/Image_processing.git
-git clone https://github.com/elsuizo/SFML_work.git
-# git clone https://github.com/elsuizo/Cpp_real_time.git
-git clone https://github.com/elsuizo/Nonlinear_systems.git
-git clone https://github.com/elsuizo/Python_work_git.git
-git clone https://github.com/elsuizo/Practicas_vision.git
-# git clone https://github.com/elsuizo/elsuizo.github.io.git
-git clone https://github.com/elsuizo/Optical_flow.git
-git clone https://github.com/elsuizo/Charlas_presentaciones.git
-git clone ttps://github.com/elsuizo/Control_de_robots_py.git
-git clone https://github.com/elsuizo/pysimiam.git
-git clone https://github.com/elsuizo/Redes_fuzzy.git
-git clone https://github.com/elsuizo/Fortran_work.git
-git clone https://github.com/elsuizo/K-vector.git
-git clone https://github.com/elsuizo/Beaglebone_opencv.git
-git clone https://github.com/elsuizo/zerial.git
-git clone https://github.com/elsuizo/C_gui_template.git
-git clone https://github.com/elsuizo/C_utils.git
-git clone https://github.com/elsuizo/Arduino_work.git
-git clone https://github.com/elsuizo/RSIS_Rust.git
+git clone git@github.com:elsuizo/waker-rust.git
+git clone git@github.com:elsuizo/ros-static-math.git
+git clone git@github.com:elsuizo/ros-project-generator.git
+git clone git@github.com:elsuizo/stm32f1xx-hal.git
+git clone git@github.com:elsuizo/sfml-plots.git
+git clone git@github.com:elsuizo/ecommerce-web-test.git
+git clone git@github.com:elsuizo/AOC-2015-solutions.git
+git clone git@github.com:elsuizo/static-math.git
+git clone git@github.com:elsuizo/AOC-fasterthanli-magics.git
+git clone git@github.com:elsuizo/double-pendulum-sim.git
+git clone git@github.com:elsuizo/ThreadTone.git
+git clone git@github.com:elsuizo/Introduction-to-algorithms-mit.git
+git clone git@github.com:elsuizo/thread-tone-rs.git
+git clone git@github.com:elsuizo/C_utils.git
+git clone git@github.com:elsuizo/imageproc.git
+git clone git@github.com:elsuizo/mathbench-rs.git
+git clone git@github.com:elsuizo/pid-control.git
+git clone git@github.com:elsuizo/kiss3d.git
+git clone git@github.com:elsuizo/openrr.git
+git clone git@github.com:elsuizo/kiss3d.git
+git clone git@github.com:elsuizo/image.git
+git clone git@github.com:elsuizo/klipper.git
+git clone git@github.com:elsuizo/rosrust.git
+git clone git@github.com:elsuizo/towr.git
+git clone git@github.com:elsuizo/smath.git
+git clone --recursive git@github.com:elsuizo/champ.git
+git clone git@github.com:elsuizo/ROS-work.git
+git clone git@github.com:elsuizo/personal-curriculum.git
+git clone git@github.com:elsuizo/linfa.git
+git clone git@github.com:elsuizo/nailedit.git
+git clone git@github.com:elsuizo/static-math-ext.git
+git clone git@github.com:elsuizo/ReallyUsefulRobot.git
+git clone git@github.com:elsuizo/A-star-algorithm-rust.git
+git clone git@github.com:elsuizo/Advent-of-code-2020.git
+git clone git@github.com:elsuizo/monosvkem.git
+git clone git@github.com:elsuizo/Advent_of_code_2019.git
+git clone git@github.com:elsuizo/rustrader.git
+git clone git@github.com:elsuizo/tensortrade.git
+git clone git@github.com:elsuizo/Maslow_cnc_firmware.git
+git clone git@github.com:elsuizo/Maslow-cnc-firmware-rust.git
+git clone git@github.com:elsuizo/time-triggered-system-rust.git
+git clone --recursive git@github.com:elsuizo/Marlin.git
+git clone git@github.com:elsuizo/keyseebee.git
+git clone git@github.com:elsuizo/PythonRobotics.git
+git clone git@github.com:elsuizo/fsm-generator.git
+git clone git@github.com:elsuizo/optimization-engine.git
+git clone git@github.com:elsuizo/Arduino_work.git
+git clone git@github.com:elsuizo/Firmware-1.git
+git clone git@github.com:elsuizo/document-distance-rust.git
+git clone git@github.com:elsuizo/robotics-zero.git
+git clone git@github.com:elsuizo/Robotics.git
+git clone git@github.com:elsuizo/password-generator.git
+git clone git@github.com:elsuizo/C_work.git
+git clone --recursive git@github.com:elsuizo/stm32-nokia5110-lcd-driver.git
+git clone git@github.com:elsuizo/rusty-clock.git
+git clone git@github.com:elsuizo/vec.git
+git clone git@github.com:elsuizo/Objects_detection.git
+git clone git@github.com:elsuizo/Mechanics.git
+git clone git@github.com:elsuizo/handeye_calib_camodocal.git
