@@ -26,6 +26,10 @@ sudo pacman -S powerline-fonts
 sudo pacman -S awesome-terminal-fonts
 # visualizacion de pdfs
 sudo pacman -S zathura
+sudo pacman -S zathura-pdf-mupdf
+sudo pacman -S zathura-djvu
+sudo pacman -S zathura-ps
+sudo pacman -S zathura-cb
 # para escuchar musica desde la consola
 sudo pacman -S cmus
 # para editar imagenes
