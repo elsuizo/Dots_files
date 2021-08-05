@@ -19,7 +19,6 @@ return require('packer').startup(function()
    use 'Shougo/neosnippet.vim'                   -- code snippets pluging
    use 'Shougo/neosnippet-snippets'              -- more code snippets
    use 'JuliaEditorSupport/julia-vim'            -- Julia language support
-   use 'majutsushi/tagbar'                       -- navigation code bar
    use 'matze/vim-move'                          -- move blocks of code
    use 'lervag/vimtex'                           -- for work with tex files
    use 'rust-lang/rust.vim'                      -- Rust language support
@@ -39,11 +38,12 @@ return require('packer').startup(function()
    -- buffer views
    use 'kyazdani42/nvim-web-devicons'
    use 'romgrk/barbar.nvim'                      -- to visualize the buffers in the superior bar
-   use 'ziglang/zig'                             -- zig language support
-   use 'hrsh7th/nvim-compe'                      -- autocomplete engine
-   use 'neovim/nvim-lspconfig'                   -- lsp neovim support
-   use {
-     'hoob3rt/lualine.nvim',
-     requires = {'kyazdani42/nvim-web-devicons', opt = true}
-   }
+   use 'ziglang/zig.vim'                             -- zig language support
+   -- use 'hrsh7th/nvim-compe'                      -- autocomplete engine
+   -- use 'neovim/nvim-lspconfig'                   -- lsp neovim support
+   use 'jacoborus/tender.vim'
+   -- use {
+   --   'hoob3rt/lualine.nvim',
+   --   requires = {'kyazdani42/nvim-web-devicons', opt = true}
+   -- }
 end)
