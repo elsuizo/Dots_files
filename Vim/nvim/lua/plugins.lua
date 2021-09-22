@@ -23,7 +23,7 @@ return require('packer').startup(function()
    use 'lervag/vimtex'                           -- for work with tex files
    use 'rust-lang/rust.vim'                      -- Rust language support
    use 'chrisbra/csv.vim'                        -- Visualize csv files
-   use 'elsuizo/vim-colors-paramount-suizo'      -- personal colorscheme
+   -- use 'elsuizo/vim-colors-paramount-suizo'      -- personal colorscheme
    use 'racer-rust/vim-racer'                    -- Rust code navigation
    use 'neutaaaaan/iosvkem'                      -- one of the best colorschemes
    use 'tomtom/tcomment_vim'                     -- comment lines or blocks of code
@@ -39,11 +39,13 @@ return require('packer').startup(function()
    use 'kyazdani42/nvim-web-devicons'
    use 'romgrk/barbar.nvim'                      -- to visualize the buffers in the superior bar
    use 'ziglang/zig.vim'                             -- zig language support
-   -- use 'hrsh7th/nvim-compe'                      -- autocomplete engine
-   -- use 'neovim/nvim-lspconfig'                   -- lsp neovim support
-   use 'jacoborus/tender.vim'
-   -- use {
-   --   'hoob3rt/lualine.nvim',
-   --   requires = {'kyazdani42/nvim-web-devicons', opt = true}
-   -- }
+   use 'rakr/vim-one'
+   use 'hrsh7th/nvim-compe'                      -- autocomplete engine
+   use 'neovim/nvim-lspconfig'                   -- lsp neovim support
+   use 'folke/lsp-colors.nvim'
+   -- use 'jacoborus/tender.vim'
+   use {
+     'hoob3rt/lualine.nvim',
+     requires = {'kyazdani42/nvim-web-devicons', opt = true}
+   }
 end)

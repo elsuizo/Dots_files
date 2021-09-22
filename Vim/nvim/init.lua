@@ -6,6 +6,8 @@
 -- NOTE(elsuizo:2021-08-05): saque lsp, lualine y autocompletado porque no me parece que sirvan demasiado(con telescope, racer
 -- es mas que suficiente y aparte se siente muuucho mas liviano todo con cero latencia)
 
+-- NOTE(elsuizo:2021-08-06): porque menos es mas
+--
 -- TODO(elsuizo:2021-07-01): Nueva seccion: pluggins para probar
 -- - [ ] https://github.com/jbyuki/venn.nvim
 -- Es un plugins que te ayuda a hacer diagramas re piolas!!!

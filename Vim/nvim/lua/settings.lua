@@ -19,6 +19,3 @@ vim.bo.tabstop = 3
 vim.o.backupdir = [[~/.vim/backup/]]
 vim.o.directory = [[~/.vim/swap/]]
 vim.o.undodir = [[~/.vim/undo/]]
-
--- colorscheme
--- cmd 'colorscheme Monosvkem'
