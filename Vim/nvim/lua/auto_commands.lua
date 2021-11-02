@@ -16,8 +16,8 @@ M.autocmd("FileType", "rust", "nmap <leader>gd <Plug>(rust-doc)")
 M.autocmd("FileType", "rust", "nmap <leader>r :Cargo run<cr>")
 M.autocmd("FileType", "rust", "nmap <leader>t :Cargo test<cr>")
 M.autocmd("FileType", "rust", "nmap <leader>tc :Cargo check<cr>")
-M.autocmd("FileType", "rust", "nmap <leader>bb :make build --release<cr>")    -- build in release mode inside nvim this put all the errors in the quickfixlist
-M.autocmd("FileType", "rust", "nmap <leader>b :make c<cr>")               -- check inside nvim this put all the errors in the quickfixlist
+M.autocmd("FileType", "rust", "nmap <leader>bb :make build --release<cr>") -- build in release mode inside nvim this put all the errors in the quickfixlist
+M.autocmd("FileType", "rust", "nmap <leader>b :make c<cr>")                -- check inside nvim this put all the errors in the quickfixlist
 M.autocmd("FileType", "rust", "nmap <C-]> :cnext<cr>")
 M.autocmd("FileType", "rust", "nmap <C-[> :cprevious<cr>")
 

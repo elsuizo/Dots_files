@@ -24,7 +24,7 @@ return require('packer').startup(function()
    use 'rust-lang/rust.vim'                      -- Rust language support
    use 'chrisbra/csv.vim'                        -- Visualize csv files
    -- use 'elsuizo/vim-colors-paramount-suizo'      -- personal colorscheme
-   use 'racer-rust/vim-racer'                    -- Rust code navigation
+   -- use 'racer-rust/vim-racer'                    -- Rust code navigation
    use 'neutaaaaan/iosvkem'                      -- one of the best colorschemes
    use 'tomtom/tcomment_vim'                     -- comment lines or blocks of code
    use 'elsuizo/monosvkem'                       -- the best colorscheme
@@ -40,10 +40,20 @@ return require('packer').startup(function()
    use 'romgrk/barbar.nvim'                      -- to visualize the buffers in the superior bar
    use 'ziglang/zig.vim'                             -- zig language support
    use 'rakr/vim-one'
-   use 'hrsh7th/nvim-compe'                      -- autocomplete engine
    use 'neovim/nvim-lspconfig'                   -- lsp neovim support
    use 'folke/lsp-colors.nvim'
    -- use 'jacoborus/tender.vim'
+   -- autocomplete engine
+   -- use 'hrsh7th/nvim-compe'                   -- old autocomplete engine
+   use 'hrsh7th/nvim-cmp'
+   use 'hrsh7th/cmp-nvim-lsp'
+   use 'hrsh7th/cmp-buffer'
+   use 'hrsh7th/cmp-path'
+   use 'hrsh7th/cmp-cmdline'
+
+--  For ultisnips users.
+--  Plug 'SirVer/ultisnips'
+--  Plug 'quangnguyen30192/cmp-nvim-ultisnips'
    use {
      'hoob3rt/lualine.nvim',
      requires = {'kyazdani42/nvim-web-devicons', opt = true}

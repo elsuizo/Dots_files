@@ -3,11 +3,12 @@
  -- | __/ \__ \ |_| | |/ / (_) | | | | \ V /| | | | | | |_| | |_| | (_| |
  -- \___|_|___/\__,_|_/___\___/  |_| |_|\_/ |_|_| |_| |_(_)_|\__,_|\__,_|
 
--- NOTE(elsuizo:2021-08-05): saque lsp, lualine y autocompletado porque no me parece que sirvan demasiado(con telescope, racer
--- es mas que suficiente y aparte se siente muuucho mas liviano todo con cero latencia)
+-- NOTE(elsuizo:2021-11-02): parece que migramos a nvim-cmp faltan conocer muchas
+-- cositas de esto y ver si seguimos con el mismo engine de snippets o usamos otro
+-- que sea soportado por nvim-cmp
 
--- NOTE(elsuizo:2021-08-06): porque menos es mas
---
+-- TODO(elsuizo:2021-10-24): migrar hacia nvim-cmp
+
 -- TODO(elsuizo:2021-07-01): Nueva seccion: pluggins para probar
 -- - [ ] https://github.com/jbyuki/venn.nvim
 -- Es un plugins que te ayuda a hacer diagramas re piolas!!!
@@ -16,7 +17,6 @@
 -------------------------------------------------------------------------
 --                      config
 -------------------------------------------------------------------------
-
 -- the fucking leader
 vim.g.mapleader = ','
 
@@ -25,3 +25,4 @@ require('colors')        -- "lua/colors.lua"
 require('options')       -- "lua/options.lua"
 require('key_mappings')  -- "lua/key_mappings.lua"
 require('auto_commands') -- "lua/auto_commands.lua"
+require('autocomplete')  -- "lua/autocomplete.lua"
