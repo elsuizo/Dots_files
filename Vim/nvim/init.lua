@@ -6,6 +6,7 @@
 -- NOTE(elsuizo:2021-11-02): parece que migramos a nvim-cmp faltan conocer muchas
 -- cositas de esto y ver si seguimos con el mismo engine de snippets o usamos otro
 -- que sea soportado por nvim-cmp
+-- vamos de a poco poniendole onda, ahora con C-p previous y con C-n al proximo
 
 -- TODO(elsuizo:2021-10-24): migrar hacia nvim-cmp
 

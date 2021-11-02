@@ -1,6 +1,6 @@
 -- NOTE(elsuizo:2021-11-01): cosas del nuevo engine de autocomplete
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
 local cmp = require'cmp'
-
   cmp.setup({
     snippet = {
       -- REQUIRED - you must specify a snippet engine
@@ -12,6 +12,8 @@ local cmp = require'cmp'
       end,
     },
     mapping = {
+      ['<C-p>'] = cmp.mapping.select_prev_item(),
+      ['<C-n>'] = cmp.mapping.select_prev_item(),
       ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
       ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
       ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
@@ -23,19 +25,25 @@ local cmp = require'cmp'
       ['<CR>'] = cmp.mapping.confirm({ select = true }),
     },
      experimental = {
-       ghost_text = true,
+       ghost_text = true, -- TODO(elsuizo:2021-11-02): esto parece que solo anda cuando no ponemos keyword_length
      },
      documentation = {
        border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
      },
+     -- NOTE(elsuizo:2021-11-02): el orden de los sources importa, a los que mira
+     -- primero son los que estan primeros en la lista
     sources = cmp.config.sources({
+      { name = "buffer"}, -- TODO(elsuizo:2021-11-02): no se porque pero esto no anda me parece
       { name = 'nvim_lsp' },
-      { name = 'vsnip' }, -- For vsnip users.
+      { name = "nvim_lua" },
+      { name = 'nvim' },
+      { name = "path" },
+      -- { name = 'vsnip' }, -- For vsnip users.
       -- { name = 'luasnip' }, -- For luasnip users.
       -- { name = 'ultisnips' }, -- For ultisnips users.
       -- { name = 'snippy' }, -- For snippy users.
     }, {
-      { name = 'buffer' },
+      { name = 'buffer'},
     })
   })
 
@@ -60,3 +68,11 @@ local cmp = require'cmp'
   require('lspconfig')['vimls'].setup {
     capabilities = capabilities
   }
+
+-- TODO(elsuizo:2021-11-02): no me convence despues lo pruebo bien...
+-- local lspkind = require('lspkind')
+-- cmp.setup {
+--   formatting = {
+--     format = lspkind.cmp_format({with_text = false, maxwidth = 50})
+--   }
+-- }
