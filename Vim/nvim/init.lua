@@ -7,6 +7,7 @@
 -- cositas de esto y ver si seguimos con el mismo engine de snippets o usamos otro
 -- que sea soportado por nvim-cmp
 -- vamos de a poco poniendole onda, ahora con C-p previous y con C-n al proximo
+-- NOTE(elsuizo:2021-11-03): corregimos el problema con el Tab para que ande como andaba el anterior engine
 
 -- TODO(elsuizo:2021-10-24): migrar hacia nvim-cmp
 
