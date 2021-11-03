@@ -137,32 +137,33 @@ vim.g.tex_flavor = 'latex'
 -- vim move options
 vim.g.move_key_modifier = 'C'
 
-vim.o.completeopt = "menuone,noselect"
+-- vim.o.completeopt = "menuone,noselect"
 
-require'compe'.setup {
-  enabled = true;
-  autocomplete = true;
-  debug = false;
-  min_length = 1;
-  preselect = 'enable';
-  throttle_time = 80;
-  source_timeout = 200;
-  incomplete_delay = 400;
-  max_abbr_width = 100;
-  max_kind_width = 100;
-  max_menu_width = 100;
-  documentation = true;
-  spell = true;
-
-  source = {
-    path = true;
-    buffer = true;
-    calc = true;
-    nvim_lsp = true;
-    nvim_lua = true;
-    vsnip = false;
-    ultisnips = false;
-  };
-}
+-- NOTE(elsuizo:2021-11-03): esto por ahora lo dejo por si me arrepiento de nvim-cmp
+-- require'compe'.setup {
+--   enabled = true;
+--   autocomplete = true;
+--   debug = false;
+--   min_length = 1;
+--   preselect = 'enable';
+--   throttle_time = 80;
+--   source_timeout = 200;
+--   incomplete_delay = 400;
+--   max_abbr_width = 100;
+--   max_kind_width = 100;
+--   max_menu_width = 100;
+--   documentation = true;
+--   spell = true;
+--
+--   source = {
+--     path = true;
+--     buffer = true;
+--     calc = true;
+--     nvim_lsp = true;
+--     nvim_lua = true;
+--     vsnip = false;
+--     ultisnips = false;
+--   };
+-- }
 
 return Option
