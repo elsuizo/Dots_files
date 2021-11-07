@@ -6,9 +6,13 @@ open_with o
 search C_
 search Drop
 search Fre
-open_with 
 search Ima
 search /Videos
 search Videos
 search Programa
 open_with nvim
+open_with 
+search device
+cd  r
+delete
+
