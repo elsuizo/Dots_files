@@ -98,10 +98,6 @@ Option.w {
 
 vim.o.clipboard = "unnamedplus"
 
--- TODO(elsuizo): no se para que carajo es esto
--- vim.cmd('let &t_8f = "\\<Esc>[38;2;%lu;%lu;%lum"')
--- vim.cmd('let &t_8b = "\\<Esc>[48;2;%lu;%lu;%lum"')
-
 -- python versions
 vim.g.python_host_prog = '/home/elsuizo/.pyenv/versions/neovim2/bin/python'
 vim.g.python3_host_prog = '/home/elsuizo/.pyenv/versions/neovim/bin/python3'

@@ -1,16 +1,16 @@
 -- los mejores colorschemes
 -- vim.cmd("colorscheme Iosvkem")
 vim.cmd("colorscheme Monosvkem")
--- vim.cmd("colorscheme tender")
-
-require("lsp-colors").setup({
-  Error = "#d02b61",
-  Warning = "#505050",
-  Information = "#6c9ef8",
-  Hint = "#404040"
-})
-
+-- vim.cmd("colorscheme one")
 -- custom colorscheme for lualine
+
+-- require("lsp-colors").setup({
+--   Error = "#ff2040",
+--   Warning = "#bbbbbb",
+--   Information = "#6c9ef8",
+--   Hint = "#404040"
+-- })
+
 local Monosvkem = {  }
 
 local colors = {
@@ -61,4 +61,13 @@ Monosvkem.inactive = {
   c = { bg = colors.black, fg = colors.white, },
 }
 
-require('lualine').setup {options = {theme = Monosvkem}}
+-- TODO(elsuizo:2021-11-08): hacer que nos diga la linea donde esta el trailing como en airline
+-- detecta cuando tenemos un trailing whitespace
+local function trailing()
+  return vim.fn.search([[\s\+$]], 'nw') ~= 0 and 'TW' or ''
+end
+
+require('lualine').setup {
+   options = {theme = Monosvkem},
+   -- sections = {lualine_z = {trailing}}
+}

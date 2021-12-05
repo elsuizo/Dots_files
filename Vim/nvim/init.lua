@@ -23,8 +23,8 @@
 vim.g.mapleader = ','
 
 require('plugins')       -- "lua/plugins.lua"
-require('colors')        -- "lua/colors.lua"
+require('auto_commands') -- "lua/auto_commands.lua"
 require('options')       -- "lua/options.lua"
 require('key_mappings')  -- "lua/key_mappings.lua"
-require('auto_commands') -- "lua/auto_commands.lua"
+require('colors')        -- "lua/colors.lua"
 require('autocomplete')  -- "lua/autocomplete.lua"

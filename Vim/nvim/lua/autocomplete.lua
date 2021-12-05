@@ -11,6 +11,19 @@ cmp.setup({
          -- require'snippy'.expand_snippet(args.body) -- For `snippy` users.
       end,
    },
+   -- mapping = {
+   --   ['<C-p>'] = cmp.mapping.select_prev_item(),
+   --   ['<C-n>'] = cmp.mapping.select_next_item(),
+   --   ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+   --   ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+   --   ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+   --   ['<C-y>'] = cmp.config.disable, -- If you want to remove the default `<C-y>` mapping, You can specify `cmp.config.disable` value.
+   --   ['<C-e>'] = cmp.mapping({
+   --     i = cmp.mapping.abort(),
+   --     c = cmp.mapping.close(),
+   --   }),
+   --   ['<CR>'] = cmp.mapping.confirm({ select = true }),
+   -- },
    mapping = {
       ['<C-p>'] = cmp.mapping.select_prev_item(),
       ['<C-n>'] = cmp.mapping.select_next_item(),
@@ -22,11 +35,12 @@ cmp.setup({
          behavior = cmp.ConfirmBehavior.Replace,
          select = true,
       },
+      -- TODO(elsuizo:2021-11-06): aca saque el if ese que molesta cuando presionamos tab ya que no tenemos luasnip
       ['<Tab>'] = function(fallback)
          if cmp.visible() then
             cmp.select_next_item()
-         elseif luasnip.expand_or_jumpable() then
-            luasnip.expand_or_jump()
+         -- elseif luasnip.expand_or_jumpable() then
+         --    luasnip.expand_or_jump()
          else
             fallback()
          end
@@ -34,14 +48,15 @@ cmp.setup({
       ['<S-Tab>'] = function(fallback)
          if cmp.visible() then
             cmp.select_prev_item()
-         elseif luasnip.jumpable(-1) then
-            luasnip.jump(-1)
+         -- elseif luasnip.jumpable(-1) then
+         --    luasnip.jump(-1)
          else
             fallback()
          end
       end,
    },
    experimental = {
+      native_menu = true,
       ghost_text = true, -- TODO(elsuizo:2021-11-02): esto parece que solo anda cuando no ponemos keyword_length
    },
    documentation = {
@@ -81,12 +96,12 @@ cmp.setup.cmdline(':', {
 })
 
 -- Setup lspconfig.
--- local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
--- require('cmp_nvim_lsp')['vimls'].setup {
---   capabilities = capabilities
--- }
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+require('lspconfig')['vimls'].setup {
+   capabilities = capabilities
+}
+-- local capabilities = vim.lsp.protocol.make_client_capabilities()
+-- capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 -- TODO(elsuizo:2021-11-02): no me convence despues lo pruebo bien...
 -- local lspkind = require('lspkind')

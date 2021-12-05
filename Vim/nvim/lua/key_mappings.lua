@@ -47,8 +47,9 @@ M.map("v", "L", "g_")
 M.map("n", "<space>,", "<cmd>bnext<cr>")
 -- previous buffer
 M.map("n", "<space>.", "<cmd>bprevious<cr>")
--- yank to the end of the line
-M.map("n", "Y", "y$")
+-- NOTE(elsuizo:2021-12-05): desde la version 0.6 esto viene por default!!!
+-- -- yank to the end of the line
+-- M.map("n", "Y", "y$")
 -- align blocks of text and keep them selected
 M.map('v', '<', '<gv', { noremap = true, silent = true })
 M.map('v', '>', '>gv', { noremap = true, silent = true })
@@ -116,7 +117,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
   -- NOTE(elsuizo:2021-06-29): esto estaba en `gi` pero a veces es util porque gi va al ultimo lugar que estuvimos en insert-mode
   buf_set_keymap('n', 'g;', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', '<C-K>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  buf_set_keymap('n', '<C-h>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
@@ -132,25 +133,43 @@ local on_attach = function(client, bufnr)
 
 end
 
--- TODO(elsuizo:2021-09-01): esto es lo que usa el gran jon
--- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
---   vim.lsp.diagnostic.on_publish_diagnostics, {
---     virtual_text = true,
---     signs = false,
---     update_in_insert = true,
---   }
--- )
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
   vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics,
-  {
-    underline = false
-  }
+     vim.lsp.diagnostic.on_publish_diagnostics,
+     {
+       underline = false,
+       virtual_text = true,
+       update_in_insert = true,
+       signs = true,
+     }
 )
+
+vim.cmd [[
+   highlight LspDiagnosticsUnderlineError guifg=#ff2040
+   highlight LspDiagnosticsUnderlineWarning guifg=#bbbbbb
+   highlight LspDiagnosticsUnderlineInformation guifg=#6c9ef8
+   highlight LspDiagnosticsUnderlineHint guifg=#404040
+]]
+
+-- NOTE(elsuizo:2021-12-05): esto lo que cambia es el color de la ventana que aparece cuando accedes a los docs por ejemplo de Rust
+vim.cmd [[autocmd ColorScheme * highlight NormalFloat guibg=#121212]]
+vim.cmd [[autocmd ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]]
+
+vim.fn.sign_define("DiagnosticSignError", { text = "✗", texthl = "DiagnosticSignError" })
+vim.fn.sign_define("DiagnosticSignWarn", { text = "!", texthl = "DiagnosticSignWarn" })
+vim.fn.sign_define("DiagnosticSignInformation", { text = "", texthl = "DiagnosticSignInfo" })
+vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
+
+-- con rust_analyzer
+-- local servers = { "rust_analyzer"}
 local servers = { "pyright", "tsserver", "clangd", "rust_analyzer", "julials"}
--- local servers = { "pyright", "tsserver", "clangd"}
+-- sin rust_analyzer
+-- local servers = { "pyright", "tsserver", "clangd", "julials"}
 for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup { on_attach = on_attach }
+  nvim_lsp[lsp].setup {
+     on_attach = on_attach,
+     -- on_attach = aerial.on_attach
+  }
 end
 
 return M
