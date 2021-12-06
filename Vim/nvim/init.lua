@@ -22,9 +22,9 @@
 -- the fucking leader
 vim.g.mapleader = ','
 
-require('plugins')       -- "lua/plugins.lua"
-require('auto_commands') -- "lua/auto_commands.lua"
-require('options')       -- "lua/options.lua"
-require('key_mappings')  -- "lua/key_mappings.lua"
-require('colors')        -- "lua/colors.lua"
-require('autocomplete')  -- "lua/autocomplete.lua"
+require 'elsuizo.plugins'       -- "lua/elsuizo/plugins.lua"
+require 'elsuizo.auto_commands' -- "lua/elsuizo/auto_commands.lua"
+require 'elsuizo.options'       -- "lua/elsuizo/options.lua"
+require 'elsuizo.key_mappings'  -- "lua/elsuizo/key_mappings.lua"
+require 'elsuizo.colors'        -- "lua/elsuizo/colors.lua"
+require 'elsuizo.autocomplete'  -- "lua/elsuizo/autocomplete.lua"

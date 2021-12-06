@@ -4,12 +4,12 @@ vim.cmd("colorscheme Monosvkem")
 -- vim.cmd("colorscheme one")
 -- custom colorscheme for lualine
 
--- require("lsp-colors").setup({
---   Error = "#ff2040",
---   Warning = "#bbbbbb",
---   Information = "#6c9ef8",
---   Hint = "#404040"
--- })
+require("lsp-colors").setup({
+  Error = "#ff2040",
+  Warning = "#bbbbbb",
+  Information = "#6c9ef8",
+  Hint = "#404040"
+})
 
 local Monosvkem = {  }
 

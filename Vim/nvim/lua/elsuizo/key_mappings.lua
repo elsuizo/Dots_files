@@ -143,22 +143,20 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
        signs = true,
      }
 )
-
-vim.cmd [[
-   highlight LspDiagnosticsUnderlineError guifg=#ff2040
-   highlight LspDiagnosticsUnderlineWarning guifg=#bbbbbb
-   highlight LspDiagnosticsUnderlineInformation guifg=#6c9ef8
-   highlight LspDiagnosticsUnderlineHint guifg=#404040
-]]
+vim.cmd [[hi LspDiagnosticsVirtualTextError guifg=Green ctermfg=Green]]
+-- vim.cmd[[highlight LspDiagnosticsUnderlineError guifg=#ff2040]] -- rojo piola
+-- vim.cmd[[highlight LspDiagnosticsUnderlineWarning guifg=#bbbbbb]] -- gris clero
+-- vim.cmd[[highlight LspDiagnosticsUnderlineInformation guifg=#6c9ef8]] -- azul
+-- vim.cmd[[highlight LspDiagnosticsUnderlineHint guifg=#505050]] -- gris oscuro
 
 -- NOTE(elsuizo:2021-12-05): esto lo que cambia es el color de la ventana que aparece cuando accedes a los docs por ejemplo de Rust
 vim.cmd [[autocmd ColorScheme * highlight NormalFloat guibg=#121212]]
 vim.cmd [[autocmd ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]]
 
-vim.fn.sign_define("DiagnosticSignError", { text = "✗", texthl = "DiagnosticSignError" })
-vim.fn.sign_define("DiagnosticSignWarn", { text = "!", texthl = "DiagnosticSignWarn" })
-vim.fn.sign_define("DiagnosticSignInformation", { text = "", texthl = "DiagnosticSignInfo" })
-vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
+-- vim.fn.sign_define("DiagnosticSignError", { text = "✗", texthl = "DiagnosticSignError" })
+-- vim.fn.sign_define("DiagnosticSignWarn", { text = "!", texthl = "DiagnosticSignWarn" })
+-- vim.fn.sign_define("DiagnosticSignInformation", { text = "", texthl = "DiagnosticSignInfo" })
+-- vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
 
 -- con rust_analyzer
 -- local servers = { "rust_analyzer"}
