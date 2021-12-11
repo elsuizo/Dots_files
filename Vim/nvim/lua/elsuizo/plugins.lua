@@ -35,6 +35,16 @@ return require('packer').startup(function()
    use 'nvim-lua/popup.nvim'
    use 'nvim-lua/plenary.nvim'
    use 'nvim-telescope/telescope.nvim'           -- fuzzy finder and more...
+   use 'nvim-telescope/telescope-fzy-native.nvim'-- fuzzy finder and more...
+   use 'cljoly/telescope-repo.nvim'              -- for finding stuff relative to a specific folder
+   use { "tami5/sqlite.lua" }
+   use {
+     "AckslD/nvim-neoclip.lua",
+     requires = {'tami5/sqlite.lua', module = 'sqlite'},
+     config = function()
+       require('neoclip').setup()
+     end,
+   }
    -- buffer views
    use 'kyazdani42/nvim-web-devicons'
    use 'romgrk/barbar.nvim'                      -- to visualize the buffers in the superior bar

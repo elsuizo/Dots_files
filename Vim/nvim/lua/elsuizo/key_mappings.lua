@@ -19,6 +19,18 @@ function M.mapBuf(buf, mode, lhs, rhs, opts)
 end
 
 -- telescope
+-- loading the extensions
+require('telescope').load_extension('fzy_native')
+require('telescope').load_extension('repo')
+
+-- neoclip
+M.map(
+  "n",
+  "<C-n>",
+  [[<Cmd>lua require('telescope').extensions.neoclip.plus()<CR>]],
+  { noremap = true, silent = true }
+)
+
 M.map("n", "<leader>f", "<cmd>lua require('telescope.builtin').find_files()<cr>")
 M.map("n", "<leader>g", "<cmd>lua require('telescope.builtin').live_grep()<cr>")
 M.map("n", "<leader>B", "<cmd>lua require('telescope.builtin').buffers()<cr>")
