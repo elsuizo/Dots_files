@@ -155,36 +155,32 @@ debug:
 
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
-# Colors (Gruvbox dark)
-# colors:
-#   # Default colors
-#   primary:
-#     # hard contrast: background = '#1d2021'
-#     background: '#282828'
-#     # soft contrast: background = '#32302f'
-#     foreground: '#ebdbb2'
-#
-#   # Normal colors
-#   normal:
-#     black:   '#282828'
-#     red:     '#cc241d'
-#     green:   '#98971a'
-#     yellow:  '#d79921'
-#     blue:    '#458588'
-#     magenta: '#b16286'
-#     cyan:    '#689d6a'
-#     white:   '#a89984'
-#
-#   # Bright colors
-#   bright:
-#     black:   '#928374'
-#     red:     '#fb4934'
-#     green:   '#b8bb26'
-#     yellow:  '#fabd2f'
-#     blue:    '#83a598'
-#     magenta: '#d3869b'
-#     cyan:    '#8ec07c'
-#     white:   '#ebdbb2'
+# Colors (Pencil Dark)
+colors:
+  # Default Colors
+  primary:
+    background: '0x212121'
+    foreground: '0xf1f1f1'
+  # Normal colors
+  normal:
+    black:   '0x212121'
+    red:     '0xc30771'
+    green:   '0x10a778'
+    yellow:  '0xa89c14'
+    blue:    '0x008ec4'
+    magenta: '0x523c79'
+    cyan:    '0x20a5ba'
+    white:   '0xe0e0e0'
+  # Bright colors
+  bright:
+    black:   '0x818181'
+    red:     '0xfb007a'
+    green:   '0x5fd7af'
+    yellow:  '0xf3e430'
+    blue:    '0x20bbfc'
+    magenta: '0x6855de'
+    cyan:    '0x4fb8cc'
+    white:   '0xf1f1f1'
 
 #Colors (Gruvbox Material Dark Medium)
 # colors:
@@ -212,32 +208,32 @@ draw_bold_text_with_bright_colors: true
 #     cyan:    '0x89b482'
 #     white:   '0xdfbf8e'
 # Colors (Darkside)
-colors:
-  primary:
-    background: "#222324"
-    foreground: "#BABABA"
-
-  # Normal colors
-  normal:
-    black:    "#000000"
-    red:      "#E8341C"
-    green:    "#68C256"
-    yellow:   "#F2D42C"
-    blue:     "#1C98E8"
-    magenta:  "#8E69C9"
-    cyan:     "#1C98E8"
-    white:    "#BABABA"
-
-  # Bright colors
-  bright:
-    black:    "#666666"
-    red:      "#E05A4F"
-    green:    "#77B869"
-    yellow:   "#EFD64B"
-    blue:     "#387CD3"
-    magenta:  "#957BBE"
-    cyan:     "#3D97E2"
-    white:    "#BABABA"
+# colors:
+#   primary:
+#     background: "#222324"
+#     foreground: "#BABABA"
+#
+#   # Normal colors
+#   normal:
+#     black:    "#000000"
+#     red:      "#E8341C"
+#     green:    "#68C256"
+#     yellow:   "#F2D42C"
+#     blue:     "#1C98E8"
+#     magenta:  "#8E69C9"
+#     cyan:     "#1C98E8"
+#     white:    "#BABABA"
+#
+#   # Bright colors
+#   bright:
+#     black:    "#666666"
+#     red:      "#E05A4F"
+#     green:    "#77B869"
+#     yellow:   "#EFD64B"
+#     blue:     "#387CD3"
+#     magenta:  "#957BBE"
+#     cyan:     "#3D97E2"
+#     white:    "#BABABA"
 # Colors (Solarized Light)
 # colors:
 #   # Default colors
@@ -456,7 +452,7 @@ mouse:
   # If this is `true`, the cursor is temporarily hidden when typing.
   hide_when_typing: false
 
-  url:
+  hints:
     # URL launcher
     #
     # This program is executed when clicking on a text which is recognized as a URL.
