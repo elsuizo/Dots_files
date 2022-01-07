@@ -23,13 +23,13 @@ return require('packer').startup(function()
    use 'lervag/vimtex'                           -- for work with tex files
    use 'rust-lang/rust.vim'                      -- Rust language support
    use 'chrisbra/csv.vim'                        -- Visualize csv files
-   -- use 'elsuizo/vim-colors-paramount-suizo'      -- personal colorscheme
-   use 'racer-rust/vim-racer'                    -- Rust code navigation
+   use 'elsuizo/vim-colors-paramount-suizo'      -- personal colorscheme
+   -- use 'racer-rust/vim-racer'                    -- Rust code navigation
+   use "rebelot/kanagawa.nvim"
    use 'neutaaaaan/iosvkem'                      -- one of the best colorschemes
    use 'tomtom/tcomment_vim'                     -- comment lines or blocks of code
    use 'elsuizo/monosvkem'                       -- the best colorscheme
    use 'roxma/vim-tmux-clipboard'                -- to get nice clipboard interface with tmux panes
-   -- use 'cespare/vim-toml'                        -- support to toml files
    use 'alaric/neovim-visor'                     -- open/close the terminal with Alt-t
    -- telescope
    use 'nvim-lua/popup.nvim'
@@ -51,7 +51,6 @@ return require('packer').startup(function()
    use 'ziglang/zig.vim'                             -- zig language support
    use 'rakr/vim-one'
    use 'neovim/nvim-lspconfig'                   -- lsp neovim support
-   use 'folke/lsp-colors.nvim'
    -- autocomplete engine
    -- use 'hrsh7th/nvim-compe'                   -- old autocomplete engine
    use 'hrsh7th/nvim-cmp'

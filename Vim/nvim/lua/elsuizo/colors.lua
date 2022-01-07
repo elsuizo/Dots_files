@@ -2,15 +2,15 @@
 -- vim.cmd("colorscheme Iosvkem")
 vim.cmd("colorscheme Monosvkem")
 -- vim.cmd("colorscheme one")
+
+-- lsp colors setup
+vim.cmd [[
+hi DiagnosticError ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#d02b61
+hi DiagnosticWarn ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#6c9ef8
+hi DiagnosticInfo ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#AEFA47
+hi DiagnosticHint ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#404040]]
+
 -- custom colorscheme for lualine
-
-require("lsp-colors").setup({
-  Error = "#ff2040",
-  Warning = "#bbbbbb",
-  Information = "#6c9ef8",
-  Hint = "#404040"
-})
-
 local Monosvkem = {  }
 
 local colors = {

@@ -125,8 +125,10 @@ vim.g.rustfmt_autosave = 1
 vim.g.rustfmt_emit_files = 1
 vim.g.rustfmt_fail_silently = 1
 vim.g.rust_clip_command = 'xclip -selection clipboard'
-vim.g.racer_cmd = "/home/elsuizo/.cargo/bin/racer"
-vim.g.racer_experimental_completer = 0
+-- NOTE(elsuizo:2021-12-24): cuando queremos volver a recer tenemos que
+-- descomentar estas lineas
+-- vim.g.racer_cmd = "/home/elsuizo/.cargo/bin/racer"
+-- vim.g.racer_experimental_completer = 0
 
 -- latex options
 vim.g.vimtex_compiler_progname = 'nvr'
@@ -136,58 +138,5 @@ vim.g.tex_flavor = 'latex'
 vim.g.move_key_modifier = 'C'
 
 -- vim.o.completeopt = "menuone,noselect"
-
-require('neoclip').setup({
-      history = 1000,
-      enable_persistant_history = false,
-      db_path = vim.fn.stdpath("data") .. "/databases/neoclip.sqlite3",
-      filter = nil,
-      preview = true,
-      default_register = '"',
-      content_spec_column = false,
-      on_paste = {
-        set_reg = false,
-      },
-      keys = {
-        i = {
-          select = '<cr>',
-          paste = '<c-p>',
-          paste_behind = '<c-k>',
-          custom = {},
-        },
-        n = {
-          select = '<cr>',
-          paste = 'p',
-          paste_behind = 'P',
-          custom = {},
-        },
-      },
-})
--- NOTE(elsuizo:2021-11-03): esto por ahora lo dejo por si me arrepiento de nvim-cmp
--- require'compe'.setup {
---   enabled = true;
---   autocomplete = true;
---   debug = false;
---   min_length = 1;
---   preselect = 'enable';
---   throttle_time = 80;
---   source_timeout = 200;
---   incomplete_delay = 400;
---   max_abbr_width = 100;
---   max_kind_width = 100;
---   max_menu_width = 100;
---   documentation = true;
---   spell = true;
---
---   source = {
---     path = true;
---     buffer = true;
---     calc = true;
---     nvim_lsp = true;
---     nvim_lua = true;
---     vsnip = false;
---     ultisnips = false;
---   };
--- }
 
 return Option
