@@ -28,6 +28,7 @@ return require('packer').startup(function()
    use "rebelot/kanagawa.nvim"
    use 'neutaaaaan/iosvkem'                      -- one of the best colorschemes
    use 'tomtom/tcomment_vim'                     -- comment lines or blocks of code
+   use 'ellisonleao/gruvbox.nvim'                -- gruvbox colorscheme
    use 'elsuizo/monosvkem'                       -- the best colorscheme
    use 'roxma/vim-tmux-clipboard'                -- to get nice clipboard interface with tmux panes
    use 'alaric/neovim-visor'                     -- open/close the terminal with Alt-t
@@ -48,8 +49,7 @@ return require('packer').startup(function()
    -- buffer views
    use 'kyazdani42/nvim-web-devicons'
    use 'romgrk/barbar.nvim'                      -- to visualize the buffers in the superior bar
-   use 'ziglang/zig.vim'                             -- zig language support
-   use 'rakr/vim-one'
+   use 'ziglang/zig.vim'                         -- zig language support
    use 'neovim/nvim-lspconfig'                   -- lsp neovim support
    -- autocomplete engine
    -- use 'hrsh7th/nvim-compe'                   -- old autocomplete engine
@@ -58,6 +58,7 @@ return require('packer').startup(function()
    use 'hrsh7th/cmp-buffer'
    use 'hrsh7th/cmp-path'
    use 'hrsh7th/cmp-cmdline'
+   use 'L3MON4D3/LuaSnip'
 --  For ultisnips users.
 --  Plug 'SirVer/ultisnips'
 --  Plug 'quangnguyen30192/cmp-nvim-ultisnips'
