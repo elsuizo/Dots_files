@@ -3,22 +3,14 @@ icons = "awesome"
 
 [[block]]
 block = "net"
-device = "wlp3s0"
-ssid = true
-ip = false
-speed_up = false
-graph_up = false
+device = "wlp2s0b1"
+format = "{ssid} {signal_strength} {ip}"
 interval = 5
-#
-# [[block]]
-# block = "speedtest"
-# bytes = true
-# interval = 1800
 
 [[block]]
 block = "disk_space"
-path = "/home"
-alias = "/home"
+path = "/"
+alias = "/"
 info_type = "available"
 unit = "GB"
 interval = 20
@@ -28,8 +20,8 @@ alert = 10.0
 [[block]]
 block = "memory"
 display_type = "memory"
-format_mem = "{Mup}%"
-format_swap = "{SUp}%"
+format_mem = "{mem_total_used_percents}"
+format_swap = "{swap_used_percents}"
 
 [[block]]
 block = "cpu"
@@ -40,10 +32,6 @@ block = "load"
 interval = 1
 format = "{1m}"
 
-# [[block]]
-# block = "pacman"
-# interval = 10
-
 [[block]]
 block = "sound"
 
@@ -51,3 +39,9 @@ block = "sound"
 block = "time"
 interval = 60
 format = "%a %d/%m %R"
+
+[[block]]
+block = "battery"
+interval = 10
+format = "{percentage} {time}"
+
