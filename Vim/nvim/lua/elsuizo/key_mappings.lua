@@ -30,6 +30,25 @@ M.map(
   [[<Cmd>lua require('telescope').extensions.neoclip.plus()<CR>]],
   { noremap = true, silent = true }
 )
+-- Trouble setup
+vim.api.nvim_set_keymap("n", "<leader>xx", "<cmd>Trouble<cr>",
+  {silent = true, noremap = true}
+)
+vim.api.nvim_set_keymap("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>",
+  {silent = true, noremap = true}
+)
+vim.api.nvim_set_keymap("n", "<leader>xd", "<cmd>Trouble document_diagnostics<cr>",
+  {silent = true, noremap = true}
+)
+vim.api.nvim_set_keymap("n", "<leader>xl", "<cmd>Trouble loclist<cr>",
+  {silent = true, noremap = true}
+)
+vim.api.nvim_set_keymap("n", "<leader>qf", "<cmd>Trouble quickfix<cr>",
+  {silent = true, noremap = true}
+)
+vim.api.nvim_set_keymap("n", "gR", "<cmd>Trouble lsp_references<cr>",
+  {silent = true, noremap = true}
+)
 
 M.map("n", "<leader>f", "<cmd>lua require('telescope.builtin').find_files()<cr>")
 M.map("n", "<leader>g", "<cmd>lua require('telescope.builtin').live_grep()<cr>")
@@ -155,20 +174,12 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
        signs = true,
      }
 )
-vim.cmd [[hi LspDiagnosticsVirtualTextError guifg=Green ctermfg=Green]]
--- vim.cmd[[highlight LspDiagnosticsUnderlineError guifg=#ff2040]] -- rojo piola
--- vim.cmd[[highlight LspDiagnosticsUnderlineWarning guifg=#bbbbbb]] -- gris clero
--- vim.cmd[[highlight LspDiagnosticsUnderlineInformation guifg=#6c9ef8]] -- azul
--- vim.cmd[[highlight LspDiagnosticsUnderlineHint guifg=#505050]] -- gris oscuro
 
+-- TODO(elsuizo:2022-02-17): no se porque a esto lo tengo que poner aca para que
+-- funcione...
 -- NOTE(elsuizo:2021-12-05): esto lo que cambia es el color de la ventana que aparece cuando accedes a los docs por ejemplo de Rust
 vim.cmd [[autocmd ColorScheme * highlight NormalFloat guibg=#121212]]
 vim.cmd [[autocmd ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]]
-
--- vim.fn.sign_define("DiagnosticSignError", { text = "✗", texthl = "DiagnosticSignError" })
--- vim.fn.sign_define("DiagnosticSignWarn", { text = "!", texthl = "DiagnosticSignWarn" })
--- vim.fn.sign_define("DiagnosticSignInformation", { text = "", texthl = "DiagnosticSignInfo" })
--- vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
 
 -- con rust_analyzer
 -- local servers = { "rust_analyzer"}
@@ -178,7 +189,6 @@ local servers = { "pyright", "tsserver", "clangd", "rust_analyzer", "julials"}
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
      on_attach = on_attach,
-     -- on_attach = aerial.on_attach
   }
 end
 

@@ -28,7 +28,6 @@ return require('packer').startup(function()
    use "rebelot/kanagawa.nvim"
    use 'neutaaaaan/iosvkem'                      -- one of the best colorschemes
    use 'tomtom/tcomment_vim'                     -- comment lines or blocks of code
-   use 'ellisonleao/gruvbox.nvim'                -- gruvbox colorscheme
    use 'elsuizo/monosvkem'                       -- the best colorscheme
    use 'roxma/vim-tmux-clipboard'                -- to get nice clipboard interface with tmux panes
    use 'alaric/neovim-visor'                     -- open/close the terminal with Alt-t
@@ -39,13 +38,6 @@ return require('packer').startup(function()
    use 'nvim-telescope/telescope-fzy-native.nvim'-- fuzzy finder and more...
    use 'cljoly/telescope-repo.nvim'              -- for finding stuff relative to a specific folder
    use { "tami5/sqlite.lua" }
-   use {
-     "AckslD/nvim-neoclip.lua",
-     requires = {'tami5/sqlite.lua', module = 'sqlite'},
-     config = function()
-       require('neoclip').setup()
-     end,
-   }
    -- buffer views
    use 'kyazdani42/nvim-web-devicons'
    use 'romgrk/barbar.nvim'                      -- to visualize the buffers in the superior bar
@@ -59,6 +51,22 @@ return require('packer').startup(function()
    use 'hrsh7th/cmp-path'
    use 'hrsh7th/cmp-cmdline'
    use 'L3MON4D3/LuaSnip'
+
+   use "ellisonleao/gruvbox.nvim"
+   use 'marko-cerovac/material.nvim'
+   use 'ishan9299/nvim-solarized-lua'
+   use 'NLKNguyen/papercolor-theme'
+   use {
+     "folke/trouble.nvim",
+     requires = "kyazdani42/nvim-web-devicons",
+     config = function()
+       require("trouble").setup {
+         -- your configuration comes here
+         -- or leave it empty to use the default settings
+         -- refer to the configuration section below
+       }
+     end
+   }
 --  For ultisnips users.
 --  Plug 'SirVer/ultisnips'
 --  Plug 'quangnguyen30192/cmp-nvim-ultisnips'

@@ -67,9 +67,9 @@ cmp.setup({
    sources = cmp.config.sources({
       { name = "buffer"}, -- TODO(elsuizo:2021-11-02): no se porque pero esto no anda me parece
       { name = 'nvim_lsp' },
+      { name = "path" },
       { name = "nvim_lua" },
       { name = 'nvim' },
-      { name = "path" },
       -- { name = 'vsnip' }, -- For vsnip users.
       -- { name = 'luasnip' }, -- For luasnip users.
       -- { name = 'ultisnips' }, -- For ultisnips users.
