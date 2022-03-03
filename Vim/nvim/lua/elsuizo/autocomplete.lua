@@ -55,9 +55,8 @@ cmp.setup({
          end
       end,
    },
-   experimental = {
-      native_menu = true,
-      ghost_text = true, -- TODO(elsuizo:2021-11-02): esto parece que solo anda cuando no ponemos keyword_length
+   view = {
+      entries = "native",
    },
    documentation = {
       border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
