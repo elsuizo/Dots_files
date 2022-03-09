@@ -18,18 +18,6 @@ function M.mapBuf(buf, mode, lhs, rhs, opts)
   vim.api.nvim_buf_set_keymap(buf, mode, lhs, rhs, options)
 end
 
--- telescope
--- loading the extensions
-require('telescope').load_extension('fzy_native')
-require('telescope').load_extension('repo')
-
--- neoclip
-M.map(
-  "n",
-  "<C-n>",
-  [[<Cmd>lua require('telescope').extensions.neoclip.plus()<CR>]],
-  { noremap = true, silent = true }
-)
 -- Trouble setup
 vim.api.nvim_set_keymap("n", "<leader>xx", "<cmd>Trouble<cr>",
   {silent = true, noremap = true}
@@ -50,13 +38,17 @@ vim.api.nvim_set_keymap("n", "gR", "<cmd>Trouble lsp_references<cr>",
   {silent = true, noremap = true}
 )
 
+-- telescope
+-- loading the extensions
+require('telescope').load_extension('fzy_native')
+require('telescope').load_extension('repo')
+
 M.map("n", "<leader>f", "<cmd>lua require('telescope.builtin').find_files()<cr>")
 M.map("n", "<leader>g", "<cmd>lua require('telescope.builtin').live_grep()<cr>")
 M.map("n", "<leader>B", "<cmd>lua require('telescope.builtin').buffers()<cr>")
 M.map("n", "<leader>h", "<cmd>lua require('telescope.builtin').help_tags()<cr>")
 M.map("n", "<leader>s", "<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.expand('<cword>') })<cr>")
--- TODO(elsuizo:2021-08-08): quiero poner aca rusty-man
--- M.map("n", "<leader>K", "<cmd>lua require('telescope.builtin').man_pages()<cr>")
+M.map("n", "<leader><leader>t", ":Telescope<cr>")
 
 -- save
 M.map("n", "<Leader>w", ":w!<cr>")
@@ -78,9 +70,6 @@ M.map("v", "L", "g_")
 M.map("n", "<space>,", "<cmd>bnext<cr>")
 -- previous buffer
 M.map("n", "<space>.", "<cmd>bprevious<cr>")
--- NOTE(elsuizo:2021-12-05): desde la version 0.6 esto viene por default!!!
--- -- yank to the end of the line
--- M.map("n", "Y", "y$")
 -- align blocks of text and keep them selected
 M.map('v', '<', '<gv', { noremap = true, silent = true })
 M.map('v', '>', '>gv', { noremap = true, silent = true })
@@ -161,7 +150,6 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
   buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-
 end
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] =

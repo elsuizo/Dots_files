@@ -6,24 +6,11 @@ cmp.setup({
       -- REQUIRED - you must specify a snippet engine
       expand = function(args)
          vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-         require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+         -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
          -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
          -- require'snippy'.expand_snippet(args.body) -- For `snippy` users.
       end,
    },
-   -- mapping = {
-   --   ['<C-p>'] = cmp.mapping.select_prev_item(),
-   --   ['<C-n>'] = cmp.mapping.select_next_item(),
-   --   ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-   --   ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-   --   ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-   --   ['<C-y>'] = cmp.config.disable, -- If you want to remove the default `<C-y>` mapping, You can specify `cmp.config.disable` value.
-   --   ['<C-e>'] = cmp.mapping({
-   --     i = cmp.mapping.abort(),
-   --     c = cmp.mapping.close(),
-   --   }),
-   --   ['<CR>'] = cmp.mapping.confirm({ select = true }),
-   -- },
    mapping = {
       ['<C-p>'] = cmp.mapping.select_prev_item(),
       ['<C-n>'] = cmp.mapping.select_next_item(),
@@ -61,11 +48,12 @@ cmp.setup({
    documentation = {
       border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
    },
+   experimental = {ghost_text = true},
    -- NOTE(elsuizo:2021-11-02): el orden de los sources importa, a los que mira
    -- primero son los que estan primeros en la lista
    sources = cmp.config.sources({
-      { name = "buffer"}, -- TODO(elsuizo:2021-11-02): no se porque pero esto no anda me parece
-      { name = 'nvim_lsp' },
+      { name = 'nvim_lsp'},
+      { name = "buffer"},
       { name = "path" },
       { name = "nvim_lua" },
       { name = 'nvim' },
@@ -99,13 +87,3 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 require('lspconfig')['vimls'].setup {
    capabilities = capabilities
 }
--- local capabilities = vim.lsp.protocol.make_client_capabilities()
--- capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-
--- TODO(elsuizo:2021-11-02): no me convence despues lo pruebo bien...
--- local lspkind = require('lspkind')
--- cmp.setup {
---   formatting = {
---     format = lspkind.cmp_format({with_text = false, maxwidth = 50})
---   }
--- }

@@ -1,11 +1,5 @@
--- los mejores colorschemes
--- vim.cmd("colorscheme Iosvkem")
+-- el mejor colorscheme
 vim.cmd("colorscheme Monosvkem")
--- vim.cmd("set background=light")
--- vim.cmd("colorscheme PaperColor")
--- vim.cmd("colorscheme solarized-flat")
--- vim.cmd("colorscheme gruvbox")
-
 -- lsp colors setup
 vim.cmd [[
 hi DiagnosticError ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#d02b61
@@ -70,9 +64,7 @@ local function trailing()
   return vim.fn.search([[\s\+$]], 'nw') ~= 0 and 'TW' or ''
 end
 
+-- Load the colorscheme
 require('lualine').setup {
-   -- options = {theme = Material},
    options = {theme = Monosvkem},
-   -- options = {theme = 'PaperColor'},
-   -- sections = {lualine_z = {trailing}}
 }

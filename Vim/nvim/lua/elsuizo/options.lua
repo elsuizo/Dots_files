@@ -51,7 +51,7 @@ Option.g {
   undofile = true,
   undodir = os.getenv("HOME") .. "/.vim/undo/",
   virtualedit = "onemore",
-  guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20",
+  -- guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20",
   complete = ".,w,b,u,t,k",
   completeopt = "menu,menuone,noinsert,noselect",
   formatoptions = "jtcroql",
@@ -125,10 +125,6 @@ vim.g.rustfmt_autosave = 1
 vim.g.rustfmt_emit_files = 1
 vim.g.rustfmt_fail_silently = 1
 vim.g.rust_clip_command = 'xclip -selection clipboard'
--- NOTE(elsuizo:2021-12-24): cuando queremos volver a recer tenemos que
--- descomentar estas lineas
--- vim.g.racer_cmd = "/home/elsuizo/.cargo/bin/racer"
--- vim.g.racer_experimental_completer = 0
 
 -- latex options
 vim.g.vimtex_compiler_progname = 'nvr'

@@ -7,7 +7,7 @@ vim.wo.number = true
 vim.wo.relativenumber = true
 -- dont cut the lines
 -- TODO
--- vim.o.nowrap = true
+vim.o.nowrap = true
 -- auto indent
 vim.o.ai = true
 -- smart indent
