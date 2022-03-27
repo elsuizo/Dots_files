@@ -4,8 +4,8 @@ conky.config = {
    double_buffer = true,
    use_xft = true,
    font = 'Liberation Sans:size=13',
-   maximum_width = 240,
-   own_window = false,
+   maximum_width = 500,
+   own_window = true,
    own_window_transparent = true,
    own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
    own_window_type = 'override',
@@ -42,12 +42,22 @@ CPU usage:$alignr${cpu cpu0}%
 ${hr}
 CPU0:${alignr}${cpubar cpu0 8,60}
 CPU1:${alignr}${cpubar cpu1 8,60}
+CPU2:${alignr}${cpubar cpu2 8,60}
+CPU3:${alignr}${cpubar cpu3 8,60}
+CPU4:${alignr}${cpubar cpu4 8,60}
+CPU5:${alignr}${cpubar cpu5 8,60}
+CPU6:${alignr}${cpubar cpu6 8,60}
+CPU7:${alignr}${cpubar cpu7 8,60}
+CPU8:${alignr}${cpubar cpu8 8,60}
+CPU9:${alignr}${cpubar cpu9 8,60}
+CPU10:${alignr}${cpubar cpu10 8,60}
+CPU11:${alignr}${cpubar cpu11 8,60}
 Temp:${alignr}${execi 10 sensors | grep ^temp1 | tail -n 1 |awk '{print $2}'}
 RAM: $memperc% ${alignr}${membar 8,60}
 Disk usage:$alignr${fs_bar 8,60}
-${if_up wlan0}
-802.11 quality:$alignr${wireless_link_bar 8,60 wlan0}
-802.11 bitrate:$alignr${wireless_bitrate wlan0}
-${endif}${if_up tun0} VPN is active. ${endif}
+# ${if_up wlan0}
+# 802.11 quality:$alignr${wireless_link_bar 8,60 wlan0}
+# 802.11 bitrate:$alignr${wireless_bitrate wlan0}
+# ${endif}${if_up tun0} VPN is active. ${endif}
 CPU $color3${alignr}${cpugraph cpu0 8,90}
 ]]
