@@ -38,6 +38,7 @@ return require('packer').startup(function()
    use 'romgrk/barbar.nvim'                      -- to visualize the buffers in the superior bar
    -- use 'ziglang/zig.vim'                         -- zig language support
    use 'neovim/nvim-lspconfig'                   -- lsp neovim support
+   use 'Shatur/neovim-ayu'
    use {
    "hrsh7th/nvim-cmp",
    requires = {
@@ -59,6 +60,9 @@ return require('packer').startup(function()
    -- use 'hrsh7th/cmp-buffer'
    -- use 'hrsh7th/cmp-path'
    -- use 'hrsh7th/cmp-cmdline'
+   use 'nvim-treesitter/nvim-treesitter'
+   use 'ishan9299/nvim-solarized-lua'
+   use 'shaunsingh/nord.nvim'
    use {
      "folke/trouble.nvim",
      requires = "kyazdani42/nvim-web-devicons",

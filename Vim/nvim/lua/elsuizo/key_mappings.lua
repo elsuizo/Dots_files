@@ -50,6 +50,8 @@ M.map("n", "<leader>h", "<cmd>lua require('telescope.builtin').help_tags()<cr>")
 M.map("n", "<leader>s", "<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.expand('<cword>') })<cr>")
 M.map("n", "<leader><leader>t", ":Telescope<cr>")
 
+-- toggle visibility of the fucking tabs
+M.map("n", "<Leader><leader>T", ":set invlist<cr>")
 -- save
 M.map("n", "<Leader>w", ":w!<cr>")
 -- kill the buffer

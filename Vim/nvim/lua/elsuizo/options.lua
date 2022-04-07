@@ -91,8 +91,8 @@ Option.w {
   signcolumn = "no",
   spell = false,
   foldlevel = 99,
-  foldmethod = "syntax",
-  -- foldmethod = "expr",
+  -- foldmethod = "syntax",
+  foldmethod = "expr",
   foldexpr = "nvim_treesitter#foldexpr()",
   foldtext = "v:lua.foldText()",
   linebreak = true
@@ -120,7 +120,9 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 ]], true)
 
 -- rust options
-vim.g.rustfmt_command = "rustfmt"
+-- vim.g.rustfmt_command = "rustfmt"
+vim.g.rustfmt_command = "cargo +nightly fmt"
+
 vim.g.rustfmt_autosave = 1
 vim.g.rustfmt_emit_files = 1
 vim.g.rustfmt_fail_silently = 1
@@ -132,6 +134,7 @@ vim.g.tex_flavor = 'latex'
 
 -- vim move options
 vim.g.move_key_modifier = 'C'
+vim.g.move_key_modifier_visualmode = 'S'
 
 -- vim.o.completeopt = "menuone,noselect"
 

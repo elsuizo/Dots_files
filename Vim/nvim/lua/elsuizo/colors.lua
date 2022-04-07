@@ -1,5 +1,6 @@
 -- el mejor colorscheme
 vim.cmd("colorscheme Monosvkem")
+-- vim.cmd("colorscheme Iosvkem")
 -- lsp colors setup
 vim.cmd [[
 hi DiagnosticError ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#d02b61
