@@ -100,28 +100,16 @@ Option.w {
 
 vim.o.clipboard = "unnamedplus"
 
+--TODO(elsuizo: 2022-04-11): creo que esta mierda no la uso mas deberia
+--sacarla???
 -- python versions
 vim.g.python_host_prog = '/home/elsuizo/.pyenv/versions/neovim2/bin/python'
 vim.g.python3_host_prog = '/home/elsuizo/.pyenv/versions/neovim/bin/python3'
 
--- TODO(elsuizo:2021-05-01): port this to lua
--- snippets directorys
-vim.api.nvim_exec([[
-let g:neosnippet#snippets_directory='~/.vim/plugged/neosnippet-snippets/neosnippets, ~/.vim/My_snippets'
-]], true)
--- neosnippet function
-vim.api.nvim_exec([[
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" snippets mapps
-imap <expr><TAB> pumvisible() ? "\<C-n>" : neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-]], true)
-
 -- rust options
 -- vim.g.rustfmt_command = "rustfmt"
-vim.g.rustfmt_command = "cargo +nightly fmt"
+-- vim.g.rustfmt_command = "cargo +nightly fmt"
+vim.g.rustfmt_command = '/home/elsuizo/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/rustfmt'
 
 vim.g.rustfmt_autosave = 1
 vim.g.rustfmt_emit_files = 1
@@ -134,7 +122,7 @@ vim.g.tex_flavor = 'latex'
 
 -- vim move options
 vim.g.move_key_modifier = 'C'
-vim.g.move_key_modifier_visualmode = 'S'
+vim.g.move_key_modifier_visualmode = 'C'
 
 -- vim.o.completeopt = "menuone,noselect"
 

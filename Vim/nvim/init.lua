@@ -14,4 +14,6 @@ require 'elsuizo.auto_commands' -- "lua/elsuizo/auto_commands.lua"
 require 'elsuizo.options'       -- "lua/elsuizo/options.lua"
 require 'elsuizo.key_mappings'  -- "lua/elsuizo/key_mappings.lua"
 require 'elsuizo.colors'        -- "lua/elsuizo/colors.lua"
+require 'elsuizo.snippets'      -- "lua/elsuizo/snippets.lua"
 require 'elsuizo.autocomplete'  -- "lua/elsuizo/autocomplete.lua"
+

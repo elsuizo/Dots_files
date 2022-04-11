@@ -16,8 +16,6 @@ return require('packer').startup(function()
    use 'wbthomason/packer.nvim'
    use 'jiangmiao/auto-pairs'                    -- smart autopairs
    use 'scrooloose/nerdtree'                     -- file mannager
-   use 'Shougo/neosnippet.vim'                   -- code snippets pluging
-   use 'Shougo/neosnippet-snippets'              -- more code snippets
    use 'JuliaEditorSupport/julia-vim'            -- Julia language support
    use 'matze/vim-move'                          -- move blocks of code
    use 'lervag/vimtex'                           -- for work with tex files
@@ -38,7 +36,10 @@ return require('packer').startup(function()
    use 'romgrk/barbar.nvim'                      -- to visualize the buffers in the superior bar
    -- use 'ziglang/zig.vim'                         -- zig language support
    use 'neovim/nvim-lspconfig'                   -- lsp neovim support
-   use 'Shatur/neovim-ayu'
+
+   use "L3MON4D3/LuaSnip"                        --snippet engine
+   use "rafamadriz/friendly-snippets"            -- a bunch of snippets to use
+   use "saadparwaiz1/cmp_luasnip"                -- snippet completions
    use {
    "hrsh7th/nvim-cmp",
    requires = {
@@ -55,14 +56,8 @@ return require('packer').startup(function()
      { "tamago324/cmp-zsh" },
    },
    }
-   -- use 'hrsh7th/nvim-cmp'
-   -- use 'hrsh7th/cmp-nvim-lsp'
-   -- use 'hrsh7th/cmp-buffer'
-   -- use 'hrsh7th/cmp-path'
-   -- use 'hrsh7th/cmp-cmdline'
    use 'nvim-treesitter/nvim-treesitter'
-   use 'ishan9299/nvim-solarized-lua'
-   use 'shaunsingh/nord.nvim'
+   -- TODO(elsuizo:2022-04-10): no se si quiero seguir con este package
    use {
      "folke/trouble.nvim",
      requires = "kyazdani42/nvim-web-devicons",
