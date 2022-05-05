@@ -277,8 +277,7 @@ new_window none
 #-------------------------------------------------------------------------
 exec --no-startup-id conky
 
-# NOTE(elsuizo): esto sirve cuando queres por ejemplo tener transparencia en la terminal(para pussys)
-# exec compton
+exec picom
 #-------------------------------------------------------------------------
 # ONLY for the notebook
 #-------------------------------------------------------------------------
