@@ -1,8 +1,18 @@
 #+TITLE: elsuizo emacs configuration
 #+EMAIL: mnoblia@disroot.org
 
-* Customize settings
+* Evil mode
+Comienza la fiesta!!!
+#+begin_src emacs-lisp
+;; Install Evil and disable C-i to jump forward to restore TAB functionality in Org mode.
+(use-package evil
+             :init (setq evil-want-C-i-jump nil)
+             :config (evil-mode))
+  (require 'evil)
+    (evil-mode 1)
+#+end_src
 
+* Customize settings
 #+begin_src emacs-lisp
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
@@ -37,12 +47,6 @@
 (require 'bind-key)
 (setq use-package-verbose t)
 (server-start)
-#+end_src
-* Evil mode
-Comienza la fiesta!!!
-#+begin_src emacs-lisp
-(require 'evil)
-  (evil-mode 1)
 #+end_src
 
 #+begin_src emacs-lisp

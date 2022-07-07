@@ -1,3 +1,10 @@
+;; Install Evil and disable C-i to jump forward to restore TAB functionality in Org mode.
+(use-package evil
+             :init (setq evil-want-C-i-jump nil)
+             :config (evil-mode))
+  (require 'evil)
+    (evil-mode 1)
+
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
 (setq byte-compile-warnings '(cl-functions))
@@ -26,9 +33,6 @@
 (require 'bind-key)
 (setq use-package-verbose t)
 (server-start)
-
-(require 'evil)
-  (evil-mode 1)
 
 (setq gc-cons-threshold 800000)
 (require 'evil-leader)
