@@ -12,12 +12,15 @@ M.autocmd("BufRead",      "*",   "normal zz")
 M.autocmd("FileType", "rust", "nmap <leader>D <Plug>(rust-doc)")
 M.autocmd("FileType", "rust", "nmap <leader>R :Cargo run --release<cr>")
 M.autocmd("FileType", "rust", "nmap <leader>r :Cargo run <cr>")
-M.autocmd("FileType", "rust", "nmap <leader>T :Cargo test<cr>")
+M.autocmd("FileType", "rust", "nmap <leader>T :make test<cr>")
 M.autocmd("FileType", "rust", "nmap <leader>t :Cargo check<cr>")
 M.autocmd("FileType", "rust", "nmap <leader>B :make build --release<cr>") -- build in release mode inside nvim this put all the errors in the quickfixlist
 M.autocmd("FileType", "rust", "nmap <leader>b :make c<cr>")               -- check inside nvim this put all the errors in the quickfixlist
 M.autocmd("FileType", "rust", "nmap <C-]> :cnext<cr>")
 M.autocmd("FileType", "rust", "nmap <C-[> :cprevious<cr>")
+--TODO(elsuizo: 2022-07-08): quiero que me muestre los errores primero y no los
+--warnings!!!
+M.autocmd("FileType", "rust", "nmap <leader>E <cmd>lua require('telescope.builtin').diagnostics()<cr>") -- show the errors in the telescope window
 
 M.autocmd("TermOpen", "*",   "setl bufhidden=hide")
 M.autocmd("TermOpen", "*",   "startinsert")

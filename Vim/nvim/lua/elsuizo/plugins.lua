@@ -40,6 +40,7 @@ return require('packer').startup(function()
    use "L3MON4D3/LuaSnip"                        --snippet engine
    use "rafamadriz/friendly-snippets"            -- a bunch of snippets to use
    use "saadparwaiz1/cmp_luasnip"                -- snippet completions
+   use "jbyuki/venn.nvim"
    use {
    "hrsh7th/nvim-cmp",
    requires = {
@@ -52,22 +53,11 @@ return require('packer').startup(function()
      { "hrsh7th/cmp-vsnip" },
      { "hrsh7th/vim-vsnip" },
      { "Saecki/crates.nvim" },
-     -- { "hrsh7th/cmp-cmdline" },
+     { "hrsh7th/cmp-cmdline" },
      { "tamago324/cmp-zsh" },
    },
    }
    use 'nvim-treesitter/nvim-treesitter'
-   -- TODO(elsuizo:2022-04-10): no se si quiero seguir con este package
-   use {
-     "folke/trouble.nvim",
-     requires = "kyazdani42/nvim-web-devicons",
-     config = function()
-       require("trouble").setup {
-          -- TODO(elsuizo:2022-03-08): ver si quiero cambiar algo de la
-          -- configuracion default
-       }
-     end
-   }
    use {
      'hoob3rt/lualine.nvim',
      requires = {'kyazdani42/nvim-web-devicons', opt = true}
