@@ -53,11 +53,21 @@ return require('packer').startup(function()
      { "hrsh7th/cmp-vsnip" },
      { "hrsh7th/vim-vsnip" },
      { "Saecki/crates.nvim" },
-     { "hrsh7th/cmp-cmdline" },
+     -- { "hrsh7th/cmp-cmdline" },
      { "tamago324/cmp-zsh" },
    },
    }
    use 'nvim-treesitter/nvim-treesitter'
+   use {
+     "folke/trouble.nvim",
+     requires = "kyazdani42/nvim-web-devicons",
+     config = function()
+       require("trouble").setup {
+          -- TODO(elsuizo:2022-03-08): ver si quiero cambiar algo de la
+          -- configuracion default
+       }
+     end
+   }
    use {
      'hoob3rt/lualine.nvim',
      requires = {'kyazdani42/nvim-web-devicons', opt = true}
