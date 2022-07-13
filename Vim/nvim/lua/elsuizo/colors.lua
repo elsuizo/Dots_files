@@ -8,6 +8,9 @@ hi DiagnosticWarn ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#6c9ef8
 hi DiagnosticInfo ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#AEFA47
 hi DiagnosticHint ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#404040]]
 
+-- cambiamos el color del menu del autocompletado
+vim.cmd [[highlight Pmenu ctermbg=NONE guibg=gray]]
+vim.cmd [[highlight PmenuSel ctermbg=NONE guibg=#404040]]
 -- custom colorscheme for lualine
 local Monosvkem = {  }
 

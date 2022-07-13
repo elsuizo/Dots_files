@@ -36,8 +36,8 @@ return require('packer').startup(function()
    use 'romgrk/barbar.nvim'                      -- to visualize the buffers in the superior bar
    -- use 'ziglang/zig.vim'                         -- zig language support
    use 'neovim/nvim-lspconfig'                   -- lsp neovim support
-
-   use "L3MON4D3/LuaSnip"                        --snippet engine
+   use {'nvim-treesitter/nvim-treesitter'}
+   use "L3MON4D3/LuaSnip"                        -- snippet engine
    use "rafamadriz/friendly-snippets"            -- a bunch of snippets to use
    use "saadparwaiz1/cmp_luasnip"                -- snippet completions
    use "jbyuki/venn.nvim"
@@ -53,11 +53,10 @@ return require('packer').startup(function()
      { "hrsh7th/cmp-vsnip" },
      { "hrsh7th/vim-vsnip" },
      { "Saecki/crates.nvim" },
-     -- { "hrsh7th/cmp-cmdline" },
+     { "hrsh7th/cmp-cmdline" },
      { "tamago324/cmp-zsh" },
    },
    }
-   use 'nvim-treesitter/nvim-treesitter'
    use {
      "folke/trouble.nvim",
      requires = "kyazdani42/nvim-web-devicons",
