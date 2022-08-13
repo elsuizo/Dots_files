@@ -36,13 +36,13 @@ return require('packer').startup(function()
    use 'romgrk/barbar.nvim'                      -- to visualize the buffers in the superior bar
    -- use 'ziglang/zig.vim'                         -- zig language support
    use 'neovim/nvim-lspconfig'                   -- lsp neovim support
-   use {'nvim-treesitter/nvim-treesitter'}
    use "L3MON4D3/LuaSnip"                        -- snippet engine
    use "rafamadriz/friendly-snippets"            -- a bunch of snippets to use
    use "saadparwaiz1/cmp_luasnip"                -- snippet completions
    use "jbyuki/venn.nvim"
-   use {
-   "hrsh7th/nvim-cmp",
+   use "tek256/simple-dark"
+   use "hrsh7th/cmp-nvim-lsp-signature-help"
+   use {"hrsh7th/nvim-cmp",
    requires = {
      { "hrsh7th/cmp-buffer" },
      { "hrsh7th/cmp-nvim-lsp" },
@@ -55,6 +55,7 @@ return require('packer').startup(function()
      { "Saecki/crates.nvim" },
      { "hrsh7th/cmp-cmdline" },
      { "tamago324/cmp-zsh" },
+     {"hrsh7th/cmp-nvim-lsp-signature-help"},
    },
    }
    use {

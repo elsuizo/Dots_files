@@ -121,7 +121,8 @@ cmp.setup {
     { name = "luasnip" },
     { name = "path" },
     { name = "buffer" },
-    { name = "orgmode" },
+    { name = 'nvim_lsp_signature_help' },
+    -- { name = "orgmode" },
   },
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,

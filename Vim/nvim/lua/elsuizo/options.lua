@@ -100,12 +100,6 @@ Option.w {
 
 vim.o.clipboard = "unnamedplus"
 
---TODO(elsuizo: 2022-04-11): creo que esta mierda no la uso mas deberia
---sacarla???
--- python versions
-vim.g.python_host_prog = '/home/elsuizo/.pyenv/versions/neovim2/bin/python'
-vim.g.python3_host_prog = '/home/elsuizo/.pyenv/versions/neovim/bin/python3'
-
 -- rust options
 -- vim.g.rustfmt_command = "rustfmt"
 -- vim.g.rustfmt_command = "cargo +nightly fmt"

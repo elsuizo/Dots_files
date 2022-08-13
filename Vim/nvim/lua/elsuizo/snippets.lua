@@ -141,6 +141,12 @@ ls.add_snippets("c", {
    s("FIXME", fmt("/* FIXME(elsuizo: {}): {} */", {os.date("%Y-%m-%d"), i(1, "fixme text here")})),
 })
 
+ls.add_snippets("markdown", {
+   s("TODO", fmt("<!-- TODO(elsuizo: {}): {} -->", {os.date("%Y-%m-%d"), i(1, "todo text here")})),
+   s("NOTE", fmt("<!-- NOTE(elsuizo: {}): {} -->", {os.date("%Y-%m-%d"), i(1, "note text here")})),
+   s("FIXME", fmt("<!-- FIXME(elsuizo: {}): {} -->", {os.date("%Y-%m-%d"), i(1, "fixme text here")})),
+})
+
 ls.add_snippets("all", {
    s("date", fmt("{}", {os.date("%Y-%m-%d")})),
 })
