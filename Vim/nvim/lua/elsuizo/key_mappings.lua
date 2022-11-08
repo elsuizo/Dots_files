@@ -172,7 +172,7 @@ vim.cmd [[autocmd ColorScheme * highlight NormalFloat guibg=#121212]]
 vim.cmd [[autocmd ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]]
 -- con rust_analyzer
 -- local servers = { "rust_analyzer"}
-local servers = { "pyright", "tsserver", "clangd", "rust_analyzer", "julials"}
+local servers = { "pyright", "tsserver", "clangd", "rust_analyzer", "julials", "gopls"}
 -- sin rust_analyzer
 -- local servers = { "pyright", "tsserver", "clangd", "julials"}
 for _, lsp in ipairs(servers) do

@@ -18,7 +18,7 @@ M.autocmd("FileType", "rust", "nmap <leader>B :make build --release<cr>") -- bui
 M.autocmd("FileType", "rust", "nmap <leader>b :make c<cr>")               -- check inside nvim this put all the errors in the quickfixlist
 M.autocmd("FileType", "rust", "nmap <C-]> :cnext<cr>")
 M.autocmd("FileType", "rust", "nmap <C-[> :cprevious<cr>")
-M.autocmd("FileType", "rust", "nmap <leader><leader>f :!cargo +nightly fmt<cr>")
+M.autocmd("FileType", "rust", "nmap <leader><leader>f :!cargo +nightly fmt <cr>")               -- check inside nvim this put all the errors in the quickfixlist
 --TODO(elsuizo: 2022-07-08): quiero que me muestre los errores primero y no los
 --warnings!!!
 M.autocmd("FileType", "rust", "nmap <leader>E <cmd>lua require('telescope.builtin').diagnostics()<cr>") -- show the errors in the telescope window

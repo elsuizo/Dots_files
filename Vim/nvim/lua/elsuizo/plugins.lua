@@ -37,8 +37,9 @@ return require('packer').startup(function()
    -- use 'ziglang/zig.vim'                         -- zig language support
    use 'neovim/nvim-lspconfig'                   -- lsp neovim support
    use "L3MON4D3/LuaSnip"                        -- snippet engine
-   -- use "rafamadriz/friendly-snippets"            -- a bunch of snippets to use
+   use "rafamadriz/friendly-snippets"            -- a bunch of snippets to use
    use "saadparwaiz1/cmp_luasnip"                -- snippet completions
+   use "jbyuki/venn.nvim"
    use "tek256/simple-dark"
    use "hrsh7th/cmp-nvim-lsp-signature-help"
    use {"hrsh7th/nvim-cmp",
@@ -70,6 +71,15 @@ return require('packer').startup(function()
    use {
      'hoob3rt/lualine.nvim',
      requires = {'kyazdani42/nvim-web-devicons', opt = true}
+   }
+
+   -- databases stuff
+   use {
+      'kristijanhusak/vim-dadbod-ui',
+      requires = {
+         'tpope/vim-dadbod',
+         'tpope/vim-dotenv',
+      }
    }
 
 end)
