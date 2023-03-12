@@ -89,7 +89,7 @@ M.map('i', '<Down>', '<Nop>', { noremap = true, silent = true })
 M.map('i', '<Left>', '<Nop>', { noremap = true, silent = true })
 M.map('i', '<Right>', '<Nop>', { noremap = true, silent = true })
 -- open the NERDTree
-M.map("n", "<C-\\>", ":NERDTreeToggle<CR>")
+M.map("n", "<C-\\>", ":NvimTreeToggle<CR>")
 
 M.map("n", "<A-h>", "<C-w>h")
 M.map("n", "<A-j>", "<C-w>j")

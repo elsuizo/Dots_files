@@ -16,7 +16,6 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
    'wbthomason/packer.nvim',
    'jiangmiao/auto-pairs',                    -- smart autopairs
-   'scrooloose/nerdtree',                     -- file mannager
    'JuliaEditorSupport/julia-vim',            -- Julia language support
    'matze/vim-move',                          -- move blocks of code
    'lervag/vimtex',                           -- for work with tex files
@@ -57,6 +56,7 @@ require("lazy").setup({
    "folke/trouble.nvim",
    "tpope/vim-dadbod",
    "tpope/vim-dotenv",
+   "RRethy/nvim-base16",
    {
      "folke/trouble.nvim",
      requires = "kyazdani42/nvim-web-devicons",
@@ -66,6 +66,13 @@ require("lazy").setup({
           -- configuracion default
        }
      end
+   },
+   {
+     'nvim-tree/nvim-tree.lua',
+     requires = {
+       'nvim-tree/nvim-web-devicons', -- optional, for file icons
+     },
+     tag = 'nightly' -- optional, updated every week. (see issue #1193)
    },
    {
      'hoob3rt/lualine.nvim',

@@ -1,5 +1,7 @@
 -- el mejor colorscheme
 vim.cmd("colorscheme Monosvkem")
+-- vim.cmd("colorscheme base16-classic-dark")
+-- vim.cmd("colorscheme base16-classic-light")
 -- vim.cmd("colorscheme Iosvkem")
 -- lsp colors setup
 vim.cmd [[
