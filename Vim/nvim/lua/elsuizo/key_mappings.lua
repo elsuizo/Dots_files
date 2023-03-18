@@ -88,8 +88,8 @@ M.map("n", "<space>.", "<cmd>bprevious<cr>")
 -- align blocks of text and keep them selected
 M.map('v', '<', '<gv', { noremap = true, silent = true })
 M.map('v', '>', '>gv', { noremap = true, silent = true })
--- update the packages
-M.map("n", "<Leader>u", "<cmd>PackerUpdate<cr>")
+-- open lazy package manager
+M.map("n", "<Leader>u", "<cmd>Lazy<cr>")
 -- open the quickfixlist
 M.map("n", "<Leader>o", ":copen<cr>")
 -- disable the fucking arrows keys

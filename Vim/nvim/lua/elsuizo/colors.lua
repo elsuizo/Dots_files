@@ -1,5 +1,5 @@
 -- el mejor colorscheme
--- vim.cmd("colorscheme Monosvkem")
+vim.cmd("colorscheme Monosvkem")
 -- vim.cmd("colorscheme base16-classic-dark")
 -- vim.cmd("colorscheme base16-classic-light")
 -- vim.cmd("colorscheme Iosvkem")
@@ -70,55 +70,55 @@ local function trailing()
   return vim.fn.search([[\s\+$]], 'nw') ~= 0 and 'TW' or ''
 end
 
--- catppuccin colorscheme
-require("catppuccin").setup({
-    flavour = "latte", -- latte, frappe, macchiato, mocha
-    background = { -- :h background
-        light = "latte",
-        dark = "mocha",
-    },
-    transparent_background = false,
-    show_end_of_buffer = false, -- show the '~' characters after the end of buffers
-    term_colors = false,
-    dim_inactive = {
-        enabled = false,
-        shade = "dark",
-        percentage = 0.15,
-    },
-    no_italic = false, -- Force no italic
-    no_bold = false, -- Force no bold
-    styles = {
-        comments = { "italic" },
-        conditionals = { "italic" },
-        loops = {},
-        functions = {},
-        keywords = {},
-        strings = {},
-        variables = {},
-        numbers = {},
-        booleans = {},
-        properties = {},
-        types = {},
-        operators = {},
-    },
-    color_overrides = {},
-    custom_highlights = {},
-    integrations = {
-        cmp = true,
-        gitsigns = true,
-        nvimtree = true,
-        telescope = true,
-        notify = false,
-        mini = false,
-        -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
-    },
-})
-
--- setup must be called before loading
-vim.cmd.colorscheme "catppuccin"
+-- -- catppuccin colorscheme
+-- require("catppuccin").setup({
+--     flavour = "latte", -- latte, frappe, macchiato, mocha
+--     background = { -- :h background
+--         light = "latte",
+--         dark = "mocha",
+--     },
+--     transparent_background = false,
+--     show_end_of_buffer = true, -- show the '~' characters after the end of buffers
+--     term_colors = false,
+--     dim_inactive = {
+--         enabled = false,
+--         shade = "light",
+--         percentage = 0.15,
+--     },
+--     no_italic = false, -- Force no italic
+--     no_bold = false, -- Force no bold
+--     styles = {
+--         comments = { "italic" },
+--         conditionals = {},
+--         loops = {},
+--         functions = {},
+--         keywords = {},
+--         strings = {},
+--         variables = {},
+--         numbers = {},
+--         booleans = {},
+--         properties = {},
+--         types = {},
+--         operators = {},
+--     },
+--     color_overrides = {},
+--     custom_highlights = {},
+--     integrations = {
+--         cmp = true,
+--         gitsigns = true,
+--         nvimtree = true,
+--         telescope = true,
+--         notify = false,
+--         mini = false,
+--         -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
+--     },
+-- })
+--
+-- -- setup must be called before loading
+-- vim.cmd.colorscheme "catppuccin"
 
 -- Load the colorscheme
 require('lualine').setup {
-   -- options = {theme = Monosvkem},
-   options = {theme = 'catppuccin'},
+   options = {theme = Monosvkem},
+   -- options = {theme = 'catppuccin'},
 }
