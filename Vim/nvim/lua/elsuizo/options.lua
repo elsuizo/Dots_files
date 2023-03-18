@@ -114,10 +114,6 @@ vim.g.rust_clip_command = 'xclip -selection clipboard'
 vim.g.vimtex_compiler_progname = 'nvr'
 vim.g.tex_flavor = 'latex'
 
--- vim move options
-vim.g.move_key_modifier = 'C'
-vim.g.move_key_modifier_visualmode = 'C'
-
 -- vim.o.completeopt = "menuone,noselect"
 
 -- venn.nvim: enable or disable keymappings

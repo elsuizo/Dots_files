@@ -38,6 +38,19 @@ vim.api.nvim_set_keymap("n", "gR", "<cmd>Trouble lsp_references<cr>",
   {silent = true, noremap = true}
 )
 
+-- nvim.move
+-- Normal-mode commands
+M.map('n', '<C-j>', ':MoveLine(1)<CR>')
+M.map('n', '<C-k>', ':MoveLine(-1)<CR>')
+M.map('n', '<C-h>', ':MoveHChar(-1)<CR>')
+M.map('n', '<C-l>', ':MoveHChar(1)<CR>')
+
+-- Visual-mode commands
+M.map('v', '<C-j>', ':MoveBlock(1)<CR>')
+M.map('v', '<C-k>', ':MoveBlock(-1)<CR>')
+M.map('v', '<C-h>', ':MoveHBlock(-1)<CR>')
+M.map('v', '<C-l>', ':MoveHBlock(1)<CR>')
+
 -- telescope
 -- loading the extensions
 require('telescope').load_extension('fzy_native')
