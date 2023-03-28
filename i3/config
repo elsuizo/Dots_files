@@ -59,7 +59,7 @@ bindsym $mod+Shift+q kill
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d exec rofi -show drun   -fg "#f1f1f1" -bg "#333333" -hlfg "#ffffff" -hlbg "#336699" -o 99
 # fast alternative to i3-dmenu
 #bindsym $mod+d exec --no-startup-id j4-dmenu-desktop
 #bindsym $mod+d exec gmrun
@@ -278,6 +278,10 @@ new_window none
 exec --no-startup-id conky
 
 exec picom
+
+# para que el scroll en general sea mas rapido porque si no ponemos esto es
+# super lento
+exec --no-startup-id xset r rate 300 50
 #-------------------------------------------------------------------------
 # ONLY for the notebook
 #-------------------------------------------------------------------------
@@ -313,3 +317,6 @@ bindsym F12 exec rofi -show window -fg "#f1f1f1" -bg "#333333" -hlfg "#ffffff" -
 
 # change the keyboard layout with shortcut (para los putos acentos espanioles)
 exec_always "setxkbmap -model pc105 -layout us,es -variant ,, -option grp:alt_shift_toggle"
+
+# hacemos que el caps-lock se mapee con Esc
+exec_always "setxkbmap -layout us -option caps:escape"
