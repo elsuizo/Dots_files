@@ -144,7 +144,7 @@ font:
   #
   # This is a global setting and will require a log out or restart to take
   # effect.
-  use_thin_strokes: true
+  # use_thin_strokes: true
 
 debug:
    # Display the time it takes to redraw each frame.
@@ -159,15 +159,15 @@ draw_bold_text_with_bright_colors: true
 colors:
   # Default Colors
   primary:
-    background: '0x212121'
-    foreground: '0xf1f1f1'
+    background: '0x121212'
+    foreground: '0xdddddd'
   # Normal colors
   normal:
     black:   '0x121212'
-    red:     '0xc30771'
+    red:     '0xd02b61'
     green:   '0x10a778'
     yellow:  '0xa89c14'
-    blue:    '0x0056b7'
+    blue:    '0x5688af'
     magenta: '0x523c79'
     cyan:    '0x57aadd'
     white:   '0xe0e0e0'
@@ -421,7 +421,7 @@ visual_bell:
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
 window:
-  opacity: 0.8
+  opacity: 0.7
 
 # Mouse bindings
 #
@@ -521,9 +521,6 @@ live_config_reload: true
 # Alacritty will fall back to the WinPTY automatically if the ConPTY
 # backend cannot be initialized.
 enable_experimental_conpty_backend: false
-
-# Send ESC (\x1b) before characters when alt is pressed.
-alt_send_esc: true
 
 # Key bindings
 #
