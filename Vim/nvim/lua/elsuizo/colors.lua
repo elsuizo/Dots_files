@@ -1,8 +1,8 @@
 -- el mejor colorscheme
 vim.cmd("colorscheme Monosvkem")
+-- vim.cmd("colorscheme Iosvkem")
 -- vim.cmd("colorscheme base16-classic-dark")
 -- vim.cmd("colorscheme base16-classic-light")
--- vim.cmd("colorscheme Iosvkem")
 -- lsp colors setup
 vim.cmd [[
 hi DiagnosticError ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#d02b61
@@ -70,7 +70,7 @@ local function trailing()
   return vim.fn.search([[\s\+$]], 'nw') ~= 0 and 'TW' or ''
 end
 
--- -- catppuccin colorscheme
+-- -- -- catppuccin colorscheme
 -- require("catppuccin").setup({
 --     flavour = "latte", -- latte, frappe, macchiato, mocha
 --     background = { -- :h background

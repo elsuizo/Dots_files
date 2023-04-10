@@ -183,9 +183,16 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
 -- NOTE(elsuizo:2021-12-05): esto lo que cambia es el color de la ventana que aparece cuando accedes a los docs por ejemplo de Rust
 vim.cmd [[autocmd ColorScheme * highlight NormalFloat guibg=#121212]]
 vim.cmd [[autocmd ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]]
+
+--NOTE(elsuizo: 2023-04-10): este es un hack para que no use al lsp para
+--colorear la sintaxis y asi cambie todo
+local on_attach = function(client)
+    client.server_capabilities.semanticTokensProvider = nil
+end
+
 -- con rust_analyzer
 -- local servers = { "rust_analyzer"}
-local servers = { "pyright", "tsserver", "clangd", "rust_analyzer", "julials", "gopls", "hls"}
+local servers = { "pyright", "tsserver", "clangd", "rust_analyzer", "julials", "gopls", "hls", "vimls"}
 -- sin rust_analyzer
 -- local servers = { "pyright", "tsserver", "clangd", "julials"}
 for _, lsp in ipairs(servers) do
