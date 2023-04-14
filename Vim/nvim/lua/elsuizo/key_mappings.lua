@@ -51,7 +51,7 @@ M.map('v', '<C-k>', ':MoveBlock(-1)<CR>')
 M.map('v', '<C-h>', ':MoveHBlock(-1)<CR>')
 M.map('v', '<C-l>', ':MoveHBlock(1)<CR>')
 
--- telescope
+-- telescope mappings
 -- loading the extensions
 require('telescope').load_extension('fzy_native')
 require('telescope').load_extension('repo')
@@ -60,6 +60,7 @@ M.map("n", "<leader>f", "<cmd>lua require('telescope.builtin').find_files()<cr>"
 M.map("n", "<leader>g", "<cmd>lua require('telescope.builtin').live_grep()<cr>")
 M.map("n", "<leader>B", "<cmd>lua require('telescope.builtin').buffers()<cr>")
 M.map("n", "<leader>h", "<cmd>lua require('telescope.builtin').help_tags()<cr>")
+M.map("n", "<leader>e", "<cmd>lua require('telescope.builtin').diagnostics()<cr>")
 M.map("n", "<leader>s", "<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.expand('<cword>') })<cr>")
 M.map("n", "<leader><leader>t", ":Telescope<cr>")
 
@@ -137,6 +138,8 @@ local nvim_lsp = require('lspconfig')
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
+   --NOTE(elsuizo: 2023-04-14): esto es para que mantenga el coloreado de
+   --sintaxis sin utilizar el lsp(creo...)
    client.server_capabilities.semanticTokensProvider = nil
    local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
    local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
