@@ -12,6 +12,9 @@ local add_options = function(option_type, options)
   end
 end
 
+-- neovide without cursor animation
+vim.g.neovide_cursor_animation_length = 0
+
 local Option = {}
 Option.g = function(options)
   add_options(Type.GLOBAL_OPTION, options)

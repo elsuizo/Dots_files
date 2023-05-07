@@ -18,7 +18,6 @@ require("lazy").setup({
    'jiangmiao/auto-pairs',                       -- smart autopairs
    'JuliaEditorSupport/julia-vim',               -- Julia language support
    'fedepujol/move.nvim',                        -- move blocks of code
-   { "catppuccin/nvim", name = "catppuccin" },   -- nice lighth colorscheme
    'lervag/vimtex',                              -- for work with tex files
    'rust-lang/rust.vim',                         -- Rust language support
    'chrisbra/csv.vim',                           -- Visualize csv files
@@ -37,10 +36,8 @@ require("lazy").setup({
    'ziglang/zig.vim',                            -- zig language support
    'neovim/nvim-lspconfig',                      -- lsp neovim support
    "L3MON4D3/LuaSnip",                           -- snippet engine
-   "rafamadriz/friendly-snippets",               -- a bunch of snippets to use
+   -- "rafamadriz/friendly-snippets",               -- a bunch of snippets to use
    "saadparwaiz1/cmp_luasnip",                   -- snippet completions
-   "jbyuki/venn.nvim",
-   "tek256/simple-dark",
    "hrsh7th/cmp-nvim-lsp-signature-help",
    "hrsh7th/cmp-buffer" ,
    "hrsh7th/cmp-nvim-lsp" ,
@@ -54,20 +51,8 @@ require("lazy").setup({
    "hrsh7th/cmp-cmdline" ,
    "tamago324/cmp-zsh" ,
    "hrsh7th/cmp-nvim-lsp-signature-help",
-   "folke/trouble.nvim",
    "tpope/vim-dadbod",
    "tpope/vim-dotenv",
-   "RRethy/nvim-base16",
-   {
-     "folke/trouble.nvim",
-     requires = "kyazdani42/nvim-web-devicons",
-     config = function()
-       require("trouble").setup {
-          -- TODO(elsuizo:2022-03-08): ver si quiero cambiar algo de la
-          -- configuracion default
-       }
-     end
-   },
    {
      'nvim-tree/nvim-tree.lua',
      requires = {
@@ -86,5 +71,5 @@ require("lazy").setup({
          'tpope/vim-dadbod',
          'tpope/vim-dotenv',
       }
-   }
+   },
 })

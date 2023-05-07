@@ -186,6 +186,17 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
 vim.cmd [[autocmd ColorScheme * highlight NormalFloat guibg=#121212]]
 vim.cmd [[autocmd ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]]
 
+-- center the buffer in a search
+vim.cmd [[nnoremap n nzz]]
+vim.cmd [[nnoremap N Nzz]]
+vim.cmd [[nnoremap * *zz]]
+vim.cmd [[nnoremap # #zz]]
+vim.cmd [[nnoremap g* g*zz]]
+vim.cmd [[nnoremap g# g#zz]]
+vim.cmd [[nnoremap Q !!$SHELL <CR>]]
+
+-- center buffer around cursor when opening files
+-- vim.cmd [[autocmd BufRead * normal zz]]
 -- con rust_analyzer
 -- local servers = { "rust_analyzer"}
 local servers = { "pyright", "tsserver", "clangd", "rust_analyzer", "julials", "gopls", "hls", "vimls", "lua_ls"}

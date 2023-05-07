@@ -1,8 +1,10 @@
 -- el mejor colorscheme
 vim.cmd("colorscheme Monosvkem")
 -- vim.cmd("colorscheme Iosvkem")
+-- vim.cmd("colorscheme paramount-suizo")
 -- vim.cmd("colorscheme base16-classic-dark")
 -- vim.cmd("colorscheme base16-classic-light")
+
 -- lsp colors setup
 vim.cmd [[
 hi DiagnosticError ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#d02b61
@@ -119,6 +121,6 @@ end
 
 -- Load the colorscheme
 require('lualine').setup {
-   options = {theme = Monosvkem},
+   -- options = {theme = Monosvkem},
    -- options = {theme = 'catppuccin'},
 }
