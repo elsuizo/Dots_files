@@ -3,7 +3,7 @@ vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
 local cmp_status_ok, cmp = pcall(require, "cmp")
 if not cmp_status_ok then
-  return
+   return
 end
 
 local snip_status_ok, luasnip = pcall(require, "luasnip")
@@ -50,7 +50,12 @@ local kind_icons = {
   Operator = "",
   TypeParameter = "",
 }
--- find more here: https://www.nerdfonts.com/cheat-sheet
+
+local has_words_before = function()
+  unpack = unpack or table.unpack
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
 
 cmp.setup {
   snippet = {
@@ -75,19 +80,17 @@ cmp.setup {
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
-      elseif luasnip.expandable() then
-        luasnip.expand()
+      -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
+      -- they way you will only jump inside the snippet region
       elseif luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
-      elseif check_backspace() then
-        fallback()
+      elseif has_words_before() then
+        cmp.complete()
       else
         fallback()
       end
-    end, {
-      "i",
-      "s",
-    }),
+    end, { "i", "s" }),
+
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
@@ -96,17 +99,13 @@ cmp.setup {
       else
         fallback()
       end
-    end, {
-      "i",
-      "s",
-    }),
+    end, { "i", "s" }),
   },
   formatting = {
     fields = { "kind", "abbr", "menu" },
     format = function(entry, vim_item)
       -- Kind icons
       vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
-      -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
       vim_item.menu = ({
         nvim_lsp = "[LSP]",
         luasnip = "[Snippet]",
@@ -122,17 +121,9 @@ cmp.setup {
     { name = "path" },
     { name = "buffer" },
     { name = 'nvim_lsp_signature_help' },
-    -- { name = "orgmode" },
   },
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,
     select = false,
-  },
-  windows = {
-
-  },
-  experimental = {
-    ghost_text = true,
-    native_menu = false,
   },
 }

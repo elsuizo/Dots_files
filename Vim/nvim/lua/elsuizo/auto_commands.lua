@@ -26,5 +26,4 @@ M.autocmd("FileType", "rust", "nmap <leader>E <cmd>lua require('telescope.builti
 M.autocmd("TermOpen", "*",   "setl bufhidden=hide")
 M.autocmd("TermOpen", "*",   "startinsert")
 M.autocmd("TermOpen", "*",   "setl nonumber")
-
 return M

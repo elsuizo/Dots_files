@@ -135,6 +135,18 @@ M.map("t", "<Leader>.", "<c-\\><c-n>:bprevious<cr>")
 -- lspconfig
 local nvim_lsp = require('lspconfig')
 
+local augroup_format = vim.api.nvim_create_augroup("Format", { clear = true })
+local enable_format_on_save = function(_, bufnr)
+  vim.api.nvim_clear_autocmds({ group = augroup_format, buffer = bufnr })
+  vim.api.nvim_create_autocmd("BufWritePre", {
+    group = augroup_format,
+    buffer = bufnr,
+    callback = function()
+      vim.lsp.buf.format({ bufnr = bufnr })
+    end,
+  })
+end
+
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
@@ -171,6 +183,28 @@ local on_attach = function(client, bufnr)
    buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 end
 
+nvim_lsp.lua_ls.setup {
+  capabilities = capabilities,
+  on_attach = function(client, bufnr)
+    on_attach(client, bufnr)
+    enable_format_on_save(client, bufnr)
+  end,
+  settings = {
+    Lua = {
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = { 'vim' },
+      },
+
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = vim.api.nvim_get_runtime_file("", true),
+        checkThirdParty = false
+      },
+    },
+  },
+}
+
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
   vim.lsp.with(
      vim.lsp.diagnostic.on_publish_diagnostics,
@@ -199,7 +233,7 @@ vim.cmd [[nnoremap Q !!$SHELL <CR>]]
 -- vim.cmd [[autocmd BufRead * normal zz]]
 -- con rust_analyzer
 -- local servers = { "rust_analyzer"}
-local servers = { "pyright", "tsserver", "clangd", "rust_analyzer", "julials", "gopls", "hls", "vimls", "lua_ls"}
+local servers = { "pyright", "tsserver", "clangd", "rust_analyzer", "julials", "gopls", "hls", "vimls", "lua_ls", "zls"}
 -- sin rust_analyzer
 -- local servers = { "pyright", "tsserver", "clangd", "julials"}
 for _, lsp in ipairs(servers) do

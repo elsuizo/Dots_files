@@ -36,7 +36,7 @@ require("lazy").setup({
    'ziglang/zig.vim',                            -- zig language support
    'neovim/nvim-lspconfig',                      -- lsp neovim support
    "L3MON4D3/LuaSnip",                           -- snippet engine
-   -- "rafamadriz/friendly-snippets",               -- a bunch of snippets to use
+   "rafamadriz/friendly-snippets",               -- a bunch of snippets to use
    "saadparwaiz1/cmp_luasnip",                   -- snippet completions
    "hrsh7th/cmp-nvim-lsp-signature-help",
    "hrsh7th/cmp-buffer" ,
@@ -53,6 +53,14 @@ require("lazy").setup({
    "hrsh7th/cmp-nvim-lsp-signature-help",
    "tpope/vim-dadbod",
    "tpope/vim-dotenv",
+   'navarasu/onedark.nvim',
+   "windwp/nvim-ts-autotag",
+   "yorickpeterse/vim-paper",
+   { "catppuccin/nvim", name = "catppuccin" },
+   {
+    'nvim-treesitter/nvim-treesitter',
+    run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+   },
    {
      'nvim-tree/nvim-tree.lua',
      requires = {
