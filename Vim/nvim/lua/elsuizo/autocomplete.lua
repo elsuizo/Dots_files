@@ -1,4 +1,5 @@
 -- NOTE(elsuizo:2021-11-01): cosas del nuevo engine de autocomplete
+--TODO(elsuizo: 2023-05-11): solve the tab problem!!!
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
 local cmp_status_ok, cmp = pcall(require, "cmp")
@@ -11,18 +12,13 @@ if not snip_status_ok then
   return
 end
 
---TODO(elsuizo: 2022-04-11): esto llama a una boocha de snippets hay que ver si
---esto no hace mas lento todo
 require("luasnip/loaders/from_vscode").lazy_load()
---TODO(elsuizo: 2022-04-10): esto no anda...por ahora lo voy a poner a todos
---en el mismo file
 
 local check_backspace = function()
   local col = vim.fn.col "." - 1
   return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
 end
 
---   פּ ﯟ   some other good icons
 local kind_icons = {
   Text = "",
   Method = "m",
@@ -120,7 +116,8 @@ cmp.setup {
     { name = "luasnip" },
     { name = "path" },
     { name = "buffer" },
-    { name = 'nvim_lsp_signature_help' },
+    { name = "nvim_lsp_signature_help" },
+    { name = "zsh" },
   },
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,

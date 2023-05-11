@@ -123,6 +123,12 @@ ls.add_snippets("rust", {
    s("FIXME", fmt("// FIXME(elsuizo: {}): {}", {os.date("%Y-%m-%d"), i(1, "fixme text here")})),
 })
 
+ls.add_snippets("zig", {
+   s("TODO", fmt("// TODO(elsuizo: {}): {}", {os.date("%Y-%m-%d"), i(1, "todo text here")})),
+   s("NOTE", fmt("// NOTE(elsuizo: {}): {}", {os.date("%Y-%m-%d"), i(1, "note text here")})),
+   s("FIXME", fmt("// FIXME(elsuizo: {}): {}", {os.date("%Y-%m-%d"), i(1, "fixme text here")})),
+})
+
 ls.add_snippets("python", {
    s("TODO", fmt("# TODO(elsuizo: {}): {}", {os.date("%Y-%m-%d"), i(1, "todo text here")})),
    s("NOTE", fmt("# NOTE(elsuizo: {}): {}", {os.date("%Y-%m-%d"), i(1, "note text here")})),

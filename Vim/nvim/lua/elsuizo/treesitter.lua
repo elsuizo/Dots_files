@@ -4,7 +4,7 @@ if (not status) then return end
 ts.setup {
   highlight = {
     enable = true,
-    disable = {},
+    disable = {"lua"},
   },
   indent = {
     enable = true,
@@ -15,6 +15,7 @@ ts.setup {
     "markdown_inline",
     "tsx",
     "typescript",
+    "javascript",
     "toml",
     "json",
     "yaml",

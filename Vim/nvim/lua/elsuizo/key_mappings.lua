@@ -18,26 +18,6 @@ function M.mapBuf(buf, mode, lhs, rhs, opts)
   vim.api.nvim_buf_set_keymap(buf, mode, lhs, rhs, options)
 end
 
--- Trouble setup
-vim.api.nvim_set_keymap("n", "<leader>xx", "<cmd>Trouble<cr>",
-  {silent = true, noremap = true}
-)
-vim.api.nvim_set_keymap("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>",
-  {silent = true, noremap = true}
-)
-vim.api.nvim_set_keymap("n", "<leader>xd", "<cmd>Trouble document_diagnostics<cr>",
-  {silent = true, noremap = true}
-)
-vim.api.nvim_set_keymap("n", "<leader>xl", "<cmd>Trouble loclist<cr>",
-  {silent = true, noremap = true}
-)
-vim.api.nvim_set_keymap("n", "<leader>qf", "<cmd>Trouble quickfix<cr>",
-  {silent = true, noremap = true}
-)
-vim.api.nvim_set_keymap("n", "gR", "<cmd>Trouble lsp_references<cr>",
-  {silent = true, noremap = true}
-)
-
 -- nvim.move
 -- Normal-mode commands
 M.map('n', '<C-j>', ':MoveLine(1)<CR>')
@@ -147,8 +127,6 @@ local enable_format_on_save = function(_, bufnr)
   })
 end
 
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
    --NOTE(elsuizo: 2023-04-14): esto es para que mantenga el coloreado de
    --sintaxis sin utilizar el lsp(creo...)
@@ -230,7 +208,7 @@ vim.cmd [[nnoremap g# g#zz]]
 vim.cmd [[nnoremap Q !!$SHELL <CR>]]
 
 -- center buffer around cursor when opening files
--- vim.cmd [[autocmd BufRead * normal zz]]
+vim.cmd [[autocmd BufRead * normal zz]]
 -- con rust_analyzer
 -- local servers = { "rust_analyzer"}
 local servers = { "pyright", "tsserver", "clangd", "rust_analyzer", "julials", "gopls", "hls", "vimls", "lua_ls", "zls"}
