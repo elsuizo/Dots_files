@@ -1,17 +1,18 @@
 -- el mejor colorscheme
-vim.cmd("colorscheme Monosvkem")
+-- vim.cmd("colorscheme Monosvkem")
 -- vim.cmd("colorscheme Iosvkem")
 -- lsp colors setup
--- require('colorbuddy').colorscheme('lowentropy')
+--TODO(elsuizo: 2023-05-13): hacer esto en el colorscheme
 vim.cmd [[
 hi DiagnosticError ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#d02b61
 hi DiagnosticWarn ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#6c9ef8
 hi DiagnosticInfo ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#AEFA47
 hi DiagnosticHint ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#404040]]
 
+--TODO(elsuizo: 2023-05-13): creo que por ahora no hace falta...
 -- cambiamos el color del menu del autocompletado
-vim.cmd [[highlight Pmenu ctermbg=NONE guibg=gray]]
-vim.cmd [[highlight PmenuSel ctermbg=NONE guibg=#404040]]
+-- vim.cmd [[highlight Pmenu ctermbg=NONE guibg=gray]]
+-- vim.cmd [[highlight PmenuSel ctermbg=NONE guibg=#404040]]
 -- custom colorscheme for lualine
 local Monosvkem = {}
 
@@ -71,7 +72,7 @@ end
 
 -- lualine setup
 require('lualine').setup {
-   -- options = {
-   --    theme = Monosvkem,
-   --    }
+   options = {
+      theme = Monosvkem,
+      }
 }

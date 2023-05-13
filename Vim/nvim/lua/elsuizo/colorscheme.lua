@@ -19,8 +19,8 @@ local no = s.NONE
 
 local COLORS = {
     dark = {
-        bg = '#121212',
-        fg = '#dddddd',
+        background = '#121212',
+        foreground = '#dddddd',
         red = '#d02b61',
         red_dark = '#691732',
         red_fluo = '#ff005c',
@@ -43,8 +43,8 @@ local COLORS = {
         orangeblack = '#150303',
     },
     light = {
-        bg = '#eff0eb',
-        fg = '#282a36',
+        background = '#eff0eb',
+        foreground = '#282a36',
         red = '#d02b61',
         red_dark = '#691732',
         red_fluo = '#ff005c',
@@ -97,8 +97,8 @@ function M.load()
     vim.g.colors_name = 'lowentropy'
     local current_mode = get_current_mode()
     -- Universal colors
-    Color.new('fg1', get_color('fg'))
-    Color.new('fg2', get_color('fg'))
+    Color.new('fg1', get_color('foreground'))
+    Color.new('fg2', get_color('foreground'))
     Color.new('fg3', '#080808')
     Color.new('disabled', '#464B5D')
     Color.new('line_numbers', '#505050')
@@ -158,8 +158,8 @@ function M.load()
     -- Style specific colors
     if current_mode == 'dark' then
         -- Dark theme specific styling
-        Color.new('bg', get_color('bg'))
-        Color.new('fg1', get_color('fg'))
+        Color.new('bg', get_color('background'))
+        Color.new('fg1', get_color('foreground'))
         Color.new('invisibles', '#65737E')
         Color.new('comments', '#78787e')
         Color.new('guides', '#424242')
@@ -173,11 +173,11 @@ function M.load()
         Color.new('link', get_color('red_fluo'))
         Color.new('heading', get_color('blue'))
         Color.new('codeDelimiter', get_color('brightblack'))
-        Color.new('TSVariable', get_color('fg'))
-        Color.new('TSField', get_color('fg'))
+        Color.new('TSVariable', get_color('foreground'))
+        Color.new('TSField', get_color('foreground'))
         Color.new('TSProperty', get_color('blue'))
         Color.new('Boolean', get_color('red'))
-        Color.new('TSParameter', get_color('fg'))
+        Color.new('TSParameter', get_color('foreground'))
         Color.new('TSKeywordOperator', get_color('yellow'))
 
         -- Group.new('Ignore', c.disabled, c.none, no) -- left blank, hidden
@@ -185,16 +185,15 @@ function M.load()
         -- Color.new('Repeat')
     elseif current_mode == 'light' then
         -- Light theme specific styling
-        Color.new('bg', get_color('bg', 'light'))
-        Color.new('fg1', get_color('fg', 'light'))
+        Color.new('bg', get_color('background', 'light'))
+        Color.new('fg1', get_color('foreground', 'light'))
         Color.new('invisibles', '#E7EAEC')
         Color.new('comments', '#90A4AE')
         Color.new('caret', '#272727')
         Color.new('selection', '#c2efd1')
         Color.new('guides', '#B0BEC5')
-        Color.new('line_numbers', '#686968')
-        -- Color.new('lsp_background', '#b5e5fc')
-        Color.new('lsp_background', '#e2e3e9')
+        Color.new('line_numbers', '#080808')
+        Color.new('lsp_background', '#121212')
         Color.new('line_highlight', '#ECF0F1')
         Color.new('accent', get_color('cyan'))
         Color.new('incsearch', get_color('purple'))
@@ -212,10 +211,10 @@ function M.load()
         Color.new('Number', get_color('green'))
         Color.new('Conditional', get_color('purple'))
         Color.new('String', get_color('yellow'))
-        Color.new('TSVariable', get_color('fg'))
-        Color.new('TSField', get_color('fg'))
-        Color.new('TSProperty', get_color('fg'))
-        Color.new('TSParameter', get_color('fg'))
+        Color.new('TSVariable', get_color('foreground'))
+        Color.new('TSField', get_color('foreground'))
+        Color.new('TSProperty', get_color('foreground'))
+        Color.new('TSParameter', get_color('foreground'))
         Color.new('TSKeywordOperator', get_color('purple'))
 
     end
@@ -227,7 +226,7 @@ function M.load()
     -- end
 
     Group.new('Constant', c.Constant, c.none, no) -- any constant
-    Group.new('String', c.String, c.none, i) -- this is a string
+    Group.new('String', c.String, c.none, no) -- this is a string
     Group.new('Character', c.Character, c.none, no) -- a character constant: 'c', '\n'
     Group.new('Boolean', c.Boolean, c.none, no) -- a boolean constant: TRUE, false
     Group.new('Number', c.Number, c.none, no) -- a boolean constant: TRUE, false
@@ -263,7 +262,7 @@ function M.load()
 
     -- Highlight groups
 
-    Group.new('ColorColumn', c.fg3, c.bg, no) --  used for the columns set with 'colorcolumn'
+    Group.new('ColorColumn', c.red, c.bg, no) --  used for the columns set with 'colorcolumn'
     Group.new('Conceal', c.blue, c.bg, no) -- placeholder characters substituted for concealed text (see 'conceallevel')
     Group.new('Cursor', c.bg, c.fg1, b + r) -- the character under the cursor
     Group.new('CursorIM', c.fg1, c.none, r) -- like Cursor, but used when in IME mode
@@ -276,30 +275,30 @@ function M.load()
     Group.new('EndOfBuffer', c.invisibles, c.none, no) -- filler lines (~) after the last line in the buffer
     Group.new('ErrorMsg', c.fg1, c.bg, no) -- error messages on the command line
     Group.new('VertSplit', c.selection, c.none, no) -- the column separating verti-- cally split windows
-    Group.new('Folded', c.purple, c.bg, i) -- line used for closed folds
+    Group.new('Folded', c.orange, c.bg, i) -- line used for closed folds
     Group.new('FoldColumn', c.blue, c.none, no) -- 'foldcolumn'
     Group.new('SignColumn', c.fg1, c.none, no) -- column where signs are displayed
     Group.new('IncSearch', c.selection, c.incsearch, r + b) -- 'incsearch' highlighting; also used for the text replaced with ':s///c'
     Group.new('LineNr', c.line_numbers, c.none, no) -- Line number for ':number' and ':#' commands, and when 'number' or 'relativenumber' option is set.
-    Group.new('CursorLineNr', c.accent, c.none, no) -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
-    Group.new('MatchParen', c.cyan, c.none, b) -- The character under the cursor or just before it, if it is a paired bracket, and its match.
+    Group.new('CursorLineNr', c.red, c.none, b) -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
+    Group.new('MatchParen', c.red, c.none, b) -- The character under the cursor or just before it, if it is a paired bracket, and its match.
     Group.new('ModeMsg', c.green, c.none, no) -- 'showmode' message (e.g., '-- INSERT --')
     Group.new('MoreMsg', g.ModeMsg, g.ModeMsg, g.ModeMsg) -- more-prompt
     Group.new('NonText', c.fg1, c.none, no) -- '~' and '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., '>' displayed when a double-wide character doesn't fit at the end of the line).
     Group.new('Normal', c.fg1, c.bg, no) -- normal text
-    Group.new('Pmenu', c.fg1, c.selection, no) -- Popup menu: normal item.
-    Group.new('PmenuSel', c.accent, c.disabled, no) -- Popup menu: selected item.
+    Group.new('Pmenu', c.fg3, c.gray, no) -- Popup menu: normal item.
+    Group.new('PmenuSel', c.bg, c.Label, no) -- Popup menu: selected item.
     Group.new('PmenuSbar', c.fg1, c.bg, no) -- Popup menu: scrollbar.
     Group.new('PmenuThumb', c.fg1, c.accent, no) -- Popup menu: Thumb of the scrollbar.
     Group.new('Question', c.blue, c.none, b) -- hit-enter prompt and yes/no questions
-    -- Group.new('QuickFixLine', g.Search, g.Search, g.Search) -- Current quickfix item in the quickfix window.
+    Group.new('QuickFixLine', c.fg2, c.blue, g.Type) -- Current quickfix item in the quickfix window.
     Group.new('qfLineNr', g.Type, g.Type, g.Type)
     Group.new('Search', c.selection, c.search, r + b) -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
-    Group.new('SpecialKey', c.purple, c.none, no) -- Meta and special keys listed with ':map', also for text used to show unprintable characters in the text, 'listchars'. Generally: text that is displayed differently from what it really is.
+    Group.new('SpecialKey', c.blue, c.none, no) -- Meta and special keys listed with ':map', also for text used to show unprintable characters in the text, 'listchars'. Generally: text that is displayed differently from what it really is.
     Group.new('SpellBad', c.red, c.none, i + uc) -- Word that is not recognized by the spellchecker. This will be combined with the highlighting used otherwise.
     Group.new('SpellCap', c.blue, c.none, i + uc) -- Word that should start with a capital. This will be combined with the highlighting used otherwise.
     Group.new('SpellLocal', c.cyan, c.none, i + uc) -- Word that is recognized by the spellchecker as one that is used in another region. This will be combined with the highlighting used otherwise.
-    Group.new('SpellRare', c.purple, c.none, i + uc) -- Word that is recognized by the spellchecker as one that is hardly ever used. spell This will be combined with the highlighting used otherwise.
+    Group.new('SpellRare', c.blue, c.none, i + uc) -- Word that is recognized by the spellchecker as one that is hardly ever used. spell This will be combined with the highlighting used otherwise.
     Group.new('StatusLine', c.fg1, c.bg, no) -- status line of current window
     Group.new('StatusLineNC', c.comments, c.selection, no) -- status lines of not-current windows Note: if this is equal to 'StatusLine' Vim will use '^^^' in the status line of the current window.
     -- Group.new('StatusLineTerm', g.StatusLine, g.StatusLine, g.StatusLine) -- status line of current :terminal window
@@ -320,7 +319,7 @@ function M.load()
     Group.new('NormalMode', c.accent, c.none, r)
     Group.new('InsertMode', c.green, c.none, r)
     Group.new('ReplaceMode', c.red, c.none, r)
-    Group.new('VisualMode', c.purple, c.none, r)
+    Group.new('VisualMode', c.blue, c.none, r)
     Group.new('CommandMode', c.gray, c.none, r)
     Group.new('Warnings', c.orange, c.none, r)
 
@@ -578,10 +577,10 @@ function M.load()
     Group.new('jsonBraces', c.fg1, c.none, no)
     Group.new('jsonString', c.fg1, c.none, no)
     -- Lua
-    Group.new('luaIn', c.purple, c.none, no)
-    Group.new('luaFunction', c.purple, c.none, no)
-    Group.new('luaTable', c.orange, c.none, no)
-    Group.new('luaLabel', c.purple, c.none, no)
+    -- Group.new('luaIn', c., c.none, no)
+    -- Group.new('luaFunction', c.purple, c.none, no)
+    -- Group.new('luaTable', c.orange, c.none, no)
+    -- Group.new('luaLabel', c.purple, c.none, no)
 
     -- Markdown (keep consistent with HTML, above
     Group.new('markdownItalic', c.fg3, c.none, i)
@@ -733,7 +732,7 @@ function M.load()
 
     -- Plugin highlight
     -- Telescope
-    local telescope_selection = current_mode == 'dark' and c.purple or c.yellow
+    local telescope_selection = current_mode == 'dark' and c.red or c.yellow
     Group.new('TelescopeSelection', telescope_selection, c.none, b) -- selected item
     Group.new('TelescopeSelectionCaret', c.green, c.none) -- selection caret
     -- Group.new('TelescopeMultiSelection', c.brown, c.none) -- multisections
@@ -850,14 +849,14 @@ function M.load()
     Group.new('TermCursorNC', c.fg1, c.bg)
 
     -- LSP Groups ( see `:h lsp-highlight`)
-    Group.new('LspDiagnosticsDefaultError', c.error, c.none) -- Base highlight for errors
-    Group.new('LspDiagnosticsDefaultWarning', c.yellow, c.none) -- Base highlight for warnings
-    Group.new('LSPDiagnosticsDefaultInformation', c.blue, c.none) -- Base highlight for info
-    Group.new('LspDiagnosticsDefaultHint', c.purple, c.none) -- Base highlight for hints
-
-    Group.new('LspReferenceText', c.none, c.lsp_background) -- used for highlighting 'text' references
-    Group.new('LspReferenceRead', c.none, c.lsp_background) -- used for highlighting 'read' references
-    Group.new('LspReferenceWrite', c.none, c.lsp_background) -- used for highlighting 'write' references
+    -- Group.new('LspDiagnosticsDefaultError', c.error, c.none) -- Base highlight for errors
+    -- Group.new('LspDiagnosticsDefaultWarning', c.yellow, c.none) -- Base highlight for warnings
+    -- Group.new('LSPDiagnosticsDefaultInformation', c.blue, c.none) -- Base highlight for info
+    -- Group.new('LspDiagnosticsDefaultHint', c.purple, c.none) -- Base highlight for hints
+    --
+    -- Group.new('LspReferenceText', c.none, c.lsp_background) -- used for highlighting 'text' references
+    -- Group.new('LspReferenceRead', c.none, c.lsp_background) -- used for highlighting 'read' references
+    -- Group.new('LspReferenceWrite', c.none, c.lsp_background) -- used for highlighting 'write' references
 
     -- LSP Saga
     Group.new('DiagnosticError', c.error, c.none)
@@ -1016,5 +1015,6 @@ function M.reload()
 end
 --
 M.load()
+
 return M
 
