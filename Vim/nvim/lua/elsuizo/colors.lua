@@ -1,6 +1,8 @@
 -- el mejor colorscheme
 vim.cmd("colorscheme Monosvkem")
+-- vim.cmd("colorscheme Iosvkem")
 -- lsp colors setup
+-- require('colorbuddy').colorscheme('lowentropy')
 vim.cmd [[
 hi DiagnosticError ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#d02b61
 hi DiagnosticWarn ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#6c9ef8
@@ -69,7 +71,7 @@ end
 
 -- lualine setup
 require('lualine').setup {
-   options = {
-      theme = Monosvkem,
-      }
+   -- options = {
+   --    theme = Monosvkem,
+   --    }
 }

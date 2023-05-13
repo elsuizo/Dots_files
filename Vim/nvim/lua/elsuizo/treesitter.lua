@@ -4,7 +4,7 @@ if (not status) then return end
 ts.setup {
   highlight = {
     enable = true,
-    disable = {"lua"},
+    disable = {"zig", "rust", "lua"},
   },
   indent = {
     enable = true,
@@ -23,6 +23,7 @@ ts.setup {
     "html",
     "lua",
     "rust",
+    "python",
   },
    --NOTE(elsuizo: 2023-05-10): esto utiliza el package de autotags
   autotag = {

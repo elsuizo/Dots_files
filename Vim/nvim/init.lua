@@ -22,4 +22,9 @@ require 'elsuizo.autocomplete'   -- "lua/elsuizo/autocomplete.lua"
 require 'elsuizo.database'       -- "lua/elsuizo/database.lua"
 require 'elsuizo.tree'           -- "lua/elsuizo/tree.lua"
 require 'elsuizo.treesitter'     -- "lua/elsuizo/treesitter.lua"
+--TODO(elsuizo: 2023-05-12): hacer nuestro propio colorscheme
+-- require 'elsuizo.colorscheme'    -- "lua/elsuizo/colorscheme.lua"
+
+--NOTE(elsuizo: 2023-05-12): la conchad de tu madre
+
 -- require 'elsuizo.web-stuff'     -- "lua/elsuizo/web-stuff.lua"

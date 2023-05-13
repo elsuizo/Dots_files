@@ -46,6 +46,7 @@ require("lazy").setup({
    "ray-x/cmp-treesitter" ,                                                                 -- autocomplete treesitter support
    "hrsh7th/nvim-cmp" ,                                                                     -- autocomplete engine
    "windwp/nvim-ts-autotag",                                                                -- to close automagically tags
+   'tjdevries/colorbuddy.nvim',
    {
     'nvim-treesitter/nvim-treesitter',
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,   -- treesitter support
