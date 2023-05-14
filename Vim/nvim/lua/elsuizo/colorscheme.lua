@@ -97,9 +97,11 @@ function M.load()
     vim.g.colors_name = 'lowentropy'
     local current_mode = get_current_mode()
     -- Universal colors
+    Color.new('background',  '#121212')
     Color.new('fg1', get_color('foreground'))
     Color.new('fg2', get_color('foreground'))
-    Color.new('fg3', '#080808')
+    Color.new('fg3', '#121212')
+    Color.new('fg4', '#080808')
     Color.new('disabled', '#464B5D')
     Color.new('line_numbers', '#505050')
     Color.new('selection', '#464B5D')
@@ -190,8 +192,8 @@ function M.load()
         Color.new('invisibles', '#E7EAEC')
         Color.new('comments', '#90A4AE')
         Color.new('caret', '#272727')
-        Color.new('selection', '#c2efd1')
-        Color.new('guides', '#B0BEC5')
+        Color.new('selection', '#303030')
+        Color.new('guides', '#a3a2a2')
         Color.new('line_numbers', '#080808')
         Color.new('lsp_background', '#121212')
         Color.new('line_highlight', '#ECF0F1')
@@ -218,13 +220,8 @@ function M.load()
         Color.new('TSKeywordOperator', get_color('purple'))
 
     end
-    -- Choose italic comments
-   Group.new('Comment', c.comments, c.none, i) -- italic comments
-    -- if vim.g.snazzybuddy_italics == 1 then
-    -- else
-        -- Group.new('Comment', c.comments, c.none, no) -- normal comments
-    -- end
 
+    Group.new('Comment', c.comments, c.none, no) -- italic comments
     Group.new('Constant', c.Constant, c.none, no) -- any constant
     Group.new('String', c.String, c.none, no) -- this is a string
     Group.new('Character', c.Character, c.none, no) -- a character constant: 'c', '\n'
@@ -253,7 +250,7 @@ function M.load()
     Group.new('SpecialChar', c.SpecialChar, c.none, no) -- special character in a constant
     Group.new('Tag', c.Tag, c.none, no) -- you can use CTRL-] on this
     Group.new('Delimiter', c.Delimiter, c.none, no) -- character that needs attention
-    Group.new('SpecialComment', c.SpecialComment, c.none, no) -- special things inside a comment
+    Group.new('SpecialComment', c.SpecialComment, c.none, i) -- special things inside a comment
     Group.new('Debug', c.Debug, c.none, no) -- debugging statements
     Group.new('Underlined', c.Underlined, c.none, ul) -- text that stands out, HTML links
     Group.new('Ignore', c.disabled, c.none, no) -- left blank, hidden
@@ -262,7 +259,7 @@ function M.load()
 
     -- Highlight groups
 
-    Group.new('ColorColumn', c.red, c.bg, no) --  used for the columns set with 'colorcolumn'
+    Group.new('ColorColumn', c.bg, c.fg4, b) --  used for the columns set with 'colorcolumn'
     Group.new('Conceal', c.blue, c.bg, no) -- placeholder characters substituted for concealed text (see 'conceallevel')
     Group.new('Cursor', c.bg, c.fg1, b + r) -- the character under the cursor
     Group.new('CursorIM', c.fg1, c.none, r) -- like Cursor, but used when in IME mode
@@ -280,12 +277,13 @@ function M.load()
     Group.new('SignColumn', c.fg1, c.none, no) -- column where signs are displayed
     Group.new('IncSearch', c.selection, c.incsearch, r + b) -- 'incsearch' highlighting; also used for the text replaced with ':s///c'
     Group.new('LineNr', c.line_numbers, c.none, no) -- Line number for ':number' and ':#' commands, and when 'number' or 'relativenumber' option is set.
-    Group.new('CursorLineNr', c.red, c.none, b) -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
+    Group.new('CursorLineNr', c.bg, c.blue1, no) -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
     Group.new('MatchParen', c.red, c.none, b) -- The character under the cursor or just before it, if it is a paired bracket, and its match.
     Group.new('ModeMsg', c.green, c.none, no) -- 'showmode' message (e.g., '-- INSERT --')
     Group.new('MoreMsg', g.ModeMsg, g.ModeMsg, g.ModeMsg) -- more-prompt
-    Group.new('NonText', c.fg1, c.none, no) -- '~' and '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., '>' displayed when a double-wide character doesn't fit at the end of the line).
-    Group.new('Normal', c.fg1, c.bg, no) -- normal text
+    Group.new('NonText', c.fg3, c.none, no) -- '~' and '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., '>' displayed when a double-wide character doesn't fit at the end of the line).
+    Group.new('Normal', c.fg1, c.fg3, no) -- normal text
+    -- Group.new('Normal',       c.main_font,       c.none,      no)
     Group.new('Pmenu', c.fg3, c.gray, no) -- Popup menu: normal item.
     Group.new('PmenuSel', c.bg, c.Label, no) -- Popup menu: selected item.
     Group.new('PmenuSbar', c.fg1, c.bg, no) -- Popup menu: scrollbar.
@@ -308,7 +306,7 @@ function M.load()
     Group.new('TabLineSel', c.green, c.accent, no)
     Group.new('TabLine', g.TabLineFill, g.TabLineFill, g.TabLineFill)
     Group.new('Title', c.blue, c.none, b) -- titles for output from ':set all', ':autocmd' etc.
-    Group.new('Visual', c.none, c.selection, no) -- Visual mode selection
+    Group.new('Visual', c.none, c.guides, no) -- Visual mode selection
     Group.new('VisualNOS', g.Visual, g.Visual, g.Visual) -- Visual mode selection when vim is 'Not Owning the Selection'. Only X11 Gui's gui-x11 and xterm-clipboard supports this.
     Group.new('WarningMsg', c.red, c.none, no) --  warning messages
     Group.new('WildMenu', c.red, c.selection, b) --  current match in 'wildmenu' completion
