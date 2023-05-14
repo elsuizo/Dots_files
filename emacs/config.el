@@ -54,7 +54,7 @@
 (add-hook 'racer-mode-hook #'eldoc-mode)
 (add-hook 'racer-mode-hook #'company-mode)
 
-(load-theme 'solarized t)
+; (load-theme 'badwolf t)
 
 ;#(use-package yasnippet
 ;#    :ensure t

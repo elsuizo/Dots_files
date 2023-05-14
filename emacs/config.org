@@ -76,7 +76,7 @@ Comienza la fiesta!!!
 #+end_src 
 * Colorthemes
 #+begin_src emacs-lisp
-(load-theme 'solarized t)
+; (load-theme 'badwolf t)
 #+end_src
 * Yasnippet
 #+begin_src emacs-lisp
