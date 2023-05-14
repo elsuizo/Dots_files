@@ -180,7 +180,7 @@ function M.load()
         Color.new('TSProperty', get_color('blue'))
         Color.new('Boolean', get_color('red'))
         Color.new('TSParameter', get_color('foreground'))
-        Color.new('TSKeywordOperator', get_color('yellow'))
+        Color.new('TSKeywordOperator', get_color('orange'))
 
         -- Group.new('Ignore', c.disabled, c.none, no) -- left blank, hidden
 
@@ -201,7 +201,7 @@ function M.load()
         Color.new('incsearch', get_color('purple'))
         Color.new('search', get_color('purple'))
         Color.new('htmlBold', get_color('cyan'))
-        Color.new('url', get_color('yellow'))
+        Color.new('url', get_color('orange'))
         Color.new('link', get_color('blue'))
         Color.new('heading', get_color('green'))
         Color.new('codeDelimiter', '#78787e')
@@ -212,7 +212,7 @@ function M.load()
         Color.new('Operator', get_color('fg'))
         Color.new('Number', get_color('green'))
         Color.new('Conditional', get_color('purple'))
-        Color.new('String', get_color('yellow'))
+        Color.new('String', get_color('orange'))
         Color.new('TSVariable', get_color('foreground'))
         Color.new('TSField', get_color('foreground'))
         Color.new('TSProperty', get_color('foreground'))
@@ -250,7 +250,7 @@ function M.load()
     Group.new('SpecialChar', c.SpecialChar, c.none, no) -- special character in a constant
     Group.new('Tag', c.Tag, c.none, no) -- you can use CTRL-] on this
     Group.new('Delimiter', c.Delimiter, c.none, no) -- character that needs attention
-    Group.new('SpecialComment', c.SpecialComment, c.none, i) -- special things inside a comment
+    Group.new('SpecialComment', c.SpecialComment, c.none, no) -- special things inside a comment
     Group.new('Debug', c.Debug, c.none, no) -- debugging statements
     Group.new('Underlined', c.Underlined, c.none, ul) -- text that stands out, HTML links
     Group.new('Ignore', c.disabled, c.none, no) -- left blank, hidden
@@ -259,7 +259,7 @@ function M.load()
 
     -- Highlight groups
 
-    Group.new('ColorColumn', c.bg, c.fg4, b) --  used for the columns set with 'colorcolumn'
+    Group.new('ColorColumn', c.none, c.fg4, b) --  used for the columns set with 'colorcolumn'
     Group.new('Conceal', c.blue, c.bg, no) -- placeholder characters substituted for concealed text (see 'conceallevel')
     Group.new('Cursor', c.bg, c.fg1, b + r) -- the character under the cursor
     Group.new('CursorIM', c.fg1, c.none, r) -- like Cursor, but used when in IME mode
@@ -325,7 +325,7 @@ function M.load()
 
     -- C
     Group.new('cOperator', c.cyan, c.none, no)
-    Group.new('cStructure', c.yellow, c.none, no)
+    Group.new('cStructure', c.Type, c.none, no)
     -- CoffeeScript
     Group.new('coffeeExtendedOp', c.fg1, c.none, no)
     Group.new('coffeeSpecialOp', c.fg2, c.none, no)
@@ -340,7 +340,7 @@ function M.load()
     Group.new('clojureDefine', c.orange, c.none, no)
     Group.new('clojureFunc', c.purple, c.none, no)
     Group.new('clojureSymbol', c.purple, c.none, no)
-    Group.new('clojureRepeat', c.yellow, c.none, no)
+    Group.new('clojureRepeat', c.orange, c.none, no)
     Group.new('clojureCharacter', c.cyan, c.none, no)
     Group.new('clojureStringEscape', c.cyan, c.none, no)
     Group.new('clojureException', c.red, c.none, no)
@@ -350,16 +350,16 @@ function M.load()
     Group.new('clojureRegexpMod', g.clojureRegexpCharClass, g.clojureRegexpCharClass, g.clojureRegexpCharClass)
     Group.new('clojureRegexpQuantifier', g.clojureRegexpCharClass, g.clojureRegexpCharClass, g.clojureRegexpCharClass)
     Group.new('clojureParen', c.fg3, c.none, no)
-    Group.new('clojureAnonArg', c.yellow, c.none, no)
+    Group.new('clojureAnonArg', c.orange, c.none, no)
     Group.new('clojureVariable', c.blue, c.none, no)
     Group.new('clojureMacro', c.orange, c.none, no)
-    Group.new('clojureMeta', c.yellow, c.none, no)
-    Group.new('clojureDeref', c.yellow, c.none, no)
-    Group.new('clojureQuote', c.yellow, c.none, no)
-    Group.new('clojureUnquote', c.yellow, c.none, no)
+    Group.new('clojureMeta', c.orange, c.none, no)
+    Group.new('clojureDeref', c.orange, c.none, no)
+    Group.new('clojureQuote', c.orange, c.none, no)
+    Group.new('clojureUnquote', c.orange, c.none, no)
     -- CSS
     Group.new('cssBraces', c.blue, c.none, no)
-    Group.new('cssFunctionName', c.yellow, c.none, no)
+    Group.new('cssFunctionName', c.orange, c.none, no)
     Group.new('cssIdentifier', c.orange, c.none, no)
     Group.new('cssClassName', c.purple, c.none, no)
     Group.new('cssColor', c.blue, c.none, no)
@@ -369,11 +369,11 @@ function M.load()
     Group.new('cssVendor', c.fg1, c.none, no)
     Group.new('cssTextProp', c.cyan, c.none, no)
     Group.new('cssAnimationProp', c.cyan, c.none, no)
-    Group.new('cssUIProp', c.yellow, c.none, no)
+    Group.new('cssUIProp', c.orange, c.none, no)
     Group.new('cssTransformProp', c.cyan, c.none, no)
     Group.new('cssTransitionProp', c.cyan, c.none, no)
     Group.new('cssPrintProp', c.cyan, c.none, no)
-    Group.new('cssPositioningProp', c.yellow, c.none, no)
+    Group.new('cssPositioningProp', c.orange, c.none, no)
     Group.new('cssBoxProp', c.cyan, c.none, no)
     Group.new('cssFontDescriptorProp', c.cyan, c.none, no)
     Group.new('cssFlexibleBoxProp', c.cyan, c.none, no)
@@ -404,7 +404,7 @@ function M.load()
     Group.new('elixirDocString', g.Comment, g.Comment, g.Comment)
     Group.new('elixirStringDelimiter', c.green, c.none, no)
     Group.new('elixirInterpolationDelimiter', c.cyan, c.none, no)
-    Group.new('elixirModuleDeclaration', c.yellow, c.none, no)
+    Group.new('elixirModuleDeclaration', c.orange, c.none, no)
     -- Go
     Group.new('goDirective', c.cyan, c.none, no)
     Group.new('goConstants', c.purple, c.none, no)
@@ -435,8 +435,8 @@ function M.load()
     Group.new('haskellChar', c.green, c.none, no)
 
     -- C#
-    Group.new('csClass', c.yellow, c.none, no)
-    Group.new('csAttribute', c.yellow, c.none, no)
+    Group.new('csClass', c.orange, c.none, no)
+    Group.new('csAttribute', c.orange, c.none, no)
     Group.new('csModifier', c.purple, c.none, no)
     Group.new('csType', c.red, c.none, no)
     Group.new('csUnspecifiedStatement', c.blue, c.none, no)
@@ -491,9 +491,9 @@ function M.load()
     Group.new('javascriptClassKeyword', c.cyan, c.none, no)
     Group.new('javascriptClassExtends', c.cyan, c.none, no)
     Group.new('javascriptDefault', c.cyan, c.none, no)
-    Group.new('javascriptClassName', c.yellow, c.none, no)
-    Group.new('javascriptClassSuperName', c.yellow, c.none, no)
-    Group.new('javascriptGlobal', c.yellow, c.none, no)
+    Group.new('javascriptClassName', c.orange, c.none, no)
+    Group.new('javascriptClassSuperName', c.orange, c.none, no)
+    Group.new('javascriptGlobal', c.orange, c.none, no)
     Group.new('javascriptEndColons', c.fg1, c.none, no)
     Group.new('javascriptFuncArg', c.fg1, c.none, no)
     Group.new('javascriptGlobalMethod', c.fg1, c.none, no)
@@ -528,7 +528,7 @@ function M.load()
     Group.new('javascriptObjectLabel', c.fg1, c.none, no)
     Group.new('javascriptPropertyName', c.fg1, c.none, no)
     Group.new('javascriptLogicSymbols', c.fg1, c.none, no)
-    Group.new('javascriptArrowFunc', c.yellow, c.none, no)
+    Group.new('javascriptArrowFunc', c.orange, c.none, no)
     Group.new('javascriptDocParamName', c.fg3, c.none, no)
     Group.new('javascriptDocTags', c.fg3, c.none, no)
     Group.new('javascriptDocNotation', c.fg3, c.none, no)
@@ -553,7 +553,7 @@ function M.load()
     Group.new('jsParens', c.red, c.none, no)
     Group.new('jsNull', c.purple, c.none, no)
     Group.new('jsUndefined', g.ErrorMsg, g.ErrorMsg, g.ErrorMsg)
-    Group.new('jsClassDefinition', c.yellow, c.none, no)
+    Group.new('jsClassDefinition', c.orange, c.none, no)
     Group.new('jsObjectProp', g.Identifier, g.Identifier, g.Identifier)
     Group.new('jsObjectKey', c.blue, c.none, no)
     Group.new('jsFunctionKey', c.blue, c.none, no)
@@ -615,7 +615,7 @@ function M.load()
     Group.new('moonSpecialOp', c.fg3, c.none, no)
     Group.new('moonExtendedOp', c.fg3, c.none, no)
     Group.new('moonFunction', c.fg3, c.none, no)
-    Group.new('moonObject', c.yellow, c.none, no)
+    Group.new('moonObject', c.orange, c.none, no)
     -- Objective-C
     Group.new('objcTypeModifier', c.red, c.none, no)
     Group.new('objcDirective', c.blue, c.none, no)
@@ -664,8 +664,8 @@ function M.load()
     Group.new('scalaKeywordModifier', c.red, c.none, no)
     Group.new('scalaSpecial', c.cyan, c.none, no)
     Group.new('scalaOperator', c.fg1, c.none, no)
-    Group.new('scalaTypeDeclaration', c.yellow, c.none, no)
-    Group.new('scalaTypeTypePostDeclaration', c.yellow, c.none, no)
+    Group.new('scalaTypeDeclaration', c.orange, c.none, no)
+    Group.new('scalaTypeTypePostDeclaration', c.orange, c.none, no)
     Group.new('scalaInstanceDeclaration', c.fg1, c.none, no)
     Group.new('scalaInterpolation', c.cyan, c.none, no)
     -- TypeScript
@@ -717,7 +717,7 @@ function M.load()
     Group.new('vimHiGroup', g.Type, g.Type, g.Type)
     Group.new('vimSetSep', c.fg3, c.none, no)
     Group.new('vimSep', c.fg3, c.none, no)
-    Group.new('vimContinue', c.yellow, c.none, no)
+    Group.new('vimContinue', c.orange, c.none, no)
 
     -- TODO: Cypher
     -- hi link cypherComment              Comment
@@ -730,12 +730,12 @@ function M.load()
 
     -- Plugin highlight
     -- Telescope
-    local telescope_selection = current_mode == 'dark' and c.red or c.yellow
+    local telescope_selection = current_mode == 'dark' and c.red or c.orange
     Group.new('TelescopeSelection', telescope_selection, c.none, b) -- selected item
     Group.new('TelescopeSelectionCaret', c.green, c.none) -- selection caret
     -- Group.new('TelescopeMultiSelection', c.brown, c.none) -- multisections
     -- Group.new('TelescopeNormal', g.Normal, c.g.Normal) --  floating windows created by telescope.
-    local telescope_matching = current_mode == 'dark' and c.yellow or c.orange
+    local telescope_matching = current_mode == 'dark' and c.orange or c.orange
     Group.new('TelescopeMatching', telescope_matching, c.none)
     -- Group.new('TelescopePromptPrefix', c.none, c.none)
 
@@ -778,13 +778,13 @@ function M.load()
     Group.new('gitcommitUnmergedType', c.blue, c.none, no)
     Group.new('gitcommitDiscardedType', c.blue, c.none, no)
     Group.new('gitcommitBranch', c.orange, c.none, no)
-    Group.new('gitcommitUntrackedFile', c.yellow, c.none, no)
+    Group.new('gitcommitUntrackedFile', c.orange, c.none, no)
     Group.new('gitcommitUnmergedFile', c.red, c.none, no)
     Group.new('gitcommitDiscardedFile', c.red, c.none, no)
 
     -- Gitgutter (airblade/vim-gitgutter)
     Group.new('GitGutterAdd', c.green, c.none, b)
-    Group.new('GitGutterChange', c.yellow, c.none, b)
+    Group.new('GitGutterChange', c.orange, c.none, b)
     Group.new('GitGutterDelete', c.red, c.none, b)
     Group.new('GitGutterChangeDelete', c.purple, c.none, b)
     -- Git Messenger (rhysd/git-messenger.vim)
@@ -796,13 +796,13 @@ function M.load()
     Group.new('NvimTreeFolderName', c.fg1, c.none, no)
     Group.new('NvimTreeFolderIcon', c.accent, c.none, no)
     Group.new('NvimTreeExecFile', c.green, c.none, no)
-    Group.new('NvimTreeImageFile', c.yellow, c.none, no)
+    Group.new('NvimTreeImageFile', c.orange, c.none, no)
     Group.new('NvimTreeEmptyFolderName', c.fg1, c.none, no)
     -- Group.new('NvimTreeIndentMarker', c.white, c.none, no)
     Group.new('NvimTreeMarkdownFile', c.blue, c.none, no)
     Group.new('NvimTreeSpecialFile', c.blue, c.none, no)
     Group.new('NvimTreeRootFolder', c.purple, c.none, no)
-    Group.new('NvimTreeGitDirty', c.yellow, c.none, no)
+    Group.new('NvimTreeGitDirty', c.orange, c.none, no)
     Group.new('NvimTreeGitStaged', c.blue, c.none, no)
     Group.new('NvimTreeGitDeleted', c.red, c.none, no)
     -- Group.new('NvimTreeGitMerge', c.blue, c.none, no)
@@ -826,7 +826,7 @@ function M.load()
     Group.new('netrwClassify', c.blue, c.none, no)
     Group.new('netrwLink', c.grey, c.none, no)
     Group.new('netrwSymLink', c.fg1, c.none, no)
-    Group.new('netrwExe', c.yellow, c.none, no)
+    Group.new('netrwExe', c.orange, c.none, no)
     Group.new('netrwComment', c.grey, c.none, no)
     Group.new('netrwList', c.blue, c.none, no)
     Group.new('netrwHelpCmd', c.cyan, c.none, no)
@@ -843,12 +843,12 @@ function M.load()
     -- +- Neovim Support -+
     Group.new('healthError', c.error, c.fg2)
     Group.new('healthSuccess', c.green, c.bg)
-    Group.new('healthWarning', c.yellow, c.bg)
+    Group.new('healthWarning', c.orange, c.bg)
     Group.new('TermCursorNC', c.fg1, c.bg)
 
     -- LSP Groups ( see `:h lsp-highlight`)
     -- Group.new('LspDiagnosticsDefaultError', c.error, c.none) -- Base highlight for errors
-    -- Group.new('LspDiagnosticsDefaultWarning', c.yellow, c.none) -- Base highlight for warnings
+    -- Group.new('LspDiagnosticsDefaultWarning', c.orange, c.none) -- Base highlight for warnings
     -- Group.new('LSPDiagnosticsDefaultInformation', c.blue, c.none) -- Base highlight for info
     -- Group.new('LspDiagnosticsDefaultHint', c.purple, c.none) -- Base highlight for hints
     --
@@ -858,15 +858,15 @@ function M.load()
 
     -- LSP Saga
     Group.new('DiagnosticError', c.error, c.none)
-    Group.new('DiagnosticWarning', c.yellow, c.none)
+    Group.new('DiagnosticWarning', c.orange, c.none)
     Group.new('DiagnosticInformation', c.blue, c.none)
     Group.new('DiagnosticHint', c.purple, c.none)
     Group.new('LspSagaRenameBorder', c.green, c.none)
     Group.new('LspSagaRenamePromptPrefix', c.green, c.none)
     Group.new('LspSagaHoverBorder', c.accent, c.none)
-    Group.new('DefinitionPreviewTitle', c.yellow, c.none)
-    Group.new('LspSagaDefPreviewBorder', c.yellow, c.none)
-    Group.new('LspFloatWinBorder', c.yellow, c.none)
+    Group.new('DefinitionPreviewTitle', c.orange, c.none)
+    Group.new('LspSagaDefPreviewBorder', c.orange, c.none)
+    Group.new('LspFloatWinBorder', c.orange, c.none)
     Group.new('LspSagaFinderSelection', c.green, c.none)
     -- Group.new('LspSagaLspFinderBorder', c.blue, c.none)
     Group.new('LspSagaDocTruncateLine', c.bg, c.none)
@@ -881,7 +881,7 @@ function M.load()
     Group.new('LspSagaDiagnosticTruncateLine', c.purple, c.none)
 
     -- Lsp saga lightbulb
-    Group.new('LspSagaLightBulb', c.yellow, c.none)
+    Group.new('LspSagaLightBulb', c.orange, c.none)
 
     -- LSP specific groups
     -- LSP Floating
@@ -975,12 +975,12 @@ function M.load()
     -- Group.new('TSVariableBuiltin' , g.magenta_alt_other     , nil) -- Variable names that are defined by the languages, like `this` or `self`.
 
     -- Mail highlighting
-    Group.new("mailQuoted1", c.yellow, c.none, no)
+    Group.new("mailQuoted1", c.orange, c.none, no)
     Group.new("mailQuoted2", c.green, c.none, no)
     Group.new("mailQuoted3", c.purple, c.none, no)
     Group.new("mailQuoted4", c.cyan, c.none, no)
     Group.new("mailQuoted5", c.blue, c.none, no)
-    Group.new("mailQuoted6", c.yellow, c.none, no)
+    Group.new("mailQuoted6", c.orange, c.none, no)
     Group.new("mailURL", c.blue, c.none, no)
     Group.new("mailEmail", c.blue, c.none, no)
 
