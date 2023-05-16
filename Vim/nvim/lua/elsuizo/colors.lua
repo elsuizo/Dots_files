@@ -9,12 +9,15 @@ hi DiagnosticWarn ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#6c9ef8
 hi DiagnosticInfo ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#AEFA47
 hi DiagnosticHint ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#404040]]
 
+--TODO(elsuizo: 2023-05-14): no se porque no anda esto...
+-- vim.cmd "highlight CursorLineNr guifg=white guibg=#050505 gui=NONE"
+
 --TODO(elsuizo: 2023-05-13): creo que por ahora no hace falta...
 -- cambiamos el color del menu del autocompletado
 -- vim.cmd [[highlight Pmenu ctermbg=NONE guibg=gray]]
 -- vim.cmd [[highlight PmenuSel ctermbg=NONE guibg=#404040]]
 -- custom colorscheme for lualine
-local Monosvkem = {}
+local LowEntropy = {}
 
 local colors = {
   black        = "#121212",
@@ -28,37 +31,37 @@ local colors = {
   inactivegray = '#7c6f64',
 }
 
-Monosvkem.normal = {
+LowEntropy.normal = {
   a = { bg = colors.white, fg = colors.black, gui = "bold", },
   b = { bg = colors.blue, fg = colors.white, },
   c = { bg = colors.black, fg = colors.white },
 }
 
-Monosvkem.insert = {
+LowEntropy.insert = {
   a = { bg = colors.blue, fg = colors.black, gui = "bold", },
   b = { bg = colors.black, fg = colors.white },
   c = { bg = colors.lightgray, fg = colors.white }
 }
 
-Monosvkem.visual = {
+LowEntropy.visual = {
   a = { bg = colors.white, fg = colors.black, gui = "bold", },
   b = { bg = colors.blue, fg = colors.white, },
   c = { bg = colors.lightgray, fg = colors.black },
 }
 
-Monosvkem.replace = {
+LowEntropy.replace = {
   a = { bg = colors.white, fg = colors.black, gui = "bold", },
   b = { bg = colors.lightgray, fg = colors.white, },
   c = { bg = colors.black, fg = colors.white },
 }
 
-Monosvkem.command = {
+LowEntropy.command = {
   a = { bg = colors.white, fg = colors.black},
   b = { bg = colors.black, fg = colors.white, },
   c = { bg = colors.lightgray, fg = colors.black },
 }
 
-Monosvkem.inactive = {
+LowEntropy.inactive = {
   a = { bg = colors.black, fg = colors.white, gui = "bold", },
   b = { bg = colors.black, fg = colors.white, },
   c = { bg = colors.black, fg = colors.white, },
@@ -73,6 +76,6 @@ end
 -- lualine setup
 require('lualine').setup {
    options = {
-      theme = Monosvkem,
+      theme = LowEntropy,
       }
 }

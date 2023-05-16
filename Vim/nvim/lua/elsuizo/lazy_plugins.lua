@@ -19,10 +19,10 @@ require("lazy").setup({
    'lervag/vimtex',                                                                         -- for work with tex files
    'rust-lang/rust.vim',                                                                    -- Rust language support
    'chrisbra/csv.vim',                                                                      -- Visualize csv files
-   'elsuizo/vim-colors-paramount-suizo',                                                    -- personal colorscheme
-   'neutaaaaan/iosvkem',                                                                    -- one of the best colorschemes
+   -- 'elsuizo/vim-colors-paramount-suizo',                                                    -- personal colorscheme
+   -- 'neutaaaaan/iosvkem',                                                                    -- one of the best colorschemes
    'tomtom/tcomment_vim',                                                                   -- comment lines or blocks of code
-   'elsuizo/monosvkem',                                                                     -- the best colorscheme
+   -- 'elsuizo/monosvkem',                                                                     -- the best colorscheme
    'roxma/vim-tmux-clipboard',                                                              -- to get nice clipboard interface with tmux panes
    'alaric/neovim-visor',                                                                   -- open/close the terminal with Alt-t
    'nvim-lua/plenary.nvim',                                                                 -- async support for lua

@@ -246,7 +246,7 @@ function M.load()
     Group.new('StorageClass', c.StorageClass, c.none, no) -- static, register, volatile, etc.
     Group.new('Structure', c.Structure, c.none, no) -- struct, union, enum, etc.
     Group.new('Typedef', c.Typedef, c.none, no) -- A typedef
-    Group.new('Special', c.Special, c.none, i) -- any special symbol
+    Group.new('Special', c.red, c.none, b) -- any special symbol
     Group.new('SpecialChar', c.SpecialChar, c.none, no) -- special character in a constant
     Group.new('Tag', c.Tag, c.none, no) -- you can use CTRL-] on this
     Group.new('Delimiter', c.Delimiter, c.none, no) -- character that needs attention
@@ -277,7 +277,7 @@ function M.load()
     Group.new('SignColumn', c.fg1, c.none, no) -- column where signs are displayed
     Group.new('IncSearch', c.selection, c.incsearch, r + b) -- 'incsearch' highlighting; also used for the text replaced with ':s///c'
     Group.new('LineNr', c.line_numbers, c.none, no) -- Line number for ':number' and ':#' commands, and when 'number' or 'relativenumber' option is set.
-    Group.new('CursorLineNr', c.bg, c.blue1, no) -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
+    Group.new('CursorLineNr', c.red, c.blue1, r) -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
     Group.new('MatchParen', c.red, c.none, b) -- The character under the cursor or just before it, if it is a paired bracket, and its match.
     Group.new('ModeMsg', c.green, c.none, no) -- 'showmode' message (e.g., '-- INSERT --')
     Group.new('MoreMsg', g.ModeMsg, g.ModeMsg, g.ModeMsg) -- more-prompt
@@ -296,7 +296,7 @@ function M.load()
     Group.new('SpellBad', c.red, c.none, i + uc) -- Word that is not recognized by the spellchecker. This will be combined with the highlighting used otherwise.
     Group.new('SpellCap', c.blue, c.none, i + uc) -- Word that should start with a capital. This will be combined with the highlighting used otherwise.
     Group.new('SpellLocal', c.cyan, c.none, i + uc) -- Word that is recognized by the spellchecker as one that is used in another region. This will be combined with the highlighting used otherwise.
-    Group.new('SpellRare', c.blue, c.none, i + uc) -- Word that is recognized by the spellchecker as one that is hardly ever used. spell This will be combined with the highlighting used otherwise.
+    Group.new('SpellRare', c.blue, c.none, uc) -- Word that is recognized by the spellchecker as one that is hardly ever used. spell This will be combined with the highlighting used otherwise.
     Group.new('StatusLine', c.fg1, c.bg, no) -- status line of current window
     Group.new('StatusLineNC', c.comments, c.selection, no) -- status lines of not-current windows Note: if this is equal to 'StatusLine' Vim will use '^^^' in the status line of the current window.
     -- Group.new('StatusLineTerm', g.StatusLine, g.StatusLine, g.StatusLine) -- status line of current :terminal window
