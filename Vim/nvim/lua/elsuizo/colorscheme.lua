@@ -570,10 +570,10 @@ function M.load()
     Group.new('jsStorageClass', c.blue, c.none, no)
     Group.new('jsxRegion', c.blue, c.none, no)
     -- JSON
-    Group.new('jsonKeyword', c.green, c.none, no)
-    Group.new('jsonQuote', c.green, c.none, no)
-    Group.new('jsonBraces', c.fg1, c.none, no)
-    Group.new('jsonString', c.fg1, c.none, no)
+    -- Group.new('jsonKeyword', c.green, c.none, no)
+    -- Group.new('jsonQuote', c.green, c.none, no)
+    -- Group.new('jsonBraces', c.fg1, c.none, no)
+    -- Group.new('jsonString', c.fg1, c.none, no)
     -- Lua
     -- Group.new('luaIn', c., c.none, no)
     -- Group.new('luaFunction', c.purple, c.none, no)
@@ -735,8 +735,8 @@ function M.load()
     Group.new('TelescopeSelectionCaret', c.green, c.none) -- selection caret
     -- Group.new('TelescopeMultiSelection', c.brown, c.none) -- multisections
     -- Group.new('TelescopeNormal', g.Normal, c.g.Normal) --  floating windows created by telescope.
-    local telescope_matching = current_mode == 'dark' and c.orange or c.orange
-    Group.new('TelescopeMatching', telescope_matching, c.none)
+    -- local telescope_matching = current_mode == 'dark' and c.orange or c.orange
+    Group.new('TelescopeMatching', c.orange, c.none)
     -- Group.new('TelescopePromptPrefix', c.none, c.none)
 
     -- --  Telescope Border highlight groups.

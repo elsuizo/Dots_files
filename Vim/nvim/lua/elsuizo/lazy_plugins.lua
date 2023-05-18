@@ -30,7 +30,12 @@ require("lazy").setup({
    'nvim-telescope/telescope-fzy-native.nvim',                                              -- fuzzy finder and more...
    'cljoly/telescope-repo.nvim',                                                            -- for finding stuff relative to a specific folder
    'kyazdani42/nvim-web-devicons',                                                          -- for nice icons
-   'romgrk/barbar.nvim',                                                                    -- to visualize the buffers in the superior bar
+   {'romgrk/barbar.nvim',                                                                   -- bar to visualize buffers and tabs
+       dependencies = {
+         'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
+       },
+       version = '^1.0.0', -- optional: only update when a new 1.x version is released
+   },
    'ziglang/zig.vim',                                                                       -- zig language support
    'neovim/nvim-lspconfig',                                                                 -- lsp neovim support
    "L3MON4D3/LuaSnip",                                                                      -- snippet engine
@@ -54,9 +59,8 @@ require("lazy").setup({
    {
      'nvim-tree/nvim-tree.lua',
      requires = {
-       'nvim-tree/nvim-web-devicons', -- optional, for file icons
+       'nvim-tree/nvim-web-devicons',
      },                                                                                     -- tree folder visualization
-     tag = 'nightly' -- optional, updated every week. (see issue #1193)
    },
    {
      'hoob3rt/lualine.nvim',
