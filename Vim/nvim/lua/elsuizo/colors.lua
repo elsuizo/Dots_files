@@ -5,7 +5,7 @@
 --TODO(elsuizo: 2023-05-13): hacer esto en el colorscheme
 vim.cmd [[
 hi DiagnosticError ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#d02b61
-hi DiagnosticWarn ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#6c9ef8
+hi DiagnosticWarn ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#373737
 hi DiagnosticInfo ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#AEFA47
 hi DiagnosticHint ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#404040]]
 
