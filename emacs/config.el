@@ -1,34 +1,50 @@
 ;; Install Evil and disable C-i to jump forward to restore TAB functionality in Org mode.
 (use-package evil
-             :init (setq evil-want-C-i-jump nil)
-             :config (evil-mode))
-  (require 'evil)
+	    :init (setq evil-want-C-i-jump nil)
+	    :config (evil-mode))
+(require 'evil)
     (evil-mode 1)
+
+(setq gc-cons-threshold 800000)
+(require 'evil-leader)
+(global-evil-leader-mode)
+(evil-leader/set-leader ",")
+(evil-leader/set-key
+"b" 'switch-to-buffer
+"w" 'save-buffer
+"c" 'cargo-process-build
+"t" 'term)
+(setq package-list '(evil-leader))
 
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
 (setq byte-compile-warnings '(cl-functions))
 
 (setq gc-cons-threshold 400000000)
-(set-frame-font "mononoki  Nerd Font Mono 13")
+;(set-frame-font "mononoki  Nerd Font Mono 15")
+(set-frame-font "JetBrainsMono Nerd Font 15")
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (column-number-mode)
 (show-paren-mode)
 
+(setq inhibit-startup-message t)
+
+(use-package all-the-icons)
+
 ;;; Set up package
 (require 'package)
 (add-to-list 'package-archives
- '("melpa" . "http://melpa.org/packages/") t)
+'("melpa" . "http://melpa.org/packages/") t)
 ; Bootstrap `use-package'
 (unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
+(package-refresh-contents)
+(package-install 'use-package))
 
 ;; From use-package README
 (eval-when-compile
-  (require 'use-package))
+(require 'use-package))
 (require 'diminish)                ;; if you use :diminish
 (require 'bind-key)
 (setq use-package-verbose t)
@@ -39,10 +55,10 @@
 (global-evil-leader-mode)
 (evil-leader/set-leader ",")
 (evil-leader/set-key
-  "b" 'switch-to-buffer
-  "w" 'save-buffer
-  "c" 'cargo-process-build
-  "t" 'term)
+"b" 'switch-to-buffer
+"w" 'save-buffer
+"c" 'cargo-process-build
+"t" 'term)
 (setq package-list '(evil-leader))
 
 (electric-pair-mode)
@@ -54,7 +70,8 @@
 (add-hook 'racer-mode-hook #'eldoc-mode)
 (add-hook 'racer-mode-hook #'company-mode)
 
-; (load-theme 'badwolf t)
+(load-theme 'deeper-blue t)
+;(load-theme 'wombat t)
 
 ;#(use-package yasnippet
 ;#    :ensure t
@@ -129,9 +146,9 @@
 (setq history-delete-duplicates t)
 (setq savehist-save-minibuffer-history 1)
 (setq savehist-additional-variables
-      '(kill-ring
-        search-ring
-        regexp-search-ring))
+    '(kill-ring
+	search-ring
+	regexp-search-ring))
 
 (require 'saveplace)
 (setq-default save-place t)
