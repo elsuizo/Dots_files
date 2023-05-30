@@ -1,8 +1,8 @@
-" NOTE: when a warning message like pitch font add !
-" Guifont! RobotoMono Nerd Font:h13
-Guifont! mononoki Nerd Font Mono:h13
-" Guifont! InconsolataForPowerline Nerd Font:h13
-" Guifont DejaVu Sans Mono:h11
-" Guifont DejaVu Sans Mono:h13
-" Guifont! FuraMonoForPowerline Nerd Font:h9
-GuiTabline 0
+" Enable Mouse
+set mouse=a
+set guifont=Hack\ Nerd\ Font:h16
+" Right Click Context Menu (Copy-Cut-Paste)
+nnoremap <silent><RightMouse> :call GuiShowContextMenu()<CR>
+inoremap <silent><RightMouse> <Esc>:call GuiShowContextMenu()<CR>
+xnoremap <silent><RightMouse> :call GuiShowContextMenu()<CR>gv
+snoremap <silent><RightMouse> <C-G>:call GuiShowContextMenu()<CR>gv
