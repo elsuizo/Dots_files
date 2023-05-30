@@ -20,13 +20,13 @@ local check_backspace = function()
 end
 
 local kind_icons = {
-  Text = "",
-  Method = "m",
-  Function = "",
+  Text = "",
+  Method = "󰣪",
+  Function = "󰡱",
   Constructor = "",
   Field = "",
-  Variable = "",
-  Class = "",
+  Variable = "󰫧",
+  Class = "",
   Interface = "",
   Module = "",
   Property = "",
@@ -36,14 +36,14 @@ local kind_icons = {
   Keyword = "",
   Snippet = "",
   Color = "",
-  File = "",
+  File = "",
   Reference = "",
-  Folder = "",
+  Folder = "",
   EnumMember = "",
   Constant = "",
   Struct = "",
   Event = "",
-  Operator = "",
+  Operator = "",
   TypeParameter = "",
 }
 
