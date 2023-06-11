@@ -3,14 +3,14 @@
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
 # set by alacritty itself.
-#env:
+env:
   # TERM variable
   #
   # This value is used to set the `$TERM` environment variable for
   # each instance of Alacritty. If it is not present, alacritty will
   # check the local terminfo database and use `alacritty` if it is
   # available, otherwise `xterm-256color` is used.
-  #TERM: xterm-256color
+  TERM: xterm-256color
 
 window:
   # Window dimensions (changes require restart)
@@ -82,6 +82,7 @@ font:
   normal:
     # family: mononoki Nerd Font Mono
     family: JetBrainsMono Nerd Font
+    # family: Hack Nerd Font
     # Font family
     #
     # Default:
@@ -157,30 +158,58 @@ debug:
 draw_bold_text_with_bright_colors: true
 # Colors (Pencil Dark)
 colors:
-  # Default Colors
+  # # Default Colors
+  # primary:
+  #   background: '0x121212'
+  #   foreground: '0xdddddd'
+  # # Normal colors
+  # normal:
+  #   black:   '0x121212'
+  #   red:     '0xd02b61'
+  #   green:   '0x10a778'
+  #   yellow:  '0xa89c14'
+  #   blue:    '0x5688af'
+  #   magenta: '0x523c79'
+  #   cyan:    '0x57aadd'
+  #   white:   '0xe0e0e0'
+  # # Bright colors
+  # bright:
+  #   black:   '0x818181'
+  #   red:     '0xd02b61'
+  #   green:   '0x5fd7af'
+  #   yellow:  '0xf3e430'
+  #   blue:    '0x0056b7'
+  #   magenta: '0x6855de'
+  #   cyan:    '0x4fb8cc'
+  #   white:   '0xf1f1f1'
+# Colors (Paper Theme)
+colors:
+  # Default colors
   primary:
-    background: '0x121212'
-    foreground: '0xdddddd'
+    background: '#F2EEDE'
+    foreground: '#000000'
+
   # Normal colors
   normal:
-    black:   '0x121212'
-    red:     '0xd02b61'
-    green:   '0x10a778'
-    yellow:  '0xa89c14'
-    blue:    '0x5688af'
-    magenta: '0x523c79'
-    cyan:    '0x57aadd'
-    white:   '0xe0e0e0'
+    black:   '#000000'
+    red:     '#CC3E28'
+    green:   '#216609'
+    yellow:  '#B58900'
+    blue:    '#1E6FCC'
+    magenta: '#5C21A5'
+    cyan:    '#158C86'
+    white:   '#AAAAAA'
+
   # Bright colors
   bright:
-    black:   '0x818181'
-    red:     '0xd02b61'
-    green:   '0x5fd7af'
-    yellow:  '0xf3e430'
-    blue:    '0x0056b7'
-    magenta: '0x6855de'
-    cyan:    '0x4fb8cc'
-    white:   '0xf1f1f1'
+    black:   '#555555'
+    red:     '#CC3E28'
+    green:   '#216609'
+    yellow:  '#B58900'
+    blue:    '#1E6FCC'
+    magenta: '#5C21A5'
+    cyan:    '#158C86'
+    white:   '#AAAAAA'
 
 #Colors (Gruvbox Material Dark Medium)
 # colors:
@@ -421,7 +450,7 @@ visual_bell:
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
 window:
-  opacity: 0.7
+  opacity: 1.0
 
 # Mouse bindings
 #
