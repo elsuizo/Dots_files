@@ -195,8 +195,8 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
 )
 
 -- NOTE(elsuizo:2021-12-05): esto lo que cambia es el color de la ventana que aparece cuando accedes a los docs por ejemplo de Rust
-vim.cmd [[autocmd ColorScheme * highlight NormalFloat guibg=#121212]]
-vim.cmd [[autocmd ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]]
+-- vim.cmd [[autocmd ColorScheme * highlight NormalFloat guibg=#121212]]
+-- vim.cmd [[autocmd ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]]
 
 -- center the buffer in a search
 vim.cmd [[nnoremap n nzz]]

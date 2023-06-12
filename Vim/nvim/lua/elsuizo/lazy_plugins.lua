@@ -52,6 +52,7 @@ require("lazy").setup({
    "hrsh7th/nvim-cmp" ,                                                                     -- autocomplete engine
    "windwp/nvim-ts-autotag",                                                                -- to close automagically tags
    'tjdevries/colorbuddy.nvim',
+   "yorickpeterse/vim-paper",
    {
     'nvim-treesitter/nvim-treesitter',
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,   -- treesitter support
