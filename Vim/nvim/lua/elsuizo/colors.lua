@@ -1,5 +1,7 @@
 -- el mejor colorscheme
 vim.cmd("colorscheme paper")
+-- cambiamos el color de highlight porque el que viene es mufeti
+vim.cmd[[hi Search guibg=#AEFA47 guifg=#d02b61]]
 -- lsp colors setup
 --TODO(elsuizo: 2023-05-13): hacer esto en el colorscheme
 -- vim.cmd [[
