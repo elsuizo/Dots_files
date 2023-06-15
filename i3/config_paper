@@ -1,0 +1,319 @@
+# colors
+set $base00 #101218
+set $base01 #1f222d
+set $base02 #252936
+set $base03 #7780a1
+set $base04 #C0C5CE
+set $base05 #d1d4e0
+set $base06 #C9CCDB
+set $base07 #ffffff
+set $base08 #ee829f
+set $base09 #f99170
+set $base0A #ffefcc
+set $base0B #a5ffe1
+set $base0C #97e0ff
+set $base0D #97bbf7
+set $base0E #c0b7f9
+set $base0F #fcc09e
+set $orange_color #ffa31a
+set $debian_red #ff1a1a
+set $blue_piola #1a1aff
+set $green_piola #00b33c
+set $gris_piola #808080
+set $paper #F2EEDE
+set $paper_bg #000000
+
+set $mod Mod4
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+# font pango:Roboto Mono Medium 11px
+# font pango: DejaVu Sans Mono 8
+font pango:Noto Sans 8
+#font pango: Source Sans Pro Regular 8
+# This font is widely installed, provides lots of unicode glyphs, right-to-left
+# text rendering and scalability on retina/hidpi displays (thanks to pango).
+#font pango:DejaVu Sans Mono 8
+
+# Before i3 v4.8, we used to recommend this one as the default:
+# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+# The font above is very space-efficient, that is, it looks good, sharp and
+# clear in small sizes. However, its unicode glyph coverage is limited, the old
+# X core fonts rendering does not support right-to-left and this being a bitmap
+# font, it doesn’t scale on retina/hidpi displays.
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+#smart_borders on # que estara en otra version
+smart_gaps on
+# start a terminal
+#bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec alacritty
+# bindsym $mod+Return exec gnome-terminal
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start dmenu (a openbox program launcher)
+#bindsym $mod+d exec gmrun
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+
+bindsym $mod+d exec rofi -show drun   -fg "#f1f1f1" -bg "#333333" -hlfg "#ffffff" -hlbg "#336699" -o 85
+# fast alternative to i3-dmenu
+#bindsym $mod+d exec --no-startup-id j4-dmenu-desktop
+#bindsym $mod+d exec gmrun
+# change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+#bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+#-------------------------------------------------------------------------
+# variables
+#-------------------------------------------------------------------------
+set $workspace1 "1:Internet "
+set $workspace2 "2:Programming "
+set $workspace3 "3:Lectures "
+set $workspace4 "4:Files "
+set $workspace5 "5:Telegram "
+set $workspace6 "6:Videos 嗢"
+set $workspace7 "7:Music "
+set $workspace8 "8:Mail "
+set $workspace11 "11:TODO "
+#-------------------------------------------------------------------------
+# switch to workspace
+bindsym $mod+1 workspace $workspace1
+bindsym $mod+2 workspace $workspace2
+bindsym $mod+3 workspace $workspace3
+bindsym $mod+4 workspace $workspace4
+bindsym $mod+5 workspace $workspace5
+bindsym $mod+6 workspace $workspace6
+bindsym $mod+7 workspace $workspace7
+bindsym $mod+8 workspace $workspace8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+bindsym $mod+Shift+t workspace $workspace11
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $workspace1
+bindsym $mod+Shift+2 move container to workspace $workspace2
+bindsym $mod+Shift+3 move container to workspace $workspace3
+bindsym $mod+Shift+4 move container to workspace $workspace4
+bindsym $mod+Shift+5 move container to workspace $workspace5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace $workspace7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+bar {
+      font pango:DejaVu Sans Mono, FontAwesome 13
+      # position top
+      mode hide
+      status_command i3status-rs /home/elsuizo/.config/i3/status.toml
+      colors {
+            separator #666666
+            background #222222
+            statusline #dddddd
+            focused_workspace #0088CC #0088CC #ffffff
+            active_workspace #333333 #333333 #ffffff
+            inactive_workspace #333333 #333333 #888888
+            urgent_workspace #2f343a #900000 #ffffff
+      }
+}
+mode "resize" {
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+# bar {
+#         status_command i3status
+# }
+
+#-------------------------------------------------------------------------
+# elsuizo adds
+#-------------------------------------------------------------------------
+# wallpaper
+exec_always --no-startup-id feh --no-fehbg --bg-scale /home/elsuizo/Pictures/Wallpapers/arch-paper.png
+# exec_always --no-startup-id feh --no-fehbg --bg-scale /home/elsuizo/Pictures/Wallpapers/arch_black2.png
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+# Sreen brightness controls
+# bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+# bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+
+# Touchpad controls
+#bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
+
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+# screenshot
+bindsym $mod+F12 exec xfce4-screenshooter
+
+# file mannager
+bindsym $mod+f exec thunar
+assign [class="Thunar"] $workspace4
+# Telegram
+bindsym $mod+t exec telegram-desktop
+assign [class="Telegram"] $workspace5
+
+assign [class="vlc"] $workspace6
+# open pdfs in workspace4
+assign [class="Zathura"] $workspace3
+
+bindsym $mod+c exec thunderbird
+assign [class="Thunderbird"] $workspace8
+
+# browser Firefox shortcut
+bindsym $mod+b exec firefox
+assign [class="firefox"] $workspace1
+
+# music
+# bindsym $mod+m exec xfce4-terminal -e cmus
+# bindsym $mod+m exec gnome-terminal -e cmus
+bindsym $mod+m exec alacritty -e cmus
+# power off gui
+#bindsym $mod+x exec cbpp-exit
+
+# screenshot
+bindsym XF86ScreenSaver exec xfce4-screenshooter
+
+# alsamixer
+bindsym $mod+o exec i3-sensible-terminal -e alsamixer
+# no borders
+for_window [class="Thunar"] border pixel 3
+for_window [class="Zathura"] border pixel 3
+#for_window [class="Gnome-terminal"] border pixel 3
+# for_window [class="Gvim"] fullscreen enable, scracthpad show
+
+#CHANGING BORDER STYLE
+bindsym $mod+i border normal
+bindsym $mod+y border 1pixel
+bindsym $mod+u border none
+
+new_window none
+
+#-------------------------------------------------------------------------
+# Execute Conky
+#-------------------------------------------------------------------------
+exec --no-startup-id conky
+
+exec picom
+
+# esto es para que el scroll sea lo mas rapido posible
+exec xset r rate 300 60
+#-------------------------------------------------------------------------
+# ONLY for the notebook
+#-------------------------------------------------------------------------
+# start the networ mannager
+#exec --no-startup-id nm-applet
+#-------------------------------------------------------------------------
+# ONLY for the notebook
+#-------------------------------------------------------------------------
+
+# Widow Colours          border   background text    indicator
+client.focused          $base01    $paper           $paper_bg $base0F
+client.focused_inactive $base06    $orange_color    $base03 $base0F
+client.unfocused        $base02    $paper_bg        $paper $base0F
+client.urgent           $base02    $debian_red      $base00 $base0F
+
+# Create Log out, Reboot, Poweroff bindings
+mode "Exit (L)ogout, (R)eboot, (P)oweroff" {
+        bindsym $mod+R exec systemctl reboot
+        bindsym $mod+L exit
+        bindsym $mod+P exec systemctl poweroff
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+x mode "Exit (L)ogout, (R)eboot, (P)oweroff"
+# rofi bindings
+bindsym F3  exec rofi -show run    -fg "#f1f1f1" -bg "#333333" -hlfg "#ffffff" -hlbg "#336699" -o 85
+bindsym F10 exec rofi -show drun   -fg "#f1f1f1" -bg "#333333" -hlfg "#ffffff" -hlbg "#336699" -o 85
+bindsym F12 exec rofi -show window -fg "#f1f1f1" -bg "#333333" -hlfg "#ffffff" -hlbg "#336699" -o 85
+
+# change the keyboard layout with shortcut (para los putos acentos espanioles)
+exec_always "setxkbmap -model pc105 -layout us,es -variant ,, -option grp:alt_shift_toggle"
