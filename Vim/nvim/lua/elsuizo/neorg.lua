@@ -6,9 +6,17 @@ require('neorg').setup {
        ["core.dirman"] = { -- Manages Neorg workspaces
          config = {
             workspaces = {
-               notes = "~/Dropbox/Norg",
+               todos = "~/Dropbox/TODOs",
+               remember = "~/Dropbox/Remember",
             },
          },
       },
-   },
+   ["core.keybinds"] = {
+       -- https://github.com/nvim-neorg/neorg/blob/main/lua/neorg/modules/core/keybinds/keybinds.lua
+       config = {
+         default_keybinds = true,
+            neorg_leader = "<Space>",
+       },
+      },
+   }
 }
