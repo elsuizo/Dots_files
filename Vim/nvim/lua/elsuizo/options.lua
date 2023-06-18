@@ -95,7 +95,8 @@ Option.w {
   spell = false,
   foldlevel = 99,
   -- foldmethod = "syntax",
-  foldmethod = "expr",
+  foldmethod = "indent",
+  foldenable = true,
   foldexpr = "nvim_treesitter#foldexpr()",
   foldtext = "v:lua.foldText()",
   linebreak = true

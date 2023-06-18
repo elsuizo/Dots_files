@@ -289,7 +289,7 @@ function M.load()
     Group.new('PmenuSbar', c.fg1, c.bg, no) -- Popup menu: scrollbar.
     Group.new('PmenuThumb', c.fg1, c.accent, no) -- Popup menu: Thumb of the scrollbar.
     Group.new('Question', c.blue, c.none, b) -- hit-enter prompt and yes/no questions
-    Group.new('QuickFixLine', c.fg2, c.blue, g.Type) -- Current quickfix item in the quickfix window.
+    Group.new('QuickFixLine', c.fg1, c.blue, g.Type) -- Current quickfix item in the quickfix window.
     Group.new('qfLineNr', g.Type, g.Type, g.Type)
     Group.new('Search', c.selection, c.search, r + b) -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
     Group.new('SpecialKey', c.blue, c.none, no) -- Meta and special keys listed with ':map', also for text used to show unprintable characters in the text, 'listchars'. Generally: text that is displayed differently from what it really is.
@@ -636,11 +636,11 @@ function M.load()
     Group.new('purescriptConditional', g.Conditional, g.Conditional, g.Conditional)
     Group.new('purescriptBacktick', c.orange, c.none, no)
     -- Python
-    Group.new('pythonCoding', g.Comment, g.Comment, g.Comment)
-    Group.new('pythonOperator', c.purple, c.none, no)
-    Group.new('pythonRepeat', c.purple, c.none, no)
-    Group.new('pythonInclude', c.purple, c.none, no)
-    Group.new('pythonStatement', c.purple, c.none, no)
+    -- Group.new('pythonCoding', g.Comment, g.Comment, g.Comment)
+    -- Group.new('pythonOperator', c.Operator, c.none, no)
+    -- Group.new('pythonRepeat', c.blue, c.none, no)
+    -- Group.new('pythonInclude', c.purple, c.none, no)
+    -- Group.new('pythonStatement', c.Statement, c.none, no)
 
     -- Ruby
     Group.new('rubyStringDelimiter', c.green, c.none, no)
@@ -653,8 +653,9 @@ function M.load()
 
     -- Rust
     Group.new('rustSelf', c.blue, c.none, b)
-    Group.new('rustPanic', c.red, c.none, b)
+    Group.new('rustPanic', c.green, c.none, b)
     Group.new('rustAssert', c.red, c.none, b)
+    Group.new('rustUnsafe', c.green, c.none, b)
     -- Scala
     Group.new('scalaNameDefinition', c.fg1, c.none, no)
     Group.new('scalaCaseFollowing', c.fg1, c.none, no)
@@ -793,7 +794,7 @@ function M.load()
     Group.new('gitmessengerHash', g.CursorLine, g.CursorLine, g.CursorLine) -- Commit hash at 'Commit:' header
     Group.new('gitmessengerHistory', g.CursorLine, g.CursorLine, g.CursorLine) -- History number at 'History:' header
     -- NvimTree (kyazdani42/nvim-tree.lua)
-    Group.new('NvimTreeFolderName', c.fg1, c.none, no)
+    Group.new('NvimTreeFolderName', c.fg, c.none, no)
     Group.new('NvimTreeFolderIcon', c.accent, c.none, no)
     Group.new('NvimTreeExecFile', c.green, c.none, no)
     Group.new('NvimTreeImageFile', c.orange, c.none, no)
@@ -801,7 +802,7 @@ function M.load()
     -- Group.new('NvimTreeIndentMarker', c.white, c.none, no)
     Group.new('NvimTreeMarkdownFile', c.blue, c.none, no)
     Group.new('NvimTreeSpecialFile', c.blue, c.none, no)
-    Group.new('NvimTreeRootFolder', c.purple, c.none, no)
+    Group.new('NvimTreeRootFolder', c.red, c.none, no)
     Group.new('NvimTreeGitDirty', c.orange, c.none, no)
     Group.new('NvimTreeGitStaged', c.blue, c.none, no)
     Group.new('NvimTreeGitDeleted', c.red, c.none, no)

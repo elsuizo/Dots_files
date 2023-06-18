@@ -22,7 +22,7 @@ require("lazy").setup({
    -- 'elsuizo/vim-colors-paramount-suizo',                                                    -- personal colorscheme
    -- 'neutaaaaan/iosvkem',                                                                    -- one of the best colorschemes
    'tomtom/tcomment_vim',                                                                   -- comment lines or blocks of code
-   -- 'elsuizo/monosvkem',                                                                     -- the best colorscheme
+   'elsuizo/monosvkem',                                                                     -- the best colorscheme
    'roxma/vim-tmux-clipboard',                                                              -- to get nice clipboard interface with tmux panes
    'alaric/neovim-visor',                                                                   -- open/close the terminal with Alt-t
    'nvim-lua/plenary.nvim',                                                                 -- async support for lua
@@ -53,6 +53,12 @@ require("lazy").setup({
    "windwp/nvim-ts-autotag",                                                                -- to close automagically tags
    'tjdevries/colorbuddy.nvim',
    "yorickpeterse/vim-paper",
+   {
+       "nvim-neorg/neorg",
+       -- tag = "*",
+       ft = "norg",
+       after = "nvim-treesitter", -- You may want to specify Telescope here as well
+   },
    {
     'nvim-treesitter/nvim-treesitter',
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,   -- treesitter support
