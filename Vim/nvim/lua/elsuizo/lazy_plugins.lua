@@ -30,6 +30,9 @@ require("lazy").setup({
    'nvim-telescope/telescope-fzy-native.nvim',                                              -- fuzzy finder and more...
    'cljoly/telescope-repo.nvim',                                                            -- for finding stuff relative to a specific folder
    'kyazdani42/nvim-web-devicons',                                                          -- for nice icons
+   {
+     "cpea2506/one_monokai.nvim",
+   },
    {'romgrk/barbar.nvim',                                                                   -- bar to visualize buffers and tabs
        dependencies = {
          'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status

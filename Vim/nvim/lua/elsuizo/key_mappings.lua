@@ -44,6 +44,10 @@ M.map("n", "<leader>e", "<cmd>lua require('telescope.builtin').diagnostics()<cr>
 M.map("n", "<leader>s", "<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.expand('<cword>') })<cr>")
 M.map("n", "<leader><leader>t", ":Telescope<cr>")
 
+-- Neorg mappings
+M.map("n", "<Space>T", ":Neorg workspace todos<cr>") -- go to todos Neorg file
+M.map("n", "<Space>R", ":Neorg workspace remember<cr>") -- go to remember Neorg file
+
 -- toggle visibility of the fucking tabs
 M.map("n", "<Leader><leader>T", ":set invlist<cr>")
 -- save
@@ -195,8 +199,8 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
 )
 
 -- NOTE(elsuizo:2021-12-05): esto lo que cambia es el color de la ventana que aparece cuando accedes a los docs por ejemplo de Rust
--- vim.cmd [[autocmd ColorScheme * highlight NormalFloat guibg=#121212]]
--- vim.cmd [[autocmd ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]]
+vim.cmd [[autocmd ColorScheme * highlight NormalFloat guibg=#121212]]
+vim.cmd [[autocmd ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]]
 
 -- center the buffer in a search
 vim.cmd [[nnoremap n nzz]]

@@ -653,9 +653,11 @@ function M.load()
 
     -- Rust
     Group.new('rustSelf', c.blue, c.none, b)
-    Group.new('rustPanic', c.green, c.none, b)
-    Group.new('rustAssert', c.red, c.none, b)
+    Group.new('rustPanic', c.red, c.none, b)
+    Group.new('rustAssert', c.green, c.none, b)
     Group.new('rustUnsafe', c.green, c.none, b)
+    Group.new('rustQuestionMark', c.red, c.none, b)
+    Group.new('rustType', c.fg1, c.none, b)
     -- Scala
     Group.new('scalaNameDefinition', c.fg1, c.none, no)
     Group.new('scalaCaseFollowing', c.fg1, c.none, no)
