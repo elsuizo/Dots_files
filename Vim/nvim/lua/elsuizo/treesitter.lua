@@ -25,6 +25,7 @@ ts.setup {
     "rust",
     "python",
     "haskell",
+    "ocaml",
   },
    --NOTE(elsuizo: 2023-05-10): esto utiliza el package de autotags
   autotag = {

@@ -37,6 +37,7 @@ local COLORS = {
         pink = '#FF5370',
         white = '#xe0e0e0',
         gray  = '#505050',
+        gray_warning  = '#373737',
         brightwhite = '#ffffff',
         brightblack = '#707070',
         linenrblack = '#404040',
@@ -156,6 +157,7 @@ function M.load()
     Color.new('Underlined', get_color('blue'))
     Color.new('Todo', get_color('bright_green'))
     Color.new('Note', get_color('bright_green'))
+    Color.new('Warning', get_color('gray_warning'))
     -- Color.new('TSProperty', get_color('fg'))
     -- Style specific colors
     if current_mode == 'dark' then
@@ -283,11 +285,13 @@ function M.load()
     Group.new('MoreMsg', g.ModeMsg, g.ModeMsg, g.ModeMsg) -- more-prompt
     Group.new('NonText', c.gray, c.none, no) -- '~' and '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., '>' displayed when a double-wide character doesn't fit at the end of the line).
     Group.new('Normal', c.fg1, c.fg3, no) -- normal text
+    Group.new('NormalFloat', c.fg1, c.fg3, no) -- text
+    Group.new('FloatBorder', c.red, c.fg1, no) -- normal text
     -- Group.new('Normal',       c.main_font,       c.none,      no)
     Group.new('Pmenu', c.fg3, c.gray, no) -- Popup menu: normal item.
     Group.new('PmenuSel', c.bg, c.Label, no) -- Popup menu: selected item.
     Group.new('PmenuSbar', c.fg1, c.bg, no) -- Popup menu: scrollbar.
-    Group.new('PmenuThumb', c.fg1, c.accent, no) -- Popup menu: Thumb of the scrollbar.
+    Group.new('PmenuThumb', c.fg1, c.orange, no) -- Popup menu: Thumb of the scrollbar.
     Group.new('Question', c.blue, c.none, b) -- hit-enter prompt and yes/no questions
     Group.new('QuickFixLine', c.fg1, c.blue, g.Type) -- Current quickfix item in the quickfix window.
     Group.new('qfLineNr', g.Type, g.Type, g.Type)
@@ -657,7 +661,7 @@ function M.load()
     Group.new('rustAssert', c.green, c.none, b)
     Group.new('rustUnsafe', c.green, c.none, b)
     Group.new('rustQuestionMark', c.red, c.none, b)
-    Group.new('rustType', c.fg1, c.none, b)
+    Group.new('rustType', c.cyan, c.none, b)
     -- Scala
     Group.new('scalaNameDefinition', c.fg1, c.none, no)
     Group.new('scalaCaseFollowing', c.fg1, c.none, no)
@@ -844,68 +848,68 @@ function M.load()
     -- NeoVim built in
 
     -- +- Neovim Support -+
-    Group.new('healthError', c.error, c.fg2)
-    Group.new('healthSuccess', c.green, c.bg)
-    Group.new('healthWarning', c.orange, c.bg)
-    Group.new('TermCursorNC', c.fg1, c.bg)
+    -- Group.new('healthError', c.error, c.fg2)
+    -- Group.new('healthSuccess', c.green, c.bg)
+    -- Group.new('healthWarning', c.orange, c.bg)
+    -- Group.new('TermCursorNC', c.fg1, c.bg)
 
     -- LSP Groups ( see `:h lsp-highlight`)
     -- Group.new('LspDiagnosticsDefaultError', c.error, c.none) -- Base highlight for errors
     -- Group.new('LspDiagnosticsDefaultWarning', c.orange, c.none) -- Base highlight for warnings
     -- Group.new('LSPDiagnosticsDefaultInformation', c.blue, c.none) -- Base highlight for info
     -- Group.new('LspDiagnosticsDefaultHint', c.purple, c.none) -- Base highlight for hints
-    --
+    -- --
     -- Group.new('LspReferenceText', c.none, c.lsp_background) -- used for highlighting 'text' references
     -- Group.new('LspReferenceRead', c.none, c.lsp_background) -- used for highlighting 'read' references
     -- Group.new('LspReferenceWrite', c.none, c.lsp_background) -- used for highlighting 'write' references
-
-    -- LSP Saga
-    Group.new('DiagnosticError', c.error, c.none)
-    Group.new('DiagnosticWarning', c.orange, c.none)
-    Group.new('DiagnosticInformation', c.blue, c.none)
-    Group.new('DiagnosticHint', c.purple, c.none)
-    Group.new('LspSagaRenameBorder', c.green, c.none)
-    Group.new('LspSagaRenamePromptPrefix', c.green, c.none)
-    Group.new('LspSagaHoverBorder', c.accent, c.none)
-    Group.new('DefinitionPreviewTitle', c.orange, c.none)
-    Group.new('LspSagaDefPreviewBorder', c.orange, c.none)
-    Group.new('LspFloatWinBorder', c.orange, c.none)
-    Group.new('LspSagaFinderSelection', c.green, c.none)
-    -- Group.new('LspSagaLspFinderBorder', c.blue, c.none)
-    Group.new('LspSagaDocTruncateLine', c.bg, c.none)
-    Group.new('LspSagaShTruncateLine', c.bg, c.none)
-    Group.new('LspSagaCodeActionTitle', c.orange, c.none, b)
-    -- Group.new('LspSagaCodeActionContent', c.green, c.none, b)
-    -- Group.new('LspSagaCodeActionTruncateLine', c.bg, c.none)
-    -- Group.new('LspSagaAutoPreview', c.orange, c.none)
-    Group.new('LspSagaSignatureHelpBorder', c.green, c.none)
-    Group.new('LspSagaDiagnosticBorder', c.purple, c.none)
-    Group.new('LspSagaDiagnosticHeader', c.orange, c.none, b)
-    Group.new('LspSagaDiagnosticTruncateLine', c.purple, c.none)
-
-    -- Lsp saga lightbulb
-    Group.new('LspSagaLightBulb', c.orange, c.none)
-
-    -- LSP specific groups
-    -- LSP Floating
+    --
+    -- -- LSP Saga
+    -- Group.new('DiagnosticError', c.red, c.none)
+    -- Group.new('DiagnosticWarning', gray_warning, c.none)
+    -- Group.new('DiagnosticInformation', c.blue, c.none)
+    -- Group.new('DiagnosticHint', c.purple, c.none)
+    -- Group.new('LspSagaRenameBorder', c.green, c.none)
+    -- Group.new('LspSagaRenamePromptPrefix', c.green, c.none)
+    -- Group.new('LspSagaHoverBorder', c.accent, c.none)
+    -- Group.new('DefinitionPreviewTitle', c.orange, c.none)
+    -- Group.new('LspSagaDefPreviewBorder', c.orange, c.none)
+    -- Group.new('LspFloatWinBorder', c.orange, c.none)
+    -- Group.new('LspSagaFinderSelection', c.green, c.none)
+    -- -- Group.new('LspSagaLspFinderBorder', c.blue, c.none)
+    -- Group.new('LspSagaDocTruncateLine', c.bg, c.none)
+    -- Group.new('LspSagaShTruncateLine', c.bg, c.none)
+    -- Group.new('LspSagaCodeActionTitle', c.orange, c.none, b)
+    -- -- Group.new('LspSagaCodeActionContent', c.green, c.none, b)
+    -- -- Group.new('LspSagaCodeActionTruncateLine', c.bg, c.none)
+    -- -- Group.new('LspSagaAutoPreview', c.orange, c.none)
+    -- Group.new('LspSagaSignatureHelpBorder', c.green, c.none)
+    -- Group.new('LspSagaDiagnosticBorder', c.purple, c.none)
+    -- Group.new('LspSagaDiagnosticHeader', c.orange, c.none, b)
+    -- Group.new('LspSagaDiagnosticTruncateLine', c.purple, c.none)
+    --
+    -- -- Lsp saga lightbulb
+    -- Group.new('LspSagaLightBulb', c.orange, c.none)
+    --
+    -- -- LSP specific groups
+    -- -- LSP Floating
     -- Group.new('LspDiagnosticsFloatingError', c.error, c.none)
     -- Group.new('LspDiagnosticsFloatingWarn', c.yellow, c.none)
     -- Group.new('LspDiagnosticsFloatingInfor', c.blue, c.none)
     -- Group.new('LspDiagnosticsFloatingHint', c.blue, c.none)
-
-    -- LSP signs
+    --
+    -- -- LSP signs
     -- Group.new('LspDiagnosticsSignError', c.error, c.none)
     -- Group.new('LspDiagnosticsSignWarn', c.yellow, c.none)
     -- Group.new('LspDiagnosticsSignInformation', c.blue, c.none)
     -- Group.new('LspDiagnosticsSignHint', c.blue, c.none)
-
-    -- LSP virtual text
+    --
+    -- -- LSP virtual text
     -- Group.new('LspDiagnosticsVirtualTextError', c.error, c.none)
     -- Group.new('LspDiagnosticsVirtualTextWarn', c.yellow, c.none)
     -- Group.new('LspDiagnosticsVirtualTextInformation', c.blue, c.none)
     -- Group.new('LspDiagnosticsVirtualTextHint', c.blue, c.none)
-
-    -- LSP underline
+    --
+    -- -- LSP underline
     -- Group.new('LspDiagnosticsUnderlineError', c.error, c.none)
     -- Group.new('LspDiagnosticsUnderlineWarn', c.yellow, c.none)
     -- Group.new('LspDiagnosticsUnderlineInformation', c.blue, c.none)

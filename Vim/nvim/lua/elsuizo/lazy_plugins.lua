@@ -14,11 +14,11 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
    'jiangmiao/auto-pairs',                                                                  -- smart autopairs
-   'JuliaEditorSupport/julia-vim',                                                          -- Julia language support
+   -- 'JuliaEditorSupport/julia-vim',                                                          -- Julia language support
    'fedepujol/move.nvim',                                                                   -- move blocks of code
    'lervag/vimtex',                                                                         -- for work with tex files
    'rust-lang/rust.vim',                                                                    -- Rust language support
-   'chrisbra/csv.vim',                                                                      -- Visualize csv files
+   -- 'chrisbra/csv.vim',                                                                      -- Visualize csv files
    -- 'elsuizo/vim-colors-paramount-suizo',                                                    -- personal colorscheme
    -- 'neutaaaaan/iosvkem',                                                                    -- one of the best colorschemes
    'tomtom/tcomment_vim',                                                                   -- comment lines or blocks of code
@@ -53,9 +53,9 @@ require("lazy").setup({
    "hrsh7th/cmp-cmdline" ,                                                                  -- autocomplete for neovim command line terminal
    "ray-x/cmp-treesitter" ,                                                                 -- autocomplete treesitter support
    "hrsh7th/nvim-cmp" ,                                                                     -- autocomplete engine
-   "windwp/nvim-ts-autotag",                                                                -- to close automagically tags
+   -- "windwp/nvim-ts-autotag",                                                                -- to close automagically tags
    'tjdevries/colorbuddy.nvim',
-   "yorickpeterse/vim-paper",
+   -- "yorickpeterse/vim-paper",
    {
        "nvim-neorg/neorg",
        -- tag = "*",

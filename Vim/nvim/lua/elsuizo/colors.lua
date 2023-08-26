@@ -1,14 +1,19 @@
 -- el mejor colorscheme
 -- vim.cmd("colorscheme paper")
 -- vim.cmd("colorscheme Monosvkem")
--- lsp colors setup
-vim.cmd[[highlight Search guibg='Orange' guifg='NONE']]
+-- vim.cmd[[highlight Search guibg='Orange' guifg='NONE']]
 --TODO(elsuizo: 2023-05-13): hacer esto en el colorscheme
+-- lsp colors setup
 vim.cmd [[
 hi DiagnosticError ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#d02b61
 hi DiagnosticWarn ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#373737
 hi DiagnosticInfo ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#AEFA47
 hi DiagnosticHint ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#404040]]
+--
+-- vim.cmd([[autocmd! ColorScheme * highlight NormalFloat bg=#2b3339 guibg=#2b3339]])
+-- vim.cmd([[autocmd! ColorScheme * highlight FloatBorder guifg=#d3c6aa guibg=#2b3339]])
+-- vim.cmd [[autocmd ColorScheme * highlight NormalFloat guibg=#121212]]
+-- vim.cmd [[autocmd ColorScheme * highlight FloatBorder guifg=red guibg=#373737]]
 
 --TODO(elsuizo: 2023-05-14): no se porque no anda esto...
 -- vim.cmd "highlight CursorLineNr guifg=white guibg=#050505 gui=NONE"
@@ -76,7 +81,7 @@ end
 
 -- lualine setup
 require('lualine').setup {
-   options = {
-      theme = LowEntropy,
-      }
+   -- options = {
+   --    theme = LowEntropy,
+   --    }
 }
