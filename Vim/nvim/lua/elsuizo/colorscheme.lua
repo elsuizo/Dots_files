@@ -286,7 +286,7 @@ function M.load()
     Group.new('NonText', c.gray, c.none, no) -- '~' and '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., '>' displayed when a double-wide character doesn't fit at the end of the line).
     Group.new('Normal', c.fg1, c.fg3, no) -- normal text
     Group.new('NormalFloat', c.fg1, c.fg3, no) -- text
-    Group.new('FloatBorder', c.red, c.fg1, no) -- normal text
+    Group.new('FloatBorder', c.fg1, c.fg3, b) -- normal text
     -- Group.new('Normal',       c.main_font,       c.none,      no)
     Group.new('Pmenu', c.fg3, c.gray, no) -- Popup menu: normal item.
     Group.new('PmenuSel', c.bg, c.Label, no) -- Popup menu: selected item.

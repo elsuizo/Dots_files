@@ -1,6 +1,7 @@
 -- el mejor colorscheme
 -- vim.cmd("colorscheme paper")
 -- vim.cmd("colorscheme Monosvkem")
+-- vim.cmd("colorscheme nord")
 -- vim.cmd[[highlight Search guibg='Orange' guifg='NONE']]
 --TODO(elsuizo: 2023-05-13): hacer esto en el colorscheme
 -- lsp colors setup
@@ -16,7 +17,7 @@ hi DiagnosticHint ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#404040]]
 -- vim.cmd [[autocmd ColorScheme * highlight FloatBorder guifg=red guibg=#373737]]
 
 --TODO(elsuizo: 2023-05-14): no se porque no anda esto...
--- vim.cmd "highlight CursorLineNr guifg=white guibg=#050505 gui=NONE"
+-- vim.cmd "highlight CursorLineNr guifg=red guibg=#050505 gui=NONE"
 
 --TODO(elsuizo: 2023-05-13): creo que por ahora no hace falta...
 -- cambiamos el color del menu del autocompletado

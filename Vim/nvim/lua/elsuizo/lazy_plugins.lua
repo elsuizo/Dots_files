@@ -24,7 +24,7 @@ require("lazy").setup({
    'tomtom/tcomment_vim',                                                                   -- comment lines or blocks of code
    'elsuizo/monosvkem',                                                                     -- the best colorscheme
    'roxma/vim-tmux-clipboard',                                                              -- to get nice clipboard interface with tmux panes
-   'alaric/neovim-visor',                                                                   -- open/close the terminal with Alt-t
+   -- 'alaric/neovim-visor',                                                                   -- open/close the terminal with Alt-t
    'nvim-lua/plenary.nvim',                                                                 -- async support for lua
    'nvim-telescope/telescope.nvim',                                                         -- fuzzy finder and more...
    'nvim-telescope/telescope-fzy-native.nvim',                                              -- fuzzy finder and more...
@@ -53,9 +53,10 @@ require("lazy").setup({
    "hrsh7th/cmp-cmdline" ,                                                                  -- autocomplete for neovim command line terminal
    "ray-x/cmp-treesitter" ,                                                                 -- autocomplete treesitter support
    "hrsh7th/nvim-cmp" ,                                                                     -- autocomplete engine
-   -- "windwp/nvim-ts-autotag",                                                                -- to close automagically tags
-   'tjdevries/colorbuddy.nvim',
-   -- "yorickpeterse/vim-paper",
+   -- "windwp/nvim-ts-autotag",                                                             -- to close automagically tags
+   'tjdevries/colorbuddy.nvim',                                                             -- to create custom colorschemes
+   -- "yorickpeterse/vim-paper",                                                            -- a nice light colorscheme
+   "numToStr/FTerm.nvim",                                                                   -- floating terminal
    {
        "nvim-neorg/neorg",
        -- tag = "*",
