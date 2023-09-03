@@ -33,12 +33,11 @@ require("lazy").setup({
    {
      "cpea2506/one_monokai.nvim",
    },
-   {'romgrk/barbar.nvim',                                                                   -- bar to visualize buffers and tabs
-       dependencies = {
-         'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
-       },
-       version = '^1.0.0', -- optional: only update when a new 1.x version is released
-   },
+   -- {'romgrk/barbar.nvim',                                                                   -- bar to visualize buffers and tabs
+   --     dependencies = {
+   --       'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
+   --     },
+   -- },
    'ziglang/zig.vim',                                                                       -- zig language support
    'neovim/nvim-lspconfig',                                                                 -- lsp neovim support
    "L3MON4D3/LuaSnip",                                                                      -- snippet engine
@@ -55,8 +54,9 @@ require("lazy").setup({
    "hrsh7th/nvim-cmp" ,                                                                     -- autocomplete engine
    -- "windwp/nvim-ts-autotag",                                                             -- to close automagically tags
    'tjdevries/colorbuddy.nvim',                                                             -- to create custom colorschemes
-   -- "yorickpeterse/vim-paper",                                                            -- a nice light colorscheme
+   "yorickpeterse/vim-paper",                                                            -- a nice light colorscheme
    "numToStr/FTerm.nvim",                                                                   -- floating terminal
+   "aktersnurra/no-clown-fiesta.nvim",
    {
        "nvim-neorg/neorg",
        -- tag = "*",

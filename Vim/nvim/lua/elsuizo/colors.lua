@@ -1,8 +1,5 @@
 -- el mejor colorscheme
--- vim.cmd("colorscheme paper")
 -- vim.cmd("colorscheme Monosvkem")
--- vim.cmd("colorscheme nord")
--- vim.cmd[[highlight Search guibg='Orange' guifg='NONE']]
 --TODO(elsuizo: 2023-05-13): hacer esto en el colorscheme
 -- lsp colors setup
 vim.cmd [[
@@ -10,19 +7,10 @@ hi DiagnosticError ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#d02b61
 hi DiagnosticWarn ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#373737
 hi DiagnosticInfo ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#AEFA47
 hi DiagnosticHint ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#404040]]
---
--- vim.cmd([[autocmd! ColorScheme * highlight NormalFloat bg=#2b3339 guibg=#2b3339]])
--- vim.cmd([[autocmd! ColorScheme * highlight FloatBorder guifg=#d3c6aa guibg=#2b3339]])
--- vim.cmd [[autocmd ColorScheme * highlight NormalFloat guibg=#121212]]
--- vim.cmd [[autocmd ColorScheme * highlight FloatBorder guifg=red guibg=#373737]]
 
 --TODO(elsuizo: 2023-05-14): no se porque no anda esto...
 -- vim.cmd "highlight CursorLineNr guifg=red guibg=#050505 gui=NONE"
 
---TODO(elsuizo: 2023-05-13): creo que por ahora no hace falta...
--- cambiamos el color del menu del autocompletado
--- vim.cmd [[highlight Pmenu ctermbg=NONE guibg=gray]]
--- vim.cmd [[highlight PmenuSel ctermbg=NONE guibg=#404040]]
 -- custom colorscheme for lualine
 local LowEntropy = {}
 
@@ -82,7 +70,7 @@ end
 
 -- lualine setup
 require('lualine').setup {
-   -- options = {
-   --    theme = LowEntropy,
-   --    }
+   options = {
+      theme = LowEntropy,
+      }
 }

@@ -273,7 +273,7 @@ function M.load()
     Group.new('DiffText', c.blue, c.none, no) -- diff mode: Changed text within a changed line
     Group.new('EndOfBuffer', c.invisibles, c.none, no) -- filler lines (~) after the last line in the buffer
     Group.new('ErrorMsg', c.fg1, c.bg, no) -- error messages on the command line
-    Group.new('VertSplit', c.selection, c.none, no) -- the column separating verti-- cally split windows
+    Group.new('VertSplit', c.red, c.none, no) -- the column separating verti-- cally split windows
     Group.new('Folded', c.orange, c.bg, i) -- line used for closed folds
     Group.new('FoldColumn', c.blue, c.none, no) -- 'foldcolumn'
     Group.new('SignColumn', c.fg1, c.none, no) -- column where signs are displayed
@@ -283,7 +283,7 @@ function M.load()
     Group.new('MatchParen', c.red, c.none, b) -- The character under the cursor or just before it, if it is a paired bracket, and its match.
     Group.new('ModeMsg', c.green, c.none, no) -- 'showmode' message (e.g., '-- INSERT --')
     Group.new('MoreMsg', g.ModeMsg, g.ModeMsg, g.ModeMsg) -- more-prompt
-    Group.new('NonText', c.gray, c.none, no) -- '~' and '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., '>' displayed when a double-wide character doesn't fit at the end of the line).
+    Group.new('NonText', c.red, c.none, no) -- '~' and '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., '>' displayed when a double-wide character doesn't fit at the end of the line).
     Group.new('Normal', c.fg1, c.fg3, no) -- normal text
     Group.new('NormalFloat', c.fg1, c.fg3, no) -- text
     Group.new('FloatBorder', c.fg1, c.fg3, b) -- normal text
@@ -291,7 +291,7 @@ function M.load()
     Group.new('Pmenu', c.fg3, c.gray, no) -- Popup menu: normal item.
     Group.new('PmenuSel', c.bg, c.Label, no) -- Popup menu: selected item.
     Group.new('PmenuSbar', c.fg1, c.bg, no) -- Popup menu: scrollbar.
-    Group.new('PmenuThumb', c.fg1, c.orange, no) -- Popup menu: Thumb of the scrollbar.
+    Group.new('PmenuThumb', c.fg1, c.bg, no) -- Popup menu: Thumb of the scrollbar.
     Group.new('Question', c.blue, c.none, b) -- hit-enter prompt and yes/no questions
     Group.new('QuickFixLine', c.fg1, c.blue, g.Type) -- Current quickfix item in the quickfix window.
     Group.new('qfLineNr', g.Type, g.Type, g.Type)
@@ -306,7 +306,8 @@ function M.load()
     -- Group.new('StatusLineTerm', g.StatusLine, g.StatusLine, g.StatusLine) -- status line of current :terminal window
     Group.new('StatusLineTerm', c.bg, c.green, g.StatusLine) -- status line of current :terminal window
     Group.new('StatusLineTermNC', g.StatusLineNC, g.StatusLineNC, g.StatusLineNC) -- status line of non-current :terminal window
-    Group.new('TabLineFill', c.fg1, c.bg, no)
+    Group.new('TabLineFill', c.red, c.bg, no)
+    Group.new('BufferFill', c.red, c.bg, no)
     Group.new('TabLineSel', c.green, c.accent, no)
     Group.new('TabLine', g.TabLineFill, g.TabLineFill, g.TabLineFill)
     Group.new('Title', c.blue, c.none, b) -- titles for output from ':set all', ':autocmd' etc.
@@ -317,7 +318,7 @@ function M.load()
     Group.new('CursorColumn', c.none, c.selection, no) -- Current cursor column highlight
     Group.new('CursorLine', c.none, c.selection, no) -- Current cursor line highlight
     Group.new('ToolbarLine', c.fg1, c.disabled, no)
-    Group.new('ToolbarButton', c.fg1, c.bg, b)
+    Group.new('ToolbarButton', c.red, c.bg, b)
     Group.new('NormalMode', c.accent, c.none, r)
     Group.new('InsertMode', c.green, c.none, r)
     Group.new('ReplaceMode', c.red, c.none, r)
