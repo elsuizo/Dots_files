@@ -29,7 +29,6 @@ require("lazy").setup({
    'nvim-telescope/telescope.nvim',                                                         -- fuzzy finder and more...
    'nvim-telescope/telescope-fzy-native.nvim',                                              -- fuzzy finder and more...
    'cljoly/telescope-repo.nvim',                                                            -- for finding stuff relative to a specific folder
-   'kyazdani42/nvim-web-devicons',                                                          -- for nice icons
    {
      "cpea2506/one_monokai.nvim",
    },
@@ -57,6 +56,15 @@ require("lazy").setup({
    "yorickpeterse/vim-paper",                                                            -- a nice light colorscheme
    "numToStr/FTerm.nvim",                                                                   -- floating terminal
    "aktersnurra/no-clown-fiesta.nvim",
+   {
+     'stevearc/aerial.nvim',
+     opts = {},
+     -- Optional dependencies
+     dependencies = {
+        "nvim-treesitter/nvim-treesitter",
+        "nvim-tree/nvim-web-devicons"
+     },
+   },
    {
        "nvim-neorg/neorg",
        -- tag = "*",
