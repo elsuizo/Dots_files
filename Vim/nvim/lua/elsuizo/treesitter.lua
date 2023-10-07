@@ -4,7 +4,7 @@ if (not status) then return end
 ts.setup {
   highlight = {
     enable = true,
-    disable = {"rust", "python"},
+    disable = {"rust", "python", "lua", "markdown"},
   },
   indent = {
     enable = true,

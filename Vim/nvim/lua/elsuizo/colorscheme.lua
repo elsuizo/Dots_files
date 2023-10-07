@@ -70,11 +70,7 @@ local COLORS = {
 }
 
 local get_current_mode = function()
-    if vim.g.background == 'dark' or vim.g.background == 'light' then
-        return vim.g.background
-    else
-        return 'dark'
-    end
+    return 'dark'
 end
 
 local get_color = function(color_name, mode)
@@ -104,7 +100,7 @@ function M.load()
     Color.new('fg3', '#121212')
     Color.new('fg4', '#080808')
     Color.new('disabled', '#464B5D')
-    Color.new('line_numbers', '#505050')
+    Color.new('line_numbers', get_color('red'))
     Color.new('selection', '#464B5D')
 
     Color.new('white', get_color('white'))
@@ -160,68 +156,32 @@ function M.load()
     Color.new('Warning', get_color('gray_warning'))
     -- Color.new('TSProperty', get_color('fg'))
     -- Style specific colors
-    if current_mode == 'dark' then
         -- Dark theme specific styling
-        Color.new('bg', get_color('background'))
-        Color.new('fg1', get_color('foreground'))
-        Color.new('invisibles', '#65737E')
-        Color.new('comments', '#78787e')
-        Color.new('guides', '#424242')
-        Color.new('line_numbers', get_color('brightblack'))
-        -- Color.new('lsp_background', '#606580')
-        Color.new('lsp_background', '#121212')
-        Color.new('line_highlight', '#171717')
-        Color.new('accent', get_color('red_fluo'))
-        Color.new('htmlBold', get_color('red'))
-        Color.new('url', get_color('red'))
-        Color.new('link', get_color('red_fluo'))
-        Color.new('heading', get_color('blue'))
-        Color.new('codeDelimiter', get_color('brightblack'))
-        Color.new('TSVariable', get_color('foreground'))
-        Color.new('TSField', get_color('foreground'))
-        Color.new('TSProperty', get_color('blue'))
-        Color.new('Boolean', get_color('red'))
-        Color.new('TSParameter', get_color('foreground'))
-        Color.new('TSKeywordOperator', get_color('orange'))
+   Color.new('bg', get_color('background'))
+   Color.new('fg1', get_color('foreground'))
+   Color.new('invisibles', '#65737E')
+   Color.new('comments', '#78787e')
+   Color.new('guides', '#424242')
+   Color.new('line_numbers', get_color('brightblack'))
+   -- Color.new('lsp_background', '#606580')
+   Color.new('lsp_background', '#121212')
+   Color.new('line_highlight', '#171717')
+   Color.new('accent', get_color('red_fluo'))
+   Color.new('htmlBold', get_color('red'))
+   Color.new('url', get_color('red'))
+   Color.new('link', get_color('red_fluo'))
+   Color.new('heading', get_color('blue'))
+   Color.new('codeDelimiter', get_color('brightblack'))
+   Color.new('TSVariable', get_color('foreground'))
+   Color.new('TSField', get_color('foreground'))
+   Color.new('TSProperty', get_color('blue'))
+   Color.new('Boolean', get_color('red'))
+   Color.new('TSParameter', get_color('foreground'))
+   Color.new('TSKeywordOperator', get_color('orange'))
 
         -- Group.new('Ignore', c.disabled, c.none, no) -- left blank, hidden
 
         -- Color.new('Repeat')
-    elseif current_mode == 'light' then
-        -- Light theme specific styling
-        Color.new('bg', get_color('background', 'light'))
-        Color.new('fg1', get_color('foreground', 'light'))
-        Color.new('invisibles', '#E7EAEC')
-        Color.new('comments', '#90A4AE')
-        Color.new('caret', '#272727')
-        Color.new('selection', '#303030')
-        Color.new('guides', '#a3a2a2')
-        Color.new('line_numbers', '#080808')
-        Color.new('lsp_background', '#121212')
-        Color.new('line_highlight', '#ECF0F1')
-        Color.new('accent', get_color('cyan'))
-        Color.new('incsearch', get_color('purple'))
-        Color.new('search', get_color('purple'))
-        Color.new('htmlBold', get_color('cyan'))
-        Color.new('url', get_color('orange'))
-        Color.new('link', get_color('blue'))
-        Color.new('heading', get_color('green'))
-        Color.new('codeDelimiter', '#78787e')
-        Color.new('Function', get_color('blue'))
-        -- Color.new('Type', get_color('yellow', 'light'))
-
-        -- Color.new('Statement', get_color('red', 'light'))
-        Color.new('Operator', get_color('fg'))
-        Color.new('Number', get_color('green'))
-        Color.new('Conditional', get_color('purple'))
-        Color.new('String', get_color('orange'))
-        Color.new('TSVariable', get_color('foreground'))
-        Color.new('TSField', get_color('foreground'))
-        Color.new('TSProperty', get_color('foreground'))
-        Color.new('TSParameter', get_color('foreground'))
-        Color.new('TSKeywordOperator', get_color('purple'))
-
-    end
 
     Group.new('Comment', c.comments, c.none, no) -- italic comments
     Group.new('Constant', c.Constant, c.none, no) -- any constant
@@ -281,14 +241,15 @@ function M.load()
     Group.new('LineNr', c.line_numbers, c.none, no) -- Line number for ':number' and ':#' commands, and when 'number' or 'relativenumber' option is set.
     Group.new('CursorLineNr', c.red, c.blue1, r) -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
     Group.new('MatchParen', c.red, c.none, b) -- The character under the cursor or just before it, if it is a paired bracket, and its match.
-    Group.new('ModeMsg', c.green, c.none, no) -- 'showmode' message (e.g., '-- INSERT --')
-    Group.new('MoreMsg', g.ModeMsg, g.ModeMsg, g.ModeMsg) -- more-prompt
     Group.new('NonText', c.red, c.none, no) -- '~' and '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., '>' displayed when a double-wide character doesn't fit at the end of the line).
     Group.new('Normal', c.fg1, c.fg3, no) -- normal text
-    Group.new('NormalFloat', c.fg1, c.fg3, no) -- text
-    Group.new('FloatBorder', c.fg1, c.fg3, b) -- normal text
+    Group.new('NormalFloat', c.fg1, c.none, no) -- text
+    Group.new('FloatBorder', c.fg1, c.none, b) -- normal text
     -- Group.new('Normal',       c.main_font,       c.none,      no)
-    Group.new('Pmenu', c.fg3, c.gray, no) -- Popup menu: normal item.
+    -- Group.new('BufferTabPageFill', c.fg1, c.orange, no) -- Popup menu: normal item.
+    -- Group.new('BufferLineFill', c.fg1, c.orange, no) -- Popup menu: normal item.
+    -- Group.new('BufferFill', c.fg1, c.orange, no) -- Popup menu: normal item.
+    Group.new('Pmenu', c.none, c.none, no) -- Popup menu: normal item.
     Group.new('PmenuSel', c.bg, c.Label, no) -- Popup menu: selected item.
     Group.new('PmenuSbar', c.fg1, c.bg, no) -- Popup menu: scrollbar.
     Group.new('PmenuThumb', c.fg1, c.bg, no) -- Popup menu: Thumb of the scrollbar.
@@ -306,15 +267,14 @@ function M.load()
     -- Group.new('StatusLineTerm', g.StatusLine, g.StatusLine, g.StatusLine) -- status line of current :terminal window
     Group.new('StatusLineTerm', c.bg, c.green, g.StatusLine) -- status line of current :terminal window
     Group.new('StatusLineTermNC', g.StatusLineNC, g.StatusLineNC, g.StatusLineNC) -- status line of non-current :terminal window
-    Group.new('TabLineFill', c.red, c.bg, no)
-    Group.new('BufferFill', c.red, c.bg, no)
-    Group.new('TabLineSel', c.green, c.accent, no)
-    Group.new('TabLine', g.TabLineFill, g.TabLineFill, g.TabLineFill)
+    -- Group.new('TabLineFill', c.none, c.bg, no)
+    -- Group.new('TabLine', c.fg1, c.orange, no) -- Popup menu: normal item.
+    -- Group.new('TabLineSel', c.green, c.accent, no)
     Group.new('Title', c.blue, c.none, b) -- titles for output from ':set all', ':autocmd' etc.
     Group.new('Visual', c.none, c.guides, no) -- Visual mode selection
     Group.new('VisualNOS', g.Visual, g.Visual, g.Visual) -- Visual mode selection when vim is 'Not Owning the Selection'. Only X11 Gui's gui-x11 and xterm-clipboard supports this.
     Group.new('WarningMsg', c.red, c.none, no) --  warning messages
-    Group.new('WildMenu', c.red, c.selection, b) --  current match in 'wildmenu' completion
+    Group.new('WildMenu', c.orange, c.selection, b) --  current match in 'wildmenu' completion
     Group.new('CursorColumn', c.none, c.selection, no) -- Current cursor column highlight
     Group.new('CursorLine', c.none, c.selection, no) -- Current cursor line highlight
     Group.new('ToolbarLine', c.fg1, c.disabled, no)
@@ -993,9 +953,9 @@ function M.load()
     Group.new("mailEmail", c.blue, c.none, no)
 
     -- Group overrides for light theme
-    if get_current_mode() == 'light' then
-        -- TODO: incsearch
-    end
+    -- if get_current_mode() == 'light' then
+    --     -- TODO: incsearch
+    -- end
 
    --TODO(elsuizo: 2023-05-12): maybe hacer esto...
     -- Load icons for kyazdani42/nvim-web-devicons
