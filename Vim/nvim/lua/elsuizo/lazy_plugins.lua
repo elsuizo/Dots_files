@@ -14,7 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
    'jiangmiao/auto-pairs',                                                                  -- smart autopairs
-   -- 'JuliaEditorSupport/julia-vim',                                                          -- Julia language support
+   -- 'JuliaEditorSupport/julia-vim',                                                       -- Julia language support
    'fedepujol/move.nvim',                                                                   -- move blocks of code
    'lervag/vimtex',                                                                         -- for work with tex files
    'rust-lang/rust.vim',                                                                    -- Rust language support
@@ -32,11 +32,12 @@ require("lazy").setup({
    {
      "cpea2506/one_monokai.nvim",
    },
-   -- {'romgrk/barbar.nvim',                                                                   -- bar to visualize buffers and tabs
-   --     dependencies = {
-   --       'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
-   --     },
-   -- },
+   {'romgrk/barbar.nvim',                                                                   -- bar to visualize buffers and tabs
+       dependencies = {
+         'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
+       },
+   },
+   "kkga/vim-envy",
    'ziglang/zig.vim',                                                                       -- zig language support
    'neovim/nvim-lspconfig',                                                                 -- lsp neovim support
    "L3MON4D3/LuaSnip",                                                                      -- snippet engine

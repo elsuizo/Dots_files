@@ -36,10 +36,10 @@ snippet BDT
 #                                Code
 #-------------------------------------------------------------------------
 snippet PR
-   println!("${1:message}{:}", ${2:var_name});${0}
+   println!("${1:var_name}");${0}
 
-snippet PRS
-   println!("${1:message}");${0}
+snippet PRD
+   println!("${1:var_name:?}");${0}
 
 snippet PRV
    println!("${1:message}: {:?}", $1);${0}
