@@ -243,12 +243,10 @@ function M.load()
     Group.new('MatchParen', c.red, c.none, b) -- The character under the cursor or just before it, if it is a paired bracket, and its match.
     Group.new('NonText', c.red, c.none, no) -- '~' and '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., '>' displayed when a double-wide character doesn't fit at the end of the line).
     Group.new('Normal', c.fg1, c.fg3, no) -- normal text
-    Group.new('NormalFloat', c.fg1, c.none, no) -- text
-    Group.new('FloatBorder', c.fg1, c.none, b) -- normal text
-    -- Group.new('Normal',       c.main_font,       c.none,      no)
-    -- Group.new('BufferTabPageFill', c.fg1, c.orange, no) -- Popup menu: normal item.
-    -- Group.new('BufferLineFill', c.fg1, c.orange, no) -- Popup menu: normal item.
-    -- Group.new('BufferFill', c.fg1, c.orange, no) -- Popup menu: normal item.
+    Group.new('BufferCurrent', c.none, c.fg3, no) -- Popup menu: normal item.
+    Group.new('BufferInactive', c.fg2, c.none, no) -- Popup menu: normal item.
+    Group.new('BufferVisibleIndex', c.fg2, c.red, no) -- Popup menu: normal item.
+    Group.new('BufferPart', c.fg2, c.red, no) -- Popup menu: normal item.
     Group.new('Pmenu', c.none, c.none, no) -- Popup menu: normal item.
     Group.new('PmenuSel', c.bg, c.Label, no) -- Popup menu: selected item.
     Group.new('PmenuSbar', c.fg1, c.bg, no) -- Popup menu: scrollbar.
