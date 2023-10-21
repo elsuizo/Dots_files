@@ -26,18 +26,16 @@ require("lazy").setup({
    'roxma/vim-tmux-clipboard',                                                              -- to get nice clipboard interface with tmux panes
    -- 'alaric/neovim-visor',                                                                   -- open/close the terminal with Alt-t
    'nvim-lua/plenary.nvim',                                                                 -- async support for lua
+   'Mofiqul/dracula.nvim',
    'nvim-telescope/telescope.nvim',                                                         -- fuzzy finder and more...
    'nvim-telescope/telescope-fzy-native.nvim',                                              -- fuzzy finder and more...
    'cljoly/telescope-repo.nvim',                                                            -- for finding stuff relative to a specific folder
-   {
-     "cpea2506/one_monokai.nvim",
-   },
    {'romgrk/barbar.nvim',                                                                   -- bar to visualize buffers and tabs
        dependencies = {
          'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
        },
    },
-   "kkga/vim-envy",
+   { "ellisonleao/gruvbox.nvim", priority = 1000 , config = true, opts = ...},
    'ziglang/zig.vim',                                                                       -- zig language support
    'neovim/nvim-lspconfig',                                                                 -- lsp neovim support
    "L3MON4D3/LuaSnip",                                                                      -- snippet engine
@@ -54,9 +52,7 @@ require("lazy").setup({
    "hrsh7th/nvim-cmp" ,                                                                     -- autocomplete engine
    -- "windwp/nvim-ts-autotag",                                                             -- to close automagically tags
    'tjdevries/colorbuddy.nvim',                                                             -- to create custom colorschemes
-   "yorickpeterse/vim-paper",                                                            -- a nice light colorscheme
    "numToStr/FTerm.nvim",                                                                   -- floating terminal
-   "aktersnurra/no-clown-fiesta.nvim",
    {
      'stevearc/aerial.nvim',
      opts = {},

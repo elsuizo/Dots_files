@@ -1,8 +1,9 @@
 -- el mejor colorscheme
 -- vim.cmd("colorscheme Monosvkem")
--- vim.cmd("colorscheme iceberg")
+-- vim.cmd("colorscheme dracula-soft")
 -- vim.cmd("colorscheme paper")
 -- vim.cmd("colorscheme envy")
+-- vim.cmd("colorscheme nord")
 --TODO(elsuizo: 2023-05-13): hacer esto en el colorscheme
 -- lsp colors setup
 vim.cmd [[

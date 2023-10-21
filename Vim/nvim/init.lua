@@ -14,6 +14,7 @@ require 'elsuizo.lazy_plugins'   -- "lua/elsuizo/lazy_plugins.lua"
 -- TODO(elsuizo: 2023-05-12): hacer nuestro propio colorscheme llamado: lowentropy
 -- [  ] faltaria que la carpeta de luatree no sea rosa...
 -- [  ] el numero de `CursorLineNr` no se porque no se cambia...
+require 'elsuizo.treesitter'     -- "lua/elsuizo/treesitter.lua"
 require 'elsuizo.colorscheme'    -- "lua/elsuizo/colorscheme.lua"
 require 'elsuizo.options'        -- "lua/elsuizo/options.lua"
 require 'elsuizo.colors'         -- "lua/elsuizo/colors.lua"
@@ -25,6 +26,5 @@ require 'elsuizo.terminal'       -- "lua/elsuizo/terminal.lua"
 require 'elsuizo.aerial'         -- "lua/elsuizo/aerial.lua"
 require 'elsuizo.database'       -- "lua/elsuizo/database.lua"
 require 'elsuizo.tree'           -- "lua/elsuizo/tree.lua"
-require 'elsuizo.treesitter'     -- "lua/elsuizo/treesitter.lua"
--- require 'elsuizo.neorg'          -- "lua/elsuizo/neorg.lua"
+require 'elsuizo.neorg'          -- "lua/elsuizo/neorg.lua"
 -- require 'elsuizo.web-stuff'     -- "lua/elsuizo/web-stuff.lua"
