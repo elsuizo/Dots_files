@@ -26,7 +26,8 @@ ts.setup {
     "python",
     "haskell",
     "ocaml",
-    "c_sharp"
+    "c_sharp",
+    "gdscript",
   },
    --NOTE(elsuizo: 2023-05-10): esto utiliza el package de autotags
   autotag = {

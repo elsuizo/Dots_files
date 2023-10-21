@@ -16,17 +16,16 @@ require("lazy").setup({
    'jiangmiao/auto-pairs',                                                                  -- smart autopairs
    -- 'JuliaEditorSupport/julia-vim',                                                       -- Julia language support
    'fedepujol/move.nvim',                                                                   -- move blocks of code
-   'lervag/vimtex',                                                                         -- for work with tex files
+   -- 'lervag/vimtex',                                                                         -- for work with tex files
    'rust-lang/rust.vim',                                                                    -- Rust language support
    -- 'chrisbra/csv.vim',                                                                      -- Visualize csv files
    -- 'elsuizo/vim-colors-paramount-suizo',                                                    -- personal colorscheme
    -- 'neutaaaaan/iosvkem',                                                                    -- one of the best colorschemes
    'tomtom/tcomment_vim',                                                                   -- comment lines or blocks of code
-   'elsuizo/monosvkem',                                                                     -- the best colorscheme
+   -- 'elsuizo/monosvkem',                                                                     -- the best colorscheme
    'roxma/vim-tmux-clipboard',                                                              -- to get nice clipboard interface with tmux panes
    -- 'alaric/neovim-visor',                                                                   -- open/close the terminal with Alt-t
    'nvim-lua/plenary.nvim',                                                                 -- async support for lua
-   'Mofiqul/dracula.nvim',
    'nvim-telescope/telescope.nvim',                                                         -- fuzzy finder and more...
    'nvim-telescope/telescope-fzy-native.nvim',                                              -- fuzzy finder and more...
    'cljoly/telescope-repo.nvim',                                                            -- for finding stuff relative to a specific folder
@@ -35,7 +34,6 @@ require("lazy").setup({
          'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
        },
    },
-   { "ellisonleao/gruvbox.nvim", priority = 1000 , config = true, opts = ...},
    'ziglang/zig.vim',                                                                       -- zig language support
    'neovim/nvim-lspconfig',                                                                 -- lsp neovim support
    "L3MON4D3/LuaSnip",                                                                      -- snippet engine

@@ -215,7 +215,7 @@ vim.cmd [[nnoremap Q !!$SHELL <CR>]]
 vim.cmd [[autocmd BufRead * normal zz]]
 -- con rust_analyzer
 -- local servers = { "rust_analyzer"}
-local servers = { "pyright", "tsserver", "clangd", "rust_analyzer", "julials", "gopls", "hls", "vimls", "lua_ls", "zls", "ocamllsp", "csharp_ls"}
+local servers = { "pyright", "tsserver", "clangd", "rust_analyzer", "julials", "gopls", "hls", "vimls", "lua_ls", "zls", "ocamllsp", "csharp_ls", "gdscript"}
 -- sin rust_analyzer
 -- local servers = { "pyright", "tsserver", "clangd", "julials"}
 for _, lsp in ipairs(servers) do
