@@ -1,5 +1,4 @@
 -- NOTE(elsuizo:2021-11-01): cosas del nuevo engine de autocomplete
---TODO(elsuizo: 2023-05-11): solve the tab problem!!!
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
 local cmp_status_ok, cmp = pcall(require, "cmp")
