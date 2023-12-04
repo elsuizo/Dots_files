@@ -12,9 +12,6 @@ hi DiagnosticWarn ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#373737
 hi DiagnosticInfo ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#AEFA47
 hi DiagnosticHint ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#404040]]
 
--- vim.cmd [[hi BufferTabPageFill guibg=orange]]
--- vim.cmd([[ augroup ChangeHighlight autocmd! autocmd BufEnter * highlight BufferTabpageFill guibg=#000000 augroup END ]])
-
 --TODO(elsuizo: 2023-05-14): no se porque no anda esto...
 -- vim.cmd "highlight CursorLineNr guifg=red guibg=#050505 gui=NONE"
 

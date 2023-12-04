@@ -14,6 +14,8 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
    'jiangmiao/auto-pairs',                                                                  -- smart autopairs
+   'yorickpeterse/vim-paper',
+   { 'projekt0n/github-nvim-theme' },
    -- 'JuliaEditorSupport/julia-vim',                                                       -- Julia language support
    'fedepujol/move.nvim',                                                                   -- move blocks of code
    -- 'lervag/vimtex',                                                                         -- for work with tex files
@@ -22,7 +24,7 @@ require("lazy").setup({
    -- 'elsuizo/vim-colors-paramount-suizo',                                                    -- personal colorscheme
    -- 'neutaaaaan/iosvkem',                                                                    -- one of the best colorschemes
    'tomtom/tcomment_vim',                                                                   -- comment lines or blocks of code
-   -- 'elsuizo/monosvkem',                                                                     -- the best colorscheme
+   'elsuizo/monosvkem',                                                                     -- the best colorscheme
    'roxma/vim-tmux-clipboard',                                                              -- to get nice clipboard interface with tmux panes
    -- 'alaric/neovim-visor',                                                                   -- open/close the terminal with Alt-t
    'nvim-lua/plenary.nvim',                                                                 -- async support for lua
@@ -48,6 +50,7 @@ require("lazy").setup({
    "hrsh7th/cmp-cmdline" ,                                                                  -- autocomplete for neovim command line terminal
    "ray-x/cmp-treesitter" ,                                                                 -- autocomplete treesitter support
    "hrsh7th/nvim-cmp" ,                                                                     -- autocomplete engine
+   { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
    -- "windwp/nvim-ts-autotag",                                                             -- to close automagically tags
    'tjdevries/colorbuddy.nvim',                                                             -- to create custom colorschemes
    "numToStr/FTerm.nvim",                                                                   -- floating terminal

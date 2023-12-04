@@ -138,7 +138,7 @@ function M.load()
     Color.new('PreProc', get_color('monoblue'))
     Color.new('Include', get_color('blue'))
     Color.new('Define', get_color('brightwhite'))
-    Color.new('Macro', get_color('red'))
+    Color.new('Macro', get_color('orange'))
     Color.new('PreCondit', get_color('purple'))
     Color.new('Type', get_color('brightblack'))
     Color.new('StorageClass', get_color('brightblack'))
@@ -246,6 +246,9 @@ function M.load()
     Group.new('BufferCurrent', c.none, c.fg3, no) -- Popup menu: normal item.
     Group.new('BufferInactive', c.fg2, c.none, no) -- Popup menu: normal item.
     Group.new('BufferVisibleIndex', c.fg2, c.red, no) -- Popup menu: normal item.
+    Group.new('BufferTabpageFill', c.none, c.none, no) -- Popup menu: normal item.
+    Group.new('BufferLineFill', c.none, c.none, no) -- Popup menu: normal item.
+    Group.new('BufferLineSeparatorSelected', c.none, c.none, no) -- Popup menu: normal item.
     Group.new('BufferPart', c.fg2, c.red, no) -- Popup menu: normal item.
     Group.new('Pmenu', c.none, c.none, no) -- Popup menu: normal item.
     Group.new('PmenuSel', c.bg, c.Label, no) -- Popup menu: selected item.
