@@ -13,6 +13,10 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+   {
+     'stevearc/conform.nvim',                                                               -- formatting plugin
+     opts = {},
+   },
    'jiangmiao/auto-pairs',                                                                  -- smart autopairs
    'yorickpeterse/vim-paper',
    { 'projekt0n/github-nvim-theme' },
