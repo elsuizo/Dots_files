@@ -21,6 +21,17 @@ require("lazy").setup({
    'yorickpeterse/vim-paper',
    { 'projekt0n/github-nvim-theme' },
    -- 'JuliaEditorSupport/julia-vim',                                                       -- Julia language support
+   { "ellisonleao/gruvbox.nvim",   priority = 1000, config = true, opts = ... },
+   {
+      "vhyrro/luarocks.nvim",
+      priority = 1000, -- We'd like this plugin to load first out of the rest
+      config = true,   -- This automatically runs `require("luarocks-nvim").setup()`
+   },
+   {
+      "nvim-neorg/neorg",
+      dependencies = { "luarocks.nvim" },
+      -- put any other flags you wanted to pass to lazy here!
+   },
    'fedepujol/move.nvim', -- move blocks of code
    -- 'lervag/vimtex',                                                                         -- for work with tex files
    'rust-lang/rust.vim',  -- Rust language support
@@ -35,10 +46,11 @@ require("lazy").setup({
    'nvim-telescope/telescope.nvim',            -- fuzzy finder and more...
    'nvim-telescope/telescope-fzy-native.nvim', -- fuzzy finder and more...
    'cljoly/telescope-repo.nvim',               -- for finding stuff relative to a specific folder
+   { "ellisonleao/gruvbox.nvim", priority = 1000,     config = true,  opts = ... },
    {
-      'romgrk/barbar.nvim',                    -- bar to visualize buffers and tabs
+      'romgrk/barbar.nvim',         -- bar to visualize buffers and tabs
       dependencies = {
-         'lewis6991/gitsigns.nvim',            -- OPTIONAL: for git status
+         'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
       },
    },
    'ziglang/zig.vim',                     -- zig language support
@@ -55,7 +67,7 @@ require("lazy").setup({
    "hrsh7th/cmp-cmdline",                 -- autocomplete for neovim command line terminal
    "ray-x/cmp-treesitter",                -- autocomplete treesitter support
    "hrsh7th/nvim-cmp",                    -- autocomplete engine
-   { "catppuccin/nvim",            name = "catppuccin", priority = 1000 },
+   { "catppuccin/nvim",          name = "catppuccin", priority = 1000 },
    -- "windwp/nvim-ts-autotag",                                                             -- to close automagically tags
    {
       'tjdevries/colorbuddy.nvim',
@@ -70,12 +82,6 @@ require("lazy").setup({
          "nvim-treesitter/nvim-treesitter",
          "nvim-tree/nvim-web-devicons"
       },
-   },
-   {
-      "nvim-neorg/neorg",
-      -- tag = "*",
-      ft = "norg",
-      after = "nvim-treesitter", -- You may want to specify Telescope here as well
    },
    {
       'nvim-treesitter/nvim-treesitter',

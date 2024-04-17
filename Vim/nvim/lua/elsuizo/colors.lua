@@ -2,13 +2,20 @@
 -- vim.cmd("colorscheme Monosvkem")
 -- vim.cmd("colorscheme paper")
 -- vim.cmd("colorscheme noirbuddy")
+require("gruvbox").setup({
+   contrast = "hard",
+   overrides = {
+      Todo = { fg = "#000000" }
+   }
+})
+vim.cmd("colorscheme gruvbox")
 --TODO(elsuizo: 2023-05-13): hacer esto en el colorscheme
 -- lsp colors setup
-vim.cmd [[
-hi DiagnosticError ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#d02b61
-hi DiagnosticWarn ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#373737
-hi DiagnosticInfo ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#AEFA47
-hi DiagnosticHint ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#404040]]
+-- vim.cmd [[
+-- hi DiagnosticError ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#d02b61
+-- hi DiagnosticWarn ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#373737
+-- hi DiagnosticInfo ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#AEFA47
+-- hi DiagnosticHint ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#404040]]
 
 --TODO(elsuizo: 2023-05-14): no se porque no anda esto...
 -- vim.cmd "highlight CursorLineNr guifg=red guibg=#050505 gui=NONE"

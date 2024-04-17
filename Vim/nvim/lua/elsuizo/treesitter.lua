@@ -28,6 +28,7 @@ ts.setup {
       "ocaml",
       "c_sharp",
       "gdscript",
+      "cpp"
    },
    --NOTE(elsuizo: 2023-05-10): esto utiliza el package de autotags
    autotag = {
