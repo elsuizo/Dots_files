@@ -1,33 +1,62 @@
 #dynamic_title = true
 #enable_experimental_conpty_backend = false
 live_config_reload = true
-
+#-------------------------------------------------------------------------
+#                        paper colortheme
+#-------------------------------------------------------------------------
 [colors]
 draw_bold_text_with_bright_colors = true
 
-[colors.bright]
-black = "0x818181"
-blue = "0x0056b7"
-cyan = "0x4fb8cc"
-green = "0x5fd7af"
-magenta = "0x6855de"
-red = "0xd02b61"
-white = "0xf1f1f1"
-yellow = "0xf3e430"
-
 [colors.normal]
-black = "0x121212"
-blue = "0x5688af"
-cyan = "0x57aadd"
-green = "0x10a778"
-magenta = "0x523c79"
-red = "0xd02b61"
-white = "0xe0e0e0"
-yellow = "0xa89c14"
+black = "0x000000"
+blue = "0x1E6FCC"
+cyan = "0x158C86"
+green = "0x216609"
+magenta = "0x5C21A5"
+red = "0xCC3E28"
+white = "0xAAAAAA"
+yellow = "0xB58900"
+
+[colors.bright]
+black = "0x555555"
+blue = "0x1E6FCC"
+cyan = "0x158C86"
+green = "0x216609"
+magenta = "0x5C21A5"
+red = "0xCC3E28"
+white = "0xAAAAAA"
+yellow = "0xB58900"
 
 [colors.primary]
-background = "0x121212"
-foreground = "0xdddddd"
+background = "0xF2EEDE"
+foreground = "0x000000"
+
+# [colors]
+# draw_bold_text_with_bright_colors = true
+#
+# [colors.bright]
+# black = "0x818181"
+# blue = "0x0056b7"
+# cyan = "0x4fb8cc"
+# green = "0x5fd7af"
+# magenta = "0x6855de"
+# red = "0xd02b61"
+# white = "0xf1f1f1"
+# yellow = "0xf3e430"
+#
+# [colors.normal]
+# black = "0x121212"
+# blue = "0x5688af"
+# cyan = "0x57aadd"
+# green = "0x10a778"
+# magenta = "0x523c79"
+# red = "0xd02b61"
+# white = "0xe0e0e0"
+# yellow = "0xa89c14"
+#
+# [colors.primary]
+# background = "0x121212"
+# foreground = "0xdddddd"
 
 [cursor]
 style = "Block"
