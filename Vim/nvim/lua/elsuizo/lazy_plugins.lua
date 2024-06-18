@@ -18,10 +18,13 @@ require("lazy").setup({
       opts = {},
    },
    'jiangmiao/auto-pairs', -- smart autopairs
-   'yorickpeterse/vim-paper',
-   { 'projekt0n/github-nvim-theme' },
+   {
+      'yorickpeterse/vim-paper',
+      commit = "47f6ca5452a718c2e3b95a9c75932d34b2a8f5ae"
+   },
+   "yorik1984/newpaper.nvim",
    -- 'JuliaEditorSupport/julia-vim',                                                       -- Julia language support
-   { "ellisonleao/gruvbox.nvim",   priority = 1000, config = true, opts = ... },
+   { "ellisonleao/gruvbox.nvim", priority = 1000, config = true, opts = ... },
    {
       "vhyrro/luarocks.nvim",
       priority = 1000, -- We'd like this plugin to load first out of the rest
@@ -46,7 +49,7 @@ require("lazy").setup({
    'nvim-telescope/telescope.nvim',            -- fuzzy finder and more...
    'nvim-telescope/telescope-fzy-native.nvim', -- fuzzy finder and more...
    'cljoly/telescope-repo.nvim',               -- for finding stuff relative to a specific folder
-   { "ellisonleao/gruvbox.nvim", priority = 1000,     config = true,  opts = ... },
+   { "ellisonleao/gruvbox.nvim", priority = 1000, config = true, opts = ... },
    {
       'romgrk/barbar.nvim',         -- bar to visualize buffers and tabs
       dependencies = {
@@ -67,7 +70,8 @@ require("lazy").setup({
    "hrsh7th/cmp-cmdline",                 -- autocomplete for neovim command line terminal
    "ray-x/cmp-treesitter",                -- autocomplete treesitter support
    "hrsh7th/nvim-cmp",                    -- autocomplete engine
-   { "catppuccin/nvim",          name = "catppuccin", priority = 1000 },
+   'arzg/vim-colors-xcode',
+   { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
    -- "windwp/nvim-ts-autotag",                                                             -- to close automagically tags
    {
       'tjdevries/colorbuddy.nvim',

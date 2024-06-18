@@ -11,7 +11,7 @@
 vim.g.mapleader = ','
 
 require 'elsuizo.lazy_plugins'  -- "lua/elsuizo/lazy_plugins.lua"
--- require 'elsuizo.colorscheme'   -- "lua/elsuizo/colorscheme.lua"
+require 'elsuizo.colorscheme'   -- "lua/elsuizo/colorscheme.lua"
 require 'elsuizo.options'       -- "lua/elsuizo/options.lua"
 require 'elsuizo.auto_commands' -- "lua/elsuizo/auto_commands.lua"
 require 'elsuizo.snippets'      -- "lua/elsuizo/snippets.lua"
