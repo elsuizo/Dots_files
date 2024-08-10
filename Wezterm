@@ -11,8 +11,21 @@ config.font_size = 14.0
 --colorscheme
 -------------------------------------------------------------------------
 --NOTE(elsuizo: 2024-07-08): quiero uno que sea blanco con las letras negras...
+config.color_scheme = 'Paper (Gogh)'
+config.window_background_opacity = 1.0
+config.bold_brightens_ansi_colors = "BrightAndBold"
 
-config.window_background_opacity = 0.7
+config.font = wezterm.font { family = 'JetBrains Mono' }
+config.font_rules = {
+   {
+      intensity = 'Bold',
+      italic = false,
+      font = wezterm.font {
+         family = 'JetBrains Mono',
+         weight = 'Bold',
+      },
+   },
+}
 
 config.window_padding = {
    left = 2,
