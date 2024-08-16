@@ -3,19 +3,19 @@ local api = vim.api
 local M = {}
 
 function M.map(mode, lhs, rhs, opts)
-  local options = {noremap = true, silent = true}
-  if opts then
-    options = vim.tbl_extend("force", options, opts)
-  end
-  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+   local options = { noremap = true, silent = true }
+   if opts then
+      options = vim.tbl_extend("force", options, opts)
+   end
+   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
 function M.mapBuf(buf, mode, lhs, rhs, opts)
-  local options = {noremap = true, silent = true}
-  if opts then
-    options = vim.tbl_extend("force", options, opts)
-  end
-  vim.api.nvim_buf_set_keymap(buf, mode, lhs, rhs, options)
+   local options = { noremap = true, silent = true }
+   if opts then
+      options = vim.tbl_extend("force", options, opts)
+   end
+   vim.api.nvim_buf_set_keymap(buf, mode, lhs, rhs, options)
 end
 
 -- nvim.move
@@ -45,7 +45,7 @@ M.map("n", "<leader>s", "<cmd>lua require('telescope.builtin').grep_string({ sea
 M.map("n", "<leader><leader>t", ":Telescope<cr>")
 
 -- Neorg mappings
-M.map("n", "<Space>T", ":Neorg workspace todos<cr>") -- go to todos Neorg file
+M.map("n", "<Space>T", ":Neorg workspace todos<cr>")    -- go to todos Neorg file
 M.map("n", "<Space>R", ":Neorg workspace remember<cr>") -- go to remember Neorg file
 
 -- toggle visibility of the fucking tabs
@@ -100,15 +100,15 @@ M.map("t", "<A-k>", "<C-\\><C-n><C-w>k")
 M.map("t", "<A-l>", "<C-\\><C-n><C-w>l")
 
 -- bufferline
-M.map("n", "<leader>1",  ":BufferGoto 1<CR>")
-M.map("n", "<leader>2",  ":BufferGoto 2<CR>")
-M.map("n", "<leader>3",  ":BufferGoto 3<CR>")
-M.map("n", "<leader>4",  ":BufferGoto 4<CR>")
-M.map("n", "<leader>5",  ":BufferGoto 5<CR>")
-M.map("n", "<leader>6",  ":BufferGoto 6<CR>")
-M.map("n", "<leader>7",  ":BufferGoto 7<CR>")
-M.map("n", "<leader>8",  ":BufferGoto 8<CR>")
-M.map("n", "<leader>9",  ":BufferLast<CR>")
+M.map("n", "<leader>1", ":BufferGoto 1<CR>")
+M.map("n", "<leader>2", ":BufferGoto 2<CR>")
+M.map("n", "<leader>3", ":BufferGoto 3<CR>")
+M.map("n", "<leader>4", ":BufferGoto 4<CR>")
+M.map("n", "<leader>5", ":BufferGoto 5<CR>")
+M.map("n", "<leader>6", ":BufferGoto 6<CR>")
+M.map("n", "<leader>7", ":BufferGoto 7<CR>")
+M.map("n", "<leader>8", ":BufferGoto 8<CR>")
+M.map("n", "<leader>9", ":BufferLast<CR>")
 
 -- terminal mappings
 M.map("t", "<Esc>", "<c-\\><c-n><esc><cr>")
@@ -121,14 +121,14 @@ local nvim_lsp = require('lspconfig')
 
 local augroup_format = vim.api.nvim_create_augroup("Format", { clear = true })
 local enable_format_on_save = function(_, bufnr)
-  vim.api.nvim_clear_autocmds({ group = augroup_format, buffer = bufnr })
-  vim.api.nvim_create_autocmd("BufWritePre", {
-    group = augroup_format,
-    buffer = bufnr,
-    callback = function()
-      vim.lsp.buf.format({ bufnr = bufnr })
-    end,
-  })
+   vim.api.nvim_clear_autocmds({ group = augroup_format, buffer = bufnr })
+   vim.api.nvim_create_autocmd("BufWritePre", {
+      group = augroup_format,
+      buffer = bufnr,
+      callback = function()
+         vim.lsp.buf.format({ bufnr = bufnr })
+      end,
+   })
 end
 
 local on_attach = function(client, bufnr)
@@ -142,7 +142,7 @@ local on_attach = function(client, bufnr)
    buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
    -- Mappings.
-   local opts = { noremap=true, silent=true }
+   local opts = { noremap = true, silent = true }
 
    -- See `:help vim.lsp.*` for documentation on any of the below functions
    buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
@@ -166,37 +166,37 @@ local on_attach = function(client, bufnr)
 end
 
 nvim_lsp.lua_ls.setup {
-  capabilities = capabilities,
-  on_attach = function(client, bufnr)
-    on_attach(client, bufnr)
-    enable_format_on_save(client, bufnr)
-  end,
-  settings = {
-    Lua = {
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = { 'vim' },
-      },
+   capabilities = capabilities,
+   on_attach = function(client, bufnr)
+      on_attach(client, bufnr)
+      enable_format_on_save(client, bufnr)
+   end,
+   settings = {
+      Lua = {
+         diagnostics = {
+            -- Get the language server to recognize the `vim` global
+            globals = { 'vim' },
+         },
 
-      workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = vim.api.nvim_get_runtime_file("", true),
-        checkThirdParty = false
+         workspace = {
+            -- Make the server aware of Neovim runtime files
+            library = vim.api.nvim_get_runtime_file("", true),
+            checkThirdParty = false
+         },
       },
-    },
-  },
+   },
 }
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
-  vim.lsp.with(
-     vim.lsp.diagnostic.on_publish_diagnostics,
-     {
-       underline = false,
-       virtual_text = true,
-       update_in_insert = true,
-       signs = true,
-     }
-)
+    vim.lsp.with(
+       vim.lsp.diagnostic.on_publish_diagnostics,
+       {
+          underline = false,
+          virtual_text = true,
+          update_in_insert = true,
+          signs = true,
+       }
+    )
 
 -- NOTE(elsuizo:2021-12-05): esto lo que cambia es el color de la ventana que aparece cuando accedes a los docs por ejemplo de Rust
 -- vim.cmd [[autocmd ColorScheme * highlight NormalFloat guibg=#121212]]
@@ -215,13 +215,14 @@ vim.cmd [[nnoremap Q !!$SHELL <CR>]]
 vim.cmd [[autocmd BufRead * normal zz]]
 -- con rust_analyzer
 -- local servers = { "rust_analyzer"}
-local servers = { "pyright", "tsserver", "clangd", "rust_analyzer", "julials", "gopls", "hls", "vimls", "lua_ls", "zls", "ocamllsp", "csharp_ls", "gdscript"}
+local servers = { "pyright", "tsserver", "clangd", "rust_analyzer", "julials", "gopls", "hls", "vimls", "lua_ls", "zls",
+   "ocamllsp", "csharp_ls", "gdscript" }
 -- sin rust_analyzer
 -- local servers = { "pyright", "tsserver", "clangd", "julials"}
 for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
-     on_attach = on_attach,
-  }
+   nvim_lsp[lsp].setup {
+      on_attach = on_attach,
+   }
 end
 
 return M

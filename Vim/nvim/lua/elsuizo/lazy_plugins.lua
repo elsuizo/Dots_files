@@ -75,7 +75,6 @@ require("lazy").setup({
    -- "windwp/nvim-ts-autotag",                                                             -- to close automagically tags
    {
       'tjdevries/colorbuddy.nvim',
-      commit = "cdb5b0654d3cafe61d2a845e15b2b4b0e78e752a",
    },                     -- to create custom colorschemes
    "numToStr/FTerm.nvim", -- floating terminal
    {
