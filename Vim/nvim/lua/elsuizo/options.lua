@@ -50,7 +50,7 @@ Option.g {
    undofile = true,
    undodir = os.getenv("HOME") .. "/.vim/undo/",
    virtualedit = "onemore",
-   guicursor = "a:block-Cursor/lCursor",
+   -- guicursor = "a:block-Cursor/lCursor",
    complete = ".,w,b,u,t,k",
    completeopt = "menu,menuone,noinsert,noselect",
    formatoptions = "jtcroql",

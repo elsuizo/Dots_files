@@ -42,3 +42,13 @@ ts.setup {
 
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
 parser_config.tsx.filetype_to_parsername = { "javascript", "typescript.tsx" }
+
+-- esto es para que el preview no utilice treesitter, porque siempre queda
+-- feo...
+require('telescope').setup {
+   defaults = {
+      preview = {
+         treesitter = false
+      }
+   },
+}
