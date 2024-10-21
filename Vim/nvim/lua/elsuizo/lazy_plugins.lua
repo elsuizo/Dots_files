@@ -75,7 +75,13 @@ require("lazy").setup({
    -- "windwp/nvim-ts-autotag",                                                             -- to close automagically tags
    {
       'tjdevries/colorbuddy.nvim',
-   },                     -- to create custom colorschemes
+   }, -- to create custom colorschemes
+   {
+      'hat0uma/csvview.nvim',
+      config = function()
+         require('csvview').setup()
+      end
+   },
    "numToStr/FTerm.nvim", -- floating terminal
    {
       'stevearc/aerial.nvim',

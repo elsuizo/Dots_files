@@ -43,6 +43,9 @@ M.map("n", "<leader>h", "<cmd>lua require('telescope.builtin').help_tags()<cr>")
 M.map("n", "<leader>e", "<cmd>lua require('telescope.builtin').diagnostics()<cr>")
 M.map("n", "<leader>s", "<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.expand('<cword>') })<cr>")
 M.map("n", "<leader><leader>t", ":Telescope<cr>")
+M.map('n', '<LEADER>jd', '<cmd>lua require"telescope.builtin".lsp_definitions()<CR>', { noremap = true, silent = true })
+M.map('n', '<LEADER>jv', '<cmd>lua require"telescope.builtin".lsp_definitions({jump_type="vsplit"})<CR>',
+   { noremap = true, silent = true })
 
 -- Neorg mappings
 M.map("n", "<Space>T", ":Neorg workspace todos<cr>")    -- go to todos Neorg file
@@ -215,7 +218,7 @@ vim.cmd [[nnoremap Q !!$SHELL <CR>]]
 vim.cmd [[autocmd BufRead * normal zz]]
 -- con rust_analyzer
 -- local servers = { "rust_analyzer"}
-local servers = { "pyright", "tsserver", "clangd", "rust_analyzer", "julials", "gopls", "hls", "vimls", "lua_ls", "zls",
+local servers = { "pyright", "ts_ls", "clangd", "rust_analyzer", "julials", "gopls", "hls", "vimls", "lua_ls", "zls",
    "ocamllsp", "csharp_ls", "gdscript" }
 -- sin rust_analyzer
 -- local servers = { "pyright", "tsserver", "clangd", "julials"}
