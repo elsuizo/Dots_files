@@ -3,10 +3,10 @@
 ;; Copyright (C) 2011-2013 by Michael Markert
 ;; Author: Michael Markert <markert.michael@googlemail.com>
 ;; URL: http://github.com/cofi/evil-leader
-;; Package-Version: 20140606.1243
 ;; Git-Repository: git://github.com/cofi/evil-leader.git
 ;; Created: 2011-09-13
-;; Version: 0.4.3
+;; Package-Version: 20140606.1243
+;; Package-Revision: 39f7014bcf8b
 ;; Keywords: evil vim-emulation leader
 ;; Package-Requires: ((evil "0"))
 
