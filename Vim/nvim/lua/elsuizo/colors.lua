@@ -1,6 +1,6 @@
 -- el mejor colorscheme
 -- vim.cmd("colorscheme Monosvkem")
-vim.cmd("colorscheme paper")
+-- vim.cmd("colorscheme paper")
 -- vim.cmd("colorscheme ")
 -- require("newpaper").setup({
 --    style = "light"
@@ -88,7 +88,7 @@ end
 
 -- lualine setup
 require('lualine').setup {
-   -- options = {
-   --    theme = LowEntropy,
-   -- }
+   options = {
+      theme = LowEntropy,
+   }
 }

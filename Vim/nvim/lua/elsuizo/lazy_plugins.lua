@@ -24,7 +24,6 @@ require("lazy").setup({
    },
    "yorik1984/newpaper.nvim",
    -- 'JuliaEditorSupport/julia-vim',                                                       -- Julia language support
-   { "ellisonleao/gruvbox.nvim", priority = 1000, config = true, opts = ... },
    {
       "vhyrro/luarocks.nvim",
       priority = 1000, -- We'd like this plugin to load first out of the rest
@@ -41,21 +40,20 @@ require("lazy").setup({
    -- 'chrisbra/csv.vim',                                                                      -- Visualize csv files
    -- 'elsuizo/vim-colors-paramount-suizo',                                                    -- personal colorscheme
    -- 'neutaaaaan/iosvkem',                                                                    -- one of the best colorschemes
-   'tomtom/tcomment_vim',                      -- comment lines or blocks of code
-   'elsuizo/monosvkem',                        -- the best colorscheme
-   'roxma/vim-tmux-clipboard',                 -- to get nice clipboard interface with tmux panes
+   'tomtom/tcomment_vim',      -- comment lines or blocks of code
+   'elsuizo/monosvkem',        -- the best colorscheme
+   'roxma/vim-tmux-clipboard', -- to get nice clipboard interface with tmux panes
    -- 'alaric/neovim-visor',                                                                   -- open/close the terminal with Alt-t
-   'nvim-lua/plenary.nvim',                    -- async support for lua
+   -- 'nvim-lua/plenary.nvim',                    -- async support for lua
    'nvim-telescope/telescope.nvim',            -- fuzzy finder and more...
    'nvim-telescope/telescope-fzy-native.nvim', -- fuzzy finder and more...
    'cljoly/telescope-repo.nvim',               -- for finding stuff relative to a specific folder
-   { "ellisonleao/gruvbox.nvim", priority = 1000, config = true, opts = ... },
-   {
-      'romgrk/barbar.nvim',         -- bar to visualize buffers and tabs
-      dependencies = {
-         'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
-      },
-   },
+   -- {
+   --    'romgrk/barbar.nvim',         -- bar to visualize buffers and tabs
+   --    dependencies = {
+   --       'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
+   --    },
+   -- },
    'ziglang/zig.vim',                     -- zig language support
    'neovim/nvim-lspconfig',               -- lsp neovim support
    "L3MON4D3/LuaSnip",                    -- snippet engine
@@ -70,8 +68,7 @@ require("lazy").setup({
    "hrsh7th/cmp-cmdline",                 -- autocomplete for neovim command line terminal
    "ray-x/cmp-treesitter",                -- autocomplete treesitter support
    "hrsh7th/nvim-cmp",                    -- autocomplete engine
-   'arzg/vim-colors-xcode',
-   { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+   -- { "catppuccin/nvim",          name = "catppuccin", priority = 1000 },
    -- "windwp/nvim-ts-autotag",                                                             -- to close automagically tags
    {
       'tjdevries/colorbuddy.nvim',
@@ -90,6 +87,19 @@ require("lazy").setup({
       dependencies = {
          "nvim-treesitter/nvim-treesitter",
          "nvim-tree/nvim-web-devicons"
+      },
+   },
+   {
+      "mistricky/codesnap.nvim",
+      build = "make build_generator",
+      keys = {
+         { "<leader>cc", "<cmd>CodeSnap<cr>",     mode = "x", desc = "Save selected code snapshot into clipboard" },
+         { "<leader>cs", "<cmd>CodeSnapSave<cr>", mode = "x", desc = "Save selected code snapshot in ~/Pictures" },
+      },
+      opts = {
+         save_path = "~/Pictures",
+         has_breadcrumbs = true,
+         bg_theme = "bamboo",
       },
    },
    {

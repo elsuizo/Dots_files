@@ -168,6 +168,19 @@ local on_attach = function(client, bufnr)
    buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 end
 
+vim.lsp.handlers["textDocument/publishDiagnostics"] =
+    vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+       -- Disable underline, it's very annoying
+       underline = false,
+       virtual_text = true,
+       -- Enable virtual text, override spacing to 4
+       -- virtual_text = {spacing = 4},
+       -- Use a function to dynamically turn signs off
+       -- and on, using buffer local variables
+       signs = true,
+       update_in_insert = false
+    })
+
 nvim_lsp.lua_ls.setup {
    capabilities = capabilities,
    on_attach = function(client, bufnr)
@@ -186,6 +199,11 @@ nvim_lsp.lua_ls.setup {
             library = vim.api.nvim_get_runtime_file("", true),
             checkThirdParty = false
          },
+      },
+      Rust_analyzer = {
+         diagnostics = {
+            disabled = { 'inactive-code' }
+         }
       },
    },
 }
@@ -216,8 +234,6 @@ vim.cmd [[nnoremap Q !!$SHELL <CR>]]
 
 -- center buffer around cursor when opening files
 vim.cmd [[autocmd BufRead * normal zz]]
--- con rust_analyzer
--- local servers = { "rust_analyzer"}
 local servers = { "pyright", "ts_ls", "clangd", "rust_analyzer", "julials", "gopls", "hls", "vimls", "lua_ls", "zls",
    "ocamllsp", "csharp_ls", "gdscript" }
 -- sin rust_analyzer
