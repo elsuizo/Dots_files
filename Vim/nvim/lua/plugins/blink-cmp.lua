@@ -15,6 +15,14 @@ return {
 			"rafamadriz/friendly-snippets",
 			"moyiz/blink-emoji.nvim",
 			"ray-x/cmp-sql",
+			{
+				"L3MON4D3/LuaSnip",
+				version = "v2.*",
+				name = "luasnip",
+				config = function()
+					require("luasnip.loaders.from_vscode").lazy_load()
+				end,
+			},
 		},
 
 		-- use a release tag to download pre-built binaries
@@ -44,6 +52,8 @@ return {
 				["<cr>"] = { "accept", "fallback" },
 				["<tab>"] = { "select_next" },
 				["<C-p>"] = { "select_prev" },
+				["<C-l>"] = { "snippet_forward", "fallback" },
+				["<C-j>"] = { "snippet_backward", "fallback" },
 			},
 
 			appearance = {
@@ -55,7 +65,9 @@ return {
 			-- (Default) Only show the documentation popup when manually triggered
 			completion = { documentation = { auto_show = true } },
 			signature = { enabled = true },
-
+			snippets = {
+				preset = "luasnip",
+			},
 			-- Default list of enabled providers defined so that you can extend it
 			-- elsewhere in your config, without redefining it, due to `opts_extend`
 			sources = {
