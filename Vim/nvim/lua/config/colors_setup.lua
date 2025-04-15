@@ -1,6 +1,6 @@
 -- el mejor colorscheme
 vim.cmd("colorscheme low_entropy")
--- vim.cmd("colorscheme paper")
+--vim.cmd("colorscheme paper")
 
 -- custom colorscheme for lualine
 local LowEntropy = {}
