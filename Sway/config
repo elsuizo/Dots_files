@@ -160,10 +160,10 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # resize window (you can also use the mouse for that)
 bar {
-      font pango:DejaVu Sans Mono, FontAwesome 13
+      font pango:JetBrains Mono, FontAwesome 15
       # position top
       mode hide
-      status_command i3status-rs /home/elsuizo/.config/i3/status.toml
+      status_command i3status-rs /home/elsuizo/.config/sway/status.toml
       colors {
             separator #666666
             background #222222
@@ -210,13 +210,14 @@ bindsym $mod+r mode "resize"
 # exec_always --no-startup-id feh --no-fehbg --bg-scale /home/elsuizo/Pictures/Wallpapers/arch_piola.png
 # exec_always --no-startup-id feh --no-fehbg --bg-scale /home/elsuizo/Pictures/Wallpapers/arch_black2.png
 # NOTE(elsuizo): esto es solo para wayland porque `feh` no funciona con wayland
-exec_always --no-startup-id swaybg -i Pictures/Wallpapers/arch_black2.png -m fill
+# exec_always --no-startup-id swaybg -i Pictures/Wallpapers/arch_black2.png -m fill
+exec_always --no-startup-id swaybg -i Pictures/Wallpapers/archlinux-wallpaper.png -m fill
 # exec_always --no-startup-id feh --no-fehbg --bg-scale /home/elsuizo/Pictures/Wallpapers/Archlinux_SDDM.png
 # exec_always --no-startup-id feh --no-fehbg --bg-scale /home/elsuizo/Pictures/Wallpapers/ROG-BW-1.png
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+# bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # tengo que poner esto para que no se apague la pantalla en un tiempo
 exec_always --no-startup-id xset dpms 0 0 73000000 &
@@ -237,24 +238,25 @@ bindsym $mod+F12 exec xfce4-screenshooter
 
 # file mannager
 bindsym $mod+f exec thunar
-assign [class="Thunar"] $workspace4
+assign [app_id="thunar"] $workspace4
 # Telegram
-bindsym $mod+t exec telegram-desktop
-assign [class="Telegram"] $workspace5
+bindsym $mod+t exec Telegram
+assign [app_id="Telegram"] $workspace5
 
-assign [class="vlc"] $workspace6
+assign [app_id="vlc"] $workspace6
 # open pdfs in workspace4
-assign [class="zathura"] $workspace3
+assign [app_id="zathura"] $workspace3
 
 bindsym $mod+c exec thunderbird
-assign [class="Thunderbird"] $workspace8
+assign [app_id="Thunderbird"] $workspace8
 
 # browser Firefox shortcut
 bindsym $mod+b exec firefox
-assign [class="firefox"] $workspace1
+assign [app_id="firefox"] $workspace1
 
 for_window [app_id="Firefox"] border none
 
+bindsym $mod+Ctrl+t exec emacs /home/elsuizo/Dropbox/Org_mode_files/Personal_org_mode_files/TODO.org
 # music
 # bindsym $mod+m exec xfce4-terminal -e cmus
 # bindsym $mod+m exec gnome-terminal -e cmus
@@ -297,7 +299,7 @@ exec --no-startup-id conky
 # super lento
 # exec --no-startup-id xset r rate 300 50
 input "type:keyboard" {
-   repeat_rate 45
+   repeat_rate 50
    repeat_delay 300
 }
 
@@ -311,14 +313,6 @@ input "type:touchpad" {
    tap_button_map lrm
 }
 
-#-------------------------------------------------------------------------
-# ONLY for the notebook
-#-------------------------------------------------------------------------
-# start the networ mannager
-#exec --no-startup-id nm-applet
-#-------------------------------------------------------------------------
-# ONLY for the notebook
-#-------------------------------------------------------------------------
 
 # Widow Colours          border   background text    indicator
 client.focused          $base01    $gris_piola      $base01 $base0F
@@ -347,6 +341,10 @@ bindsym $mod+d exec rofi -show drun -dpi 173 -fg "#f1f1f1" -bg "#333333" -hlfg "
 
 # change the keyboard layout with shortcut (para los putos acentos espanioles)
 exec_always "setxkbmap -model pc105 -layout us,es -variant ,, -option grp:alt_shift_toggle"
+
+bindsym Print exec grim -g "$(slurp)" ~/Pictures/$(date +%Y-%m-%d_%H-%M-%S).png #Screenshot selected region to file
+bindsym $mod+Shift+p exec grim -g "$(slurp)" - | wl-copy #Screenshot selected region to clipboard
+bindsym $mod+Print exec grimshot copy screen 1 #Screenshot focused window to clipboard
 
 # hacemos que el caps-lock se mapee con Esc
 # exec_always "setxkbmap -layout us -option caps:escape"
