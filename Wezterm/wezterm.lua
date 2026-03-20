@@ -16,6 +16,7 @@ config.window_padding = {
 }
 config.hide_tab_bar_if_only_one_tab = true
 config.tab_bar_at_bottom = true
+
 -- The filled in variant of the < symbol
 local SOLID_LEFT_ARROW = wezterm.nerdfonts.pl_right_hard_divider
 -- The filled in variant of the > symbol
@@ -48,7 +49,7 @@ local SOLID_RIGHT_ARROW = wezterm.nerdfonts.pl_left_hard_divider
 --NOTE(elsuizo: 2024-07-08): quiero uno que sea blanco con las letras negras...
 config.color_scheme = "Paper (Gogh)"
 config.window_background_opacity = 1.0
-config.bold_brightens_ansi_colors = "BrightAndBold"
+-- config.bold_brightens_ansi_colors = "BrightAndBold"
 
 -------------------------------------------------------------------------
 --font
@@ -60,10 +61,9 @@ config.font = wezterm.font({ family = "JetBrains Mono" })
 config.font_rules = {
 	{
 		intensity = "Bold",
-		italic = false,
+		italic = true,
 		font = wezterm.font({
 			family = "JetBrains Mono",
-			weight = "Bold",
 		}),
 	},
 }
@@ -72,10 +72,11 @@ config.font_rules = {
 --tmux like
 -------------------------------------------------------------------------
 -- leader key like tmux
-config.leader = { key = "b", mods = "CTRL", timeout_milliseconds = 2000 }
+config.leader = { key = "b", mods = "CTRL", timeout_milliseconds = 1000 }
 
 -- split keybinds
 local action = wezterm.action
+
 config.keys = {
 	{
 		key = "-",
@@ -151,5 +152,16 @@ config.keys = {
 		action = action.ShowTabNavigator,
 	},
 }
+
+--NOTE(elsuizo: 2026-03-20): cuando queremos activar un tab por el numero
+-- cuando queremos activar un tab por el numero
+for i = 1, 7 do
+	-- CTRL+ALT + number to activate that tab
+	table.insert(config.keys, {
+		key = tostring(i),
+		mods = "LEADER",
+		action = action.ActivateTab(i - 1),
+	})
+end
 
 return config
