@@ -151,6 +151,13 @@ config.keys = {
 		mods = "LEADER",
 		action = action.ShowTabNavigator,
 	},
+	{
+		key = "h",
+		mods = "LEADER",
+		action = action.SpawnCommandInNewTab({
+			cwd = wezterm.home_dir,
+		}),
+	},
 }
 
 --NOTE(elsuizo: 2026-03-20): cuando queremos activar un tab por el numero
