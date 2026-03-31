@@ -47,8 +47,9 @@ local SOLID_RIGHT_ARROW = wezterm.nerdfonts.pl_left_hard_divider
 --colorscheme
 -------------------------------------------------------------------------
 --NOTE(elsuizo: 2024-07-08): quiero uno que sea blanco con las letras negras...
-config.color_scheme = "Paper (Gogh)"
-config.window_background_opacity = 1.0
+-- config.color_scheme = "Paper (Gogh)"
+-- config.color_scheme = "Modus Operandi (Gogh)"
+config.window_background_opacity = 0.7
 -- config.bold_brightens_ansi_colors = "BrightAndBold"
 
 -------------------------------------------------------------------------
@@ -182,5 +183,37 @@ for i = 1, 7 do
 		action = action.ActivateTab(i - 1),
 	})
 end
+
+config.colors = {
+
+	foreground = "#ffffff",
+	background = "#121212",
+	cursor_bg = "#5c5cff",
+	cursor_fg = "#0e0e1b",
+	cursor_border = "#5c5cff",
+	selection_fg = "#d1d1e0",
+	selection_bg = "#262659",
+
+	ansi = {
+		"#252525", -- Black
+		"#d02b61", -- Red
+		"#99cc99", -- Green
+		"#f3f8df", -- Yellow
+		"#5688af", -- Blue
+		"#192c69", -- Magenta
+		"#b9423b", -- Cyan
+		"#ffffff", -- White
+	},
+	brights = {
+		"#a2c522", -- BrBlack
+		"#b20e1a", -- BrRed
+		"#99cc99", -- BrGreen
+		"#f3f8df", -- BrYellow
+		"#5688af", -- BrBlue
+		"#192c69", -- BrMagenta
+		"#b9423b", -- BrCyan
+		"#ffffff", -- BrWhite
+	},
+}
 
 return config
