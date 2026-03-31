@@ -194,25 +194,25 @@ config.colors = {
 	selection_fg = "#d1d1e0",
 	selection_bg = "#262659",
 
-	ansi = {
-		"#252525", -- Black
+	brights = {
+		"#818181", -- Black
 		"#d02b61", -- Red
 		"#99cc99", -- Green
-		"#f3f8df", -- Yellow
-		"#5688af", -- Blue
-		"#192c69", -- Magenta
-		"#b9423b", -- Cyan
-		"#ffffff", -- White
+		"#f3e430", -- Yellow
+		"#0056b7", -- Blue
+		"#6855de", -- Magenta
+		"#4fb8cc", -- Cyan
+		"#f1f1f1", -- White
 	},
-	brights = {
-		"#a2c522", -- BrBlack
-		"#b20e1a", -- BrRed
-		"#99cc99", -- BrGreen
-		"#f3f8df", -- BrYellow
+	ansi = {
+		"#121212", -- BrBlack
+		"#d02b61", -- BrRed
+		"#10a778", -- BrGreen
+		"#a89c14", -- BrYellow
 		"#5688af", -- BrBlue
-		"#192c69", -- BrMagenta
-		"#b9423b", -- BrCyan
-		"#ffffff", -- BrWhite
+		"#523c79", -- BrMagenta
+		"#57aadd", -- BrCyan
+		"#e0e0e0", -- BrWhite
 	},
 }
 
