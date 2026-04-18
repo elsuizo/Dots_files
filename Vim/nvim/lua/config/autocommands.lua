@@ -4,13 +4,7 @@ function M.autocmd(event, triggers, operations)
 	vim.cmd(cmd)
 end
 
---TODO(elsuizo): no se que es esto
---M.autocmd("BufEnter", "*", "if &buftype == 'terminal' | :startinsert | endif")
--- no change my colorscheme !!!
-M.autocmd("BufEnter", "*", "TSDisable highlight")
-M.autocmd("BufWritePre", "*", "TSDisable highlight")
-M.autocmd("BufReadPost", "*", "TSDisable highlight")
-M.autocmd("TermOpen", "*", "TSDisable highlight")
+--TODO(elsuizo: 2026-04-18): no se para que es esto
 M.autocmd("BufReadPost", "*", [[if line("'\"") > 0 && line ("'\"") <= line("$") | exe "normal! g'\"" | endif]])
 M.autocmd("BufWritePre", "*", "%s/\\s\\+$//e")
 M.autocmd("BufRead", "*", "normal zz")
