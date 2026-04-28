@@ -1,8 +1,6 @@
 -- el mejor colorscheme
 vim.cmd("colorscheme low_entropy")
--- vim.cmd("colorscheme base16-catppuccin-mocha")
--- vim.cmd("colorscheme paper")
--- vim.cmd("colorscheme Monosvkem")
+--vim.cmd("colorscheme paper")
 
 -- custom colorscheme for lualine
 local LowEntropy = {}
@@ -60,6 +58,7 @@ LowEntropy.inactive = {
 local function trailing()
 	return vim.fn.search([[\s\+$]], "nw") ~= 0 and "TW" or ""
 end
+
 -- lualine setup
 require("lualine").setup({
 	options = {
