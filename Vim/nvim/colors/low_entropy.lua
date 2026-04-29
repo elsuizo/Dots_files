@@ -75,9 +75,9 @@ Group.new("IncSearch", colors.orange, colors.none, styles.bold)
 Group.new("Cursor", colors.blue, colors.linenrblack, styles.bold)
 Group.new("NonText", colors.red, colors.none)
 Group.new("BufferLineSeparatorSelected", colors.none, colors.none)
--- Group.new('BufferCurrent', colors.none, colors.linenrblack)
--- Group.new('BufferInactive', colors.linenrblack, colors.none)
--- Group.new('BufferVisibleIndex', colors.linenrblack, colors.red)
+Group.new("BufferCurrent", colors.none, colors.linenrblack)
+Group.new("BufferInactive", colors.linenrblack, colors.none)
+Group.new("BufferVisibleIndex", colors.linenrblack, colors.red)
 
 Group.new("LspDiagnosticsSignHint", colors.background_liner, colors.none, styles.bold)
 Group.new("LspDiagnosticsDefaultWarning", colors.background_liner, colors.none, styles.bold)
@@ -97,6 +97,15 @@ Group.new("rustMutable", colors.red, colors.none, styles.bold)
 Group.new("rustQuestionMark", colors.red, colors.none, styles.bold)
 Group.new("rust_analyzer", colors.red, colors.none, styles.bold)
 
+-- zig
+Group.new("zigType", colors.cyan_new, colors.none, styles.bold)
+
+--TODO(elsuizo: 2026-04-29): falta sacarse de encima la definicion de `struct` y
+--`extern` por ejemplo
+-- C
+Group.new("cType", colors.cyan_new, colors.none, styles.bold)
+Group.new("cSpecialChar", colors.orange, colors.none, styles.bold)
+
 -- markdown
 Group.new("markdownCode", colors.comment_color, colors.none)
 Group.new("markdownCodeBlock", colors.comment_color, colors.none)
@@ -112,7 +121,10 @@ Group.new("TelescopeResultsBorder", colors.white, colors.none)
 Group.new("TelescopeResultsTitle", colors.red, colors.none)
 Group.new("TelescopePreviewTitle", colors.red, colors.none)
 
--- html
+-- blink
+-- Group.new("BlinkCmpMenu", colors.background_liner, colors.none)
+-- Group.new("BlinkCmpMenuBorder", colors.white, colors.none)
+
 -- Group.new('', colors.comment_color, colors.none)
 -- Group.new('htmlTag', colors.blue, colors.none, colors.none)
 -- Group.new('htmlEndTag', c.blue, c.none, no)
