@@ -1,7 +1,20 @@
-; Nueva config desde cero 2025-03-20 09:28
+; config desde cero 2025-03-20 09:28
 ; desde este tutorial: https://www.youtube.com/watch?v=74zOY-vgkyw y lo que
 ; tenia antes...
+; TODOs
+; - [ ] Fuzzy finder para archivos
+; - [ ] Setup para Rust con LSP
+; - [ ] Setup de vertico
+; - [ ] Autocompletado
+; - [X] Abrir y cerrar la consola con una shortcut
+; - [ ] Hay que hacer andar el undo bien
+; - [ ] Magit
+; - [ ] org-rom???
+; - [ ] Encontrar un colortheme mas piola
 
+;-------------------------------------------------------------------------
+; initialization
+;-------------------------------------------------------------------------
 (setq gc-cons-threshold 800000)
 (setq inhibit-startup-message t)
 
@@ -15,14 +28,22 @@
 ;; Set up the visible bell
 (setq visible-bell t)
 
+;-------------------------------------------------------------------------
+; font
+;-------------------------------------------------------------------------
 (set-face-attribute 'default nil :font "JetBrainsMono Nerd Font" :height 137)
 
-(load-theme 'wombat)
+;-------------------------------------------------------------------------
+; colortheme
+;-------------------------------------------------------------------------
+;(load-theme 'wombat)
 
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
-;; Initialize package sources
+;-------------------------------------------------------------------------
+; Initialize package sources
+;-------------------------------------------------------------------------
 (require 'package)
 
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
@@ -40,27 +61,15 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
+; TODO(elsuizo): no se que es esto
 (use-package command-log-mode)
 
-(use-package ivy
-  :diminish
-  :bind (("C-s" . swiper)
-         :map ivy-minibuffer-map
-         ("TAB" . ivy-alt-done)
-         ("C-l" . ivy-alt-done)
-         ("C-j" . ivy-next-line)
-         ("C-k" . ivy-previous-line)
-         :map ivy-switch-buffer-map
-         ("C-k" . ivy-previous-line)
-         ("C-l" . ivy-done)
-         ("C-d" . ivy-switch-buffer-kill)
-         :map ivy-reverse-i-search-map
-         ("C-k" . ivy-previous-line)
-         ("C-d" . ivy-reverse-i-search-kill))
-  :config
-  (ivy-mode 1))
-
+;-------------------------------------------------------------------------
+; terminal
+;-------------------------------------------------------------------------
+;-------------------------------------------------------------------------
 ; evil mode
+;-------------------------------------------------------------------------
 (use-package evil
 	    :init (setq evil-want-C-i-jump nil)
 	    :config (evil-mode))
@@ -71,7 +80,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages nil))
+ '(package-selected-packages
+   '(command-log-mode company doom-modeline evil-leader flycheck ivy
+		      lsp-mode rust-mode toggle-term vterm-toggle)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -86,60 +97,21 @@
 (evil-leader/set-key
 "b" 'switch-to-buffer
 "w" 'save-buffer
-"c" 'cargo-process-build
-"t" 'term)
+"c" '(lambda() (interactive) (find-file "~/.emacs.d/init.el"))
+"t" 'vterm-toggle ; esto viene del package ~vterm-toggle~
+)
 (setq package-list '(evil-leader))
 
-(use-package lsp-mode
-  :ensure t
-  :bind (:map lsp-mode-map
-	      ("C-c d" . lsp-describe-thing-at-point)
-	      ("C-c a" . lsp-execute-code-action))
-  :bind-keymap ("C-c l" . lsp-command-map)
-  :config
-  (lsp-enable-which-key-integration t))
+;-------------------------------------------------------------------------
+; keybindings
+;-------------------------------------------------------------------------
 
-(use-package company
-  :ensure t
-  :hook ((emacs-lisp-mode . (lambda ()
-			      (setq-local company-backends '(company-elisp))))
-	 (emacs-lisp-mode . company-mode))
-  :config
-  (company-keymap--unbind-quick-access company-active-map)
-  (company-tng-configure-default)
-  (setq company-idle-delay 0.1
-	company-minimum-prefix-length 1))
-
-(use-package flycheck
-  :ensure t)
-
-;;; Rust
-(use-package rust-mode
-  :ensure t
-  :hook ((rust-mode . flycheck-mode)
-	 (rust-mode . lsp-deferred))
-  :bind (("<f6>" . my/rust-format-buffer))
-  :config
-  (require 'rust-rustfmt)
-  (defun my/rust-format-buffer ()
-    (interactive)
-    (rust-format-buffer)
-    (save-buffer))
-  (require 'lsp-rust)
-  (setq lsp-rust-analyzer-completion-add-call-parenthesis nil
-	lsp-rust-analyzer-proc-macro-enable t)
-  (cl-defmethod lsp-clients-extract-signature-on-hover
-    (contents (_server-id (eql rust-analyzer)))
-    "from https://github.com/emacs-lsp/lsp-mode/pull/1740 to extract
-signature in rust"
-    (-let* (((&hash "value") contents)
-	    (groups (--partition-by (s-blank? it) (s-lines (s-trim value))))
-	    (sig_group (if (s-equals? "```rust" (car (-third-item groups)))
-			   (-third-item groups)
-			 (car groups)))
-	    (sig (--> sig_group
-		      (--drop-while (s-equals? "```rust" it) it)
-		      (--take-while (not (s-equals? "```" it)) it)
-		      (--map (s-trim it) it)
-		      (s-join " " it))))
-	   (lsp--render-element (concat "```rust\n" sig "\n```")))))
+;-------------------------------------------------------------------------
+; vterm config
+;-------------------------------------------------------------------------
+; con esto hacemos que la terminal aparezca donde nosotros queremos
+(add-to-list 'display-buffer-alist
+             '("\\*vterm\\*"
+               (display-buffer-in-side-window)
+               (window-height . 0.3)
+               (side . bottom)))
