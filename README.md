@@ -14,7 +14,7 @@ El mejor workflow lejos!!!
 
 ## Desktop
 
-![Archlinux](https://github.com/elsuizo/Dots_files/blob/master/arch2023.png "archlinux2023")
+![Archlinux](https://github.com/elsuizo/Dots_files/blob/master/arch2026.png "archlinux2026")
 
 
-![Neovim](https://github.com/elsuizo/Dots_files/blob/master/arch2023-2.png "neovim2023")
+![Neovim](https://github.com/elsuizo/Dots_files/blob/master/neovim2026.png "neovim2026")
