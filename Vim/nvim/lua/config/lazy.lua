@@ -22,7 +22,9 @@ require("lazy").setup({
 		"ziglang/zig.vim", -- zig language support
 		"rust-lang/rust.vim", -- Rust language support
 		"yorickpeterse/vim-paper", -- nice clear colorscheme
-		"shaunsingh/nord.nvim",
+		"RRethy/base16-nvim",
+		"elsuizo/monosvkem",
+		"JuliaEditorSupport/julia-vim",
 		-- plugins with config in the `plugins/` folder
 		{ import = "plugins" },
 	},

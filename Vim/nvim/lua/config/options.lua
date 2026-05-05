@@ -48,6 +48,8 @@ Option.g({
 	autoread = true,
 	fillchars = vim.o.fillchars .. "vert:│",
 	undofile = true,
+	--TODO(elsuizo: 2026-05-01): esto me parece que no va mas, porque viene de la
+	--configuracion de vim
 	undodir = os.getenv("HOME") .. "/.vim/undo/",
 	virtualedit = "onemore",
 	-- guicursor = "a:block-Cursor/lCursor",

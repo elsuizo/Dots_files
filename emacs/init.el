@@ -82,7 +82,8 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    '(command-log-mode company doom-modeline evil-leader flycheck ivy
-		      lsp-mode rust-mode toggle-term vterm-toggle)))
+		      lsp-mode recentf-ext rust-mode toggle-term
+		      vertico vterm-toggle)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -115,3 +116,42 @@
                (display-buffer-in-side-window)
                (window-height . 0.3)
                (side . bottom)))
+
+;-------------------------------------------------------------------------
+; vertico config
+;-------------------------------------------------------------------------
+(use-package vertico
+  :ensure t
+  :config
+  (setq vertico-cycle t)
+  (setq vertico-resize nil)
+  (vertico-mode 1))
+
+;-------------------------------------------------------------------------
+; savehist
+;-------------------------------------------------------------------------
+;; The built-in `savehist-mode' saves minibuffer histories.  Vertico
+;; can then use that information to put recently selected options at
+;; the top.
+;;
+;; Further reading: https://protesilaos.com/emacs/dotemacs#h:25765797-27a5-431e-8aa4-cc890a6a913a
+(savehist-mode 1)
+
+;-------------------------------------------------------------------------
+; recentf-mode
+;-------------------------------------------------------------------------
+;; The built-in `recentf-mode' keeps track of recently visited files.
+;; You can then access those through the `consult-buffer' interface or
+;; with `recentf-open'/`recentf-open-files'.
+;; I do not use this facility, because the files I care about are
+;; either in projects or are bookmarked.
+(recentf-mode 1)
+(setq recentf-max-saved-items 50) ; Increase the number of saved files (default is 20)
+
+
+;-------------------------------------------------------------------------
+; rustic mode config
+;-------------------------------------------------------------------------
+(add-hook 'rust-mode-hook
+          (lambda ()
+            (local-set-key (kbd "C-b") (lambda () (interactive) (shell-command "cargo r")))))

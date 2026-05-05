@@ -69,7 +69,6 @@ vim.keymap.set("n", "<A-h>", "<C-w>h")
 vim.keymap.set("n", "<A-j>", "<C-w>j")
 vim.keymap.set("n", "<A-k>", "<C-w>k")
 vim.keymap.set("n", "<A-l>", "<C-w>l")
-vim.keymap.set("n", "<C-t>", "TSDisable highlight")
 
 -- insert mode keymaps
 vim.keymap.set("i", "<Up>", "<Nop>", { noremap = true, silent = true })
@@ -98,3 +97,20 @@ vim.keymap.set("t", "<A-l>", "<C-\\><C-n><C-w>l")
 vim.keymap.set("t", "<Esc>", "<c-\\><c-n><esc><cr>")
 vim.keymap.set("t", "<Leader>,", "<c-\\><c-n>:bnext<cr>")
 vim.keymap.set("t", "<Leader>.", "<c-\\><c-n>:bprevious<cr>")
+
+vim.keymap.set(
+	{ "n", "v" },
+	"<C-ScrollWheelUp>",
+	":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1<CR>"
+)
+vim.keymap.set(
+	{ "n", "v" },
+	"<C-ScrollWheelDown>",
+	":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.1<CR>"
+)
+-- configuracion de bufferline para ir al buffer numero: N
+for i = 1, 9 do
+	vim.keymap.set("n", "<Leader>" .. i, function()
+		require("bufferline").go_to_buffer(i, true)
+	end, { silent = true, desc = "Go to buffer " .. i })
+end

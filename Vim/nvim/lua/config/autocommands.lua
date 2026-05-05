@@ -4,18 +4,7 @@ function M.autocmd(event, triggers, operations)
 	vim.cmd(cmd)
 end
 
-vim.api.nvim_create_autocmd("BufEnter", {
-	callback = function()
-		-- Only stop if a parser is actually attached to avoid errors
-		if pcall(vim.treesitter.get_parser) then
-			vim.treesitter.stop()
-		end
-	end,
-})
-
---TODO(elsuizo): no se que es esto
---M.autocmd("BufEnter", "*", "if &buftype == 'terminal' | :startinsert | endif")
--- no change my colorscheme !!!
+--TODO(elsuizo: 2026-04-18): no se para que es esto
 M.autocmd("BufReadPost", "*", [[if line("'\"") > 0 && line ("'\"") <= line("$") | exe "normal! g'\"" | endif]])
 M.autocmd("BufWritePre", "*", "%s/\\s\\+$//e")
 M.autocmd("BufRead", "*", "normal zz")

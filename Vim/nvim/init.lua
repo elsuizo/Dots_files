@@ -11,8 +11,14 @@
 --NOTE(elsuizo: 2025-04-04): new config with one file configuration for plugin and lsp
 --simplify
 -- TODO(elsuizo:2025-04-07): lo que faltaria
--- [ ] Sacar el underline de rust-analyzer
--- [ ] No se si me sirve mucho el plugin de comentarios
+-- [X] Sacar el underline de rust-analyzer
+-- [X] No se si me sirve mucho el plugin de comentarios
+-- [X] Agregamos bufferline con una configuracion basica
+-- [ ] Habria que arreglar los bordes de la terminal flotante
+-- [ ] se pueden hacer una bocha de cosas con el plugin de la terminal(por
+-- ejemplo que corra el comando que queremos dentro de ella)
+-- [ ] Tambien con el plugin de autopairs se pueden configurar un monton de
+-- cosas que podrian ser utiles como por ejemplo el famoso $$ de latex
 
 -- the fucking leader
 vim.g.mapleader = ","
