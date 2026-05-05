@@ -1,7 +1,7 @@
 -- el mejor colorscheme
 vim.cmd("colorscheme low_entropy")
---vim.cmd("colorscheme paper")
-
+-- vim.cmd("colorscheme paper")
+require("bufferline").setup({})
 -- custom colorscheme for lualine
 local LowEntropy = {}
 
@@ -19,13 +19,13 @@ local colors = {
 
 LowEntropy.normal = {
 	a = { bg = colors.white, fg = colors.black, gui = "bold" },
-	b = { bg = colors.blue, fg = colors.white },
+	b = { bg = colors.black, fg = colors.white },
 	c = { bg = colors.black, fg = colors.white },
 }
 
 LowEntropy.insert = {
 	a = { bg = colors.black, fg = colors.white, gui = "bold" },
-	b = { bg = colors.black, fg = colors.white },
+	b = { bg = colors.blue, fg = colors.white },
 	c = { bg = colors.white, fg = colors.black },
 }
 
@@ -58,7 +58,6 @@ LowEntropy.inactive = {
 local function trailing()
 	return vim.fn.search([[\s\+$]], "nw") ~= 0 and "TW" or ""
 end
-
 -- lualine setup
 require("lualine").setup({
 	options = {
