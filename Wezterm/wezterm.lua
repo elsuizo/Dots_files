@@ -123,7 +123,7 @@ config.keys = {
 
 config.keys = {
 	{
-		key = "c",
+		key = "h",
 		mods = "LEADER",
 		action = action.SpawnTab("CurrentPaneDomain"),
 	},
@@ -153,7 +153,7 @@ config.keys = {
 		action = action.ShowTabNavigator,
 	},
 	{
-		key = "h",
+		key = "c",
 		mods = "LEADER",
 		action = action.SpawnCommandInNewTab({
 			cwd = wezterm.home_dir,
@@ -183,7 +183,7 @@ for i = 1, 7 do
 		action = action.ActivateTab(i - 1),
 	})
 end
-
+--
 config.colors = {
 
 	foreground = "#ffffff",
@@ -215,5 +215,5 @@ config.colors = {
 		"#e0e0e0", -- BrWhite
 	},
 }
-
+--
 return config
