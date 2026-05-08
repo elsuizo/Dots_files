@@ -14,7 +14,12 @@
 -- [X] Sacar el underline de rust-analyzer
 -- [X] No se si me sirve mucho el plugin de comentarios
 -- [X] Agregamos bufferline con una configuracion basica
--- [ ] Habria que arreglar los bordes de la terminal flotante
+-- [X] Habria que arreglar los bordes de la terminal flotante
+-- - Se soluciono cambiando de color `FloatBorder`
+-- [ ] Hay que arreglar que en los snippets cuando apretamos Tab no salta a la
+-- otra casillero
+-- [X] Tambien cuando estamos tipeando no anda cuando apretamos Tab al escribir
+-- Esta mapeado a S-Tab que es Shit+Tab
 -- [ ] se pueden hacer una bocha de cosas con el plugin de la terminal(por
 -- ejemplo que corra el comando que queremos dentro de ella)
 -- [ ] Tambien con el plugin de autopairs se pueden configurar un monton de
