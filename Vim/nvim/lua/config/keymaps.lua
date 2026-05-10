@@ -1,5 +1,12 @@
 -- my custom keymaps
 
+require("telescope").setup({
+	defaults = {
+		preview = {
+			treesitter = false,
+		},
+	},
+})
 -- normal mode keymaps
 vim.keymap.set("n", "<C-j>", ":MoveLine(1)<CR>")
 vim.keymap.set("n", "<C-k>", ":MoveLine(-1)<CR>")

@@ -1,3 +1,4 @@
+--TODO(elsuizo: 2026-05-09): ver porque tarda tanto en cargar este plugin
 return {
 	"L3MON4D3/LuaSnip",
 	-- follow latest release.

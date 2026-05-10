@@ -10,8 +10,8 @@ return {
 		blend = 23,
 	},
 	-- Optional dependencies
-	dependencies = {
-		"nvim-treesitter/nvim-treesitter",
-		"nvim-tree/nvim-web-devicons",
-	},
+	-- dependencies = {
+	-- 	"nvim-treesitter/nvim-treesitter",
+	-- 	"nvim-tree/nvim-web-devicons",
+	-- },
 }
